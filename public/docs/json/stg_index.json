@@ -1,0 +1,6247 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The documents for myxxjs save UC program api",
+    "version": "1.0.0",
+    "title": "Myxxjs UC api doc",
+    "contact": {
+      "email": "info@myxxjs.com"
+    },
+    "license": {
+      "name": "View source at github",
+      "url": "https://github.com/maguon/uc_api"
+    }
+  },
+  "host": "stg.myxxjs.com:9201",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "wechat",
+      "description": "wechat open api",
+      "externalDocs": {
+        "url": "stg.myxxjs.com:9201",
+        "description": " wechat mini program api"
+      }
+    },
+    {
+      "name": "admin",
+      "description": "admin of log api"
+    },
+    {
+      "name": "supervise",
+      "description": "supervise of log api"
+    },
+    {
+      "name": "checkCar",
+      "description": "checkCar of log api"
+    },
+    {
+      "name": "user",
+      "description": "user of log api"
+    },
+    {
+      "name": "userCar",
+      "description": "userCar of log api"
+    },
+    {
+      "name": "userMessage",
+      "description": "userMessage of log api"
+    },
+    {
+      "name": "app",
+      "description": "app of log api"
+    },
+    {
+      "name": "qrCode",
+      "description": "app of log api"
+    },
+    {
+      "name": "product",
+      "description": "app of log api"
+    },
+    {
+      "name": "order",
+      "description": "app of log api"
+    },
+    {
+      "name": "log",
+      "description": "app of log api"
+    },
+    {
+      "name": "orderFeedback",
+      "description": "app of log api"
+    },
+    {
+      "name": "payment",
+      "description": "app of log api"
+    },
+    {
+      "name": "logCompany",
+      "description": "app of log api"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/wechat/{code}/openid": {
+      "get": {
+        "tags": [
+          "wechat"
+        ],
+        "summary": "wechat user do login",
+        "description": "",
+        "operationId": "wechat login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "wechat",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/wechat/{accessToken}/openid/{openid}": {
+      "get": {
+        "tags": [
+          "wechat"
+        ],
+        "summary": "wechat user do login",
+        "description": "",
+        "operationId": "wechat login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accessToken",
+            "in": "path",
+            "description": "accessToken",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "openid",
+            "in": "path",
+            "description": "openid",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/adminLogin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "Admin user do login",
+        "description": "",
+        "operationId": "admin login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Admin base info ",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "query admin user info",
+        "description": "Get admin user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/admin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "update admin user info",
+        "description": "update admin user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "admin base info:name,phone and remark is needed .",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/admin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/password": {
+      "put": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "update admin user password",
+        "description": "update admin user password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "admin base info:origin and new password is needed .",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/adminPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/password"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/supervise": {
+      "post": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "createSupervise",
+        "description": "createSupervise",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "createSupervise",
+            "in": "body",
+            "description": "createSupervise",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createSupervise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/createSupervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "query supervise user info",
+        "description": "Get supervise user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "superviseId",
+            "in": "query",
+            "description": "superviseId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "gender,0男,1女",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "0停用1启用",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "0-n警员职务",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/supervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/token/{token}": {
+      "get": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "get supervise new token",
+        "description": "change  supervise token",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "token",
+            "in": "path",
+            "description": "token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/qrCode/{qrCode}": {
+      "get": {
+        "tags": [
+          "qrCode"
+        ],
+        "summary": "get qrCode ",
+        "description": "get qrCode",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "qrCode",
+            "in": "path",
+            "description": "qrCode",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "get qrCode "
+          }
+        }
+      }
+    },
+    "/user/{userId}/userCar/{userCarId}/qrCode": {
+      "post": {
+        "tags": [
+          "qrCode"
+        ],
+        "summary": "get qrCode ",
+        "description": "get qrCode",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userCarId",
+            "in": "path",
+            "description": "userCarId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "get qrCode "
+          }
+        }
+      }
+    },
+    "/superviseLogin": {
+      "post": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "phoneSuperviseLogin",
+        "description": "phoneSuperviseLogin in",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceToken",
+            "in": "query",
+            "description": "device token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "device version",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appType",
+            "in": "query",
+            "description": "app Type",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "deviceType",
+            "in": "query",
+            "description": "device type",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "ApiResponse",
+            "in": "body",
+            "description": "supervise info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/supervise": {
+      "get": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "query supervise user info",
+        "description": "Get supervise user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "query",
+            "description": "superviseId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "gender,0男,1女",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "0停用1启用",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "0-n警员职务",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/supervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/supervise/{superviseId}/status/{status}": {
+      "put": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "update supervise info",
+        "description": "update supervise info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "updateSuperviseStatus",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/supervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/supervise/{superviseId}": {
+      "put": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "update supervise info",
+        "description": "update supervise info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "supervise",
+            "in": "body",
+            "description": "supervise base info:name,phone and remark is needed .",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/supervise"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/supervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/password": {
+      "put": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "update supervise user password",
+        "description": "update supervise user password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "supervisePassword",
+            "in": "body",
+            "description": "supervise base info:origin and new password is needed .",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/supervisePassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/password"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/phone": {
+      "put": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "update supervise  phone",
+        "description": "update supervise  phone",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "changeSupervisePhone",
+            "in": "body",
+            "description": "changeSupervisePhone",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeSupervisePhone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/phone"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/phone/{phone}/supervisePassword": {
+      "put": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "update supervise  pswd",
+        "description": "update supervise  pswd",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "path",
+            "description": "phone",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "changeSupervisePasswordByPhone",
+            "in": "body",
+            "description": "changeSupervisePasswordByPhone",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/changeSupervisePasswordByPhone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/supervise"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/checkCar/{checkCarId}/status/{status}": {
+      "put": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "update supervise status ",
+        "description": "query supervise by status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "checkCarId",
+            "in": "path",
+            "description": "checkCarId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "status",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/checkCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid checkCar id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/checkCar": {
+      "get": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "query checkCar  ",
+        "description": "query checkCar ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "checkCarId",
+            "in": "query",
+            "description": "checkCarId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userCarId",
+            "in": "query",
+            "description": "userCarId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "licensePlate",
+            "in": "query",
+            "description": "licensePlate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "superviseName",
+            "in": "query",
+            "description": "superviseName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "superviseId",
+            "in": "query",
+            "description": "superviseId",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdStartOn",
+            "in": "query",
+            "description": "createdStartOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdEndOn",
+            "in": "query",
+            "description": "createdEndOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/checkCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid userCar id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/monthStat": {
+      "get": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "get checkCar by superviseId ",
+        "description": "get checkCar by superviseId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "yMonth",
+            "in": "query",
+            "description": "yMonth",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/car"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid police id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/checkCar": {
+      "get": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "get checkCar by superviseId ",
+        "description": "checkCar by superviseId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "dateId",
+            "in": "query",
+            "description": "dateId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "checkCarId",
+            "in": "query",
+            "description": "checkCarId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdStart",
+            "in": "query",
+            "description": "createdStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdEnd",
+            "in": "query",
+            "description": "createdEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "licensePlate",
+            "in": "query",
+            "description": "licensePlate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/checkCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "add car by supervise ",
+        "description": "add car by supervise_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "addCheckCar",
+            "in": "body",
+            "description": "add addCheckCar by superviseId",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addCheckCar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/car"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid police id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/dayStat": {
+      "get": {
+        "tags": [
+          "checkCar"
+        ],
+        "summary": "get checkCar by superviseId ",
+        "description": "checkCar by superviseId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "dateId",
+            "in": "query",
+            "description": "dateId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/checkCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid supervise id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user",
+        "description": "query user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "wechatName",
+            "in": "query",
+            "description": "wechatName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "gender",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authStartTime",
+            "in": "query",
+            "description": "authStartTime",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authEndTime",
+            "in": "query",
+            "description": "authEndTime",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "wechatStatus",
+            "in": "query",
+            "description": "0取消1关注",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authStatus",
+            "in": "query",
+            "description": "0未认证1已认证",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/queryUser"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user",
+        "description": "query user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "wechatName",
+            "in": "query",
+            "description": "wechatName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "gender",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authStartTime",
+            "in": "query",
+            "description": "authStartTime",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authEndTime",
+            "in": "query",
+            "description": "authEndTime",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "wechatStatus",
+            "in": "query",
+            "description": "0取消1关注",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "authStatus",
+            "in": "query",
+            "description": "0未认证1已认证",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/queryUser"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/userLogin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user login",
+        "description": "user login",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userLogin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/userLogin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user update",
+        "description": "user update",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user update",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateUser",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUser"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/password": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user update password",
+        "description": "user update password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/password"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/wechatStatus/{wechatStatus}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user update status",
+        "description": "user update status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "wechatStatus",
+            "in": "path",
+            "description": "wechatStatus",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/status"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/authStatus/{authStatus}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user update status",
+        "description": "user update status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "authStatus",
+            "in": "path",
+            "description": "authStatus",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/wechatType"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/userPhone": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user update phone",
+        "description": "user update phone",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateUserPhone",
+            "in": "body",
+            "description": "updateUserPhone",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateUserPhone"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/phone"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/userCar": {
+      "get": {
+        "tags": [
+          "userCar"
+        ],
+        "summary": "userCar ",
+        "description": "userCar",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userCarId",
+            "in": "query",
+            "description": "userCarId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/phone"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "userCar"
+        ],
+        "summary": "userCar add ",
+        "description": "userCar add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "addUserCar",
+            "in": "body",
+            "description": "addUserCar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addUserCar"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/addUserCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/userCar": {
+      "get": {
+        "tags": [
+          "userCar"
+        ],
+        "summary": "userCar ",
+        "description": "userCar",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user info",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "user info",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userCarId",
+            "in": "query",
+            "description": "userCarId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "licensePlate",
+            "in": "query",
+            "description": "licensePlate",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "vin",
+            "in": "query",
+            "description": "vin",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdStartOn",
+            "in": "query",
+            "description": "createdStartOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdEndOn",
+            "in": "query",
+            "description": "createdEndOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/phone"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/userCar/{userCarId}": {
+      "delete": {
+        "tags": [
+          "userCar"
+        ],
+        "summary": "userCar delete ",
+        "description": "userCar delete ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userCarId",
+            "in": "path",
+            "description": "userCarId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/delUserCar"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "userCar"
+        ],
+        "summary": "userCar update ",
+        "description": "userCar update ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userCarId",
+            "in": "path",
+            "description": "userCarId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateUserCar",
+            "in": "body",
+            "description": "updateUserCar",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatePaperRemark"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updatePaperRemark"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/msgStat": {
+      "get": {
+        "tags": [
+          "userMessage"
+        ],
+        "summary": "userCar ",
+        "description": "userCar",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userType",
+            "in": "query",
+            "description": "userType",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/queryUserMessageNumById"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/user/{userId}/car/{carId}/message": {
+      "post": {
+        "tags": [
+          "userMessage"
+        ],
+        "summary": "userMessage add ",
+        "description": "userMessage add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "carId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "addMessage",
+            "in": "body",
+            "description": "addMessage",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addMessage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/addMessage"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/msg/{msgId}/status/{status}": {
+      "put": {
+        "tags": [
+          "userMessage"
+        ],
+        "summary": "userMessage add ",
+        "description": "userMessage add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "msgId",
+            "in": "path",
+            "description": "msgId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "status",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUserMessageStatus"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/getMessage": {
+      "get": {
+        "tags": [
+          "userMessage"
+        ],
+        "summary": "userMessage ",
+        "description": "userMessage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user info",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userMessageId",
+            "in": "query",
+            "description": "userMessageId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "是否成功",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "消息类型",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdStartOn",
+            "in": "query",
+            "description": "createdStartOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdEndOn",
+            "in": "query",
+            "description": "createdEndOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/userMessage"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/getMessage": {
+      "get": {
+        "tags": [
+          "userMessage"
+        ],
+        "summary": "userMessage ",
+        "description": "userMessage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user info",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userMessageId",
+            "in": "query",
+            "description": "userMessageId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "0未读1已读",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdStartOn",
+            "in": "query",
+            "description": "createdStartOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdEndOn",
+            "in": "query",
+            "description": "createdEndOn",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/userMessage"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "userOrder add ",
+        "description": "userOrder add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "addOrder",
+            "in": "body",
+            "description": "addOrder",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/addOrder"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "userOrder get ",
+        "description": "userOrder get ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderItemId",
+            "in": "query",
+            "description": "orderItemId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "query",
+            "description": "carId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderName",
+            "in": "query",
+            "description": "orderName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "logStatus",
+            "in": "query",
+            "description": "logStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "description": "paymentStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getOrderItem"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/orderItem": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "userOrder get ",
+        "description": "userOrder get ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderItemId",
+            "in": "query",
+            "description": "orderItemId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "query",
+            "description": "carId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderName",
+            "in": "query",
+            "description": "orderName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "logStatus",
+            "in": "query",
+            "description": "logStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "description": "paymentStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getOrder"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/orderItem": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "userOrder get ",
+        "description": "userOrder get ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderItemId",
+            "in": "query",
+            "description": "orderItemId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "query",
+            "description": "carId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderName",
+            "in": "query",
+            "description": "orderName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "logStatus",
+            "in": "query",
+            "description": "logStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "description": "paymentStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getOrder"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/order": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "summary": "userOrder get ",
+        "description": "userOrder get ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderItemId",
+            "in": "query",
+            "description": "orderItemId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "query",
+            "description": "carId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderName",
+            "in": "query",
+            "description": "orderName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "logStatus",
+            "in": "query",
+            "description": "logStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "query",
+            "description": "paymentStatus",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getOrderItem"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/product/{productId}/car/{carId}/orderItem": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "orderItem add ",
+        "description": "orderItem add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "productId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "description": "carId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderItem",
+            "in": "body",
+            "description": "add orderItem",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/addOrder"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/orderInfo": {
+      "put": {
+        "tags": [
+          "order"
+        ],
+        "summary": "orderItem add ",
+        "description": "orderItem add ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateOrder",
+            "in": "body",
+            "description": "update order",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateOrder"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/orderItem/{orderItemId}": {
+      "delete": {
+        "tags": [
+          "order"
+        ],
+        "summary": "orderItem del ",
+        "description": "orderItem del ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderItemId",
+            "in": "path",
+            "description": "orderItemId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/del Order item"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/status/{status}": {
+      "put": {
+        "tags": [
+          "order"
+        ],
+        "summary": "update userOrder status ",
+        "description": "update userOrder status ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "status",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUserOrderStatus"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/logStatus/{logStatus}": {
+      "put": {
+        "tags": [
+          "order"
+        ],
+        "summary": "update userOrder status ",
+        "description": "update userOrder status ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "logStatus",
+            "in": "path",
+            "description": "logStatus",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUserOrderLogStatus"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/paymentStatus/{paymentStatus}": {
+      "put": {
+        "tags": [
+          "order"
+        ],
+        "summary": "update userOrder status ",
+        "description": "update userOrder status ",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "paymentStatus",
+            "in": "path",
+            "description": "paymentStatus",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUserOrderPaymentStatus"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/app": {
+      "get": {
+        "tags": [
+          "app"
+        ],
+        "summary": "query  app version ",
+        "description": "query app",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "appId",
+            "in": "query",
+            "description": "app id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "app",
+            "in": "query",
+            "description": "app name",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "app type : 1-android,2-ios",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "forceUpdate",
+            "in": "query",
+            "description": "app type : 0-no,1-yes",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/app"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value "
+          }
+        }
+      }
+    },
+    "/user/{userId}/app/{appId}": {
+      "put": {
+        "tags": [
+          "app"
+        ],
+        "summary": "update app version info",
+        "description": "update app version",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "appId",
+            "in": "path",
+            "description": "app verion id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "appVersion",
+            "in": "body",
+            "description": "app version info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/app"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid repairStation id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/app": {
+      "post": {
+        "tags": [
+          "app"
+        ],
+        "summary": "user create app version ",
+        "description": "user create app",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "appVersion",
+            "in": "body",
+            "description": "app version  info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/app"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid repairStation id"
+          }
+        }
+      }
+    },
+    "/userDevice": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query userDevice list",
+        "description": "query userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userDeviceId",
+            "in": "query",
+            "description": "userDevice id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "deviceToken",
+            "in": "query",
+            "description": "device token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/userDevice"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid userDevice id"
+          }
+        }
+      }
+    },
+    "/superviseDevice": {
+      "get": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "query superviseDevice list",
+        "description": "query superviseDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseDeviceId",
+            "in": "query",
+            "description": "superviseDevice id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "superviseId",
+            "in": "query",
+            "description": "supervise id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "deviceToken",
+            "in": "query",
+            "description": "device token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/superviseDevice"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid superviseDevice id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/userDevice": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "create userDevice",
+        "description": "create userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userDevice",
+            "in": "body",
+            "description": "userDevice info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userDevice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid userDevice id"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/superviseDevice": {
+      "post": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "create superviseDevice",
+        "description": "create superviseDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "superviseDevice",
+            "in": "body",
+            "description": "superviseDevice info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/superviseDevice"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid superviseDevice id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/deviceToken/{deviceToken}": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Deletes a userDevice",
+        "description": "",
+        "operationId": "deleteUserDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "deviceToken",
+            "in": "path",
+            "description": "device token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/deviceToken/{deviceToken}": {
+      "delete": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "Deletes a superviseDevice",
+        "description": "",
+        "operationId": "deleteSuperviseDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "supervise id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "deviceToken",
+            "in": "path",
+            "description": "device token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/user/{userId}/phone/{phone}/userPhoneSms": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "send rest password sms",
+        "description": "sendPswdSms",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "description": "user unique phone",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid phone value or invalid user status"
+          }
+        }
+      }
+    },
+    "/phone/{phone}/supervisePswdSms": {
+      "post": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "send rest password sms",
+        "description": "sendPswdSms",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "path",
+            "description": "user unique phone",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid phone value or invalid user status"
+          }
+        }
+      }
+    },
+    "/supervise/{superviseId}/phone/{phone}/supervisePhoneSms": {
+      "post": {
+        "tags": [
+          "supervise"
+        ],
+        "summary": "send rest password sms",
+        "description": "sendPswdSms",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "superviseId",
+            "in": "path",
+            "description": "superviseId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "phone",
+            "in": "path",
+            "description": "user unique phone",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid phone value or invalid user status"
+          }
+        }
+      }
+    },
+    "/user/{userId}/message": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "send rest password sms",
+        "description": "sendPswdSms",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "message",
+            "in": "body",
+            "description": "message",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid phone value or invalid user status"
+          }
+        }
+      }
+    },
+    "/user/{userId}/shipAddress/{shipAddressId}/default": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user updateUserShipAddress ",
+        "description": "user updateUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "shipAddressId",
+            "in": "path",
+            "description": "shipAddressId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateUserShipAddress",
+            "in": "body",
+            "description": "updateUserShipAddress",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateUserShipAddress"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/updateUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/userShipAddress": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user getUserShipAddress ",
+        "description": "user getUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "shipAddressId",
+            "in": "query",
+            "description": "userShipAddressId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "shipName",
+            "in": "query",
+            "description": "shipName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "shipPhone",
+            "in": "query",
+            "description": "shipPhone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/userShipAddress": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user getUserShipAddress ",
+        "description": "user getUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userShipAddressId",
+            "in": "query",
+            "description": "userShipAddressId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user addUserShipAddress ",
+        "description": "user addUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "addUserShipAddress",
+            "in": "body",
+            "description": "updateUserPhone",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/addUserShipAddress"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/addUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/shipAddress/{shipAddressId}/info": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user putUserShipAddress ",
+        "description": "user putUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "shipAddressId",
+            "in": "path",
+            "description": "shipAddressId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateUserShipAddress",
+            "in": "body",
+            "description": "updateUserShipAddress",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserShipAddress"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/getUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/shipAddress/{shipAddressId}": {
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user delUserShipAddress ",
+        "description": "user delUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "shipAddressId",
+            "in": "path",
+            "description": "shipAddressId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/delUserShipAddress"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/product": {
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "user get product ",
+        "description": "user get product",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "userId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "description": "productId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/product": {
+      "post": {
+        "tags": [
+          "product"
+        ],
+        "summary": "user addUserShipAddress ",
+        "description": "user addUserShipAddress",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "product",
+            "in": "body",
+            "description": "add product",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/product"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "product"
+        ],
+        "summary": "user get product ",
+        "description": "user get product",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "productId",
+            "in": "query",
+            "description": "productId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/log": {
+      "post": {
+        "tags": [
+          "log"
+        ],
+        "summary": "create log",
+        "description": "create log",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "log",
+            "in": "body",
+            "description": "log info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/log"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "log"
+        ],
+        "summary": "create userDevice",
+        "description": "create userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "logId",
+            "in": "query",
+            "description": "logId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "logNum",
+            "in": "query",
+            "description": "logNum",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "logCompanyId",
+            "in": "query",
+            "description": "logCompanyId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "recvName",
+            "in": "query",
+            "description": "recvName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnStart",
+            "in": "query",
+            "description": "updatedOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnEnd",
+            "in": "query",
+            "description": "updatedOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "recvPhone",
+            "in": "query",
+            "description": "recvPhone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/log": {
+      "get": {
+        "tags": [
+          "log"
+        ],
+        "summary": "create userDevice",
+        "description": "create userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "logId",
+            "in": "query",
+            "description": "logId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "logCompanyId",
+            "in": "query",
+            "description": "logCompanyId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "recvName",
+            "in": "query",
+            "description": "recvName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnStart",
+            "in": "query",
+            "description": "updatedOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnEnd",
+            "in": "query",
+            "description": "updatedOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "recvPhone",
+            "in": "query",
+            "description": "recvPhone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/log": {
+      "get": {
+        "tags": [
+          "log"
+        ],
+        "summary": "create userDevice",
+        "description": "create userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "logId",
+            "in": "query",
+            "description": "logId",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/log/{logId}/logInfo": {
+      "put": {
+        "tags": [
+          "log"
+        ],
+        "summary": "user log ",
+        "description": "user log",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "adminId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "logId",
+            "in": "path",
+            "description": "logId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "log",
+            "in": "body",
+            "description": "put log",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateLog"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/orderFeedback": {
+      "post": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "create orderFeedback",
+        "description": "create orderFeedback",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedback",
+            "in": "body",
+            "description": "orderFeedback 售后",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/orderFeedback"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "get orderFeedback",
+        "description": "get orderFeedback",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "orderId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/orderFeedback": {
+      "get": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "get orderFeedback",
+        "description": "get orderFeedback",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/orderFeedback": {
+      "get": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "create userDevice",
+        "description": "create userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "orderId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "userId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedbackId",
+            "in": "query",
+            "description": "orderFeedbackId",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "userName",
+            "in": "query",
+            "description": "userName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "createdOnStart",
+            "in": "query",
+            "description": "createdOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "createdOnEnd",
+            "in": "query",
+            "description": "createdOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnStart",
+            "in": "query",
+            "description": "updatedOnStart",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "updatedOnEnd",
+            "in": "query",
+            "description": "updatedOnEnd",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "start",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/order/{orderId}/orderFeedback/{orderFeedbackId}/orderFeedbackPayment": {
+      "put": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "put userDevice",
+        "description": "put userDevice",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedbackId",
+            "in": "path",
+            "description": "orderFeedbackId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateOrderFeedbackPayment",
+            "in": "body",
+            "description": "updateOrderFeedback",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderFeedbackPayment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/order/{orderId}/orderFeedback/{orderFeedbackId}/orderFeedbackCount": {
+      "put": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "put orderFeedbackCount",
+        "description": "put orderFeedbackCount",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedbackId",
+            "in": "path",
+            "description": "orderFeedbackId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateOrderFeedbackCount",
+            "in": "body",
+            "description": "updateOrderFeedback",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderFeedbackCount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/order/{orderId}/orderFeedback/{orderFeedbackId}/orderFeedbackRemark": {
+      "put": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "put orderFeedbackRemark",
+        "description": "put orderFeedbackRemark",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin orderFeedback",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedbackId",
+            "in": "path",
+            "description": "orderFeedbackId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateOrderFeedbackRemark",
+            "in": "body",
+            "description": "updateOrderFeedbackRemark",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderFeedbackRemark"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/order/{orderId}/orderFeedback/{orderFeedbackId}/orderFeedbackStatus": {
+      "put": {
+        "tags": [
+          "orderFeedback"
+        ],
+        "summary": "put orderFeedback",
+        "description": "put orderFeedback",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderFeedbackId",
+            "in": "path",
+            "description": "orderFeedbackId",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateOrderFeedbackStatus",
+            "in": "body",
+            "description": "updateOrderFeedbackStatus",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderFeedbackStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/orderFeedback"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/payment": {
+      "post": {
+        "tags": [
+          "payment"
+        ],
+        "summary": "add payment",
+        "description": "add payment",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "payment",
+            "in": "body",
+            "description": "payment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/payment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/payment"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/order/{orderId}/wechatPayment": {
+      "post": {
+        "tags": [
+          "payment"
+        ],
+        "summary": "add payment",
+        "description": "add payment",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "order Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "updateStatus",
+            "in": "body",
+            "description": "updateStatus",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/payment"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/logCompany": {
+      "get": {
+        "tags": [
+          "logCompany"
+        ],
+        "summary": "get logCompany",
+        "description": "get logCompany",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "logCompanyId",
+            "in": "query",
+            "description": "logCompanyId",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/logCompany"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/admin/{adminId}/logCompany": {
+      "post": {
+        "tags": [
+          "logCompany"
+        ],
+        "summary": "add logCompany",
+        "description": "add logCompany",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "logCompany",
+            "in": "body",
+            "description": "logCompany",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/logCompany"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/logCompany"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "logCompany"
+        ],
+        "summary": "get logCompany",
+        "description": "get logCompany",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "user Id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user Id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "logCompanyId",
+            "in": "query",
+            "description": "logCompanyId",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/logCompany"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "createAdmin": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "realName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "createAdmin"
+      }
+    },
+    "admin": {
+      "type": "object",
+      "required": [
+        "id",
+        "userName",
+        "password"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "realName": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "description": "admin status",
+          "enum": [
+            "0",
+            "1"
+          ]
+        }
+      },
+      "xml": {
+        "name": "admin"
+      }
+    },
+    "adminPassword": {
+      "type": "object",
+      "required": [
+        "originPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "originPassword": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "adminPassword"
+      }
+    },
+    "createSupervise": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "integer"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "createSupervise"
+      }
+    },
+    "supervise": {
+      "type": "object",
+      "properties": {
+        "gender": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "avatarImage": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "supervise"
+      }
+    },
+    "supervisePassword": {
+      "type": "object",
+      "required": [
+        "originPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "originPassword": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "supervisePassword"
+      }
+    },
+    "changeSupervisePhone": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "signCode": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "changeSupervisePhone"
+      }
+    },
+    "changeSupervisePasswordByPhone": {
+      "type": "object",
+      "properties": {
+        "signCode": {
+          "type": "integer"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "changeSupervisePasswordByPhone"
+      }
+    },
+    "addCheckCar": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer"
+        },
+        "userCarId": {
+          "type": "integer"
+        },
+        "lon": {
+          "type": "integer"
+        },
+        "lat": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addCar"
+      }
+    },
+    "userLogin": {
+      "type": "object",
+      "properties": {
+        "wechatName": {
+          "type": "string"
+        },
+        "wechatId": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "integer"
+        },
+        "avatarImage": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "userLogin"
+      }
+    },
+    "updateUser": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "integer"
+        },
+        "birth": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateUser"
+      }
+    },
+    "updateUserPhone": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "signCode": {
+          "type": "integer"
+        },
+        "authStatus": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "updateUserPhone"
+      }
+    },
+    "password": {
+      "type": "object",
+      "properties": {
+        "oldPassword": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "password"
+      }
+    },
+    "updatePaperRemark": {
+      "type": "object",
+      "properties": {
+        "vin": {
+          "type": "string"
+        },
+        "engineNum": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updatePaperRemark"
+      }
+    },
+    "addMessage": {
+      "type": "object",
+      "properties": {
+        "messageName": {
+          "type": "string"
+        },
+        "messageOrder": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addMessage"
+      }
+    },
+    "addUserCar": {
+      "type": "object",
+      "properties": {
+        "vin": {
+          "type": "string"
+        },
+        "makeId": {
+          "type": "integer"
+        },
+        "makeName": {
+          "type": "string"
+        },
+        "modelId": {
+          "type": "integer"
+        },
+        "modelName": {
+          "type": "string"
+        },
+        "engineNum": {
+          "type": "string"
+        },
+        "licensePlate": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addUserCar"
+      }
+    },
+    "app": {
+      "type": "object",
+      "properties": {
+
+        "app": {
+          "type": "integer"
+        },
+        "appType": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "string"
+        },
+        "forceUpdate": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "app"
+      }
+    },
+    "userDevice": {
+      "type": "object",
+      "properties": {
+        "deviceToken": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "integer"
+        },
+        "appType": {
+          "type": "integer"
+        },
+        "deviceType": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "userDevice"
+      }
+    },
+    "superviseDevice": {
+      "type": "object",
+      "properties": {
+        "deviceToken": {
+          "type": "integer"
+        },
+        "version": {
+          "type": "integer"
+        },
+        "appType": {
+          "type": "integer"
+        },
+        "deviceType": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "superviseDevice"
+      }
+    },
+    "addUserShipAddress": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "detailAddress": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addUserShipAddress"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer"
+        },
+        "gender": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "ApiResponse"
+      }
+    },
+    "updateUserShipAddress": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "updateUserShipAddress"
+      }
+    },
+    "UserShipAddress": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "UserShipAddress"
+      }
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "licensePlate": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "message"
+      }
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "productName": {
+          "type": "string"
+        },
+        "originalPrice": {
+          "type": "integer"
+        },
+        "unitPrice": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "product"
+      }
+    },
+    "orderItem": {
+      "type": "object",
+      "properties": {
+        "prodCount": {
+          "type": "integer"
+        },
+        "freight": {
+          "type": "integer"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "imag": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "orderItem"
+      }
+    },
+    "updateOrder": {
+      "type": "object",
+      "properties": {
+        "recvAddress": {
+          "type": "string"
+        },
+        "recvName": {
+          "type": "string"
+        },
+        "recvPhone": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "paymentStatus": {
+          "type": "integer"
+        },
+        "logStatus": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "totalFreight": {
+          "type": "integer"
+        },
+        "orderName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateOrder"
+      }
+    },
+    "log": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "integer"
+        },
+        "productDes": {
+          "type": "string"
+        },
+        "recvName": {
+          "type": "string"
+        },
+        "recvPhone": {
+          "type": "string"
+        },
+        "recvAddress": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "log"
+      }
+    },
+    "orderFeedback": {
+      "type": "object",
+      "properties": {
+        "applyReason": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "orderFeedback"
+      }
+    },
+    "updateOrderFeedbackPayment": {
+      "type": "object",
+      "properties": {
+        "processRemark": {
+          "type": "string"
+        },
+        "processMethod": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateOrderFeedbackPayment"
+      }
+    },
+    "updateOrderFeedbackCount": {
+      "type": "object",
+      "properties": {
+        "processRemark": {
+          "type": "string"
+        },
+        "processMethod": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateOrderFeedbackCount"
+      }
+    },
+    "updateOrderFeedbackRemark": {
+      "type": "object",
+      "properties": {
+        "processRemark": {
+          "type": "string"
+        },
+        "processMethod": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateOrderFeedbackRemark"
+      }
+    },
+    "updateOrderFeedbackStatus": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "updateOrderFeedbackStatus"
+      }
+    },
+    "updateLog": {
+      "type": "object",
+      "properties": {
+        "logNum": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "logCompanyId": {
+          "type": "integer"
+        },
+        "freight": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "updateLog"
+      }
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "integer"
+        },
+        "paymentType": {
+          "type": "integer"
+        },
+        "remark": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "payment"
+      }
+    },
+    "updateStatus": {
+      "type": "object",
+      "properties": {
+        "totalFee": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "integer"
+        },
+        "openid": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "updateStatus"
+      }
+    },
+    "logCompany": {
+      "type": "object",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "logCompany"
+      }
+    },
+    "addOrder": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "integer"
+        },
+        "prodCount": {
+          "type": "integer"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "carId": {
+          "type": "integer"
+        },
+        "freight": {
+          "type": "integer"
+        },
+        "imag": {
+          "type": "string"
+        },
+        "recvName": {
+          "type": "string"
+        },
+        "recvPhone": {
+          "type": "string"
+        },
+        "recvAddress": {
+          "type": "string"
+        },
+        "orderName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "addOrder"
+      }
+    }
+  }
+}
