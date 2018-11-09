@@ -1,7 +1,7 @@
 *.log
 config/config.js
 conf.json
-public/apidocs/json/index.json
+server/config/SystemConfig.js
 .idea/*
 uploads/*
 node_modules

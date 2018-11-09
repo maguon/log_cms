@@ -1,0 +1,1 @@
+exports.CategoryController = require('./ContentController')
