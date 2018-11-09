@@ -1,9 +1,7 @@
 *.log
-*.bundle.js
 config/config.js
-config/SystemConfig.js
 conf.json
-public/docs/json/index.json
+public/apidocs/json/index.json
 .idea/*
 uploads/*
 node_modules
