@@ -31,6 +31,7 @@ app.get('/', (req ,res)=>{
 
 
 app.get('*', (req ,res)=>{
+    console.log(req);
     let Page404 = `
         <div style="text-align:center">
             <h3 style="width: 25%;font-size: 12rem;color: #409eff;margin: 0 auto;margin-top: 10%;">404</h3>
