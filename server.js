@@ -42,6 +42,6 @@ app.get('*', (req ,res)=>{
 
 });
 
-app.listen(7000, () => {
+app.listen(8100, () => {
     logger.info(`server started at localhost:${8100} ` + new Date().toLocaleString());
 })
