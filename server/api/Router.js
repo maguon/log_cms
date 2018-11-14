@@ -12,6 +12,7 @@ router.put('/content/:contentId', ContentController.updateContent);
 router.delete('/content/:contentId', ContentController.removeContent);
 
 router.get('/admin/:adminId', AdminController.getAdmin);
+router.post('/adminLogin' ,AdminController.adminLogin);
 router.post('/admin' ,AdminController.createAdmin);
 
 router.get('/user', UserController.getUser);

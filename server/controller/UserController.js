@@ -75,5 +75,7 @@ const updateUser = (req, res, next) => {
 
 
 module.exports = {
-    createUser,getUser,updateUser
+    createUser,
+    getUser,
+    updateUser
 };

@@ -1,6 +1,4 @@
-/**
- * Created by Ling Xue on 14-3-23.
- */
+
 
 var crypto = require('crypto');
 
