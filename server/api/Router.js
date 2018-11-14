@@ -17,6 +17,7 @@ router.post('/admin' ,AdminController.createAdmin);
 
 router.get('/user', UserController.getUser);
 router.post('/user', UserController.createUser);
+router.post('/userLogin' ,UserController.userLogin);
 router.put('/user/:userId', UserController.updateUser);
 
 
