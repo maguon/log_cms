@@ -52,6 +52,24 @@ const getUser = (req, res, next) => {
     });
 }
 
+const getUserBase = (req, res, next) => {
+    let params = req.params;
+    let query = UserModel.find({},{password:0});
+
+    if(params.userId){
+        query.where('_id').equals(params.userId);
+    }
+    query.exec((error,rows)=> {
+        if (error) {
+            logger.error(' getUserBase ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' getUserBase ' + 'success');
+            resUtil.resetQueryRes(res, rows);
+        }
+    });
+}
+
 const userLogin = (req, res, next) => {
     let bodyParams = req.body;
     let query = UserModel.find({});
@@ -134,10 +152,31 @@ const updateUser = (req, res, next) => {
     })
 }
 
+const updateUserStatus = (req, res, next) => {
+    let params = req.params;
+    let userObj = {
+        status:params.status
+    }
+
+    const query = { _id:params.userId };
+    UserModel.findOneAndUpdate(query,userObj,function(error,result){
+        logger.debug(' updateUserStatus ') ;
+        if (error) {
+            logger.error(' updateUserStatus ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' updateUserStatus ' + 'success');
+            resUtil.resetQueryRes(res, result);
+        }
+    })
+}
+
 
 module.exports = {
     createUser,
     getUser,
+    getUserBase,
     userLogin,
-    updateUser
+    updateUser,
+    updateUserStatus
 };
