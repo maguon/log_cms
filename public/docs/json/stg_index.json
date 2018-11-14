@@ -1,3 +1,489 @@
 {
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a api docs for `logistics`.  ",
+    "version": "1.0.0",
+    "title": "Log API Docs",
+    "termsOfService": "http://myxxjs.com",
+    "contact": {
+      "email": "info@myxxjs.com"
+    },
+    "license": {
+      "name": "Github.com",
+      "url": "https://github.com/maguon/log_cms/blob/master/LICENSE"
+    }
+  },
+  "host": "stg.myxxjs.com:8100",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "admin",
+      "description": "Admin of log api"
+    },
+    {
+      "name": "user",
+      "description": "User of log api"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/admin/{adminId}": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "query admin list",
+        "description": "query admin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "integer"
 
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/admin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/adminLogin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "admin login",
+        "description": "admin sign in",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "admin info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/adminLogin"
+            }
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "create admin",
+        "description": "create admin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "admin info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user list",
+        "description": "query user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user id",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "create user",
+        "description": "create user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/userLogin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user login",
+        "description": "user sign in",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userLogin"
+            }
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user profile",
+        "description": "query user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user info",
+        "description": "update user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/status/{status}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user status",
+        "description": "update user status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "integer"
+
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "user status",
+            "required": true,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://oauth.myxxjs.com/api",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "admin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "admin"
+      }
+    },
+    "adminLogin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "adminLogin"
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "user"
+      }
+    },
+    "userLogin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "userLogin"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find more on developer website",
+    "url": "http://myxxjs.com"
+  }
 }
