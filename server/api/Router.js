@@ -20,6 +20,7 @@ router.get('/user/:userId', UserController.getUserBase);
 router.post('/user', UserController.createUser);
 router.post('/userLogin' ,UserController.userLogin);
 router.put('/user/:userId', UserController.updateUser);
+router.put('/user/:userId/password', UserController.changeUserPassword);
 router.put('/user/:userId/status/:status', UserController.updateUserStatus);
 
 

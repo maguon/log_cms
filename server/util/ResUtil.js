@@ -14,7 +14,8 @@ const resetCreateRes = (res,result,errMsg) => {
 }
 
 const resetUpdateRes = (res,result,errMsg) =>{
-    if(result && result.affectedRows>0){
+    //if(result && result.affectedRows>0){
+    if(result && result !=null){
         res.status(200).send({success : true});
     }else{
         res.status(200).send({success : false,msg:errMsg});

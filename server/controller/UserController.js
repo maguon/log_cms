@@ -133,7 +133,6 @@ const updateUser = (req, res, next) => {
     let params = req.params;
     let userObj = {
         user_name:bodyParams.userName,
-        password:bodyParams.password,
         phone:bodyParams.phone,
         sex:bodyParams.sex,
         type:bodyParams.type
@@ -147,8 +146,54 @@ const updateUser = (req, res, next) => {
             resUtil.resInternalError(error,res);
         } else {
             logger.info(' updateUser ' + 'success');
-            resUtil.resetQueryRes(res, result);
+            resUtil.resetUpdateRes(res,result,null);
         }
+    })
+}
+
+const changeUserPassword = (req, res, next) => {
+    let bodyParams = req.body;
+    let params = req.params;
+    new Promise((resolve) => {
+        let query = UserModel.find({});
+
+        if(params.userId){
+            query.where('_id').equals(params.userId);
+        }
+        query.exec((error,rows)=> {
+            if (error) {
+                logger.error(' getUser ' + error.message);
+                resUtil.resInternalError(error,res);
+            } else {
+                if(rows && rows.length<1){
+                    logger.warn(' getUser ' + sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
+                    resUtil.resetFailedRes(res,sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
+                    return next();
+                }else if(encrypt.encryptByMd5(bodyParams.originPassword) != rows[0].password){
+                    logger.warn(' getUser ' + sysMsg.CUST_ORIGIN_PSWD_ERROR);
+                    resUtil.resetFailedRes(res,sysMsg.CUST_ORIGIN_PSWD_ERROR);
+                    return next();
+                }else{
+                    resolve();
+                }
+            }
+        });
+    }).then(() => {
+        let userObj = {
+            password:encrypt.encryptByMd5(bodyParams.newPassword),
+        }
+
+        const query = { _id:params.userId };
+        UserModel.findOneAndUpdate(query,userObj,function(error,result){
+            logger.debug(' changeUserPassword ') ;
+            if (error) {
+                logger.error(' changeUserPassword ' + error.message);
+                resUtil.resInternalError(error,res);
+            } else {
+                logger.info(' changeUserPassword ' + 'success');
+                resUtil.resetUpdateRes(res,result,null);
+            }
+        })
     })
 }
 
@@ -166,7 +211,7 @@ const updateUserStatus = (req, res, next) => {
             resUtil.resInternalError(error,res);
         } else {
             logger.info(' updateUserStatus ' + 'success');
-            resUtil.resetQueryRes(res, result);
+            resUtil.resetUpdateRes(res,result,null);
         }
     })
 }
@@ -178,5 +223,7 @@ module.exports = {
     getUserBase,
     userLogin,
     updateUser,
+    changeUserPassword,
     updateUserStatus
+
 };
