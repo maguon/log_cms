@@ -28,7 +28,28 @@ const  createMenu = (req, res, next) => {
     })
 }
 
+const getMenu = (req, res, next) => {
+    let params = req.query;
+    let query = MenuModel.find({});
+
+    if(params.menuId){
+        query.where('_id').equals(params.menuId);
+    }
+    if(params.start && params.size){
+        query.skip(parseInt(params.start)).limit(parseInt(params.size));
+    }
+    query.exec((error,rows)=> {
+        if (error) {
+            logger.error(' getMenu ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' getMenu ' + 'success');
+            resUtil.resetQueryRes(res, rows);
+        }
+    });
+}
+
 
 module.exports = {
-    createMenu
+    createMenu,getMenu
 };

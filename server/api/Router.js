@@ -24,7 +24,8 @@ router.put('/user/:userId', UserController.updateUser);
 router.put('/user/:userId/password', UserController.changeUserPassword);
 router.put('/user/:userId/status/:status', UserController.updateUserStatus);
 
-router.post('/menu', MenuController.createMenu);
+router.get('/menu', MenuController.getMenu);
+router.post('/user/:userId/menu', MenuController.createMenu);
 
 
 module.exports = router
