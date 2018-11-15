@@ -49,7 +49,30 @@ const getMenu = (req, res, next) => {
     });
 }
 
+const updateMenu = (req, res, next) => {
+    let bodyParams = req.body;
+    let params = req.params;
+    let menuObj = {
+        menu_pid: bodyParams.menuPid,
+        menu_name: bodyParams.menuName,
+        menu_num: bodyParams.menuNum,
+        show_flag: bodyParams.showFlag
+    }
+
+    const query = { _id:params.menuId };
+    MenuModel.findOneAndUpdate(query,menuObj,function(error,result){
+        logger.debug(' updateMenu ') ;
+        if (error) {
+            logger.error(' updateMenu ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' updateMenu ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+        }
+    })
+}
+
 
 module.exports = {
-    createMenu,getMenu
+    createMenu,getMenu,updateMenu
 };
