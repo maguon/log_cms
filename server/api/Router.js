@@ -5,6 +5,7 @@ const router = express.Router({mergeParams:true});
 const ContentController = require('../controller/ContentController');
 const AdminController = require('../controller/AdminController');
 const UserController = require('../controller/UserController');
+const MenuController = require('../controller/MenuController');
 
 router.get('/content', ContentController.getContent);
 router.post('/content', ContentController.createContent);
@@ -22,6 +23,8 @@ router.post('/userLogin' ,UserController.userLogin);
 router.put('/user/:userId', UserController.updateUser);
 router.put('/user/:userId/password', UserController.changeUserPassword);
 router.put('/user/:userId/status/:status', UserController.updateUserStatus);
+
+router.post('/menu', MenuController.createMenu);
 
 
 module.exports = router

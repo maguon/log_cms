@@ -4,7 +4,7 @@
   "dependencies": {
     "body-parser": "1.18.2",
     "cookie-parser": "1.4.3",
-    "cors" : "2.8.5",
+    "cors": "2.8.5",
     "ejs": "2.6.1",
     "express": "4.16.3",
     "history": "4.7.2",
@@ -16,7 +16,8 @@
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-express-middleware": "3.1.1",
-    "serve-favicon": "2.5.0"
+    "serve-favicon": "2.5.0",
+    "serializer": ">=0.0.2 <0.1.0"
   },
   "scripts": {
     "start": "node server.js"
