@@ -36,8 +36,7 @@ const createUser = (req, res, next) => {
             user_name:bodyParams.userName,
             password:encrypt.encryptByMd5(bodyParams.password),
             phone:bodyParams.phone,
-            sex:bodyParams.sex,
-            type:bodyParams.type
+            sex:bodyParams.sex
         }
 
         let userModel = new UserModel(userObj);
@@ -157,8 +156,7 @@ const updateUser = (req, res, next) => {
     let userObj = {
         user_name:bodyParams.userName,
         phone:bodyParams.phone,
-        sex:bodyParams.sex,
-        type:bodyParams.type
+        sex:bodyParams.sex
     }
 
     const query = { _id:params.userId };
