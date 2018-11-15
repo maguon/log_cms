@@ -11,24 +11,47 @@ const logger = LogUtil.createLogger('UserController');
 
 const createUser = (req, res, next) => {
     let bodyParams = req.body;
-    let userObj = {
-        user_name:bodyParams.userName,
-        password:encrypt.encryptByMd5(bodyParams.password),
-        phone:bodyParams.phone,
-        sex:bodyParams.sex,
-        type:bodyParams.type
-    }
+    new Promise((resolve) => {
+        let query = UserModel.find({});
 
-    let userModel = new UserModel(userObj);
-    userModel.save(function(error,result){
-        if (error) {
-            logger.error(' createUser ' + error.message);
-            resUtil.resInternalError(error,res);
-        } else {
-            logger.info(' createUser ' + 'success');
-            resUtil.resetCreateRes(res, result);
+        if(bodyParams.userName){
+            query.where('user_name').equals(bodyParams.userName);
         }
+        query.exec((error,rows)=> {
+            if (error) {
+                logger.error(' getUser ' + error.message);
+                resUtil.resInternalError(error,res);
+            } else {
+                if(rows && rows.length>0){
+                    logger.warn(' getUser ' +bodyParams.userName+ sysMsg.CUST_SIGNUP_REGISTERED);
+                    resUtil.resetFailedRes(res,sysMsg.CUST_SIGNUP_REGISTERED) ;
+                    return next();
+                }else{
+                    resolve();
+                }
+            }
+        });
+    }).then(() => {
+        let userObj = {
+            user_name:bodyParams.userName,
+            password:encrypt.encryptByMd5(bodyParams.password),
+            phone:bodyParams.phone,
+            sex:bodyParams.sex,
+            type:bodyParams.type
+        }
+
+        let userModel = new UserModel(userObj);
+        userModel.save(function(error,result){
+            if (error) {
+                logger.error(' createUser ' + error.message);
+                resUtil.resInternalError(error,res);
+            } else {
+                logger.info(' createUser ' + 'success');
+                resUtil.resetCreateRes(res, result);
+            }
+        })
     })
+
 }
 
 const getUser = (req, res, next) => {
