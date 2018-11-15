@@ -4,13 +4,14 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors')
 
 const logUtil = require('./server/util/LogUtil');
 const logger = logUtil.createLogger('server.js');
 const apiRouter = require('./server/api/Router');
 const app = express();
 
-
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
