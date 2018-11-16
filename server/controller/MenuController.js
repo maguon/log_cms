@@ -12,7 +12,7 @@ const  createMenu = (req, res, next) => {
         menu_name: bodyParams.menuName,
         menu_level: bodyParams.menuLevel,
         menu_num: bodyParams.menuNum,
-        show_flag: bodyParams.showFlag,
+        menu_status: bodyParams.menuStatus,
         menu_link: bodyParams.menuLink
     }
 
@@ -56,7 +56,7 @@ const updateMenu = (req, res, next) => {
         menu_pid: bodyParams.menuPid,
         menu_name: bodyParams.menuName,
         menu_num: bodyParams.menuNum,
-        show_flag: bodyParams.showFlag
+        menu_status: bodyParams.menuStatus
     }
 
     const query = { _id:params.menuId };

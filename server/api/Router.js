@@ -6,6 +6,7 @@ const ContentController = require('../controller/ContentController');
 const AdminController = require('../controller/AdminController');
 const UserController = require('../controller/UserController');
 const MenuController = require('../controller/MenuController');
+const NewsController = require('../controller/NewsController');
 
 router.get('/content', ContentController.getContent);
 router.post('/content', ContentController.createContent);
@@ -26,7 +27,10 @@ router.put('/user/:userId/status/:status', UserController.updateUserStatus);
 
 router.get('/menu', MenuController.getMenu);
 router.post('/user/:userId/menu', MenuController.createMenu);
-router.put('/menu/:menuId', MenuController.updateMenu);
+router.put('/user/:userId/menu/:menuId', MenuController.updateMenu);
+
+router.get('/news', NewsController.getNews);
+router.post('/user/:userId/menu/:menuId/news', NewsController.createNews);
 
 
 module.exports = router
