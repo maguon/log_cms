@@ -1,6 +1,6 @@
-var app_module = angular.module("login_module", ['ui.router',"ngCookies","login_controller","baseService","hostService",'publicDirective']);
+var Login_model = angular.module("login_dev", ['ui.router',"ngCookies","baseService","hostService"]);
 
-app_module.config(['$httpProvider',"$cookiesProvider",function($httpProvider, $cookiesProvider) {
+Login_model.config(['$httpProvider',"$cookiesProvider",function($httpProvider,$cookiesProvider) {
     $cookiesProvider.defaults = {
         path: "/",
         domain: "",//cookie 作用域， cookies只在这个域和其子域有效

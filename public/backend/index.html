@@ -2,30 +2,77 @@
 <html lang="zh-cn" ng-app="app_module">
 <head>
     <meta charset="UTF-8">
-    <title>CMS</title>
+    <title>webGeneral后台管理系统登录</title>
     <link rel="icon" href="/backend/assets/images/favicon.png" sizes="32x32">
     <link rel="stylesheet" href="/backend/assets/plugins/materialize/css/materialize.css">
     <link rel="stylesheet" href="/backend/assets/plugins/alert/sweetalert.css">
     <link rel="stylesheet" href="/backend/assets/plugins/material_icon/css/materialdesignicons.css">
+    <link rel="stylesheet" href="/backend/assets/css/index.css">
 </head>
-<body >
-<div>
-    <div ui-view></div>
+<body>
+<header> </header>
+<div class="con_div">
+    <div class="left_sideNav">
+        <ul id="tabPage" class="blue-grey  darken-4" style="padding: 0px;margin: 0px;">
+            <li class="nav">
+                <a href="#!" ui-sref="home_page" class="waves-effect waves-light first-N" ><i class="white-text mdi mdi-home-variant nav_img"></i>首页</a>
+            </li>
+
+            <li class="nav">
+                <a href="#!" ui-sref="column_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi mdi-table-large nav_img"></i>栏目列表管理</a>
+            </li>
+
+            <li class="nav">
+                <a href="#!" ui-sref="information_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-format-align-justify nav_img"></i>信息列表管理</a>
+            </li>
+            <li class="nav">
+                <a href="#!" ui-sref="recruitment_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-window-maximize nav_img"></i>人才招聘管理</a>
+            </li>
+            <li class="nav">
+                <a href="#!" ui-sref="user_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-account nav_img"></i>用户管理</a>
+            </li>
+            <li class="nav">
+                <a href="#!" ui-sref="system_log" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-multiple nav_img"></i>系统日志</a>
+            </li>
+            <li class="nav">
+                <a href="#!" ui-sref="contact_information" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-phone-forward nav_img"></i>联系方式</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right_sideNav">
+        <div ui-view></div>
+    </div>
 </div>
 </body>
-
 <script src="/backend/lib/jquery.min.js"></script>
+<script src="/backend/lib/jquery.form.min.js"></script>
 <script src="/backend/assets/plugins/materialize/js/materialize.js"></script>
 <script src="/backend/assets/plugins/alert/sweetalert.min.js"></script>
 <script src="/backend/lib/angular/angular.min.js"></script>
+<script src="/backend/assets/plugins/angular/angular-materialize.js"></script>
+<script src="/backend/lib/highcharts.js"></script>
+<script src="/backend/lib/parse.min.js"></script>
 <script src="/backend/lib/angular/angular-ui-router.min.js"></script>
 <script src="/backend/lib/angular/angular-cookies.min.js"></script>
-<script src="/backend/js/module/app_module.js"></script>
-<script src="/backend/js/config/host_config.js"></script>
+<script src="/backend/lib/angular/angular-messages.min.js"></script>
+
+<script src="/backend/js/module/app_admin_module.js"></script>
+<script src="/backend/js/filter/filters.js"></script>
 <script src="/backend/js/service/base_service.js"></script>
 <script src="/backend/js/service/http_service.js"></script>
 <script src="/backend/js/service/config_service.js"></script>
-
+<script src="/backend/js/service/socket_service.js"></script>
+<script src="/backend/js/config/host_config.js"></script>
+<script src="/backend/js/directive/admin_directive.js"></script>
 <script src="/backend/js/router/index_router.js"></script>
-<script src="/backend/js/controller/index_controller.js"></script>
+
+<!--功能页-->
+<script src="/backend/js/controller/columnList/column_list_management_controller.js"></script>
+<script src="/backend/js/controller/contact/contact_information_controller.js"></script>
+<script src="/backend/js/controller/homePage/home_page_controller.js"></script>
+<script src="/backend/js/controller/informationList/information_list_management_controller.js"></script>
+<script src="/backend/js/controller/recruitment/recruitment_management_controller.js"></script>
+<script src="/backend/js/controller/system/system_log_controller.js"></script>
+<script src="/backend/js/controller/user/user_management_controller.js"></script>
 </html>

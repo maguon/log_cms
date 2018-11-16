@@ -20,15 +20,6 @@ app.set('views', __dirname + '/views').set("view engine", "ejs");
 app.engine('ejs', require('ejs').renderFile);
 app.use('/api',apiRouter);
 
-app.get('/', (req ,res)=>{
-    let Page404 = `
-        <div style="text-align:center">
-            <h1>Welcome to homepage</h1>
-        </div>
-    `
-    res.send(Page404)
-});
-
 
 
 app.get('*', (req ,res)=>{
@@ -41,6 +32,10 @@ app.get('*', (req ,res)=>{
     `
     res.send(Page404)
 
+});
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname+ "/public/backend/index.html" )
 });
 
 app.listen(8100, () => {

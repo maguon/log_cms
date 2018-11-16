@@ -1,0 +1,200 @@
+<div id="newOperator" class="modal">
+    <form name="operatorForm" ng-submit="submitForm(operatorForm.$valid)" novalidate>
+        <div class="modal-content">
+            <h4 class="center-align ">增加用户</h4>
+            <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+            <div class="container">
+                <div class="row" style="margin-top: 40px">
+
+                    <!--用户名-->
+                    <div class="row"  ng-class="{ 'has-error' : operatorForm.new_userName.$invalid&&submitted }">
+                        <h5 class="col s4">
+                            <span style="color: red">*</span> 用户名:
+                        </h5>
+                        <input  id="new_userName" name="new_userName" type="text" autocomplete="off"  ng-model="newRealName" required class="col s8">
+                    </div>
+
+                    <!--密码-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.password.$invalid&&submitted }">
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            密码:
+                        </h5>
+                        <input id="password" name="password" autocomplete="off" ng-model="newUserPassword" type="text" required class=" col s8">
+                    </div>
+
+
+                    <!--电话-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            电话:
+                        </h5>
+                        <input  id="phone" name="phone" autocomplete="off" ng-model="newUserName" type="text"   required class="col s8">
+
+                    </div>
+
+                    <!--性别-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            性别:
+                        </h5>
+                        <div class="col s8 sexBox" sex-change style="font-size: 30px">
+                            <i class="mdi mdi-human-male sex" sex="1" ></i>男
+                            <i class="mdi mdi-human-female " sex="0"  ng-class="{ 'sex' : new_companyForm.Tel.$invalid&&submitted }"></i>女
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+        <div class="modal-footer vc-center">
+            <button class="btn waves-light waves-effect cyan" type="submit" name="action" >
+                <i class="mdi mdi-check"></i>
+            </button>
+            <a  class=" modal-action modal-close waves-effect waves-light grey lighten-1 btn" style="margin-left: 10px" >
+                <i class="mdi mdi-close"></i>
+            </a>
+        </div>
+    </form>
+
+</div>
+
+<div id="look_Operator" class="modal">
+    <form name="change_operatorForm" ng-submit="changeOperatorForm(change_operatorForm.$valid,look_operation.uid)" novalidate>
+        <div class="modal-content">
+            <h4 class="center-align">用户信息</h4>
+            <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+            <div class="container">
+                <div class="row" style="margin-top: 40px">
+
+                    <!--用户名-->
+                    <div class="row"  ng-class="{ 'has-error' : operatorForm.new_userName.$invalid&&submitted }">
+                        <h5 class="col s4">
+                            <span style="color: red">*</span> 用户名:
+                        </h5>
+                        <input  id="look_userName" name="new_userName" type="text" autocomplete="off" ng-model="look_operation.user_name" required class=" col s8">
+                    </div>
+
+
+                    <!--电话-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            电话:
+                        </h5>
+                        <input  id="look_phone" name="phone" ng-model="look_operation.phone" autocomplete="off" type="text" required class=" col s8">
+
+                    </div>
+
+                    <!--性别-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            性别:
+                        </h5>
+                        <div class="col s8 sexBox" sex-change style="font-size: 30px">
+                            <div class="col s2-0 sexBox" sex-change >
+                                <i class="mdi mdi-human-male " sex="1" ng-class="{ 'sex' : look_operation.sex=='1' }"> </i>男
+                                <i class="mdi mdi-human-female " sex="0"  ng-class="{ 'sex' : look_operation.sex=='0' }"> </i>女
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--工作状态-->
+                    <div class="row" ng-class="{ 'has-error':operatorForm.password.$invalid&&submitted }">
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            工作状态:
+                        </h5>
+                        <div class="col s8"  style="font-size: 25px;margin-top: 14px">
+                            <div class="col s12 cyan-text" ng-if="look_operation.status==0">停用</div>
+                            <div class="col s12 cyan-text" ng-if="look_operation.status==1">可用</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+        <div class="modal-footer vc-center">
+            <button class="btn waves-light waves-effect cyan" type="submit" name="action" >
+                <i class="mdi mdi-check"></i>
+            </button>
+            <a  class=" modal-action modal-close waves-effect waves-light grey lighten-1 btn" style="margin-left: 10px" >
+                <i class="mdi mdi-close"></i>
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<div class="page" style="margin-left:15px;margin-right: 15px; ">
+        <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：用户管理</div>
+
+
+        <div  style="background-color:#fff ">
+
+            <!--用户管理 新增 删除-->
+            <div class="right_con_title row col s12">
+                <div class="right_con_title_l col s2"><i class="mdi  mdi-folder-account" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">用户管理</span></div>
+                <div class="right_con_title_r col s3 offset-s7">
+                    <a class="waves-effect waves-light btn col s5 circle_button"  ng-click="newOperator()" style="background-color: #e4644b">新增</a>
+                    <a class="waves-effect waves-light btn col s5 circle_button offset-s2 cyan">删除</a>
+                </div>
+            </div>
+
+
+            <!--列表-->
+            <div class="row">
+                <div class="col s12" >
+                    <div class= "divider cyan" style="height: 2px"></div>
+                    <table class="bordered striped text_mid centered">
+                        <thead class="blue-grey lighten-5">
+                        <tr class="grey-text text-darken-1">
+                            <th data-field="">用户名</th>
+                            <th data-field="">性别</th>
+                            <th data-field="">电话</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody class="grey-text text-darken-1">
+                        <tr ng-repeat="el in user_info_list">
+                            <td ng-bind="el.user_name"></td>
+                            <td ng-if="el.sex==1">男</td>
+                            <td ng-if="el.sex==0">女</td>
+                            <td ng-bind="el.phone"></td>
+                            <td class="operation">
+                                <span><i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i></span>
+                                <span class="switch" ng-click="changeStatus(el.status,el._id)" style="height: 30px;">
+                                    <label>
+                                        <input type="checkbox" ng-checked="el.status==1" class="cyan">
+                                        <span class="lever"></span>
+                                    </label>
+                                </span>
+
+                            </td>
+                        </tr>
+                        <tr class="grey-text text-darken-1" ng-if="user_info_list.length == 0">
+                            <td colspan="4"><span style="letter-spacing: 2px">暂无数据</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col s12" style="height: 20px"></div>
+            </div>
+
+
+            <!--分页-->
+            <div class="page_box">
+                <div class="paging_box col s12">
+                    <div class="right">
+                        <a class="waves-light waves-effect cyan  btn"  id="pre" ng-click="getPrePage()">上一页</a>
+                        <a class="waves-light waves-effect cyan  btn" id="next" ng-click="getNextPage()">下一页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

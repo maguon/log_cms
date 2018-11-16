@@ -1,0 +1,32 @@
+<div class="header">
+    <nav class="row  z-depth-2 header" style="background: #5a86ba">
+        <ul class="left">
+            <li>
+                <div class="logo">大连顺通圣世后台管理系统</div>
+            </li>
+        </ul>
+        <ul class="right">
+            <li>
+                <div class="header_r">
+                    <div class="user01 user_title" title="">
+                        <img alt="当前用户" title="当前用户" src="../../backend/assets/images/user_icon01.png">
+                        <div class="user01_text  user_text">{{userName}}</div>
+                        <!-- 当前用户  -->
+                    </div>
+                    <div class="user02 user_title">
+                        <img alt="当前时间" title="当前时间" src="../../backend/assets/images/user_icon02.png">
+                        <div class="user02_text user_text">
+                            <div id="day_day">{{ymd}}</div>
+                            <div id="day_time">{{hm}}</div>
+                        </div>
+                    </div>
+                    <div class="user03 user_title">
+                        <img alt="退出系统" title="退出系统" src="../../backend/assets/images/user_icon03.png" ng-click="logOut();">
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+
+</div>
