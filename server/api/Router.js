@@ -26,11 +26,12 @@ router.put('/user/:userId/password', UserController.changeUserPassword);
 router.put('/user/:userId/status/:status', UserController.updateUserStatus);
 
 router.get('/menu', MenuController.getMenu);
-router.post('/user/:userId/menu', MenuController.createMenu);
-router.put('/user/:userId/menu/:menuId', MenuController.updateMenu);
+router.post('/menu', MenuController.createMenu);
+router.put('/menu/:menuId', MenuController.updateMenu);
+router.delete('/menu/:menuId', MenuController.removeMenu);
 
 router.get('/news', NewsController.getNews);
-router.post('/user/:userId/menu/:menuId/news', NewsController.createNews);
+router.post('/menu/:menuId/news', NewsController.createNews);
 
 
 module.exports = router
