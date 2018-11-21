@@ -4,7 +4,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
 
 const logUtil = require('./server/util/LogUtil');
 const logger = logUtil.createLogger('server.js');
@@ -22,7 +22,7 @@ app.use('/api',apiRouter);
 
 
 
-app.get('*', (req ,res)=>{
+/*app.get('*', (req ,res)=>{
     console.log(req);
     let Page404 = `
         <div style="text-align:center">
@@ -32,7 +32,7 @@ app.get('*', (req ,res)=>{
     `
     res.send(Page404)
 
-});
+});*/
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname+ "/public/backend/index.html" )

@@ -63,7 +63,7 @@
 </div>
 
 <div id="look_Operator" class="modal">
-    <form name="change_operatorForm" ng-submit="changeOperatorForm(change_operatorForm.$valid,look_operation.uid)" novalidate>
+    <form name="change_operatorForm" ng-submit="changeOperatorForm(change_operatorForm.$valid,look_operation._id)" novalidate>
         <div class="modal-content">
             <h4 class="center-align">用户信息</h4>
             <div class="divider" style="background: #5a86ba;height: 2px;"></div>
@@ -90,7 +90,7 @@
                     </div>
 
                     <!--性别-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                    <div class="row" ng-class="{ 'has-error':operatorForm.sex.$invalid&&submitted }" >
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             性别:
@@ -104,7 +104,7 @@
                     </div>
 
                     <!--工作状态-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.password.$invalid&&submitted }">
+                    <div class="row" ng-class="{ 'has-error':operatorForm.status.$invalid&&submitted }">
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             工作状态:

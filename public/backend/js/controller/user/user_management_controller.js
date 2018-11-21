@@ -1,7 +1,6 @@
 app_admin_module.controller("user_management_controller", ["$scope", "_basic", "_config", "$host", function ($scope, _basic, _config, $host) {
     $scope.size =11;
     $scope.start = 0;
-    var userId = _basic.getSession(_basic.USER_ID);
     function getUserList(){
         _basic.get($host.api_url + "/user?"+ _basic.objToUrl({
             start: $scope.start.toString(),
@@ -63,6 +62,9 @@ app_admin_module.controller("user_management_controller", ["$scope", "_basic", "
             })
 
         }
+        else {
+            swal('请录入完整的用户信息！', "", "error")
+        }
     };
 
     // 查看详情
@@ -80,18 +82,16 @@ app_admin_module.controller("user_management_controller", ["$scope", "_basic", "
     };
 
 
-  /*  // 修改   暂时不做
+    // 修改
     $scope.changeOperatorForm = function (isValid, id) {
         $scope.submitted = true;
         if (isValid) {
             var sex_id = $(".sex").attr("sex");
             $scope.newUserSex = sex_id;
             var obj = {
-                mobile: $scope.look_operation.mobile,
-                realName: $scope.look_operation.real_name,
-                type: $scope.look_operation.type,
-                status: $scope.look_operation.status,
-                gender: $scope.newUserSex
+                phone: $scope.look_operation.phone,
+                userName: $scope.look_operation.user_name,
+                sex: $scope.newUserSex
             };
             _basic.put($host.api_url + "/user/" + id, obj).then(function (data) {
                 if (data.success == true) {
@@ -104,8 +104,11 @@ app_admin_module.controller("user_management_controller", ["$scope", "_basic", "
 
             })
         }
+        else {
+            swal('请录入完整的用户信息！', "", "error")
+        }
 
-    };*/
+    };
 
 
 
