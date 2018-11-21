@@ -32,6 +32,8 @@ router.delete('/menu/:menuId', MenuController.removeMenu);
 
 router.get('/news', NewsController.getNews);
 router.post('/menu/:menuId/news', NewsController.createNews);
+router.put('/news/:newsId', NewsController.updateNews);
+router.delete('/news/:newsId', NewsController.removeNews);
 
 
 module.exports = router

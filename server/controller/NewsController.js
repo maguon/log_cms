@@ -52,7 +52,48 @@ const getNews = (req, res, next) => {
     });
 }
 
+const updateNews = (req, res, next) => {
+    let bodyParams = req.body;
+    let params = req.params;
+    let newsObj = {
+        news_title: bodyParams.newsTitle,
+        news_content: bodyParams.newsContent,
+        roll_flag: bodyParams.rollFlag,
+        news_status: bodyParams.newsStatus
+    }
+
+    const query = { _id:params.newsId };
+    NewsModel.findOneAndUpdate(query,newsObj,function(error,result){
+        logger.debug(' updateNews ') ;
+        if (error) {
+            logger.error(' updateNews ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' updateNews ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+        }
+    })
+}
+
+const removeNews = (req ,res ,next) => {
+    let params = req.params;
+    const query = { _id:params.newsId };
+    NewsModel.findOneAndRemove(query,function(error,result){
+        logger.debug(' removeNews ') ;
+        if (error) {
+            logger.error(' removeNews ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' removeNews ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+        }
+    })
+}
+
 
 module.exports = {
-    createNews,getNews
+    createNews,
+    getNews,
+    updateNews,
+    removeNews
 };

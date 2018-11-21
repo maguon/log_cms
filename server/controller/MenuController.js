@@ -16,7 +16,7 @@ const  createMenu = (req, res, next) => {
         menu_link: bodyParams.menuLink
     }
 
-    let menuModel = new MenuModel(menuObj)
+    let menuModel = new MenuModel(menuObj);
     menuModel.save(function(error,result){
         if (error) {
             logger.error(' createMenu ' + error.message);
@@ -30,10 +30,16 @@ const  createMenu = (req, res, next) => {
 
 const getMenu = (req, res, next) => {
     let params = req.query;
-    let query = MenuModel.find({});
+    let query = MenuModel.find({}).sort( { menu_num: 1 } );
 
     if(params.menuId){
         query.where('_id').equals(params.menuId);
+    }
+    if(params.menuPid){
+        query.where('menu_pid').equals(params.menuPid);
+    }
+    if(params.menuStatus){
+        query.where('menu_status').equals(params.menuStatus);
     }
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
@@ -133,5 +139,8 @@ const removeMenu = (req ,res ,next) => {
 
 
 module.exports = {
-    createMenu,getMenu,updateMenu,removeMenu
+    createMenu,
+    getMenu,
+    updateMenu,
+    removeMenu
 };
