@@ -70,6 +70,7 @@ const getUser = (req, res, next) => {
         } else {
             logger.info(' getUser ' + 'success');
             resUtil.resetQueryRes(res, rows);
+            return next();
         }
     });
 }
@@ -88,6 +89,7 @@ const getUserBase = (req, res, next) => {
         } else {
             logger.info(' getUserBase ' + 'success');
             resUtil.resetQueryRes(res, rows);
+            return next();
         }
     });
 }
@@ -168,6 +170,7 @@ const updateUser = (req, res, next) => {
         } else {
             logger.info(' updateUser ' + 'success');
             resUtil.resetUpdateRes(res,result,null);
+            return next();
         }
     })
 }
@@ -213,6 +216,7 @@ const changeUserPassword = (req, res, next) => {
             } else {
                 logger.info(' changeUserPassword ' + 'success');
                 resUtil.resetUpdateRes(res,result,null);
+                return next();
             }
         })
     })
@@ -233,6 +237,7 @@ const updateUserStatus = (req, res, next) => {
         } else {
             logger.info(' updateUserStatus ' + 'success');
             resUtil.resetUpdateRes(res,result,null);
+            return next();
         }
     })
 }

@@ -24,6 +24,7 @@ const  createMenu = (req, res, next) => {
         } else {
             logger.info(' createMenu ' + 'success');
             resUtil.resetCreateRes(res, result);
+            return next();
         }
     })
 }
@@ -51,6 +52,7 @@ const getMenu = (req, res, next) => {
         } else {
             logger.info(' getMenu ' + 'success');
             resUtil.resetQueryRes(res, rows);
+            return next();
         }
     });
 }
@@ -74,6 +76,7 @@ const updateMenu = (req, res, next) => {
         } else {
             logger.info(' updateMenu ' + 'success');
             resUtil.resetUpdateRes(res,result,null);
+            return next();
         }
     })
 }
@@ -131,6 +134,7 @@ const removeMenu = (req ,res ,next) => {
             } else {
                 logger.info(' removeMenu ' + 'success');
                 resUtil.resetUpdateRes(res,result,null);
+                return next();
             }
         })
     })

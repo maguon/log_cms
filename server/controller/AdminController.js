@@ -26,6 +26,7 @@ const createAdmin = (req, res, next) => {
         } else {
             logger.info(' createAdmin ' + 'success');
             resUtil.resetCreateRes(res, result);
+            return next();
         }
     })
 }
@@ -44,6 +45,7 @@ const getAdmin = (req, res, next) => {
         } else {
             logger.info(' getAdmin ' + 'success');
             resUtil.resetQueryRes(res, rows);
+            return next();
         }
     });
 }

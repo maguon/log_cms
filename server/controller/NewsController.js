@@ -24,6 +24,7 @@ const  createNews = (req, res, next) => {
         } else {
             logger.info(' createNews ' + 'success');
             resUtil.resetCreateRes(res, result);
+            return next();
         }
     })
 }
@@ -48,6 +49,7 @@ const getNews = (req, res, next) => {
         } else {
             logger.info(' getNews ' + 'success');
             resUtil.resetQueryRes(res, rows);
+            return next();
         }
     });
 }
@@ -71,6 +73,7 @@ const updateNews = (req, res, next) => {
         } else {
             logger.info(' updateNews ' + 'success');
             resUtil.resetUpdateRes(res,result,null);
+            return next();
         }
     })
 }
@@ -86,6 +89,7 @@ const removeNews = (req ,res ,next) => {
         } else {
             logger.info(' removeNews ' + 'success');
             resUtil.resetUpdateRes(res,result,null);
+            return next();
         }
     })
 }
