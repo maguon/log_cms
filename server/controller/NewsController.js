@@ -90,6 +90,27 @@ const updateNews = (req, res, next) => {
     })
 }
 
+const updateNewsImage = (req, res, next) => {
+    let bodyParams = req.body;
+    let params = req.params;
+    let newsObj = {
+        news_image: bodyParams.newsImage
+    }
+
+    const query = { _id:params.newsId };
+    NewsModel.findOneAndUpdate(query,newsObj,function(error,result){
+        logger.debug(' updateNewsImage ') ;
+        if (error) {
+            logger.error(' updateNewsImage ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' updateNewsImage ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+            return next();
+        }
+    })
+}
+
 const removeNews = (req ,res ,next) => {
     let params = req.params;
     const query = { _id:params.newsId };
@@ -111,5 +132,6 @@ module.exports = {
     createNews,
     getNews,
     updateNews,
+    updateNewsImage,
     removeNews
 };
