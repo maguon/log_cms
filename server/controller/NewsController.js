@@ -39,6 +39,18 @@ const getNews = (req, res, next) => {
     if(params.menuId){
         query.where('menu_id').equals(params.menuId);
     }
+    if(params.newsStatus){
+        query.where('news_status').equals(params.newsStatus);
+    }
+    if(params.createDateStart){
+        query.where('created_at').gte(params.createDateStart+' 00:00:00');
+    }
+    if(params.createDateEnd){
+        query.where('created_at').lte(params.createDateEnd+' 23:59:59');
+    }
+    if(params.newsTitle){
+        query.where('news_title').regex(params.newsTitle);
+    }
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
     }

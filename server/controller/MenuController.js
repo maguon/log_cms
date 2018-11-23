@@ -14,6 +14,7 @@ const  createMenu = (req, res, next) => {
             menu_pid: bodyParams.menuPid,
             menu_name: bodyParams.menuName,
             menu_num: bodyParams.menuNum,
+            menu_type: bodyParams.menuType,
             menu_status: bodyParams.menuStatus,
             menu_link: bodyParams.menuLink
         }
@@ -33,7 +34,7 @@ const  createMenu = (req, res, next) => {
         new Promise((resolve) => {
             if(bodyParams.menuPid!="-1"){
                 let menuObj = {
-                    lower_flag: bodyParams.lowerFlag
+                    lower_flag: 1
                 }
 
                 const query = { _id:bodyParams.menuPid };
@@ -51,7 +52,7 @@ const  createMenu = (req, res, next) => {
                 resolve(menuId);
             }
         }).then((menuId) => {
-            logger.info(' createMenuP ' + 'success');
+            logger.info(' createMenu ' + 'success');
             resUtil.resetQueryRes(res, {menuId:menuId});
             return next();
         })
