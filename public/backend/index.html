@@ -10,41 +10,47 @@
     <link rel="stylesheet" href="/backend/assets/css/index.css">
 </head>
 <body>
-<header> </header>
-<div class="con_div">
-    <div class="left_sideNav">
-        <ul id="tabPage" class="blue-grey  darken-4" style="padding: 0px;margin: 0px;">
-            <li class="nav">
-                <a href="#!" ui-sref="home_page" class="waves-effect waves-light first-N" ><i class="white-text mdi mdi-home-variant nav_img"></i>首页</a>
-            </li>
+    <header> </header>
+    <div class="con_div">
+        <div class="left_sideNav">
+            <ul id="tabPage" class="blue-grey  darken-4" style="padding: 0px;margin: 0px;">
+                <li class="nav">
+                    <a href="#!" ui-sref="home_page" class="waves-effect waves-light first-N" ><i class="white-text mdi mdi-home-variant nav_img"></i>首页</a>
+                </li>
 
-            <li class="nav">
-                <a href="#!" ui-sref="column_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi mdi-table-large nav_img"></i>栏目列表管理</a>
-            </li>
+                <li class="nav">
+                    <a href="#!" ui-sref="column_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi mdi-table-large nav_img"></i>栏目列表管理</a>
+                </li>
 
-            <li class="nav">
-                <a href="#!" ui-sref="information_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-format-align-justify nav_img"></i>信息列表管理</a>
-            </li>
-            <li class="nav">
-                <a href="#!" ui-sref="recruitment_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-window-maximize nav_img"></i>人才招聘管理</a>
-            </li>
-            <li class="nav">
-                <a href="#!" ui-sref="user_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-account nav_img"></i>用户管理</a>
-            </li>
-            <li class="nav">
-                <a href="#!" ui-sref="system_log" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-multiple nav_img"></i>系统日志</a>
-            </li>
-            <li class="nav">
-                <a href="#!" ui-sref="contact_information" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-phone-forward nav_img"></i>联系方式</a>
-            </li>
-        </ul>
+                <li class="nav">
+                    <a href="#!" ui-sref="information_list_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-format-align-justify nav_img"></i>信息列表管理</a>
+                </li>
+                <li class="nav">
+                    <a href="#!" ui-sref="recruitment_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-window-maximize nav_img"></i>人才招聘管理</a>
+                </li>
+                <li class="nav">
+                    <a href="#!" ui-sref="user_management" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-account nav_img"></i>用户管理</a>
+                </li>
+                <li class="nav">
+                    <a href="#!" ui-sref="system_log" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-folder-multiple nav_img"></i>系统日志</a>
+                </li>
+                <li class="nav">
+                    <a href="#!" ui-sref="contact_information" class=" waves-effect waves-light first-N" ><i class="white-text mdi  mdi-phone-forward nav_img"></i>联系方式</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ConWrap">
+            <div class="containerBox right_sideNav">
+                <div ui-view></div>
+            </div>
+        </div>
     </div>
-
-    <div class="right_sideNav">
-        <div ui-view></div>
-    </div>
-</div>
 </body>
+
+<script>
+    document.getElementsByClassName("ConWrap")[0].style.height=document.body.scrollHeight-50-70+"px";
+</script>
 <script src="/backend/lib/jquery.min.js"></script>
 <script src="/backend/lib/jquery.form.min.js"></script>
 <script src="/backend/assets/plugins/materialize/js/materialize.js"></script>
