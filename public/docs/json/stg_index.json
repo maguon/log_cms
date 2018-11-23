@@ -1,3 +1,1060 @@
 {
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a api docs for `logistics`.  ",
+    "version": "1.0.0",
+    "title": "Log API Docs",
+    "termsOfService": "http://myxxjs.com",
+    "contact": {
+      "email": "info@myxxjs.com"
+    },
+    "license": {
+      "name": "Github.com",
+      "url": "https://github.com/maguon/log_cms/blob/master/LICENSE"
+    }
+  },
+  "host": "192.168.191.139:8100",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "admin",
+      "description": "Admin of log api"
+    },
+    {
+      "name": "user",
+      "description": "User of log api"
+    },
+    {
+      "name": "menu",
+      "description": "Menu of log api"
+    },
+    {
+      "name": "news",
+      "description": "News of log api"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/admin/{adminId}": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "query admin list",
+        "description": "query admin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "adminId",
+            "in": "path",
+            "description": "admin Id",
+            "required": true,
+            "type": "string"
 
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/admin"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/adminLogin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "admin login",
+        "description": "admin sign in",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "admin info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/adminLogin"
+            }
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/admin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "create admin",
+        "description": "create admin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "admin",
+            "in": "body",
+            "description": "admin info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid admin id"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user list",
+        "description": "query user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "description": "user id",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "create user",
+        "description": "create user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/userLogin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "user login",
+        "description": "user sign in",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userLogin"
+            }
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "query user profile",
+        "description": "query user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user info",
+        "description": "update user info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/password": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user password",
+        "description": "update user password",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "user base info:origin and new password is needed .",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/password"
+            }
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/password"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/user/{userId}/status/{status}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "update user status",
+        "description": "update user status",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "user id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "status",
+            "in": "path",
+            "description": "user status",
+            "required": true,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid user id"
+          }
+        }
+      }
+    },
+    "/menu": {
+      "get": {
+        "tags": [
+          "menu"
+        ],
+        "summary": "query menu list",
+        "description": "query menu",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "menuId",
+            "in": "query",
+            "description": "menu id",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "menuPid",
+            "in": "query",
+            "description": "menu pid",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "menuStatus",
+            "in": "query",
+            "description": "menu status",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/menu"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid menu id"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "menu"
+        ],
+        "summary": "create menu",
+        "description": "create menu",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "menu",
+            "in": "body",
+            "description": "menu info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/menu"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid menu id"
+          }
+        }
+      }
+    },
+    "/menu/{menuId}": {
+      "put": {
+        "tags": [
+          "menu"
+        ],
+        "summary": "update menu info",
+        "description": "update menu info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "menu id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "menu",
+            "in": "body",
+            "description": "menu info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/menu"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid menu id"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "menu"
+        ],
+        "summary": "Deletes a menu",
+        "description": "",
+        "operationId": "deleteMenu",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "menu id",
+            "required": true,
+            "type": "string"
+
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/news": {
+      "get": {
+        "tags": [
+          "news"
+        ],
+        "summary": "query news list",
+        "description": "query news",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "newsId",
+            "in": "query",
+            "description": "news id",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "menuId",
+            "in": "query",
+            "description": "menu id",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "newsStatus",
+            "in": "query",
+            "description": "news status",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "createDateStart",
+            "in": "query",
+            "description": "createDate start",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "createDateEnd",
+            "in": "query",
+            "description": "createDate end",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "newsTitle",
+            "in": "query",
+            "description": "news title",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/news"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid news id"
+          }
+        }
+      }
+    },
+    "/menu/{menuId}/news": {
+      "post": {
+        "tags": [
+          "news"
+        ],
+        "summary": "create news",
+        "description": "create news",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "menuId",
+            "in": "path",
+            "description": "menu id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "news",
+            "in": "body",
+            "description": "news info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/news"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid news id"
+          }
+        }
+      }
+    },
+    "/news/{newsId}": {
+      "put": {
+        "tags": [
+          "news"
+        ],
+        "summary": "update news info",
+        "description": "update news info",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "newsId",
+            "in": "path",
+            "description": "news id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "news",
+            "in": "body",
+            "description": "news info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/news"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid news id"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "news"
+        ],
+        "summary": "Deletes a news",
+        "description": "",
+        "operationId": "deleteNews",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "newsId",
+            "in": "path",
+            "description": "news id",
+            "required": true,
+            "type": "string"
+
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/news/{newsId}/image": {
+      "put": {
+        "tags": [
+          "news"
+        ],
+        "summary": "update news image",
+        "description": "update news image",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "newsId",
+            "in": "path",
+            "description": "news id",
+            "required": true,
+            "type": "string"
+
+          },
+          {
+            "name": "image",
+            "in": "body",
+            "description": "image info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/image"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/ApiResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid news id"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://oauth.myxxjs.com/api",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "admin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "admin"
+      }
+    },
+    "adminLogin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "adminLogin"
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "user"
+      }
+    },
+    "userLogin": {
+      "type": "object",
+      "properties": {
+
+        "userName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "userLogin"
+      }
+    },
+    "password": {
+      "type": "object",
+      "required": [
+        "originPassword",
+        "newPassword"
+      ],
+      "properties": {
+        "originPassword": {
+          "type": "string"
+        },
+        "newPassword": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "password"
+      }
+    },
+    "menu": {
+      "type": "object",
+      "properties": {
+
+        "menuPid": {
+          "type": "string"
+        },
+        "menuName": {
+          "type": "string"
+        },
+        "menuNum": {
+          "type": "integer"
+        },
+        "menuType": {
+          "type": "integer"
+        },
+        "menuStatus": {
+          "type": "integer"
+        },
+        "menuLink": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "menu"
+      }
+    },
+    "news": {
+      "type": "object",
+      "properties": {
+
+        "newsTitle": {
+          "type": "string"
+        },
+        "newsContent": {
+          "type": "string"
+        },
+        "rollFlag": {
+          "type": "integer"
+        },
+        "newsStatus": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "news"
+      }
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+
+        "newsImage": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "image"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find more on developer website",
+    "url": "http://myxxjs.com"
+  }
 }
