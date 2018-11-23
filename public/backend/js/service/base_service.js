@@ -3,6 +3,35 @@ var baseService = angular.module("baseService", []);
 
 baseService.factory("baseService", function () {
 
+    var _this = {};
+    // 表格数据父子分组
+    _this.tableArray = function (json) {
+        var ret = [], o = {};
+
+        function add(arr, data){
+            var obj = {
+                "_id": data._id,
+                "menu_pid": data.menu_pid,
+                "menu_name": data.menu_name,
+                "menu_num":  data.menu_num,
+                "lower_flag": data.lower_flag,
+                "menu_status": data.menu_status,
+                "childer": []
+            };
+            o[data._id] = obj;
+            arr.push(obj);
+        };
+
+        json.forEach(x => {
+            if(o[x.menu_pid]){
+                add(o[x.menu_pid].childer, x);
+            }else{
+                add(ret, x);
+            }
+        });
+
+        return ret;
+    };
 
     _this.pass_parameter = function () {
         //定义参数对象

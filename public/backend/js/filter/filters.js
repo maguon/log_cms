@@ -74,3 +74,25 @@ CommonFilter.filter("gender", function () {
         return sex;
     }
 });
+
+
+// 连接状态类型过滤器
+CommonFilter.filter("linkStatus", function () {
+    return function (input) {
+        var linkStatus;
+        switch (input) {
+            case 1:
+                linkStatus = "新闻";
+                break;
+            case 2:
+                linkStatus = "列表";
+                break;
+            case 3:
+                linkStatus = "图片";
+                break;
+            default:
+                linkStatus = "未知";
+        }
+        return linkStatus;
+    }
+});

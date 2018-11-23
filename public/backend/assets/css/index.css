@@ -2,6 +2,7 @@ html{
     position: relative;
     height: 100%;
     overflow-y: hidden;
+    line-height: 1;
 }
 body{
     position: relative;
@@ -10,11 +11,12 @@ body{
     background: #f1f5f5;
     overflow-x: auto;
     overflow-y: hidden;
+    line-height: 1;
 }
 .ConWrap{
     margin:0 0 70px 0;
     background: #f1f5f5;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 .containerBox{
     padding: 0 5px;
@@ -161,9 +163,7 @@ body{
     right: 0px;
     bottom: 0px;
     background-color: #e5e5e5;
-    overflow: hidden;
-    display: inline;
-    float: left;
+    overflow: scroll;
 }
 
 /*用户管理*/
@@ -174,12 +174,9 @@ body{
     float: left;
     height: 47px;
     width: 100%;
-    display: inline;
-    overflow: hidden;
 }
 .circle_button {
     border-radius: 20px;
-    overflow: hidden;
 }
 .right_con_title_l{
     height: 45px;
@@ -198,4 +195,24 @@ body{
 }
 .sexBox .sex{
     color:#5a86ba ;
+}
+.text_mid{
+    font-size: 12px;
+}
+
+
+/*表格设置*/
+.table01 td {
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-top-color: #c4c4c4;
+    border-left-color: #c4c4c4;
+    line-height: 38px;
+    height: 38px;
+}
+
+.fz12{
+    font-size: 12px;
 }

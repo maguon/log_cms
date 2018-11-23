@@ -1,6 +1,6 @@
 <!--新增模态框-->
 <div id="newOperator" class="modal">
-    <form name="operatorForm" ng-submit="submitForm(operatorForm.$valid)" novalidate>
+    <form name="operatorForm" ng-submit="submitForm()" novalidate>
         <div class="modal-content">
             <h4 class="center-align ">新增栏目</h4>
             <div class="divider" style="background: #5a86ba;height: 2px;"></div>
@@ -8,7 +8,7 @@
                 <div class="row" style="margin-top: 40px">
 
                     <!--父菜单-->
-                    <div class="row"  ng-class="{ 'has-error' : operatorForm.column.$invalid&&submitted }">
+                    <div class="row">
                         <h5 class="col s4">
                             <span style="color: red">*</span> 父菜单:
                         </h5>
@@ -24,17 +24,17 @@
                     </div>
 
                     <!--序列号-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.password.$invalid&&submitted }">
+                    <div class="row">
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             序列号:
                         </h5>
-                        <input id="password" name="password" autocomplete="off" ng-model="addnum" type="text" required class=" col s8">
+                        <input id="password" name="password" autocomplete="off" ng-model="addnum" type="number" required class=" col s8">
                     </div>
 
 
                     <!--栏目名称-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                    <div class="row" >
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             栏目名称:
@@ -43,15 +43,42 @@
 
                     </div>
 
+                    <!--设置关联-->
+                    <div class="row">
+                        <h5 class="col s4">
+                            <span style="color: red">*</span>
+                            设置关联:
+                        </h5>
+                        <label class="col s2" style="padding-top: 20px">
+                            <input name="group1" type="radio"  ng-value="1" ng-model="addLink"/>
+                            <span>新闻</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 20px">
+                            <input name="group1" type="radio" ng-value="2" ng-model="addLink"/>
+                            <span>列表</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 20px">
+                            <input name="group1" type="radio" ng-value="3" ng-model="addLink"/>
+                            <span>图片</span>
+                        </label>
+
+                    </div>
+
                     <!--是否显示-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                    <div class="row" >
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             是否显示:
                         </h5>
-                        <div class="col s8 sexBox" sex-change style="font-size: 30px">
-                            <i class="mdi mdi-check-circle-outline sex" sex="1" ></i>显示
-                            <i class="mdi mdi-check-circle-outline " sex="0"  ng-class="{ 'sex' : new_companyForm.Tel.$invalid&&submitted }"></i>隐藏
+                        <div class="col s8" style="font-size: 30px;padding-top: 20px">
+                            <label class="col s4">
+                                <input name="group2" type="radio" ng-value="1" ng-model="addMenuStatus"/>
+                                <span>显示</span>
+                            </label>
+                            <label class="col s4">
+                                <input name="group2" type="radio" ng-value="0" ng-model="addMenuStatus"/>
+                                <span>隐藏</span>
+                            </label>
                         </div>
                     </div>
 
@@ -70,9 +97,10 @@
     </form>
 
 </div>
+
 <!--编辑模态框-->
 <div id="look_Operator" class="modal">
-    <form name="change_operatorForm" ng-submit="changeOperatorForm(change_operatorForm.$valid,look_operation._id)" novalidate>
+    <form name="change_operatorForm" ng-submit="changeOperatorForm(look_operation._id)" novalidate>
         <div class="modal-content">
             <h4 class="center-align">编辑栏目</h4>
             <div class="divider" style="background: #5a86ba;height: 2px;"></div>
@@ -80,7 +108,7 @@
                 <div class="row" style="margin-top: 40px">
 
                     <!--父菜单-->
-                    <div class="row"  ng-class="{ 'has-error' : operatorForm.column.$invalid&&submitted }">
+                    <div class="row">
                         <h5 class="col s4">
                             <span style="color: red">*</span> 父菜单:
                         </h5>
@@ -96,17 +124,17 @@
                     </div>
 
                     <!--序列号-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.password.$invalid&&submitted }">
+                    <div class="row">
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             序列号:
                         </h5>
-                        <input name="password" autocomplete="off" ng-model="look_operation.menu_num" type="text" required class=" col s8">
+                        <input name="password" autocomplete="off" ng-model="look_operation.menu_num" type="number" required class=" col s8">
                     </div>
 
 
                     <!--栏目名称-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                    <div class="row" >
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             栏目名称:
@@ -114,16 +142,21 @@
                         <input  name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text"   required class="col s8">
                     </div>
 
-
                     <!--是否显示-->
-                    <div class="row" ng-class="{ 'has-error':operatorForm.phone.$invalid&&submitted }" >
+                    <div class="row" >
                         <h5 class="col s4">
                             <span style="color: red">*</span>
                             是否显示:
                         </h5>
-                        <div class="col s8 sexBox"  sex-change style="font-size: 30px">
-                            <i class="mdi mdi-check-circle-outline" sex="1" id="showOut" ></i>显示
-                            <i class="mdi mdi-check-circle-outline " sex="0" id="hideOut"></i>隐藏
+                        <div class="col s8" style="font-size: 30px;padding-top: 20px">
+                            <label class="col s4">
+                                <input name="group2" type="radio" ng-value="1" ng-model="look_operation.menu_status"/>
+                                <span>显示</span>
+                            </label>
+                            <label class="col s4">
+                                <input name="group2" type="radio" ng-value="0" ng-model="look_operation.menu_status"/>
+                                <span>隐藏</span>
+                            </label>
                         </div>
                     </div>
 
@@ -142,14 +175,14 @@
     </form>
 </div>
 
-
-<div class="page" style="margin-left:15px;margin-right: 15px; ">
+<!--列表-->
+<div class="page" style="margin-left:15px;margin-right: 15px;">
     <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：栏目列表管理</div>
 
 
     <div  style="background-color:#fff ">
 
-        <!--用户管理 新增 删除-->
+        <!--用户管理 新增 预览-->
         <div class="right_con_title row col s12">
             <div class="right_con_title_l col s2"><i class="mdi  mdi-table-large" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">栏目列表管理</span></div>
             <div class="right_con_title_r col s3 offset-s7">
@@ -158,51 +191,135 @@
             </div>
         </div>
 
-
-        <!--列表-->
         <div class="row">
-            <div class="col s12" >
-                <div class= "divider cyan" style="height: 2px"></div>
-                <table class="bordered striped text_mid centered">
-                    <thead class="blue-grey lighten-5">
-                    <tr class="grey-text text-darken-1">
-                        <th data-field="">栏目名称</th>
-                        <th data-field="">序号</th>
-                       <!-- <th data-field="">关联</th>-->
-                        <th data-field="">是否显示</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody class="grey-text text-darken-1">
-                    <tr ng-repeat="el in menu_info_list">
-                        <td ng-bind="el.menu_name"> </td>
-                        <td ng-bind="el.menu_num"> </td>
-                       <!-- <td ng-bind="el.menu_link"> </td>-->
-                        <td ng-if="el.menu_status==0">隐藏</td>
-                        <td ng-if="el.menu_status==1">显示</td>
-                        <td class="operation" style="font-size: 25px">
-                            <span><i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i></span>
-                            <span><i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i></span>
-                        </td>
-                    </tr>
-                    <tr class="grey-text text-darken-1" ng-if="menu_info_list.length == 0">
-                        <td colspan="5"><span style="letter-spacing: 2px">暂无数据</span></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col s12" style="height: 20px"></div>
-        </div>
+            <div class="col s12 center-align" style="width:99%;margin-left:0.5%;">
+                <ul class="collapsible" data-collapsible="accordion" style="overflow: hidden;margin: 0;box-shadow: none">
+                    <!--列表头-->
+                    <li style="font-weight: bold;">
+                        <div class="col s12 center-align collapsible-header"  style="height: 40px;line-height: 40px;background-color: #f6f5fa;" >
+                            <div class="col s12">
+                                <div class="col s12">
+                                    <div class="col s1"> </div>
+                                    <div class="col s3 left-align" style="border-right: 1px solid #ccc;">
+                                        <p style="margin: 0">栏目名称</p>
+                                    </div>
+                                    <div class="col s2" style="border-right: 1px solid #ccc">
+                                        <p style="margin: 0">序号</p>
+                                    </div>
+                                    <div class="col s2" style="border-right: 1px solid #ccc">
+                                        <p style="margin: 0">关联</p>
+                                    </div>
+                                    <div class="col s2" style="border-right: 1px solid #ccc">
+                                        <p style="margin: 0">是否显示</p>
+                                    </div>
+                                    <div class="col s2">操作</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    <!--根目录-->
+                    <li ng-repeat="el in rootList">
+                        <div class="col s12 center-align collapsible-header" style="height: 40px;line-height: 40px;padding: 0;margin: 0;" ng-click="showLastTr(el._id,$index)">
+                            <div class="col s12">
+                                <div>
+                                    <div class="col s1 right-align">
+                                        <p style="margin: 0">
+                                            <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
+                                        </p>
+                                    </div>
+                                    <div class="col s3 left-align">
+                                        <p style="margin: 0">{{el.menu_name}} </p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{el.menu_num}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{linkList[el.menu_type-1].status_text}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
+                                        <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
+                                    </div>
+                                    <div class="col s2" style="font-size: 25px">
+                                       <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)" style="padding-left: 20px"> </i>
+                                       <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--拉开的当前列表栏,显示内容-->
+                        <div class="collapsible-body load_mission load_mission{{$index}}"  ng-show="showTr1" style="height: 40px;line-height: 40px;padding: 0; !important;margin: 0;" >
+                            <!--列表1-->
+                            <div class="col s12"  ng-repeat="el in firstList" style="border: 1px solid #ccc;background: #fafafa;padding: 0;margin: 0;">
+                                <div ng-click="showLastTr2(el._id,$index)" style="padding: 0;margin: 0;">
+                                    <div class="col s1 right-align">
+                                        <p style="margin: 0">
+                                            <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
+                                        </p>
+                                    </div>
+                                    <div class="col s3 left-align">
+                                        <p style="margin: 0">{{el.menu_name}} </p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{el.menu_num}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{el.menu_num}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
+                                        <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
+                                    </div>
+                                    <div class="col s2" style="font-size: 25px">
+                                          <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i>
+                                          <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--拉开的当前列表栏,显示内容-->
+                        <div class="collapsible-body load1_mission load1_mission{{$index}}" ng-show="showTr2" style="height: 40px;line-height: 40px;padding: 0; !important;;margin: 0;" >
+                            <!--列表2-->
+                            <div class="col s12"  ng-repeat="el in scondList" style="border: 1px solid #ccc;background: #eee;padding: 0;margin: 0;">
+                                <div ng-click="showLastTr3(el._id,$index)" style="padding: 0;margin: 0;">
+                                    <div class="col s1 right-align">
+                                        <p style="margin: 0">
+                                            <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
+                                        </p>
+                                    </div>
+                                    <div class="col s3 left-align">
+                                        <p style="margin: 0">{{el.menu_name}} </p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{el.menu_num}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0">{{el.menu_num}}</p>
+                                    </div>
+                                    <div class="col s2">
+                                        <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
+                                        <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
+                                    </div>
+                                    <div class="col s2" style="font-size: 25px">
+                                        <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i>
+                                        <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-        <!--分页-->
-        <div class="page_box">
-            <div class="paging_box col s12">
-                <div class="right">
-                    <a class="waves-light waves-effect cyan  btn"  id="pre" ng-click="getPrePage()">上一页</a>
-                    <a class="waves-light waves-effect cyan  btn" id="next" ng-click="getNextPage()">下一页</a>
-                </div>
+
+                    </li>
+                </ul>
             </div>
         </div>
+        <div class="row"> </div>
     </div>
 </div>
