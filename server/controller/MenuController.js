@@ -63,7 +63,7 @@ const  createMenu = (req, res, next) => {
 
 const getMenu = (req, res, next) => {
     let params = req.query;
-    let query = MenuModel.find({}).sort( { menu_num: 1 } );
+    let query = MenuModel.find({});
 
     if(params.menuId){
         query.where('_id').equals(params.menuId);
@@ -77,7 +77,7 @@ const getMenu = (req, res, next) => {
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
     }
-    query.exec((error,rows)=> {
+    query.sort('menu_num').exec((error,rows)=> {
         if (error) {
             logger.error(' getMenu ' + error.message);
             resUtil.resInternalError(error,res);
