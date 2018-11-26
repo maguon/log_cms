@@ -33,7 +33,7 @@ app_admin_module.config(['$stateProvider',"$urlRouterProvider",function($statePr
         })
 
         .state("information_news_list", {
-            url: "/information_menu_list/id/{id}/from/{from}",
+            url: "/information_news_list/id/{id}/from/{from}",
             templateUrl: "/backend/js/views/informationList/information_news_list.html",
             controller:"information_news_list_controller"
         })

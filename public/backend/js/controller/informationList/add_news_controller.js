@@ -17,12 +17,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
             if (data.success == true) {
                 $scope.menuName = data.result[0].menu_name;
             }
-        })
-        _basic.get($host.api_url + "/news?menuId="+id).then(function (data) {
-            if (data.success == true) {
-                $scope.newsId = data.result[0]._id;
-            }
-        })
+        });
     }
 
 
@@ -78,7 +73,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
                 }];
             });
             $scope.obj = {
-                "truckImage": imageId
+                "newsImage": imageId
             };
         });
     };
@@ -101,21 +96,26 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
             };
             _basic.post($host.api_url + "/menu/"+ id +'/news', obj).then(function (data) {
                 if (data.success == true) {
+                    $scope.newsId =data.id;
+                    getImg();
                     swal("新增成功", "", "success");
                     $scope.return();
                 } else {
                     swal(data.msg, "", "error");
                 }
             });
-              _basic.put($host.api_url + "/news/" +  $scope.newsId +  "/image",  $scope.obj).then(function (data) {
-                  if (data.success == true) {
-                      swal('新增成功！', "", "success")
-                  } else {
-                      swal(data.msg, "", "error")
-                  }
-              })
         }
 
+    }
+
+    function  getImg(){
+        _basic.put($host.api_url + "/news/" +  $scope.newsId +  "/image",  $scope.obj).then(function (data) {
+            if (data.success == true) {
+                swal('新增成功！', "", "success")
+            } else {
+                swal(data.msg, "", "error")
+            }
+        })
     }
 
     getMenuList()

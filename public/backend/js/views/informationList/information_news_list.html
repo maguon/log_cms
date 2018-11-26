@@ -1,0 +1,122 @@
+<div class="page" style="margin-left:15px;margin-right: 15px; ">
+    <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：信息列表管理</div>
+
+
+    <div  style="background-color:#fff ">
+
+        <!--用户管理 新增 删除-->
+        <div class="right_con_title row col s12">
+            <div class="right_con_title_l col s2"><i class="mdi  mdi-table-large" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">编辑</span></div>
+            <div class="right_con_title_r col s3 offset-s7">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 left-align" style="width:80%;margin-left:10%;">
+                <ul class="collapsible" data-collapsible="accordion" style="overflow: hidden;margin: 0;box-shadow: none">
+                    <!--列表头-->
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s2" style="border-right: 1px solid #ccc">
+                                <p style="margin: 0">新闻标题:</p>
+                            </div>
+                            <div class="col s10">
+                                <input style="border: 1px solid #ccc;margin-top:16px;height: 30px;line-height: 30px" class="col s8" ng-model="newsItem.news_title"/>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s2" style="border-right: 1px solid #ccc">
+                                <p style="margin: 0">所属栏目:</p>
+                            </div>
+                            <div class="col s10">
+                                {{menuName}}
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s2" style="border-right: 1px solid #ccc">
+                                <p style="margin: 0">是否显示:</p>
+                            </div>
+                            <div class="col s10">
+                                <label class="col s2">
+                                    <input name="group2" type="radio" ng-value="1" ng-model="newsItem.news_status"/>
+                                    <span>显示</span>
+                                </label>
+                                <label class="col s2">
+                                    <input name="group2" type="radio" ng-value="0" ng-model="newsItem.news_status"/>
+                                    <span>隐藏</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s2" style="border-right: 1px solid #ccc">
+                                <p style="margin: 0">图片:</p>
+                            </div>
+                            <div class="col s4">
+                                <a ng-click="getBigImg(newsItem.news_image)"  title="点击查看原图片" class="col s6" style="cursor: pointer">{{newsItem.news_image}}</a>
+                                <input style="margin-top:16px;height: 30px;line-height: 30px" class="col s6" name="image" type="file" onchange="angular.element(this).scope().uploadBrandImage(this)"  max_size="4M"/>
+                            </div>
+                            <div class="col s4">
+                                <form name="uploadImageForm" class="uploadImageForm">
+                                    <div class="upload_btn left">
+                                        <div class="storage_car_picture  vc-center  p0  white-text lighten-1" >
+                                            <img id="face" ng-src="{{img}}" style="width: 100%; height: 251px;display:block" >
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col s2"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s2" style="border-right: 1px solid #ccc">
+                                <p style="margin: 0">是否成为幻灯片:</p>
+                            </div>
+                            <div class="col s10">
+                                <label class="col s2">
+                                    <input name="group1" type="radio" ng-value="1" ng-model="newsItem.roll_flag"/>
+                                    <span>显示</span>
+                                </label>
+                                <label class="col s2">
+                                    <input name="group1" type="radio" ng-value="0" ng-model="newsItem.roll_flag"/>
+                                    <span>隐藏</span>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12" style="border-bottom: 1px solid #ccc">
+                            <div class="col s2" style="padding-top: 15px">
+                                <p style="margin: 0">内容:</p>
+                            </div>
+                            <div class="col s10">
+                                <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" ng-model="newsItem.news_content">  </textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col s12"  style="height: 60px;line-height: 60px;border-bottom: 1px solid #ccc" >
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn col s3 right-align circle_button offset-s8" ng-click="putItem()" style="background-color: #e4644b;margin-top: 12px">保存</a>
+                            </div>
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn col s3 circle_button  cyan"  style="margin-top: 12px" ng-click="return()">返回</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row"></div>
+
+    </div>
+</div>

@@ -60,7 +60,7 @@
                                         <p style="margin: 0">{{el.created_at |date :'yyyy-MM-dd hh:mm:ss'}}</p>
                                     </div>
                                     <div class="col s2">
-                                        <span ng-click="lookOperator(el._id)" style="cursor: pointer">编辑</span>
+                                        <span ui-sref="information_news_list({id:el._id,from:'information_menu_list'})"  style="cursor: pointer">编辑</span>
                                         <span ng-click="delete(el._id)" style="cursor: pointer">删除</span>
                                     </div>
                                 </div>
