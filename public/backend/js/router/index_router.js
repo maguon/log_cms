@@ -25,6 +25,24 @@ app_admin_module.config(['$stateProvider',"$urlRouterProvider",function($statePr
             templateUrl: "/backend/js/views/informationList/information_list_management.html",  //路由填充的模板
             controller:'information_list_management_controller'
         })
+
+        .state("information_menu_list", {
+            url: "/information_menu_list/id/{id}/from/{from}",
+            templateUrl: "/backend/js/views/informationList/information_menu_list.html",
+            controller:"information_menu_list_controller"
+        })
+
+        .state("information_news_list", {
+            url: "/information_menu_list/id/{id}/from/{from}",
+            templateUrl: "/backend/js/views/informationList/information_news_list.html",
+            controller:"information_news_list_controller"
+        })
+        .state("add_news", {
+            url: "/add_news/id/{id}/from/{from}",
+            templateUrl: "/backend/js/views/informationList/add_news.html",
+            controller:"add_news_controller"
+        })
+
         //人才招聘管理
         .state("recruitment_management", {  //路由状态
             url: "/recruitment_management",  //路由路径
