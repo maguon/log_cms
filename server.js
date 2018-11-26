@@ -9,6 +9,7 @@ const cors = require('cors');
 const logUtil = require('./server/util/LogUtil');
 const logger = logUtil.createLogger('server.js');
 const apiRouter = require('./server/api/Router');
+const viewRouter = require('./server/api/ViewRouter');
 const app = express();
 
 app.use(cors());
@@ -16,9 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.set('views', __dirname + '/views').set("view engine", "ejs");
+app.set('views', __dirname + '/client/views').set("view engine", "ejs");
 app.engine('ejs', require('ejs').renderFile);
 app.use('/api',apiRouter);
+app.use('/view',viewRouter);
 
 
 
