@@ -1,5 +1,6 @@
 app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
     var id = $stateParams.id;//跳转过来的id
+    var userId = _basic.getSession(_basic.USER_ID);
     $scope.editor = CKEDITOR.replace( 'TextArea1');
 
 
@@ -25,37 +26,60 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
     }
 
 
+// 照片上传函数
+    function uploadBrandImage(filename, dom_obj, callback) {
+        if (filename) {
+            if ((/\.(jpe?g|png|gif|svg|bmp|tiff?)$/i).test(filename)) {
+                //check size
+                //$file_input[0].files[0].size
+                var max_size_str = dom_obj.attr('max_size');
+                var max_size = 4 * 1024 * 1024; //default: 4M
+                var re = /\d+m/i;
+                if (re.test(max_size_str)) {
+                    max_size = parseInt(max_size_str.substring(0, max_size_str.length - 1)) * 1024 * 1024;
+                    // $currentDom = $(dom).prev();
+                    _basic.formPost(dom_obj.parent().parent(), $host.file_url + '/user/' + userId + '/image?imageType=0', function (data) {
 
+                        if (data.success) {
+                            var imageId = data.imageId;
+                            callback(imageId);
+
+                        } else {
+                            swal('上传图片失败', "", "error");
+                        }
+                    }, function (error) {
+                        swal('服务器内部错误', "", "error");
+                    })
+                }
+
+                if (dom_obj[0].files[0].size > max_size) {
+                    swal('图片文件最大: ' + max_size_str, "", "error");
+                    return false;
+                }
+            }
+            else if (filename && filename.length > 0) {
+                dom_obj.val('');
+                swal('支持的图片类型为. (jpeg,jpg,png,gif,svg,bmp,tiff)', "", "error");
+            } else {
+
+            }
+
+        }
+    };
 
     // 图片上传
-    $scope.uploadBrandImage = function(element) {       //单次提交图片的函数
-        if (!element.files[0]) {
-            // console.log("未选择图片！");
-            return;
-        }
-        $scope.$apply(function(scope) {
-            var photofile = element.files[0];
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                var prev_img = document.getElementById("face");
-                prev_img.src = e.target.result;
-                var bufferData=prev_img.src.replace(/^data:image\/\w+;base64,/, "");
-                $scope.imageSrc= btoa(bufferData);
-                //$scope.imageSrc=prev_img.src
-                function Uint8ToString(u8a){
-                    var CHUNK_SZ = 0x8000;
-                    var c = [];
-                    for (var i=0; i < u8a.length; i+=CHUNK_SZ) {
-                        c.push(String.fromCharCode.apply(null, u8a.subarray(i, i+CHUNK_SZ)));
-                    }
-                    return c.join("");
-                }
-                $scope.u8_2 = new Uint8Array(atob($scope.imageSrc).split("").map(function(c) {
-                    return c.charCodeAt(0); }));//这个用于保存数据
-                $scope.b64encoded = btoa(Uint8ToString($scope.u8_2));
-                $scope.image= window.atob($scope.b64encoded);//这个用于页面预览
+    $scope.uploadBrandImage = function(dom) {
+        var dom_obj = $(dom);
+        var filename = $(dom).val();
+        uploadBrandImage(filename, dom_obj, function (imageId) {
+            $scope.$apply(function () {
+                $scope.drive_img = [{
+                    img: $host.file_url + '/image/' + imageId,
+                }];
+            });
+            $scope.obj = {
+                "truckImage": imageId
             };
-            reader.readAsDataURL(photofile);
         });
     };
 
@@ -82,7 +106,14 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
                 } else {
                     swal(data.msg, "", "error");
                 }
-            })
+            });
+              _basic.put($host.api_url + "/news/" +  $scope.newsId +  "/image",  $scope.obj).then(function (data) {
+                  if (data.success == true) {
+                      swal('新增成功！', "", "success")
+                  } else {
+                      swal(data.msg, "", "error")
+                  }
+              })
         }
 
     }
