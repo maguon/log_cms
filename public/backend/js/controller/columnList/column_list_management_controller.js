@@ -85,9 +85,9 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
             };
             _basic.post($host.api_url + "/menu", obj).then(function (data) {
                 if (data.success == true) {
-                    getRootList();
                     swal("新增成功", "", "success");
                     $('#newOperator').modal('close');
+                    getRootList();
                 } else {
                     swal(data.msg, "", "error");
                 }
@@ -116,8 +116,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     // 修改
     $scope.changeOperatorForm = function (id) {
         $scope.submitted = true;
-        if($scope.look_operation.menu_pid==''||$scope.look_operation.menu_name==''||$scope.look_operation.menu_num==""
-            ||$scope.look_operation.menu_status==""){
+        if($scope.look_operation.menu_pid==''||$scope.look_operation.menu_name==''||$scope.look_operation.menu_num==null
+            ||$scope.look_operation.menu_status==null){
             swal('请录入完整信息!',"","error")
         }else {
             var obj = {
@@ -150,20 +150,22 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确定",
                 cancelButtonText: "取消",
-                closeOnConfirm: true,
+                closeOnConfirm: false,
                 closeOnCancel: true
             },
-            function () {
+            function (isConfirm) {
+            if(isConfirm){
                 _basic.delete($host.api_url + "/menu/" +id).then(function (data) {
-                    if (data.success === true) {
+                    if (data.success == true) {
+                        getRootList();
                         swal("删除成功", "", "success");
-                        getRootList()
                     }
                     else {
                         swal(data.msg, "", "error");
                     }
                 });
-            });
+            }
+         });
     }
 
 
