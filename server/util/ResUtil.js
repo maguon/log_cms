@@ -29,4 +29,34 @@ const resetFailedRes = (res,errMsg) => {
 const resInternalError = (error , res ) =>{
     res.status(500).send({ msg: error.message });
 }
-module.exports = { resetQueryRes,resetCreateRes,resetUpdateRes ,resetFailedRes ,resInternalError }
+
+
+const resetMainPage = (res,title,componentString)=>{
+
+    res.render("index",{title:title,
+        component:componentString,
+        scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js"]}
+    );
+}
+
+const resetErrorPage = (res ,error) => {
+    let ErrorPage = `
+        <div style="text-align:center">
+            <h3 style="width: 25%;font-size: 12rem;color: #409eff;margin: 0 auto;margin-top: 10%;">500</h3>
+            <span style="width: 25%;font-size: 1rem;color: #c00;margin: 0 auto;margin-top: 10%;"> ` +error.message +
+        ` </span>
+            <div style="font-size: 15px;color: #878d99;">出错了！！！😺😱 &nbsp;<a href="/">返回首页</a></div>
+        </div>
+    `
+    res.send(ErrorPage)
+}
+const resetNotFoundPage = (res ) => {
+    let NotFoundPage = `
+        <div style="text-align:center">
+            <h3 style="width: 25%;font-size: 12rem;color: #c00;margin: 0 auto;margin-top: 10%;">404</h3>
+            <div style="font-size: 15px;color: #878d99;">太调皮辣，不过我喜欢...哼哼 😏👽 &nbsp;<a href="/">返回首页</a></div>
+        </div>
+    `
+    res.send(NotFoundPage)
+}
+module.exports = { resetQueryRes,resetCreateRes,resetUpdateRes ,resetFailedRes ,resInternalError ,resetMainPage,resetErrorPage,resetNotFoundPage}
