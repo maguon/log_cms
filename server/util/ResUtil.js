@@ -39,6 +39,14 @@ const resetMainPage = (res,title,componentString)=>{
     );
 }
 
+const resetNewsPage = (res,title,componentString)=>{
+
+    res.render("news",{title:title,
+        component:componentString,
+        scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js"]}
+    );
+}
+
 const resetErrorPage = (res ,error) => {
     let ErrorPage = `
         <div style="text-align:center">
@@ -59,4 +67,4 @@ const resetNotFoundPage = (res ) => {
     `
     res.send(NotFoundPage)
 }
-module.exports = { resetQueryRes,resetCreateRes,resetUpdateRes ,resetFailedRes ,resInternalError ,resetMainPage,resetErrorPage,resetNotFoundPage}
+module.exports = { resetQueryRes,resetCreateRes,resetUpdateRes ,resetFailedRes ,resInternalError ,resetMainPage,resetNewsPage,resetErrorPage,resetNotFoundPage}

@@ -8,8 +8,8 @@ const cors = require('cors');
 
 const logUtil = require('./server/util/LogUtil');
 const logger = logUtil.createLogger('server.js');
-const apiRouter = require('./server/api/Router');
-const viewRouter = require('./server/api/ViewRouter');
+const apiRouter = require('./server/router/ApiRouter');
+const viewRouter = require('./server/router/ViewRouter');
 const app = express();
 
 app.use(cors());

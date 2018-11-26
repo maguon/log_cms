@@ -4,7 +4,7 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-export default class MenuComponent  extends React.Component {
+export default class NewsComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -14,9 +14,9 @@ export default class MenuComponent  extends React.Component {
                 <Header/>
                 <div className="rows">
                     <div className="collection">
-                    {
-                        this.props.menuList.map((menuItem,index) => <a className="collection-item" key={index} href={"/view/menu/"+menuItem._id.toString()+"/news"}>{menuItem.menu_name}</a>)
-                    }</div>
+                        {
+                            this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_title}</a>)
+                        }</div>
                 </div>
                 <Footer/>
             </div>
