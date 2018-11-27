@@ -99,7 +99,12 @@
                                 <p style="margin: 0">内容:</p>
                             </div>
                             <div class="col s10">
-                                <textarea id="TextArea1" cols="20" rows="2" class="ckeditor" ng-model="newsItem.news_content">  </textarea>
+                                <textarea id="TextArea1" cols="20" rows="2" class="ckeditor">
+                                <div class="col s12">{{newsItem.news_content}}</div>
+
+                                </textarea>
+
+
                             </div>
                         </div>
                     </li>
