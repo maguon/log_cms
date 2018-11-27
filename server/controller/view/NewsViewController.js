@@ -9,6 +9,9 @@ import NewsComponent from '../../../client/components/NewsComponent';
 const getNewsView = (req, res, next) => {
     let params = req.params;
     let query = NewsModel.find({});
+    if(params.newsId){
+        query.where('_id').equals(params.newsId);
+    }
     if(params.menuId){
         query.where('menu_id').equals(params.menuId);
     }
@@ -17,7 +20,7 @@ const getNewsView = (req, res, next) => {
             resUtil.resetErrorPage(res,error);
         }else{
             const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows}}/>);
-            resUtil.resetNewsPage(res,'news',componentString)
+            resUtil.resetMainPage(res,'news',componentString)
         }
 
     });

@@ -15,7 +15,7 @@ export default class NewsComponent  extends React.Component {
                 <div className="rows">
                     <div className="collection">
                         {
-                            this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_title}</a>)
+                            this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_content}</a>)
                         }</div>
                 </div>
                 <Footer/>
