@@ -23,7 +23,9 @@
     margin-left: 2px;
     cursor: pointer;
     margin-top: 20px;
+    font-size: 12px;
 }
 .nav_block:hover{
     color: #0D47A1;
 }
+

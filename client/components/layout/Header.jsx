@@ -20,18 +20,10 @@ class Header extends React.Component {
                                 </a>
                             </div>
 
-                            <div className="nav_ce col s7 white-text">
+                            <div className="nav_ce col s7">
                                 <ul className="tree_1 col s12" id="menu2">
-                                  {/*  <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>
-                                    <li className='nav_block col s1'>fdgdd</li>*/}
                                     {
-                                        this.props.menuList.map((menuItem,index) => <li className='nav_block'><a className="collection-item"  key={index} href={"/view/menu/"+menuItem._id.toString()+"/news"}>{menuItem.menu_name}</a></li>)
+                                        this.props.menuList.map((menuItem,index) => <li className='nav_block col s1'><a className="collection-item white-text"  key={index} href={"/view/menu/"+menuItem._id.toString()+"/news"}>{menuItem.menu_name}</a></li>)
                                     }
                                 </ul>
                             </div>
