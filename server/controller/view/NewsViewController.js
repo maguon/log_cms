@@ -8,7 +8,7 @@ import NewsComponent from '../../../client/components/NewsComponent';
 
 const getNewsView = (req, res, next) => {
     let params = req.params;
-    let query = NewsModel.find({});
+    let query = NewsModel.find({}).populate('menu_id');
     if(params.newsId){
         query.where('_id').equals(params.newsId);
     }
