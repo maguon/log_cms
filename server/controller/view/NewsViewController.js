@@ -7,6 +7,8 @@ const resUtil = require('../../util/ResUtil');
 const {NewsModel} = require('../../modules/schemas');
 const {MenuModel} = require('../../modules/schemas');
 import NewsComponent from '../../../client/components/NewsComponent';
+import ListComponent from '../../../client/components/ListComponent';
+import PictureComponent from '../../../client/components/PictureComponent';
 
 const getNewsView = (req ,res ,next) => {
     let params = req.params;
@@ -33,8 +35,17 @@ const getNewsView = (req ,res ,next) => {
             if(error){
                 resUtil.resetErrorPage(res,error);
             }else{
-                const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows,menuList:menu}}/>);
-                resUtil.resetMainPage(res,'news',componentString)
+                if(params.menuType==1){
+                    const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows,menuList:menu}}/>);
+                    resUtil.resetMainPage(res,'news',componentString)
+                }else if(params.menuType==2){
+                    const componentString = ReactDOMServer.renderToString( <ListComponent {... {newsList:rows,menuList:menu}}/>);
+                    resUtil.resetMainPage(res,'list',componentString)
+                }else{
+                    const componentString = ReactDOMServer.renderToString( <PictureComponent {... {newsList:rows,menuList:menu}}/>);
+                    resUtil.resetMainPage(res,'picture',componentString)
+                }
+
             }
 
         });
