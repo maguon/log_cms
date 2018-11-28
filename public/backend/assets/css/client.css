@@ -1,3 +1,15 @@
+body {
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.container{
+    margin:0 0 70px 0;
+    background: #f1f5f5;
+    overflow-y: scroll;
+}
+
+/*header*/
 #nav_bg {
     width: 100%;
     height: 80px;
@@ -7,20 +19,15 @@
     left: 0;
     z-index: 1030;
     margin-bottom: 0;
-    float: left;
 }
 #logo_img{
     margin-top:8px;
     height: 70px;
-    margin-left: 150px;
-    float: left;
 }
 .nav_block {
     width: 13%;
     height: 60px;
-    display: inline;
     line-height: 5px;
-    margin-left: 2px;
     cursor: pointer;
     margin-top: 20px;
     font-size: 12px;
@@ -28,4 +35,135 @@
 .nav_block:hover{
     color: #0D47A1;
 }
+
+
+
+
+
+
+
+
+
+
+/*footer*/
+.page-footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+    background-color: #333333 !important;
+    padding:0 !important;
+}
+.footer {
+    background-color: #222222;
+    color: #555555;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    font-family: "microsoft yahei",Tahoma, sans-serif;
+}
+.lined {
+    border-bottom-color: #505050;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #b6b6b6;
+}
+.footerLi{
+    width: 80%;
+    margin-left: 10%;
+    padding-bottom: 20px;
+}
+.bolded-line {
+    background-color: white;
+    display: block;
+    margin-bottom: -2px;
+    margin-top: 16px;
+    width: 22px;
+    height: 2px;
+}
+.foot {
+    color: white;
+    overflow: hidden;
+    text-align: left;
+    font-size: 12px;
+}
+.lined h2 {
+    color: white;
+    font-size: 18px;
+    font-family: 'PT Sans';
+    height:20px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.lined a {
+    color: white;
+}
+.lined h5 {
+    color: #999999;
+    margin: 0;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: 'PT Sans';
+}
+.span3 {
+    width: 21%;
+    min-height: 1px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.search-width {
+    border: 1px solid #cccccc;
+    width: 75%;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border-radius: 3px;
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    background-color: white;
+    display: inline-block;
+    height: 26px;
+    padding: 4px 6px;
+    line-height: 20px;
+    color: #555555;
+    font-size: 12px;
+}
+.input-append {
+    margin-bottom: 5px;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
