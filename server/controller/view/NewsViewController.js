@@ -12,43 +12,59 @@ import PictureComponent from '../../../client/components/PictureComponent';
 
 const getNewsView = (req ,res ,next) => {
     let params = req.params;
+    let MenuName = "";
     new Promise((resolve) => {
         let query = MenuModel.find({});
+        query.where('_id').equals(params.menuId);
         query.where('menu_pid').equals('-1');
         query.where('menu_status').equals('1');
         query.sort('menu_num').exec((error,rows)=> {
             if(error){
                 resUtil.resetErrorPage(res,error);
             }else{
-                resolve(rows);
+                MenuName = rows[0].menu_name;
+                resolve();
             }
         });
-    }).then((menu) => {
-        let query = NewsModel.find({});
-        if(params.newsId){
-            query.where('_id').equals(params.newsId);
-        }
-        if(params.menuId){
-            query.where('menu_id').equals(params.menuId);
-        }
-        query.exec((error,rows)=> {
-            if(error){
-                resUtil.resetErrorPage(res,error);
-            }else{
-                if(params.menuType==1){
-                    const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows,menuList:menu}}/>);
-                    resUtil.resetMainPage(res,'news',componentString)
-                }else if(params.menuType==2){
-                    const componentString = ReactDOMServer.renderToString( <ListComponent {... {newsList:rows,menuList:menu}}/>);
-                    resUtil.resetMainPage(res,'list',componentString)
+    }).then(() => {
+        new Promise((resolve) => {
+            let query = MenuModel.find({});
+            query.where('menu_pid').equals('-1');
+            query.where('menu_status').equals('1');
+            query.sort('menu_num').exec((error,rows)=> {
+                if(error){
+                    resUtil.resetErrorPage(res,error);
                 }else{
-                    const componentString = ReactDOMServer.renderToString( <PictureComponent {... {newsList:rows,menuList:menu}}/>);
-                    resUtil.resetMainPage(res,'picture',componentString)
+                    resolve(rows);
+                }
+            });
+        }).then((menu) => {
+            let query = NewsModel.find({});
+            if(params.newsId){
+                query.where('_id').equals(params.newsId);
+            }
+            if(params.menuId){
+                query.where('menu_id').equals(params.menuId);
+            }
+            query.exec((error,rows)=> {
+                if(error){
+                    resUtil.resetErrorPage(res,error);
+                }else{
+                    if(params.menuType==1){
+                        const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName}}/>);
+                        resUtil.resetMainPage(res,'news',componentString)
+                    }else if(params.menuType==2){
+                        const componentString = ReactDOMServer.renderToString( <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName}}/>);
+                        resUtil.resetMainPage(res,'list',componentString)
+                    }else{
+                        const componentString = ReactDOMServer.renderToString( <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName}}/>);
+                        resUtil.resetMainPage(res,'picture',componentString)
+                    }
+
                 }
 
-            }
-
-        });
+            });
+        })
     })
 
 }
@@ -67,7 +83,7 @@ const getNewsViewDetails = (req ,res ,next) => {
             }
         });
     }).then((menu) => {
-        let query = NewsModel.find({});
+        let query = NewsModel.find({}).populate('menu_id');
         if(params.newsId){
             query.where('_id').equals(params.newsId);
         }
