@@ -14,9 +14,12 @@ export default class MenuComponent  extends React.Component {
                 <Header menuList={this.props.menuList}/>
                 <div className="rows">
                     <div className="collection">
-                    {
+
+                        {
                         this.props.menuList.map((menuItem,index) => <a className="collection-item" key={index} href={""}>{menuItem.menu_name}</a>)
-                    }</div>
+                    }
+
+                    </div>
                 </div>
                 <Footer/>
             </div>
