@@ -5,6 +5,7 @@ const resUtil = require('../../util/ResUtil');
 
 const {MenuModel} = require('../../modules/schemas');
 import Header from '../../../client/components/layout/Header';
+import Footer from '../../../client/components/layout/Footer';
 
 const getMenuView = (req, res, next) => {
     let query = MenuModel.find({});
@@ -15,11 +16,13 @@ const getMenuView = (req, res, next) => {
             resUtil.resetErrorPage(res,error);
         }else{
             const componentString = ReactDOMServer.renderToString( <Header {... {menuList:rows}}/>);
-            resUtil.resetMainPage(res,'Menu',componentString)
+            const componentFooter = ReactDOMServer.renderToString( <Footer {... {menuList:rows}}/>);
+            resUtil.resetMainPage(res,'Menu',componentString,componentFooter)
         }
 
     });
 };
+
 
 module.exports = {
     getMenuView
