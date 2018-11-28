@@ -14,6 +14,23 @@ export default class ListComponent  extends React.Component {
                 <Header menuList={this.props.menuList}/>
                 <div className="rows">
                     <div className="collection">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         {
                             this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_content}</a>)
                         }</div>
