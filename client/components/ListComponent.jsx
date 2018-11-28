@@ -27,12 +27,10 @@ export default class ListComponent  extends React.Component {
 
                                 <div className="ab_neir">
                                     <ul className="jididong">
-                                        <li><a href="frontnewsorpicinfo?nd=240">2017·顺通物流诚聘轿运车驾驶员<span
-                                            className="rq">2017-2-3</span></a></li>
 
                                         <li> {
-                                            this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_content}<span
-                                                className="rq">{newsItem.created_at}</span></a>)
+                                            this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_title}<span
+                                                className="rq">{newsItem.created_at.toLocaleDateString()}</span></a>)
                                         }
                                         </li>
 
