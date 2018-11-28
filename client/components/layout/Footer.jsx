@@ -16,9 +16,7 @@ class Footer extends React.Component {
                         <span className="right hide-on-small-only"> Design and Developed by <a className="grey-text text-lighten-4" href="https://pixinvent.com/">PIXINVENT</a></span>
 
                         <ul className="tree_1 col s12" id="menu2">
-                            {
-                                this.props.menuList.map((menuItem,index) => <li className='nav_block col s1'><a className="collection-item white-text"  key={index} href={"/view/menu/"+menuItem._id.toString()+"/news"}>{menuItem.menu_name}</a></li>)
-                            }
+
                         </ul>
                         <div className="footer">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
                     </div>

@@ -19,7 +19,7 @@ const getNewsView = (req, res, next) => {
         if(error){
             resUtil.resetErrorPage(res,error);
         }else{
-            const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows}}/>);
+            const componentString = ReactDOMServer.renderToString( <NewsComponent {... {newsList:rows,menuList:[]}}/>);
             resUtil.resetMainPage(res,'news',componentString)
         }
 

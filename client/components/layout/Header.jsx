@@ -15,7 +15,7 @@ class Header extends React.Component {
 
                         <div id="nav_bg" className="col s12">
                             <div className="logoimg col s5">
-                                <a href="#" className="col s12">
+                                <a href="" className="col s12">
                                     <img alt="logo" src="/backend/assets/images/logo.png"  id="logo_img"/>
                                 </a>
                             </div>
