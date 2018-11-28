@@ -15,6 +15,15 @@ export default class MenuComponent  extends React.Component {
                 <div className="rows">
                     <div className="collection">
 
+                        <li>
+                            <a href="frontnewsorpicinfo?nd=224" target="_blank">
+                            <img alt="诚聘优秀单排轿运车驾驶员" className="hdp" />
+                            </a>
+                        </li>
+
+
+
+
                         {
                         this.props.menuList.map((menuItem,index) => <a className="collection-item" key={index} href={""}>{menuItem.menu_name}</a>)
                     }

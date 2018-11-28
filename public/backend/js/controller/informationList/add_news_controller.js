@@ -83,7 +83,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
 
     $scope.addItem=function(){
         var val = $scope.editor.getData();
-        if( $scope.addNews==''||$scope.addMenuStatus==null||$scope.addLun==null||val==''||val==undefined){
+        if( $scope.addNews==''||$scope.addMenuStatus==null||$scope.addLun==null){
             swal('请输入完整数据！',"","error")
         }
         else

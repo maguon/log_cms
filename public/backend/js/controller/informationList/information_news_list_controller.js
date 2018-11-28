@@ -100,7 +100,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
 
     $scope.putItem=function(){
         var val = $scope.editor.getData();
-        if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null||val==''||val==undefined){
+        if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null){
             swal('请输入完整数据！',"","error")
         }
         else
