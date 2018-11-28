@@ -21,7 +21,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
     }
 
 
-// 照片上传函数
+    // 照片上传函数
     function uploadBrandImage(filename, dom_obj, callback) {
         if (filename) {
             if ((/\.(jpe?g|png|gif|svg|bmp|tiff?)$/i).test(filename)) {
@@ -83,7 +83,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
 
     $scope.addItem=function(){
         var val = $scope.editor.getData();
-        if( $scope.addNews==''||$scope.addMenuStatus==''||$scope.addLun==""||val==''||val==undefined){
+        if( $scope.addNews==''||$scope.addMenuStatus==null||$scope.addLun==null||val==''||val==undefined){
             swal('请输入完整数据！',"","error")
         }
         else
@@ -109,13 +109,18 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
     }
 
     function  getImg(){
-        _basic.put($host.api_url + "/news/" +  $scope.newsId +  "/image",  $scope.obj).then(function (data) {
-            if (data.success == true) {
-                swal('新增成功！', "", "success")
-            } else {
-                swal(data.msg, "", "error")
-            }
-        })
+        if($scope.obj==null){
+            return;
+        }
+        else {
+            _basic.put($host.api_url + "/news/" +  $scope.newsId +  "/image",  $scope.obj).then(function (data) {
+                if (data.success == true) {
+                    swal('新增成功！', "", "success")
+                } else {
+                    swal(data.msg, "", "error")
+                }
+            })
+        }
     }
 
     getMenuList()

@@ -12,7 +12,11 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
         _basic.get($host.api_url + "/news?newsId="+id).then(function (data) {
             if (data.success == true) {
                 $scope.newsItem = data.result[0];
-                $scope.menu_id = data.result[0].menu_id;
+                $scope.menu_id = data.result[0].menu_id._id;
+                if(data.result[0].news_image==null){
+                    $scope.newsItem.news_image='';
+                }
+
                 getMenuList();
             }
         })
@@ -28,7 +32,12 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
 
     //看图片
     $scope.getBigImg = function (src){
-        $scope.img=$host.file_url + '/image/'+src;
+        if (src==""){
+            $scope.img=''
+        }
+        else {
+            $scope.img=$host.file_url + '/image/'+src;
+        }
     }
 
     // 照片上传函数
@@ -110,15 +119,19 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
                     swal(data.msg, "", "error");
                 }
             });
-            _basic.put($host.api_url + "/news/" +  id +  "/image",  $scope.obj).then(function (data) {
-                if (data.success == true) {
-                    swal('修改成功！', "", "success")
-                } else {
-                    swal(data.msg, "", "error")
-                }
-            })
+            if($scope.obj==undefined){
+                return;
+            }
+            else {
+                _basic.put($host.api_url + "/news/" +  id +  "/image",  $scope.obj).then(function (data) {
+                    if (data.success == true) {
+                        swal('修改成功！', "", "success")
+                    } else {
+                        swal(data.msg, "", "error")
+                    }
+                })
+            }
         }
-
     }
 
     getNewsList()
