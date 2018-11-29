@@ -46,6 +46,9 @@ const getNewsView = (req ,res ,next) => {
             if(params.menuId){
                 query.where('menu_id').equals(params.menuId);
             }
+            if(params.start && params.size){
+                query.skip(parseInt(params.start)).limit(parseInt(params.size));
+            }
             query.exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);

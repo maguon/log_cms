@@ -26,9 +26,8 @@ export default class NewsComponent  extends React.Component {
 
                                 <div className="ab_neir">
                                     {
-                                        this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_content}</a>)
+                                        this.props.newsList.map((newsItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />)
                                     }
-
 
                                     <span className="fenyez12g fenyez1">上一篇</span>
 
