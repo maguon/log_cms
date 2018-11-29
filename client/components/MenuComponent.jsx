@@ -20,10 +20,7 @@ export default class MenuComponent  extends React.Component {
                             <div className="about">
                                 <div className="yx-rotaion">
                                     <ul className="rotaion_list">
-
                                         <li>
-                                            <a href="#" target="_blank"><img alt="诚聘优秀单排轿运车驾驶员" className="hdp" src={'../public/backend/images/logo.png'}/>
-                                            </a>
                                             {
                                                 this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>
                                                     <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" /></a>)
@@ -31,18 +28,6 @@ export default class MenuComponent  extends React.Component {
                                         </li>
 
                                     </ul>
-                                    <div className="yx-rotaion-btn">
-                                        <span className="left_btn"> </span>
-                                        <span className="right_btn"> </span>
-                                    </div>
-                                    <div className="yx-rotation-title"> </div>
-                                    <a href="#" className="yx-rotation-t">同合作、求发展，共努力，创未来！</a>
-                                    <div className="yx-rotation-focus">
-                                        <span className="">1</span>
-                                        <span className="hover">2</span>
-                                        <span className="">3</span>
-                                        <span className="">4</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>

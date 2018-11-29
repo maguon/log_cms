@@ -243,6 +243,13 @@ body {
     height:530px;
 }
 /*轮播*/
+.collection a.collection-item {
+    display: block;
+    transition: .25s;
+    color: #26a69a;
+    width: 100%;!important;
+    padding: 0;!important;
+}
 .yx-rotation-focus span {
     width: 12px;
     height: 12px;
