@@ -4,6 +4,7 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
+
 export default class MenuComponent  extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ export default class MenuComponent  extends React.Component {
                                     <ul className="rotaion_list">
 
                                         <li>
-                                            <a href="#" target="_blank"><img alt="诚聘优秀单排轿运车驾驶员" className="hdp" />
+                                            <a href="#" target="_blank"><img alt="诚聘优秀单排轿运车驾驶员" className="hdp" src={'../public/backend/images/logo.png'}/>
                                             </a>
                                             {
                                                 this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>
@@ -127,14 +128,6 @@ export default class MenuComponent  extends React.Component {
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-                        {
-                        this.props.menuList.map((menuItem,index) => <a className="collection-item" key={index} href={""}>{menuItem.menu_name}</a>)
-                    }
 
                     </div>
                 </div>
