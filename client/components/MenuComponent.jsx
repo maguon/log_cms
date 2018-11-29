@@ -23,6 +23,10 @@ export default class MenuComponent  extends React.Component {
                                         <li>
                                             <a href="#" target="_blank"><img alt="诚聘优秀单排轿运车驾驶员" className="hdp" />
                                             </a>
+                                            {
+                                                this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>
+                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" /></a>)
+                                            }
                                         </li>
 
                                     </ul>

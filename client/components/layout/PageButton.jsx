@@ -1,4 +1,5 @@
-class pageButton extends Component {
+const React = require('react')
+class pageButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -46,3 +47,4 @@ class pageButton extends Component {
         );
     }
 }
+export default (pageButton)
