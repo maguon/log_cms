@@ -15,9 +15,6 @@ export default class MenuComponent  extends React.Component {
                 <div className="rows">
                     <div className="collection">
 
-
-
-
                         <div className="con">
                             <div className="about">
                                 <div className="yx-rotaion">

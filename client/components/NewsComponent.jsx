@@ -4,11 +4,13 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
+import  PageButton from './layout/pageButton';
 export default class NewsComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
     render () {
+        const { idd,title,time,tag,contents } = this.props
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
@@ -24,13 +26,14 @@ export default class NewsComponent  extends React.Component {
                                         <a href="frontnewsorpic?p=1&amp;md=5">{this.props.menuName}</a></div>
                                 </div>
 
-                                <div className="ab_neir">
+                                <div className="ab_neir" id={idd}>
                                     {
                                         this.props.newsList.map((newsItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />)
                                     }
 
                                     <span className="fenyez12g fenyez1">上一篇</span>
-
+                                    <span className="more">more</span>
+                                    <PageButton  />
 
                                     <span className="fenyez12g fenyez1"
                                           onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
