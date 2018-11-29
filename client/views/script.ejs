@@ -5,7 +5,7 @@
 <script src=<%= item %> ></script>
 <% }) %>
 <script>
-    (function($){
+    $(function(){
         $.fn.extend({
             yx_rotaion: function(options) {
                 //默认参数
@@ -92,7 +92,7 @@
                 });
             }
         });
-
+        $('.yx_rotaion').yx_rotaion();
     })(jQuery);
 </script>
 
