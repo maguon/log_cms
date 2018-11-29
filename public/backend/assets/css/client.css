@@ -206,7 +206,7 @@ body {
     text-indent: 10px;
     line-height: 35px;
     display: block;
-    color: #5a5a5a;
+    color: #5a5a5a;!important;
 }
 .fenye {
     height: 26px;
@@ -220,10 +220,179 @@ body {
 }
 
 
+/*menu*/
+.yx-rotaion{
+    position: relative;
+    overflow: hidden;
+    height: 530px;
+}
+.rotaion_list li{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.rotaion_list li a{
+    width:100%;
+    height:530px;
+}
+.rotaion_list li a img{
+    src:url(../images/20161017111451.jpg) ;
+}
 
+/*menu中的公司简介*/
+#companyInter{
+    width: 80%;
+    margin-left: 10%;
+    overflow: hidden;
+    padding-top: 45px;
+    padding-bottom: 20px;
+}
+.ff {
+    float: left;
+    margin-left: 30px;
+    width: 21%;
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.companyH2{
+    margin-bottom: 15px;
+    border-bottom: 2px solid #b6b6b6;
+}
+.companyH2 h2{
+    font-size: 18px;
+    font-family: 'PT Sans';
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+.companyH2 h2 a{
+    color: #000;
+}
+.companyH2 h5{
+    color: #999999;
+    font-weight: normal;
+    font-family: 'PT Sans';
+    font-size: 12px;
+}
 
+.span1{
+    display: block;
+    margin-bottom: -2px;
+    margin-top: 16px;
+    width: 22px;
+    height: 2px;
+    background-color: #727272;
+}
+.Pspan{
+    line-height: 20px;
+}
+.carName{
+    text-align: left;
+    margin-top: 3px;
+    color: #333333;
+}
 
+/*menu中的车辆场地展示*/
+#showCarPlace{
+    width: 100%;
+    overflow: hidden;
+    padding-top: 20px;
+    background: #1f1f1f;
+}
+#hdjy {
+    height: 540px;
+    margin: 0 auto;
+}
+.ab_guanyu_index {
+    font-size: 18px;
+    margin: 0 auto;
+}
+.ab_guanyu_index a {
+    color: white;
+    font-weight: bold;
+}
+.silhouette_block {
+    width: 23%;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    margin: 0px 0px 0px 16px;
+}
+.silhouette_block_pic {
+    width: 100%;
+    height: 197px;
+    float: left;
+    display: inline;
+    overflow: hidden;
+}
+.silhouette_block_word {
+    width: 277px;
+    height: 30px;
+    float: left;
+    display: inline;
+    text-align: center;
+    line-height: 30px;
+    overflow: hidden;
+}
+.silhouette_block_word a {
+    text-decoration: none;
+    color: #F5FFFA;
+    font-size: 12px;
+}
+.showImg{
+    width: 80%;
+    margin: 0 auto;
+}
 
+/*menu中的合作伙伴*/
+.wrap1003_index {
+    margin: 0 auto;
+    height: 230px;
+}
+#yqlj {
+    width: 100%;
+    margin-top: 50px;
+}
+.kect_index {
+    width: 80%;
+    border-bottom: 2px solid #b6b6b6;
+    border-bottom-color: #505050;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.ab_guanyu_index1 {
+    font-size: 18px;
+    margin: 0 auto;
+}
+.ab_guanyu_index1 a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.kect_index h5 {
+    color: #b4b4b4;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: 'PT Sans';
+    margin: 2px 0px 10px 0px;
+}
+.ab_neirMenu {
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    line-height: 30px;
+    color: #5a5a5a;
+}
+.yoqlj li {
+    float: left;
+    width: 10%;
+    height: 80px;
+}
 
 
 
