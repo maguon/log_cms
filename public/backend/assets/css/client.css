@@ -243,7 +243,6 @@ body {
     height:530px;
 }
 /*轮播*/
-ul, ol { padding: 0;}
 .banner { position: relative; overflow: auto; text-align: center;}
 .banner li { list-style: none; }
 .banner ul li { float: left; }
