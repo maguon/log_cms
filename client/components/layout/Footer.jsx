@@ -29,6 +29,9 @@ class Footer extends React.Component {
                                 <span className="bolded-line"></span>
                             </div>
                             <div>
+                                {
+                                    this.props.recruitList.map((recruitItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: recruitItem.news_title }} />)
+                                }
                             </div>
                          </div>
                         <div className="span3 col">
