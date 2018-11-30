@@ -14,7 +14,7 @@ class Footer extends React.Component {
                     <div className="footerLi row col s12">
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><a href="">公司简介</a></h2>
+                                <h2><span>公司简介</span></h2>
                                 <h5>Company profile</h5>
                                 <span className="bolded-line"></span>
                             </div>
@@ -24,7 +24,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><a href="frontrecruitment?p=1&amp;md=6">人才招聘</a></h2>
+                                <h2><span>人才招聘</span></h2>
                                 <h5>personnel recruitment</h5>
                                 <span className="bolded-line"></span>
                             </div>
@@ -48,7 +48,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><a href="frontnews?md=7">联系我们</a></h2>
+                                <h2><span>联系我们</span></h2>
                                 <h5>CONTACT US</h5>
                                 <span className="bolded-line"> </span>
                             </div>

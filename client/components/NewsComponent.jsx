@@ -10,7 +10,6 @@ export default class NewsComponent  extends React.Component {
         super(props);
     }
     render () {
-        const { idd,title,time,tag,contents } = this.props
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
@@ -26,7 +25,7 @@ export default class NewsComponent  extends React.Component {
                                         <a href="frontnewsorpic?p=1&amp;md=5">{this.props.menuName}</a></div>
                                 </div>
 
-                                <div className="ab_neir" id={idd}>
+                                <div className="ab_neir">
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                             <div>
