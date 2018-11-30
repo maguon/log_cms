@@ -15,25 +15,16 @@ export default class MenuComponent  extends React.Component {
                 <Header menuList={this.props.menuList}/>
                 <div className="rows">
                     <div className="collection">
-
-                        <div className="con">
-                            <div className="about">
-                                <div className="yx-rotaion banner"  id="b04">
-                                    <ul className="rotaion_list">
-                                        <li>
+                        <div className="example">
+                            <div className="ft-carousel" id="carousel_1">
+                                <ul className="carousel-inner">
+                                    <li className="carousel-item">
                                             {
                                                 this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>
-                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" /></a>)
-                                            }
-                                        </li>
-
-                                    </ul>
-                                    <a href="javascript:void(0);" className="unslider-arrow04 prev"><img
-                                        className="arrow1" id="al" src="../public/backend/images/arrowl.png" alt="prev" /> </a>
-                                    <a href="javascript:void(0);" className="unslider-arrow04 next"><img
-                                        className="arrow2" id="ar"  src="../public/backend/images/arrowr.png" alt="next" /> </a>
-
-                                </div>
+                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" /></a>)
+                                             }
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
@@ -51,19 +42,17 @@ export default class MenuComponent  extends React.Component {
                                     </div>
                                     <p className='Pspan'>&nbsp;大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。</p>
                                 </div>
-                                <div className="ff"><img src="image/front/images/qcys.jpg" alt="qcys" />
+                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
                                     <div className='carName'>汽车运输</div>
                                 </div>
-                                <div className="ff"><img src="image/front/images/qcys.jpg" alt="qcys" />
+                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
                                     <div>汽车运输</div>
                                 </div>
-                                <div className="ff"><img src="image/front/images/qcys.jpg" alt="qcys" />
+                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
                                     <div>汽车运输</div>
                                 </div>
                             </div>
                         </div>
-
-
 
 
                         <div  id='showCarPlace'>
@@ -76,30 +65,20 @@ export default class MenuComponent  extends React.Component {
                                 </div>
 
                                 <div className="showImg">
+                                    {
+                                        this.props.newsImageList.map((imageItem,index) =>
+                                            <div className="silhouette_block">
+                                                <div className="silhouette_block_pic">
+                                            <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
+                                            <img src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a> </div>
+                                                 <div className="silhouette_block_word">   {imageItem.news_title} </div>
 
-                                    <div className="silhouette_block">
-                                        <div className="silhouette_block_pic">
-                                            {
-                                                this.props.newsImageList.map((imageItem,index) => <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
-                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a>)
-                                            }
-                                        </div>
-                                        <div className="silhouette_block_word">
-                                            {
-                                                this.props.newsImageList.map((imageItem,index) => <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
-                                                    {imageItem.news_title}</a>)
-                                            }
-                                        </div>
-                                    </div>
-
+                                            </div>)
+                                    }
 
                                 </div>
-
-
-
                             </div>
                         </div>
-
 
 
                         <div className="wrap1003_index">
@@ -112,13 +91,10 @@ export default class MenuComponent  extends React.Component {
                                 </div>
                                 <div className="ab_neir ab_neirMenu">
                                     <ul className="yoqlj">
-                                        <li>
-                                            {
-                                                this.props.partnersList.map((partnersItem,index) =>
-                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+partnersItem.news_image} />)
-                                            }
-                                        </li>
-
+                                        {
+                                            this.props.partnersList.map((partnersItem,index) =>
+                                                <li><img src={"http://stg.myxxjs.com:9002/api/image/"+partnersItem.news_image} /> </li>)
+                                        }
                                     </ul>
                                 </div>
                             </div>
