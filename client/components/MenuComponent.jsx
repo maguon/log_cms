@@ -102,7 +102,7 @@ export default class MenuComponent  extends React.Component {
 
                     </div>
                 </div>
-                <Footer profileList={this.props.profileList} contactList={this.props.contactList} recruitList={this.props.recruitList}/>
+                <Footer profileList={this.props.profileList} recruitList={this.props.recruitList} contactList={this.props.contactList} />
             </div>
         );
     }

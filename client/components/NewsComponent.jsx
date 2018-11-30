@@ -44,15 +44,9 @@ export default class NewsComponent  extends React.Component {
                             </div>
 
                         </div>
-
-
-
-
-
-
                     </div>
                 </div>
-                <Footer contactList={this.props.contactList} profileList={this.props.profileList}/>
+                <Footer profileList={this.props.profileList} recruitList={this.props.recruitList} contactList={this.props.contactList} />
             </div>
         );
     }

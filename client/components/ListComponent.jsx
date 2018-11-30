@@ -95,7 +95,7 @@ export default class ListComponent  extends React.Component {
                         </div>
 
                 </div>
-                <Footer contactList={this.props.contactList} profileList={this.props.profileList}/>
+                <Footer contactList={this.props.contactList} recruitList={this.props.recruitList} profileList={this.props.profileList} />
             </div>
             </div>
         );

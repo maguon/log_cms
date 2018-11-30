@@ -18,7 +18,7 @@ export default class PictureComponent  extends React.Component {
                             this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_content}</a>)
                         }</div>
                 </div>
-                <Footer/>
+                <Footer profileList={this.props.profileList} recruitList={this.props.recruitList} contactList={this.props.contactList} />
             </div>
         );
     }
