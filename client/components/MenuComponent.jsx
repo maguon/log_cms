@@ -18,12 +18,16 @@ export default class MenuComponent  extends React.Component {
                         <div className="example">
                             <div className="ft-carousel" id="carousel_1">
                                 <ul className="carousel-inner">
-                                    <li className="carousel-item">
                                             {
-                                                this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>
-                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" /></a>)
+                                                this.props.newsList.map((newsItem,index) => <li className="carousel-item"><a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/news/"+newsItem._id.toString()}>
+                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
+                                                    <div className="yx-rotation-title"> </div>
+                                                    <span className="yx-rotation-t">{newsItem.news_title}</span>
+
+                                                </a>
+
+                                                </li>)
                                              }
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -42,14 +46,14 @@ export default class MenuComponent  extends React.Component {
                                     </div>
                                     <p className='Pspan'>&nbsp;大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。</p>
                                 </div>
-                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
+                                <div className="ff"><img src="../backend/assets/images/qcys.jpg" alt="qcys" style={{height:160 + 'px'}} />
                                     <div className='carName'>汽车运输</div>
                                 </div>
-                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
-                                    <div>汽车运输</div>
+                                <div className="ff"><img src="../backend/assets/images/gkys.jpg" alt="qcys" style={{height:160 + 'px'}}/>
+                                    <div>港口运输</div>
                                 </div>
-                                <div className="ff"><img src="../backend/assets/images/arrowr.png" alt="qcys" />
-                                    <div>汽车运输</div>
+                                <div className="ff"><img src="../backend/assets/images/ptys.jpg" alt="qcys" style={{height:160 + 'px'}}/>
+                                    <div>普通运输</div>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@ export default class MenuComponent  extends React.Component {
                                             <div className="silhouette_block">
                                                 <div className="silhouette_block_pic">
                                             <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
-                                            <img src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a> </div>
+                                            <img className='imgShow' src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a> </div>
                                                  <div className="silhouette_block_word">   {imageItem.news_title} </div>
 
                                             </div>)
