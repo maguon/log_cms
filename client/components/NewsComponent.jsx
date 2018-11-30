@@ -28,7 +28,12 @@ export default class NewsComponent  extends React.Component {
 
                                 <div className="ab_neir" id={idd}>
                                     {
-                                        this.props.newsList.map((newsItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />)
+                                        this.props.newsList.map((newsItem,index) =>
+                                            <div>
+                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} />
+                                                <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
+
+                                            </div>)
                                     }
 
                                     <span className="fenyez12g fenyez1">上一篇</span>

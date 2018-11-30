@@ -57,6 +57,7 @@ const getNewsView = (req ,res ,next) => {
                     let query = NewsModel.find({});
                     query.where('menu_id').equals('5c00a754a0c6192580565b26');
                     query.where('news_status').equals('1');
+                    query.skip(parseInt('0')).limit(parseInt('5'));
                     query.sort({'_id':-1}).exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
@@ -79,37 +80,52 @@ const getNewsView = (req ,res ,next) => {
                             }
                         })
                     }).then((menu) => {
-                        let query = NewsModel.find({});
-                        if(params.newsId){
-                            query.where('_id').equals(params.newsId);
-                        }
-                        if(params.menuId){
-                            query.where('menu_id').equals(params.menuId);
-                        }
-                        if(params.start && params.size){
-                            query.skip(parseInt(params.start)).limit(parseInt(params.size));
-                        }
-                        query.exec((error,rows)=> {
-                            if(error){
-                                resUtil.resetErrorPage(res,error);
-                            }else{
-                                if(params.menuType==1){
-                                    const componentString = ReactDOMServer.renderToString(
-                                        <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                                    resUtil.resetMainPage(res,'news',componentString)
-                                }else if(params.menuType==2){
-                                    const componentString = ReactDOMServer.renderToString(
-                                        <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                                    resUtil.resetMainPage(res,'list',componentString)
+                        new Promise((resolve) => {
+                            let query = NewsModel.find({});
+                            query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
+                            query.where('news_status').equals('1');
+                            query.sort({'_id':-1}).exec((error,rows)=> {
+                                if(error){
+                                    resUtil.resetErrorPage(res,error);
                                 }else{
-                                    const componentString = ReactDOMServer.renderToString(
-                                        <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                                    resUtil.resetMainPage(res,'picture',componentString)
+                                    newsObj.newsImageList = rows;
+                                    resolve(menu);
+                                }
+                            })
+                        }).then((menu) => {
+                            let query = NewsModel.find({});
+                            if(params.newsId){
+                                query.where('_id').equals(params.newsId);
+                            }
+                            if(params.menuId){
+                                query.where('menu_id').equals(params.menuId);
+                            }
+                            if(params.start && params.size){
+                                query.skip(parseInt(params.start)).limit(parseInt(params.size));
+                            }
+                            query.exec((error,rows)=> {
+                                if(error){
+                                    resUtil.resetErrorPage(res,error);
+                                }else{
+                                    if(params.menuType==1){
+                                        const componentString = ReactDOMServer.renderToString(
+                                            <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                                        resUtil.resetMainPage(res,'news',componentString)
+                                    }else if(params.menuType==2){
+                                        const componentString = ReactDOMServer.renderToString(
+                                            <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                                        resUtil.resetMainPage(res,'list',componentString)
+                                    }else{
+                                        const componentString = ReactDOMServer.renderToString(
+                                            <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList}}/>);
+                                        resUtil.resetMainPage(res,'picture',componentString)
+                                    }
+
                                 }
 
-                            }
+                            });
+                        })
 
-                        });
                     })
 
                 })
@@ -152,6 +168,7 @@ const getNewsViewDetails = (req ,res ,next) => {
                 let query = NewsModel.find({});
                 query.where('menu_id').equals('5c00a754a0c6192580565b26');
                 query.where('news_status').equals('1');
+                query.skip(parseInt('0')).limit(parseInt('5'));
                 query.sort({'_id':-1}).exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);

@@ -26,6 +26,7 @@ const getMenuView = (req, res, next) => {
             let query = NewsModel.find({});
             query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
             query.where('news_status').equals('1');
+            query.skip(parseInt('0')).limit(parseInt('8'));
             query.sort({'_id':-1}).exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);
@@ -39,6 +40,7 @@ const getMenuView = (req, res, next) => {
                 let query = NewsModel.find({});
                 query.where('menu_id').equals('5bfbb65606e91f3814c8d0ea');
                 query.where('news_status').equals('1');
+                query.skip(parseInt('0')).limit(parseInt('10'));
                 query.sort({'_id':-1}).exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
@@ -65,6 +67,7 @@ const getMenuView = (req, res, next) => {
                         let query = NewsModel.find({});
                         query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
+                        query.skip(parseInt('0')).limit(parseInt('5'));
                         query.sort({'_id':-1}).exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
@@ -96,7 +99,7 @@ const getMenuView = (req, res, next) => {
                                 }else{
                                     const componentString = ReactDOMServer.renderToString(
                                         <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,'Menu',componentString)
+                                    resUtil.resetMainPage(res,'index',componentString)
                                 }
                             })
                         })

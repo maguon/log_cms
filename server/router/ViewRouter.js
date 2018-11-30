@@ -5,7 +5,7 @@ const React = require('react');
 
 import {MenuViewController,NewsViewController} from '../controller/view/'
 
-router.get('/menu', MenuViewController.getMenuView);
+router.get('/index', MenuViewController.getMenuView);
 
 router.get('/menu/:menuId/menuType/:menuType/news', NewsViewController.getNewsView);
 router.get('/news/:newsId', NewsViewController.getNewsViewDetails);
