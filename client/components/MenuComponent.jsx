@@ -39,7 +39,7 @@ export default class MenuComponent  extends React.Component {
                                 <div className="ff">
                                     <div className="companyH2">
                                         <h2>
-                                            <a href="frontnews?md=2" >公司简介</a>
+                                            <span>公司简介</span>
                                         </h2>
                                         <h5>Companyprofile</h5>
                                         <span className="span1"></span>
@@ -63,7 +63,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="hdjy">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index">
-                                        <a href="frontpicture?p=1&amp;md=19" target="_blank">车辆场地展示</a>
+                                        <span>车辆场地展示</span>
                                     </h2>
                                     <h5>Car show</h5>
                                 </div>
@@ -89,7 +89,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="yqlj">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index1">
-                                        <a href="#">合作伙伴</a>
+                                        <span>合作伙伴</span>
                                     </h2>
                                     <h5>partners</h5>
                                 </div>
