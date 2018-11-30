@@ -93,6 +93,7 @@ const getMenuView = (req, res, next) => {
                             let query = NewsModel.find({});
                             query.where('roll_flag').equals('1');
                             query.where('news_status').equals('1');
+                            query.skip(parseInt('0')).limit(parseInt('4'));
                             query.sort({'_id':-1}).exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
