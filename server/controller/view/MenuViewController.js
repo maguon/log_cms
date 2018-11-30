@@ -9,6 +9,8 @@ const {NewsModel} = require('../../modules/schemas');
 import MenuComponent from '../../../client/components/MenuComponent';
 
 const getMenuView = (req, res, next) => {
+    let newsImageList = "";
+    let partnersList = "";
     new Promise((resolve) => {
         let query = MenuModel.find({});
         query.where('menu_pid').equals('-1');
@@ -21,16 +23,45 @@ const getMenuView = (req, res, next) => {
             }
         });
     }).then((menuList) => {
-        let query = NewsModel.find({});
-        query.where('roll_flag').equals('1');
-        query.where('news_status').equals('1');
-        query.sort({'_id':-1}).exec((error,rows)=> {
-            if(error){
-                resUtil.resetErrorPage(res,error);
-            }else{
-                const componentString = ReactDOMServer.renderToString( <MenuComponent {... {menuList:menuList,newsList:rows}}/>);
-                resUtil.resetMainPage(res,'Menu',componentString)
-            }
+        new Promise((resolve) => {
+            let query = NewsModel.find({});
+            query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
+            query.where('news_status').equals('1');
+            query.sort({'_id':-1}).exec((error,rows)=> {
+                if(error){
+                    resUtil.resetErrorPage(res,error);
+                }else{
+                    newsImageList = rows;
+                    resolve(menuList);
+                }
+            })
+        }).then((menuList) => {
+            new Promise((resolve) => {
+                let query = NewsModel.find({});
+                query.where('menu_id').equals('5bfbb65606e91f3814c8d0ea');
+                query.where('news_status').equals('1');
+                query.sort({'_id':-1}).exec((error,rows)=> {
+                    if(error){
+                        resUtil.resetErrorPage(res,error);
+                    }else{
+                        partnersList = rows;
+                        resolve(menuList);
+                    }
+                })
+            }).then((menuList) => {
+                let query = NewsModel.find({});
+                query.where('roll_flag').equals('1');
+                query.where('news_status').equals('1');
+                query.sort({'_id':-1}).exec((error,rows)=> {
+                    if(error){
+                        resUtil.resetErrorPage(res,error);
+                    }else{
+                        const componentString = ReactDOMServer.renderToString(
+                            <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsImageList,partnersList:partnersList}}/>);
+                        resUtil.resetMainPage(res,'Menu',componentString)
+                    }
+                })
+            })
         })
     })
 }
