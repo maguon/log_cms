@@ -12,6 +12,7 @@ import PictureComponent from '../../../client/components/PictureComponent';
 
 const getNewsView = (req ,res ,next) => {
     let params = req.params;
+    let pageObj = {};
     let newsObj = {};
     let MenuName = "";
     new Promise((resolve) => {
@@ -93,37 +94,58 @@ const getNewsView = (req ,res ,next) => {
                                 }
                             })
                         }).then((menu) => {
-                            let query = NewsModel.find({});
-                            if(params.newsId){
-                                query.where('_id').equals(params.newsId);
-                            }
-                            if(params.menuId){
-                                query.where('menu_id').equals(params.menuId);
-                            }
-                            if(params.start && params.size){
-                                query.skip(parseInt(params.start)).limit(parseInt(params.size));
-                            }
-                            query.exec((error,rows)=> {
-                                if(error){
-                                    resUtil.resetErrorPage(res,error);
-                                }else{
-                                    if(params.menuType==1){
-                                        const componentString = ReactDOMServer.renderToString(
-                                            <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                                        resUtil.resetMainPage(res,'news',componentString)
-                                    }else if(params.menuType==2){
-                                        const componentString = ReactDOMServer.renderToString(
-                                            <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                                        resUtil.resetMainPage(res,'list',componentString)
+                            new Promise((resolve) => {
+                                let query = NewsModel.find({}).count();
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
+                                query.where('news_status').equals('1');
+                                query.exec((error,rows)=> {
+                                    if(error){
+                                        resUtil.resetErrorPage(res,error);
                                     }else{
-                                        const componentString = ReactDOMServer.renderToString(
-                                            <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList}}/>);
-                                        resUtil.resetMainPage(res,'picture',componentString)
+                                        pageObj.pageIndex = 1;
+                                        pageObj.pageSize = 5;
+                                        pageObj.totalCount = rows;
+                                        pageObj.totalPage = (pageObj.totalCount + pageObj.pageSize -pageObj.pageIndex) / pageObj.pageSize;
+                                        resolve(menu);
+                                    }
+                                })
+                            }).then((menu) => {
+                                let query = NewsModel.find({});
+                                if(params.newsId){
+                                    query.where('_id').equals(params.newsId);
+                                }
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
+                                query.where('news_status').equals('1');
+                                if(params.start && params.size){
+                                    query.skip(parseInt(params.start)).limit(parseInt(params.size));
+                                }
+                                query.exec((error,rows)=> {
+                                    if(error){
+                                        resUtil.resetErrorPage(res,error);
+                                    }else{
+                                        if(params.menuType==1){
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                                            resUtil.resetMainPage(res,'news',componentString)
+                                        }else if(params.menuType==2){
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj}}/>);
+                                            resUtil.resetMainPage(res,'list',componentString)
+                                        }else{
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList}}/>);
+                                            resUtil.resetMainPage(res,'picture',componentString)
+                                        }
+
                                     }
 
-                                }
+                                });
+                            })
 
-                            });
                         })
 
                     })

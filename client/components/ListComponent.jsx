@@ -80,7 +80,10 @@ export default class ListComponent  extends React.Component {
                                     </ul>
 
                                     <div className="fenye">
-                                        <span className="fenyez12g fenyez1">共10条</span>
+                                        <span className="fenyez12g fenyez1">共10条
+                                            {
+                                                this.props.pageObj.totalPage
+                                            }</span>
 
                                         <span className="fenyez12g fenyez1">上一页</span>
 
