@@ -52,7 +52,7 @@ export default class NewsComponent  extends React.Component {
 
                     </div>
                 </div>
-                <Footer/>
+                <Footer contactList={this.props.contactList} profileList={this.props.profileList}/>
             </div>
         );
     }
