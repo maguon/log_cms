@@ -18,7 +18,7 @@ export default class MenuComponent  extends React.Component {
 
                         <div className="con">
                             <div className="about">
-                                <div className="yx-rotaion">
+                                <div className="yx-rotaion banner"  id="b04">
                                     <ul className="rotaion_list">
                                         <li>
                                             {
@@ -28,6 +28,11 @@ export default class MenuComponent  extends React.Component {
                                         </li>
 
                                     </ul>
+                                    <a href="javascript:void(0);" className="unslider-arrow04 prev"><img
+                                        className="arrow1" id="al" src="../public/backend/images/arrowl.png" alt="prev" /> </a>
+                                    <a href="javascript:void(0);" className="unslider-arrow04 next"><img
+                                        className="arrow2" id="ar"  src="../public/backend/images/arrowr.png" alt="next" /> </a>
+
                                 </div>
                             </div>
                         </div>
