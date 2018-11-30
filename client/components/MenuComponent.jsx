@@ -74,12 +74,16 @@ export default class MenuComponent  extends React.Component {
 
                                     <div className="silhouette_block">
                                         <div className="silhouette_block_pic">
-                                            <a href="frontpictureinfo?nd=233" target="_blank">
-                                                <img src="picture/20161201093621.jpg" />
-                                            </a>
+                                            {
+                                                this.props.newsImageList.map((imageItem,index) => <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
+                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a>)
+                                            }
                                         </div>
                                         <div className="silhouette_block_word">
-                                            <a href="frontpictureinfo?nd=233" target="_blank">新增运输车辆</a>
+                                            {
+                                                this.props.newsImageList.map((imageItem,index) => <a className="collection-item" key={index} href={"/view/news/"+imageItem._id.toString()}>
+                                                    {imageItem.news_title}</a>)
+                                            }
                                         </div>
                                     </div>
 
@@ -103,11 +107,12 @@ export default class MenuComponent  extends React.Component {
                                 </div>
                                 <div className="ab_neir ab_neirMenu">
                                     <ul className="yoqlj">
-
-                                        {
-                                            this.props.menuList.map((menuItem,index) => <li className="collection-item" key={index}> <img src={menuItem.menu_name} /></li>)
-                                        }
-                                        <li><img src="../images/20161008163842.jpg" /></li>
+                                        <li>
+                                            {
+                                                this.props.partnersList.map((partnersItem,index) =>
+                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+partnersItem.news_image} />)
+                                            }
+                                        </li>
 
                                     </ul>
                                 </div>
