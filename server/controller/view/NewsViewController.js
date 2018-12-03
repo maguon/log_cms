@@ -294,7 +294,7 @@ const getNewsViewSearch = (req ,res ,next) => {
                 }).then((menu) => {
                     let query = NewsModel.find({}).populate('menu_id');
                     if(params.search){
-                        query.where('news_title').equals(params.search);
+                        query.where('news_title').regex(params.search);
                     }
 
                     query.exec((error,rows)=> {
