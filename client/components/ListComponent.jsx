@@ -94,12 +94,6 @@ export default class ListComponent  extends React.Component {
                                         }条&nbsp;
 
                                         </span>
-
-                                        <span className="fenyez12g fenyez1">上一页</span>
-
-                                        <span className="fenyez12g fenyez2">1</span>
-
-                                        <span className="fenyez12g fenyez1">下一页</span>
                                         <PageButton { ...this.state } pageNext={this.pageNext} />
 
                                     </div>
