@@ -86,7 +86,7 @@ const getNewsView = (req ,res ,next) => {
                             let query = NewsModel.find({});
                             query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
                             query.where('news_status').equals('1');
-                            query.sort({'_id':-1}).exec((error,rows)=> {
+                            query.sort({'news_num':-1}).exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{

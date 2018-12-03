@@ -31,6 +31,7 @@ export default class NewsComponent  extends React.Component {
                                         this.props.newsList.map((newsItem,index) =>
                                             <div>
                                                   {  <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} />}
+                                                <p>{ newsItem.news_title }</p>
                                                 <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
                                             </div>)
