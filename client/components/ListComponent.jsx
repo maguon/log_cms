@@ -95,13 +95,13 @@ export default class ListComponent  extends React.Component {
                                         </span>
 
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/1/size/5/news"}>上一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/1/size/5/news"}>上一页</a>
                                         }
 
                                         <span className="fenyez12g fenyez2">1</span>
 
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/2/size/5/news"}>下一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/2/size/5/news"}>下一页</a>
                                         }
 
                                     </div>
