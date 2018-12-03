@@ -136,7 +136,7 @@ body {
 .wrap1003 {
     max-width: 1210px;
     min-height: 600px;
-    padding-top: 80px;
+    padding-top: 60px;
     margin: 0 auto;
     overflow: hidden;
     color: #656565;
@@ -235,6 +235,7 @@ body {
 .jididong li {
     width: 100%;
     height: 35px;
+    padding-left: 15px;
     line-height: 35px;
     border-bottom: 1px dashed #e3e3e3;
 }
@@ -247,6 +248,15 @@ body {
     display: block;
     color: #5a5a5a;!important;
 }
+.jididong li a:hover {
+    background: url(../images/huijiant_03.png) no-repeat left;
+    width: 100%;
+    height: 35px;
+    text-indent: 10px;
+    line-height: 35px;
+    display: block;
+    color: #8b1014;
+}
 .fenye {
     height: 26px;
     float: left;
@@ -257,9 +267,12 @@ body {
 .rq {
     float: right;
 }
+.collection a.collection-item{
+    color: #000 !important;
+    padding-top: 3px;
+}
 
-
-/*menu*/
+/*!*menu*!
 .yx-rotaion{
     position: relative;
     overflow: hidden;
@@ -280,42 +293,33 @@ body {
     width:100%;
     padding: 0;
     height:530px;
-}
+}*/
 /*轮播*/
 .example {
     width: 100%;
     height: 530px;
     font-size: 40px;
-    text-align: center;
-    margin: 20px auto;
-    background-color: #464576;
 }
-.carousel-item{line-height: 336px;color: #fff;font-family:  Arial Black}
-
-
 .ft-carousel {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-
 .ft-carousel .carousel-inner {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: -1px;
+    top: 19px;
     height: 100%;
 }
-
 .ft-carousel .carousel-inner .carousel-item {
     float: left;
     height: 100%;
+    color: #fff;
 }
-
 .ft-carousel .carousel-item img {
     width: 100%;
 }
-
 .ft-carousel .carousel-indicators {
     position: absolute;
     right: 30px;
@@ -348,23 +352,20 @@ body {
     cursor: pointer;
 }
 .yx-rotation-title {
-    position: absolute;
+    position: relative;
     height: 30px;
     line-height: 30px;
     background: #000;
-    filter: alpha(opacity=40);
-    -moz-opacity: 0.4;
-    -khtml-opacity: 0.4;
     opacity: 0.4;
-    left: 0;
-    bottom: 0;
-    z-index: 1
+    left: 70px;
+    top: 600px;
+    z-index: 1060
 }
 .yx-rotation-t {
-    color: #000;
+    color: #fff;
     font-size: 12px;
     font-family: microsoft yahei;
-    z-index: 2;
+    z-index:1090;
     bottom: 0;
     left: 10px;
     line-height: 30px

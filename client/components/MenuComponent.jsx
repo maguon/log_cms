@@ -19,13 +19,14 @@ export default class MenuComponent  extends React.Component {
                             <div className="ft-carousel" id="carousel_1">
                                 <ul className="carousel-inner">
                                             {
-                                                this.props.newsList.map((newsItem,index) => <li className="carousel-item"><a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/news/"+newsItem._id.toString()}>
-                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
-                                                    <div className="yx-rotation-title"> </div>
-                                                    <span className="yx-rotation-t">{newsItem.news_title}</span>
-
-                                                </a>
-
+                                                this.props.newsList.map((newsItem,index) =>
+                                                <li className="carousel-item">
+                                                    <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/news/"+newsItem._id.toString()}>
+                                                        <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
+                                                        <span className="yx-rotation-title">
+                                                            <span className="yx-rotation-t">{newsItem.news_title}</span>
+                                                        </span>
+                                                     </a>
                                                 </li>)
                                              }
                                 </ul>
