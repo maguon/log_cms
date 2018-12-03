@@ -107,7 +107,7 @@ const getNewsView = (req ,res ,next) => {
                                         pageObj.pageIndex = 1;
                                         pageObj.pageSize = 5;
                                         pageObj.totalCount = rows;
-                                        pageObj.totalPage = (pageObj.totalCount + pageObj.pageSize -pageObj.pageIndex) / pageObj.pageSize;
+                                        pageObj.totalPage = Math.ceil(pageObj.totalCount / pageObj.pageSize);
                                         resolve(menu);
                                     }
                                 })
@@ -120,9 +120,9 @@ const getNewsView = (req ,res ,next) => {
                                     query.where('menu_id').equals(params.menuId);
                                 }
                                 query.where('news_status').equals('1');
-                                if(params.start && params.size){
-                                    query.skip(parseInt(params.start)).limit(parseInt(params.size));
-                                }
+                                //if(params.start && params.size){
+                                    query.skip(parseInt(0)).limit(parseInt(5));
+                                //}
                                 query.exec((error,rows)=> {
                                     if(error){
                                         resUtil.resetErrorPage(res,error);
