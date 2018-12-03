@@ -29,21 +29,16 @@ export default class NewsComponent  extends React.Component {
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                             <div>
-                                                    <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} />
+                                                  {/*  <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} />*/}
                                                 <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
                                             </div>)
                                     }
 
                                     <span className="fenyez12g fenyez1">上一篇</span>
-                                    <span className="more">more</span>
-                                    <PageButton  />
-
                                     <span className="fenyez12g fenyez1"
                                           onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
 
-
-                                    {/* <span className="fenyez12g fenyez1" onClick="location.href='frontnewsorpic?p=1&amp;md=5'">返回</span>*/}
                                 </div>
                             </div>
 
