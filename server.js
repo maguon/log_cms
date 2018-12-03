@@ -40,6 +40,10 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname+ "/public/backend/index.html" )
 });
 
+app.get('/', function (req, res) {
+    res.redirect('/view/');
+});
+
 app.listen(8100, () => {
     logger.info(`server started at localhost:${8100} ` + new Date().toLocaleString());
 })

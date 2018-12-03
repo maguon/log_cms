@@ -112,7 +112,7 @@ const getNewsView = (req ,res ,next) => {
                                     }
                                 })
                             }).then((menu) => {
-                                let query = NewsModel.find({});
+                                let query = NewsModel.find({}).populate('menu_id');
                                 if(params.newsId){
                                     query.where('_id').equals(params.newsId);
                                 }
