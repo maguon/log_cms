@@ -36,9 +36,7 @@ app.use('/view',viewRouter);
 
 });*/
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname+ "/public/backend/index.html" )
-});
+
 
 app.get('/', function (req, res) {
     res.redirect('/view/');
