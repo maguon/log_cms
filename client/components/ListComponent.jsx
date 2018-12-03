@@ -103,7 +103,6 @@ export default class ListComponent  extends React.Component {
                                         {
                                             <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/2/size/5/news"}>下一页</a>
                                         }
-                                        <PageButton { ...this.state } pageNext={this.pageNext} />
 
                                     </div>
                                 </div>
