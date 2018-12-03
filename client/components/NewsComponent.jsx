@@ -4,7 +4,6 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-import  PageButton from './layout/pageButton';
 export default class NewsComponent  extends React.Component {
     constructor(props) {
         super(props);
@@ -26,6 +25,8 @@ export default class NewsComponent  extends React.Component {
                                 </div>
 
                                 <div className="ab_neir">
+
+
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                             <div>
