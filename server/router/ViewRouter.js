@@ -7,7 +7,7 @@ import {MenuViewController,NewsViewController} from '../controller/view/'
 
 router.get('/index', MenuViewController.getMenuView);
 
-router.get('/menu/:menuId/menuType/:menuType/news', NewsViewController.getNewsView);
+router.get('/menu/:menuId/menuType/:menuType/page/:page/size/:size/news', NewsViewController.getNewsView);
 router.get('/news/:newsId', NewsViewController.getNewsViewDetails);
 //router.get('/article/:articleId', MenuViewController.getMenuView);
 
