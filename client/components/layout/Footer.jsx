@@ -44,6 +44,7 @@ class Footer extends React.Component {
                                 <input type="hidden" name="p" id="searchpage" value="1" />
                                 <input className="search-width col s9" id="appendedInputButton"  name="searchNews.newsName" type="text"/>
                                  <button className="btn btn-theme col s3" type="submit">Go</button>
+                                <a href={"/view/search/仓储场地"}>Go11111111111111</a>
                             </div>
                         </div>
                         <div className="span3 col">
