@@ -1,6 +1,6 @@
-exports.CategoryModel = require('./category').CategoryModel;
-exports.ContentModel = require('./content').ContentModel;
-exports.AdminModel = require('./admin').AdminModel;
-exports.UserModel = require('./user').UserModel;
-exports.MenuModel = require('./menu').MenuModel;
-exports.NewsModel = require('./news').NewsModel;
+exports.CategoryModel = require('./Category').CategoryModel;
+exports.ContentModel = require('.Content').ContentModel;
+exports.AdminModel = require('./Admin').AdminModel;
+exports.UserModel = require('./User').UserModel;
+exports.MenuModel = require('./Menu').MenuModel;
+exports.NewsModel = require('./News').NewsModel;
