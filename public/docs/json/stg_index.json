@@ -1026,6 +1026,9 @@
         "newsTitle": {
           "type": "string"
         },
+        "newsNum": {
+          "type": "integer"
+        },
         "newsContent": {
           "type": "string"
         },

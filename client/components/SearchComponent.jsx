@@ -4,7 +4,7 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-export default class NewsComponent  extends React.Component {
+export default class SearchComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,26 +15,17 @@ export default class NewsComponent  extends React.Component {
                 <div className="rows">
                     <div className="collection">
                         <div className="wrap1003">
-                            <div className="ab_huod">
-                                <div className="ab_huod_tit">{this.props.menuName}</div>
-                            </div>
+
                             <div className="about_word">
                                 <div className="kect">
                                     <div className="mores"><a href={"/view/index"} >首页</a>&nbsp;&gt;&nbsp;
-                                        <a href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/size/5/news"}>{this.props.menuName}</a></div>
+                                        高级搜索</div>
                                 </div>
 
                                 <div className="ab_neir">
-
-
                                     {
-                                        this.props.newsList.map((newsItem,index) =>
-                                            <div>
-                                                  {  <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} />}
-                                                <p>{ newsItem.news_title }</p>
-                                                <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
-
-                                            </div>)
+                                        this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_title}<span
+                                            className="rq">{newsItem.created_at.toLocaleDateString()}</span></a>)
                                     }
 
                                     <span className="fenyez12g fenyez1">上一篇</span>

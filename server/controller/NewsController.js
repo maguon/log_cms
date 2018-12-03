@@ -11,6 +11,7 @@ const  createNews = (req, res, next) => {
     let newsObj = {
         menu_id: params.menuId,
         news_title: bodyParams.newsTitle,
+        news_num: bodyParams.newsNum,
         news_content: bodyParams.newsContent,
         roll_flag: bodyParams.rollFlag,
         news_status: bodyParams.newsStatus
@@ -54,7 +55,7 @@ const getNews = (req, res, next) => {
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
     }
-    query.exec((error,rows)=> {
+    query.sort({'news_num':-1}).exec((error,rows)=> {
         if (error) {
             logger.error(' getNews ' + error.message);
             resUtil.resInternalError(error,res);
@@ -71,6 +72,7 @@ const updateNews = (req, res, next) => {
     let params = req.params;
     let newsObj = {
         news_title: bodyParams.newsTitle,
+        news_num: bodyParams.newsNum,
         news_content: bodyParams.newsContent,
         roll_flag: bodyParams.rollFlag,
         news_status: bodyParams.newsStatus
