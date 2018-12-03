@@ -35,7 +35,7 @@ const resetMainPage = (res,title,componentString)=>{
 
     res.render("index",{title:title,
         component:componentString,
-        scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js"]}
+        scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js","/backend/assets/plugins/slider/ft-carousel.min.js"]}
     );
 }
 

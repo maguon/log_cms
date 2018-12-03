@@ -4,54 +4,18 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-const listData = [{
-    key:"001",
-    idd:"001",
-    title:"webstorm连接github，方便的管理仓库",
-    time:"2016-12-01",
-    tag:" git ",
-    contents:"66666666666666！"
-}] //等等等多条数据
 
 export default class ListComponent  extends React.Component {
     constructor(props) {
         super(props);
-        this.pageNext=this.pageNext.bind(this);
-        this.setPage=this.setPage.bind(this);
-        this.state = {
-            indexList:[],//当前渲染的页面数据
-            totalData:listData,
-            current: 1, //当前页码
-            pageSize:4, //每页显示的条数
-            goValue:0,  //要去的条数index
-            totalPage:0,//总页数
-        };
-
-    }
-
-    componentWillMount(){
-        //设置总页数
-        this.setState({
-            totalPage:Math.ceil( this.state.totalData.length/this.state.pageSize),
-        })
-        this.pageNext(this.state.goValue)
-
-    }
-
-    //设置内容
-    setPage(num){
-        this.setState({
-            indexList:this.state.totalData.slice(num,num+this.state.pageSize)
-        })
     }
 
 
-    pageNext (num) {
-        this.setPage(num)
-    }
+
 
     render () {
         return (
+
             <div>
                 <Header menuList={this.props.menuList}/>
                 <div className="rows">
@@ -79,29 +43,31 @@ export default class ListComponent  extends React.Component {
                                     </ul>
 
                                     <div className="fenye">
-                                        <span className="fenyez12g fenyez1">共{
-                                            this.props.pageObj.totalCount
-                                        }条&nbsp;
-                                        共{
-                                            this.props.pageObj.totalPage
-                                        }页&nbsp;
-                                        当前第{
-                                            this.props.pageObj.pageIndex
-                                        }页&nbsp;
-                                        每页{
-                                            this.props.pageObj.pageSize
-                                        }条&nbsp;
+
+                                         <span className="fenyez12g fenyez1">共{
+                                             this.props.pageObj.totalCount
+                                         }条&nbsp;
+                                             共{
+                                                 this.props.pageObj.totalPage =  Math.ceil(this.props.pageObj.totalCount/this.props.pageObj.pageSize)
+                                             }页&nbsp;
+                                             当前第{
+                                                 this.props.currentPage
+                                             }页&nbsp;
+                                             每页{
+                                                 this.props.pageObj.pageSize
+                                             }条&nbsp;
 
                                         </span>
 
+
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/1/size/5/news"}>上一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/"+(this.props.pageObj.pageIndex=(this.props.pageObj.pageIndex===1)?1:(this.props.pageObj.pageIndex=this.props.currentPage-1))+"/size/"+   this.props.pageObj.pageSize  +"/news"}   >上一页</a>
                                         }
 
-                                        <span className="fenyez12g fenyez2">1</span>
+                                        <span className="fenyez12g fenyez2"> {this.props.pageObj.pageIndex}/{Math.ceil(this.props.pageObj.totalCount/this.props.pageObj.pageSize)}</span>
 
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/2/size/5/news"}>下一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"}  >下一页</a>
                                         }
 
                                     </div>

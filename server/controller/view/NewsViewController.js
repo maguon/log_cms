@@ -129,15 +129,15 @@ const getNewsView = (req ,res ,next) => {
                                     }else{
                                         if(params.menuType==1){
                                             const componentString = ReactDOMServer.renderToString(
-                                                <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                                                <NewsComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
                                             resUtil.resetMainPage(res,'news',componentString)
                                         }else if(params.menuType==2){
                                             const componentString = ReactDOMServer.renderToString(
-                                                <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj}}/>);
+                                                <ListComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
                                             resUtil.resetMainPage(res,'list',componentString)
                                         }else{
                                             const componentString = ReactDOMServer.renderToString(
-                                                <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList}}/>);
+                                                <PictureComponent {... {newsList:rows,menuList:menu,menuName:MenuName,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList,currentPage:params.page}}/>);
                                             resUtil.resetMainPage(res,'picture',componentString)
                                         }
 

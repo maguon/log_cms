@@ -100,7 +100,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
 
     $scope.putItem=function(){
         var val = $scope.editor.getData();
-        if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null){
+        if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null||$scope.newsItem.news_num==null){
             swal('请输入完整数据！',"","error")
         }
         else
@@ -108,6 +108,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
             var obj = {
                 newsTitle:  $scope.newsItem.news_title,
                 newsContent: val,
+                newsNum:$scope.newsItem.news_num,
                 rollFlag:   $scope.newsItem.roll_flag,
                 newsStatus:   $scope.newsItem.news_status
             };
