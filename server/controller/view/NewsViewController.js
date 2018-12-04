@@ -122,7 +122,7 @@ const getNewsView = (req ,res ,next) => {
                                 }
                                 query.where('news_status').equals('1');
                                 //if(params.start && params.size){
-                                    query.skip(params.page*params.size -params.size).limit(parseInt(params.size));
+                                    query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize*params.page);
                                 //}
                                 query.exec((error,rows)=> {
                                     if(error){

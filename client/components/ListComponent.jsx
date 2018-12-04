@@ -61,13 +61,13 @@ export default class ListComponent  extends React.Component {
 
 
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/"+(this.props.pageObj.pageIndex=(this.props.pageObj.pageIndex===1)?1:(this.props.pageObj.pageIndex=this.props.currentPage-1))+"/size/"+   this.props.pageObj.pageSize  +"/news"}   >上一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"}   >上一页</a>
                                         }
 
-                                        <span className="fenyez12g fenyez2"> {this.props.pageObj.pageIndex}/{Math.ceil(this.props.pageObj.totalCount/this.props.pageObj.pageSize)}</span>
+                                        <span className="fenyez12g fenyez2"> {this.props.currentPage}</span>
 
                                         {
-                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"}  >下一页</a>
+                                            <a className="" href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"}  >下一页</a>
                                         }
 
                                     </div>
