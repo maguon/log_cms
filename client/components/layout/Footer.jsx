@@ -7,7 +7,6 @@ class Footer extends React.Component {
     }
 
     render() {
-
         return (
             <div className="page-footer">
                 <div className="foot">
@@ -26,7 +25,7 @@ class Footer extends React.Component {
                             <div className="lined">
                                 <h2><span>人才招聘</span></h2>
                                 <h5>personnel recruitment</h5>
-                                <span className="bolded-line"></span>
+                                <span className="bolded-line"> </span>
                             </div>
                             <div>
                                 {
@@ -42,9 +41,8 @@ class Footer extends React.Component {
                             </div>
                             <div className="input-append row  col s12">
                                 <input type="hidden" name="p" id="searchpage" value="1" />
-                                <input className="search-width col s9" id="appendedInputButton"  name="searchNews.newsName" type="text"/>
-                                 <button className="btn btn-theme col s3" type="submit">Go</button>
-                                <a href={"/view/search/仓储场地"}>Go11111111111111</a>
+                                <input className="search-width col s9" id="appendedInputButton"  name="searchNews.newsName" type="text" value="inputValue"/>
+                                 <a  href={"/view/search/"} className="btn btn-theme col s3" type="submit">Go</a>
                             </div>
                         </div>
                         <div className="span3 col">
