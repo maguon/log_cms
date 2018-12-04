@@ -534,10 +534,30 @@ body {
     width: 20px;
 }
 
-
-
-
-
+.pictureText img{
+    width: 500px;
+    height: 360px;
+    margin: 15px auto;
+}
+.pictureText{
+    width: 90%;
+    margin-left: 5%;
+    padding-bottom: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ccc;
+}
+.pageItem{
+    width: 92%;
+    margin-left: 4%;
+}
+.pageItem a{
+    width: 55px;
+    float: left;
+    margin-bottom: 30px;
+}
+.col{
+    text-align: left;
+}
 
 
 

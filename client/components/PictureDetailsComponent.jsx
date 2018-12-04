@@ -25,20 +25,21 @@ export default class PictureDetailsComponent  extends React.Component {
                                         <a className="black-text"  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
                                 </div>
 
-                                <div className="ab_neir">
-                                    <div>
-                                        <img src={"http://stg.myxxjs.com:9002/api/image/"+this.props.newsList[0].news_image} />
-                                        <p>{this.props.newsList[0].news_title}</p>
-                                        <p dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }} />
+                                <div className="">
+                                    <div className="pictureText">
+                                        <img className="pictureImg" src={"http://stg.myxxjs.com:9002/api/image/"+this.props.newsList[0].news_image} />
+                                        <p className="center-align" style={{marginBottom:20+'px'}}>{this.props.newsList[0].news_title}</p>
+                                        <p className="picture" dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }}  />
 
                                     </div>
+                                    <div className="pageItem">
                                     {
-                                        <a id="page" className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/picture/"+this.props.newsList[0]._id+"/page/"+(parseInt(this.props.currentPage)-1)} >上一篇</a>
+                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/picture/"+this.props.newsList[0]._id+"/page/"+(parseInt(this.props.currentPage)-1)} >上一篇</a>
                                     }
                                     {
                                         <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/picture/"+this.props.newsList[0]._id+"/page/"+(parseInt(this.props.currentPage)+1)}  >下一篇</a>
                                     }
-
+                                    </div>
                                 </div>
                             </div>
 
