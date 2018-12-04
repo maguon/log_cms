@@ -32,9 +32,12 @@ export default class PictureDetailsComponent  extends React.Component {
                                         <p dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }} />
 
                                     </div>
-                                    <span className="fenyez12g fenyez1">上一篇</span>
-                                    <span className="fenyez12g fenyez1"
-                                          onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
+                                    {
+                                        <a id="page" className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/picture/"+this.props.newsList[0]._id+"/page/"+(parseInt(this.props.currentPage)-1)} >上一篇</a>
+                                    }
+                                    {
+                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/picture/"+this.props.newsList[0]._id+"/page/"+(parseInt(this.props.currentPage)+1)}  >下一篇</a>
+                                    }
 
                                 </div>
                             </div>
