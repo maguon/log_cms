@@ -315,7 +315,6 @@ const getPictureDetails = (req ,res ,next) => {
                         if(params.menuId){
                             query.where('menu_id').equals(params.menuId);
                         }
-                        query.skip(parseInt('0')).limit(parseInt('3'));
                         query.exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
