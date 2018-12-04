@@ -10,6 +10,7 @@ router.get('/', MenuViewController.getMenuView);
 
 router.get('/menu/:menuId/menuType/:menuType/page/:page/news', NewsViewController.getNewsView);
 router.get('/news/:newsId', NewsViewController.getNewsViewDetails);
+router.get('/picture/:pictureId', NewsViewController.getPictureDetails);
 router.get('/search/:search/', NewsViewController.getNewsViewSearch);
 
 module.exports = router

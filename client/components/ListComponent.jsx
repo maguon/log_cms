@@ -10,9 +10,6 @@ export default class ListComponent  extends React.Component {
         super(props);
     }
 
-
-
-
     render () {
         return (
 
@@ -27,8 +24,8 @@ export default class ListComponent  extends React.Component {
                             </div>
                             <div className="about_word">
                                 <div className="kect">
-                                    <div className="mores"><a href="index" >首页</a>&nbsp;&gt;&nbsp;
-                                        <a href="#" >{this.props.menuName}</a></div>
+                                    <div className="mores"><a href={"/view/index"} className="black-text" >首页</a>&nbsp;&gt;&nbsp;
+                                        <a className="black-text"  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
                                 </div>
 
                                 <div className="ab_neir">
@@ -52,7 +49,7 @@ export default class ListComponent  extends React.Component {
                                         </span>
 
                                         {
-                                            <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"}   >上一页</a>
+                                            <a id="page" className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"}   >上一页</a>
                                         }
 
                                         <span className="fenyez12g pageList fenyez2 center" style={{marginLeft:10+'px'}}> {this.props.currentPage}</span>

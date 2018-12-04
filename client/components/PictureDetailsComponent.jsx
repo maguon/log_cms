@@ -4,11 +4,12 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-export default class NewsComponent  extends React.Component {
+export default class PictureDetailsComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
     render () {
+
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
@@ -25,16 +26,12 @@ export default class NewsComponent  extends React.Component {
                                 </div>
 
                                 <div className="ab_neir">
+                                    <div>
+                                        <img src={"http://stg.myxxjs.com:9002/api/image/"+this.props.newsList[0].news_image} />
+                                        <p>{this.props.newsList[0].news_title}</p>
+                                        <p dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }} />
 
-
-                                    {
-                                        this.props.newsList.map((newsItem,index) =>
-                                            <div>
-                                                <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
-
-                                            </div>)
-                                    }
-
+                                    </div>
                                     <span className="fenyez12g fenyez1">上一篇</span>
                                     <span className="fenyez12g fenyez1"
                                           onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>

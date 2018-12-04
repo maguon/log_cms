@@ -32,15 +32,15 @@ export default class PictureComponent  extends React.Component {
                             </div>
                             <div className="about_word">
                                 <div className="kect">
-                                    <div className="mores"><a href={"/view/index"}>首页</a>&nbsp;&gt;&nbsp;
-                                        <a href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/size/5/news"}>{this.props.menuName}</a></div>
+                                    <div className="mores"><a href={"/view/index"} className="black-text">首页</a>&nbsp;&gt;&nbsp;
+                                        <a className="black-text" href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
                                 </div>
 
                                 <div className="ab_neir1">
 
                                     {
                                         this.props.newsImageList.map((imageItem,index) =>
-                                            <a  key={index} href={"/view/news/"+imageItem._id.toString()}>
+                                            <a  key={index} href={"/view/picture/"+imageItem._id.toString()}>
                                                 <img className="ab_neir_img" src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a>)
                                     }
 
