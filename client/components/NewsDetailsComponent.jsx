@@ -9,7 +9,55 @@ export default class NewsDetailsComponent  extends React.Component {
         super(props);
     }
     render () {
+        let prePage;
+        if(this.props.currentPage===1){
+            prePage =(
+                <div className="fenPian">
+
+                    {
+                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
+                    }
+
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
+                    }
+                </div>
+            )
+
+        }
+        else  if(this.props.currentPage!==1&&this.props.currentPage!== this.props.pageObj.totalCount){
+            prePage =(
+                <div className="fenPian">
+                    {
+                        <a  className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}   >上一篇</a>
+                    }
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
+                    }
+                </div>
+            )
+        }
+        else if(this.props.currentPage=== this.props.pageObj.totalCount){
+            prePage =(
+
+                <div className="fenPian">
+                    {
+                        <a  className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}   >上一篇</a>
+                    }
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
+                    }
+                </div>
+            )
+        }
+        else {
+            return;
+        }
         return (
+
             <div>
                 <Header menuList={this.props.menuList}/>
                 <div className="rows">
@@ -26,21 +74,26 @@ export default class NewsDetailsComponent  extends React.Component {
 
                                 <div className="ab_neir">
 
+                                    <div className="fenPianText">
+                                        {
+                                            this.props.newsList.map((newsItem,index) =>
+                                                <div>
+                                                    <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
-                                    {
-                                        this.props.newsList.map((newsItem,index) =>
-                                            <div>
-                                                <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
+                                                </div>)
+                                        }
+                                    </div>
 
-                                            </div>)
-                                    }
+                                    {prePage}
+                                   {/* <div className="fenPian">
+                                        {
+                                            <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"} >上一篇</a>
+                                        }
+                                        {
+                                            <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
+                                        }
+                                    </div>*/}
 
-                                    {
-                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"} >上一篇</a>
-                                    }
-                                    {
-                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
-                                    }
 
                                 </div>
                             </div>
