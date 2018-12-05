@@ -20,7 +20,7 @@ const getNewsView = (req ,res ,next) => {
     new Promise((resolve) => {
         let query = MenuModel.find({});
         query.where('_id').equals(params.menuId);
-        query.where('menu_pid').equals('-1');
+        //query.where('menu_pid').equals('-1');
         query.where('menu_status').equals('1');
         query.sort('menu_num').exec((error,rows)=> {
             if(error){
