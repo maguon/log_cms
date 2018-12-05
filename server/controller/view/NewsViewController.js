@@ -181,7 +181,7 @@ const getNewsView = (req ,res ,next) => {
                                             query.where('menu_id').equals(params.menuId);
                                         }
                                         query.where('news_status').equals('1');
-                                        if(params.menu_type==2){
+                                        if(params.menuType==2){
                                             query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize*params.page);
                                         }
                                         query.sort({'news_num':-1}).exec((error,rows)=> {
@@ -281,12 +281,17 @@ const getNewsViewDetails = (req ,res ,next) => {
                     if(params.newsId){
                         query.where('_id').equals(params.newsId);
                     }
+                    if(params.menuId){
+                        query.where('menu_id').equals(params.menuId);
+                    }
+                    query.where('news_status').equals('1');
+                    query.skip(params.page-1).limit(1);
                     query.exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
                             const componentString = ReactDOMServer.renderToString(
-                                <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                                <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:rows[0].news_num}}/>);
                             resUtil.resetMainPage(res,'news',componentString)
 
                         }

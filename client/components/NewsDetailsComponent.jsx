@@ -35,9 +35,12 @@ export default class NewsDetailsComponent  extends React.Component {
                                             </div>)
                                     }
 
-                                    <span className="fenyez12g fenyez1">上一篇</span>
-                                    <span className="fenyez12g fenyez1"
-                                          onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
+                                    {
+                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"} >上一篇</a>
+                                    }
+                                    {
+                                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
+                                    }
 
                                 </div>
                             </div>
