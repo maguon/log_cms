@@ -4,7 +4,7 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
-export default class NewsComponent  extends React.Component {
+export default class NewsDetailsComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -16,15 +16,17 @@ export default class NewsComponent  extends React.Component {
                     <div className="collection">
                         <div className="wrap1003">
                             <div className="ab_huod">
-                                <div className="ab_huod_tit">{this.props.menu[0].menu_name}</div>
+                                <div className="ab_huod_tit">{this.props.menuName}</div>
                             </div>
                             <div className="about_word">
                                 <div className="kect">
                                     <div className="mores"><a href={"/view/index"} className="black-text" >首页</a>&nbsp;&gt;&nbsp;
-                                        <a className="black-text"  href="">{this.props.menu[0].menu_name}</a></div>
+                                        <a className="black-text"  href="">{this.props.menuName}</a></div>
                                 </div>
 
                                 <div className="ab_neir">
+
+
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                             <div>
@@ -32,6 +34,11 @@ export default class NewsComponent  extends React.Component {
 
                                             </div>)
                                     }
+
+                                    <span className="fenyez12g fenyez1">上一篇</span>
+                                    <span className="fenyez12g fenyez1"
+                                          onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
+
                                 </div>
                             </div>
 
