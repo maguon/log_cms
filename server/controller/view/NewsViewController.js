@@ -38,7 +38,7 @@ const getNewsView = (req ,res ,next) => {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
-                    if(rows[0].menu_pid!="-1"){
+                    if(rows[0].menu_pid!=="-1"){
                         menuObj.menuPid = rows[0].menu_pid;
                         menuFlag = false;
                     }
@@ -294,7 +294,7 @@ const getPictureDetails = (req ,res ,next) => {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
-                    if(rows[0].menu_pid!="-1"){
+                    if(rows[0].menu_pid!=="-1"){
                         menuObj.menuPid = rows[0].menu_pid;
                         menuFlag = false;
                     }
