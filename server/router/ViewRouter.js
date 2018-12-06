@@ -12,6 +12,7 @@ router.get('/menu/:menuId/menuType/:menuType/page/:page/news', NewsViewControlle
 router.get('/menu/:menuId/menuType/:menuType/news/:newsId/', NewsViewController.getNewsViewDetails);
 router.get('/menu/:menuId/menuType/:menuType/page/:page/newsListDetails', NewsViewController.getNewsViewDetails);
 router.get('/menu/:menuId/menuType/:menuType/picture/:pictureId', NewsViewController.getPictureDetails);
+router.get('/menu/:menuId/menuType/:menuType/page/:page/pictureDetails', NewsViewController.getPictureDetails);
 router.get('/search/:search/', NewsViewController.getNewsViewSearch);
 
 module.exports = router

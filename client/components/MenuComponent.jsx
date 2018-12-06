@@ -21,7 +21,7 @@ export default class MenuComponent  extends React.Component {
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                         <li className="carousel-item">
-                                            <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/news/"+newsItem._id.toString()}>
+                                            <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()}>
                                                 <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
                                                 <span className="yx-rotation-title"> </span>
                                                 <span className="yx-rotation-t">{newsItem.news_title}</span>

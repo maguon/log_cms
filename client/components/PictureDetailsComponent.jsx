@@ -42,10 +42,10 @@ export default class PictureDetailsComponent  extends React.Component {
                                     </div>
                                     <div className="pageItem">
                                     {
-                                        <a style={{marginLeft:10+'px'}} href="" >上一篇</a>
+                                        <a style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)-1)+"/pictureDetails"} >上一篇</a>
                                     }
                                     {
-                                        <a style={{marginLeft:10+'px'}} href=""  >下一篇</a>
+                                        <a style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)+1)+"/pictureDetails"}  >下一篇</a>
                                     }
                                     </div>
                                 </div>
