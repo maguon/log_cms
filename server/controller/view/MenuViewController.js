@@ -52,57 +52,43 @@ const getMenuView = (req, res, next) => {
             }).then((menuList) => {
                 new Promise((resolve) => {
                     let query = NewsModel.find({});
-                    query.where('menu_id').equals('5c009d25b216fe33884ca89a');
+                    query.where('menu_id').equals('5c00a754a0c6192580565b26');
                     query.where('news_status').equals('1');
+                    query.skip(parseInt('0')).limit(parseInt('5'));
                     query.sort({'_id':-1}).exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            newsObj.profileList = rows;
+                            newsObj.recruitList = rows;
                             resolve(menuList);
                         }
                     })
                 }).then((menuList) => {
                     new Promise((resolve) => {
                         let query = NewsModel.find({});
-                        query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                        query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                         query.where('news_status').equals('1');
-                        query.skip(parseInt('0')).limit(parseInt('5'));
                         query.sort({'_id':-1}).exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
                             }else{
-                                newsObj.recruitList = rows;
+                                newsObj.contactList = rows;
                                 resolve(menuList);
                             }
                         })
                     }).then((menuList) => {
-                        new Promise((resolve) => {
-                            let query = NewsModel.find({});
-                            query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
-                            query.where('news_status').equals('1');
-                            query.sort({'_id':-1}).exec((error,rows)=> {
-                                if(error){
-                                    resUtil.resetErrorPage(res,error);
-                                }else{
-                                    newsObj.contactList = rows;
-                                    resolve(menuList);
-                                }
-                            })
-                        }).then((menuList) => {
-                            let query = NewsModel.find({});
-                            query.where('roll_flag').equals('1');
-                            query.where('news_status').equals('1');
-                            query.skip(parseInt('0')).limit(parseInt('4'));
-                            query.sort({'_id':-1}).exec((error,rows)=> {
-                                if(error){
-                                    resUtil.resetErrorPage(res,error);
-                                }else{
-                                    const componentString = ReactDOMServer.renderToString(
-                                        <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,'index',componentString)
-                                }
-                            })
+                        let query = NewsModel.find({});
+                        query.where('roll_flag').equals('1');
+                        query.where('news_status').equals('1');
+                        query.skip(parseInt('0')).limit(parseInt('4'));
+                        query.sort({'_id':-1}).exec((error,rows)=> {
+                            if(error){
+                                resUtil.resetErrorPage(res,error);
+                            }else{
+                                const componentString = ReactDOMServer.renderToString(
+                                    <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
+                                resUtil.resetMainPage(res,'index',componentString)
+                            }
                         })
                     })
                 })

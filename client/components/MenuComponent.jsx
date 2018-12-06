@@ -65,7 +65,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="hdjy">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index">
-                                        <span>车辆场地展示</span>
+                                        <span><a href={"/view/menu/5bfbb72506e91f3814c8d0ec/menuType/3/page/1/news"}>车辆场地展示</a></span>
                                     </h2>
                                     <h5>Car show</h5>
                                 </div>
@@ -91,7 +91,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="yqlj">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index1">
-                                        <span>合作伙伴</span>
+                                        <span><a href={"/view/menu/5bfbb65606e91f3814c8d0ea/menuType/3/page/1/news"}>合作伙伴</a></span>
                                     </h2>
                                     <h5>partners</h5>
                                 </div>

@@ -19,207 +19,168 @@ const getNewsView = (req ,res ,next) => {
     let newsObj = {};
     let menuObj = {};
     let menuFlag = true;
-    new Promise((resolve) => {
+    new Promise((resolve) => {  //头部菜单
         let query = MenuModel.find({});
-        query.where('_id').equals(params.menuId);
+        query.where('menu_pid').equals('-1');
         query.where('menu_status').equals('1');
         query.sort('menu_num').exec((error,rows)=> {
             if(error){
                 resUtil.resetErrorPage(res,error);
             }else{
-                if(rows[0].menu_pid!="-1"){
-                    menuObj.menuPid = rows[0].menu_pid;
-                    menuFlag = false;
-                }
-                resolve();
+                resolve(rows);
             }
         });
-    }).then(() => {
-        new Promise((resolve) => {
-            if(menuFlag){
-                let query = MenuModel.find({});
-                query.where('_id').equals(params.menuId);
-                //query.where('menu_pid').equals('-1');
-                query.where('menu_status').equals('1');
-                query.sort('menu_num').exec((error,rows)=> {
-                    if(error){
-                        resUtil.resetErrorPage(res,error);
-                    }else{
-                        menuObj.menu = rows;
-                        resolve();
+    }).then((menu) => {
+        new Promise((resolve) => {  //内页左侧上级菜单验证
+            let query = MenuModel.find({});
+            query.where('_id').equals(params.menuId);
+            query.sort('menu_num').exec((error,rows)=> {
+                if(error){
+                    resUtil.resetErrorPage(res,error);
+                }else{
+                    if(rows[0].menu_pid!="-1"){
+                        menuObj.menuPid = rows[0].menu_pid;
+                        menuFlag = false;
                     }
-                });
-            }else{
-                let query = MenuModel.find({});
-                query.where('_id').equals(menuObj.menuPid);
-                query.where('menu_status').equals('1');
-                query.sort('menu_num').exec((error,rows)=> {
-                    if(error){
-                        resUtil.resetErrorPage(res,error);
-                    }else{
-                        menuObj.menu = rows;
-                        resolve();
-                    }
-                });
-            }
-        }).then(() => {
-            new Promise((resolve) => {
+                    resolve(menu);
+                }
+            });
+        }).then((menu) => {
+            new Promise((resolve) => {  //内页左侧一级菜单
                 if(menuFlag){
                     let query = MenuModel.find({});
-                    query.where('menu_pid').equals(params.menuId);
-                    query.where('menu_status').equals('1');
+                    query.where('_id').equals(params.menuId);
                     query.sort('menu_num').exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            menuObj.twoMenuNameList = rows;
-                            resolve();
+                            menuObj.menu = rows;
+                            resolve(menu);
                         }
                     });
                 }else{
                     let query = MenuModel.find({});
-                    query.where('menu_pid').equals(menuObj.menuPid);
-                    query.where('menu_status').equals('1');
+                    query.where('_id').equals(menuObj.menuPid);
                     query.sort('menu_num').exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            menuObj.twoMenuNameList = rows;
-                            resolve();
+                            menuObj.menu = rows;
+                            resolve(menu);
                         }
                     });
                 }
-            }).then(() => {
-                new Promise((resolve) => {
-                    let query = MenuModel.find({});
-                    query.where('menu_pid').equals('-1');
-                    query.where('menu_status').equals('1');
-                    query.sort('menu_num').exec((error,rows)=> {
-                        if(error){
-                            resUtil.resetErrorPage(res,error);
-                        }else{
-                            resolve(rows);
-                        }
-                    });
+            }).then((menu) => {
+                new Promise((resolve) => {  //内页左侧二级菜单
+                    if(menuFlag){
+                        let query = MenuModel.find({});
+                        query.where('menu_pid').equals(params.menuId);
+                        query.sort('menu_num').exec((error,rows)=> {
+                            if(error){
+                                resUtil.resetErrorPage(res,error);
+                            }else{
+                                menuObj.twoMenuNameList = rows;
+                                resolve(menu);
+                            }
+                        });
+                    }else{
+                        let query = MenuModel.find({});
+                        query.where('menu_pid').equals(menuObj.menuPid);
+                        query.sort('menu_num').exec((error,rows)=> {
+                            if(error){
+                                resUtil.resetErrorPage(res,error);
+                            }else{
+                                menuObj.twoMenuNameList = rows;
+                                resolve(menu);
+                            }
+                        });
+                    }
                 }).then((menu) => {
-                    new Promise((resolve) => {
+                    new Promise((resolve) => {  //底部招聘
                         let query = NewsModel.find({});
-                        query.where('menu_id').equals('5c009d25b216fe33884ca89a');
+                        query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
+                        query.skip(parseInt('0')).limit(parseInt('5'));
                         query.sort({'_id':-1}).exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
                             }else{
-                                newsObj.profileList = rows;
+                                newsObj.recruitList = rows;
                                 resolve(menu);
                             }
                         })
                     }).then((menu) => {
-                        new Promise((resolve) => {
+                        new Promise((resolve) => {  //底部联系
                             let query = NewsModel.find({});
-                            query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                            query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
-                            query.skip(parseInt('0')).limit(parseInt('5'));
                             query.sort({'_id':-1}).exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{
-                                    newsObj.recruitList = rows;
+                                    newsObj.contactList = rows;
                                     resolve(menu);
                                 }
                             })
                         }).then((menu) => {
                             new Promise((resolve) => {
-                                let query = NewsModel.find({});
-                                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                                let query = NewsModel.find({}).count();
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
                                 query.where('news_status').equals('1');
-                                query.sort({'_id':-1}).exec((error,rows)=> {
+                                query.exec((error,rows)=> {
                                     if(error){
                                         resUtil.resetErrorPage(res,error);
                                     }else{
-                                        newsObj.contactList = rows;
+                                        pageObj.pageIndex = 1;
+                                        pageObj.pageSize = 5;
+                                        pageObj.totalCount = rows;
+                                        pageObj.totalPage = Math.ceil(pageObj.totalCount / pageObj.pageSize);
                                         resolve(menu);
                                     }
                                 })
                             }).then((menu) => {
-                                new Promise((resolve) => {
-                                    let query = NewsModel.find({});
-                                    query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
-                                    query.where('news_status').equals('1');
-                                    query.sort({'news_num':-1}).exec((error,rows)=> {
-                                        if(error){
-                                            resUtil.resetErrorPage(res,error);
+                                let query = NewsModel.find({}).populate('menu_id');
+                                if(params.newsId){
+                                    query.where('_id').equals(params.newsId);
+                                }
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
+                                query.where('news_status').equals('1');
+                                if(params.menuType==2){
+                                    query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize*params.page);
+                                }
+                                query.sort({'news_num':-1}).exec((error,rows)=> {
+                                    if(error){
+                                        resUtil.resetErrorPage(res,error);
+                                    }else{
+                                        if(params.menuType==1){
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <NewsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+                                            resUtil.resetMainPage(res,'news',componentString)
+                                        }else if(params.menuType==2){
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <ListComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
+                                            resUtil.resetMainPage(res,'list',componentString)
                                         }else{
-                                            newsObj.newsImageList = rows;
-                                            resolve(menu);
+                                            const componentString = ReactDOMServer.renderToString(
+                                                <PictureComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+                                            resUtil.resetMainPage(res,'picture',componentString)
                                         }
-                                    })
-                                }).then((menu) => {
-                                    new Promise((resolve) => {
-                                        let query = NewsModel.find({}).count();
-                                        if(params.menuId){
-                                            query.where('menu_id').equals(params.menuId);
-                                        }
-                                        query.where('news_status').equals('1');
-                                        query.exec((error,rows)=> {
-                                            if(error){
-                                                resUtil.resetErrorPage(res,error);
-                                            }else{
-                                                pageObj.pageIndex = 1;
-                                                pageObj.pageSize = 5;
-                                                pageObj.totalCount = rows;
-                                                pageObj.totalPage = Math.ceil(pageObj.totalCount / pageObj.pageSize);
-                                                resolve(menu);
-                                            }
-                                        })
-                                    }).then((menu) => {
-                                        let query = NewsModel.find({}).populate('menu_id');
-                                        if(params.newsId){
-                                            query.where('_id').equals(params.newsId);
-                                        }
-                                        if(params.menuId){
-                                            query.where('menu_id').equals(params.menuId);
-                                        }
-                                        query.where('news_status').equals('1');
-                                        if(params.menuType==2){
-                                            query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize*params.page);
-                                        }
-                                        query.sort({'news_num':-1}).exec((error,rows)=> {
-                                            if(error){
-                                                resUtil.resetErrorPage(res,error);
-                                            }else{
-                                                if(params.menuType==1){
-                                                    const componentString = ReactDOMServer.renderToString(
-                                                        <NewsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
-                                                    resUtil.resetMainPage(res,'news',componentString)
-                                                }else if(params.menuType==2){
-                                                    const componentString = ReactDOMServer.renderToString(
-                                                        <ListComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
-                                                    resUtil.resetMainPage(res,'list',componentString)
-                                                }else{
-                                                    const componentString = ReactDOMServer.renderToString(
-                                                        <PictureComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,newsImageList:newsObj.newsImageList,currentPage:params.page}}/>);
-                                                    resUtil.resetMainPage(res,'picture',componentString)
-                                                }
 
-                                            }
+                                    }
 
-                                        });
-                                    })
-
-                                })
-
+                                });
                             })
-
                         })
-                    })
 
+                    })
                 })
             })
         })
     })
-
-
 }
 
 const getNewsViewDetails = (req ,res ,next) => {
@@ -240,87 +201,72 @@ const getNewsViewDetails = (req ,res ,next) => {
     }).then((menu) => {
         new Promise((resolve) => {
             let query = NewsModel.find({});
-            query.where('menu_id').equals('5c009d25b216fe33884ca89a');
+            query.where('menu_id').equals('5c00a754a0c6192580565b26');
             query.where('news_status').equals('1');
+            query.skip(parseInt('0')).limit(parseInt('5'));
             query.sort({'_id':-1}).exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
-                    newsObj.profileList = rows;
+                    newsObj.recruitList = rows;
                     resolve(menu);
                 }
             })
         }).then((menu) => {
             new Promise((resolve) => {
                 let query = NewsModel.find({});
-                query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                 query.where('news_status').equals('1');
-                query.skip(parseInt('0')).limit(parseInt('5'));
                 query.sort({'_id':-1}).exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{
-                        newsObj.recruitList = rows;
+                        newsObj.contactList = rows;
                         resolve(menu);
                     }
                 })
             }).then((menu) => {
                 new Promise((resolve) => {
-                    let query = NewsModel.find({});
-                    query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                    let query = NewsModel.find({}).count();
+                    if(params.menuId){
+                        query.where('menu_id').equals(params.menuId);
+                    }
                     query.where('news_status').equals('1');
-                    query.sort({'_id':-1}).exec((error,rows)=> {
+                    query.exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            newsObj.contactList = rows;
+                            pageObj.totalCount = rows;
                             resolve(menu);
                         }
                     })
                 }).then((menu) => {
-                    new Promise((resolve) => {
-                        let query = NewsModel.find({}).count();
-                        if(params.menuId){
-                            query.where('menu_id').equals(params.menuId);
-                        }
-                        query.where('news_status').equals('1');
-                        query.exec((error,rows)=> {
-                            if(error){
-                                resUtil.resetErrorPage(res,error);
-                            }else{
-                                pageObj.totalCount = rows;
-                                resolve(menu);
-                            }
-                        })
-                    }).then((menu) => {
-                        let query = NewsModel.find({}).populate('menu_id');
-                        if(params.newsId){
-                            query.where('_id').equals(params.newsId);
-                        }
-                        if(params.menuId){
-                            query.where('menu_id').equals(params.menuId);
-                        }
-                        query.where('news_status').equals('1');
-                        query.skip(params.page-1).limit(1);
-                        query.exec((error,rows)=> {
-                            if(error){
-                                resUtil.resetErrorPage(res,error);
-                            }else{
-                                const componentString = ReactDOMServer.renderToString(
-                                    <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
-                                resUtil.resetMainPage(res,'news',componentString)
+                    let query = NewsModel.find({}).populate('menu_id');
+                    if(params.newsId){
+                        query.where('_id').equals(params.newsId);
+                    }
+                    if(params.menuId){
+                        query.where('menu_id').equals(params.menuId);
+                    }
+                    query.where('news_status').equals('1');
+                    query.skip(params.page-1).limit(1);
+                    query.exec((error,rows)=> {
+                        if(error){
+                            resUtil.resetErrorPage(res,error);
+                        }else{
+                            const componentString = ReactDOMServer.renderToString(
+                                <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
+                            resUtil.resetMainPage(res,'news',componentString)
 
-                            }
+                        }
 
-                        });
-                    })
-
+                    });
                 })
 
             })
+
         })
     })
-
 }
 
 const getPictureDetails = (req ,res ,next) => {
@@ -331,174 +277,152 @@ const getPictureDetails = (req ,res ,next) => {
     let menuFlag = true;
     new Promise((resolve) => {
         let query = MenuModel.find({});
-        query.where('_id').equals(params.menuId);
+        query.where('menu_pid').equals('-1');
         query.where('menu_status').equals('1');
         query.sort('menu_num').exec((error,rows)=> {
             if(error){
                 resUtil.resetErrorPage(res,error);
             }else{
-                if(rows[0].menu_pid!="-1"){
-                    menuObj.menuPid = rows[0].menu_pid;
-                    menuFlag = false;
-                }
-                resolve();
+                resolve(rows);
             }
         });
-    }).then(() => {
+    }).then((menu) => {
         new Promise((resolve) => {
-            if(menuFlag){
-                let query = MenuModel.find({});
-                query.where('_id').equals(params.menuId);
-                query.where('menu_status').equals('1');
-                query.sort('menu_num').exec((error,rows)=> {
-                    if(error){
-                        resUtil.resetErrorPage(res,error);
-                    }else{
-                        menuObj.menu = rows;
-                        resolve();
+            let query = MenuModel.find({});
+            query.where('_id').equals(params.menuId);
+            query.sort('menu_num').exec((error,rows)=> {
+                if(error){
+                    resUtil.resetErrorPage(res,error);
+                }else{
+                    if(rows[0].menu_pid!="-1"){
+                        menuObj.menuPid = rows[0].menu_pid;
+                        menuFlag = false;
                     }
-                });
-            }else{
-                let query = MenuModel.find({});
-                query.where('_id').equals(menuObj.menuPid);
-                query.where('menu_status').equals('1');
-                query.sort('menu_num').exec((error,rows)=> {
-                    if(error){
-                        resUtil.resetErrorPage(res,error);
-                    }else{
-                        menuObj.menu = rows;
-                        resolve();
-                    }
-                });
-            }
-        }).then(() => {
+                    resolve(menu);
+                }
+            });
+        }).then((menu) => {
             new Promise((resolve) => {
                 if(menuFlag){
                     let query = MenuModel.find({});
-                    query.where('menu_pid').equals(params.menuId);
-                    query.where('menu_status').equals('1');
+                    query.where('_id').equals(params.menuId);
                     query.sort('menu_num').exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            menuObj.twoMenuNameList = rows;
-                            resolve();
+                            menuObj.menu = rows;
+                            resolve(menu);
                         }
                     });
                 }else{
                     let query = MenuModel.find({});
-                    query.where('menu_pid').equals(menuObj.menuPid);
-                    query.where('menu_status').equals('1');
+                    query.where('_id').equals(menuObj.menuPid);
                     query.sort('menu_num').exec((error,rows)=> {
                         if(error){
                             resUtil.resetErrorPage(res,error);
                         }else{
-                            menuObj.twoMenuNameList = rows;
-                            resolve();
+                            menuObj.menu = rows;
+                            resolve(menu);
                         }
                     });
                 }
-            }).then(() => {
+            }).then((menu) => {
                 new Promise((resolve) => {
-                    let query = MenuModel.find({});
-                    query.where('menu_pid').equals('-1');
-                    query.where('menu_status').equals('1');
-                    query.sort('menu_num').exec((error,rows)=> {
-                        if(error){
-                            resUtil.resetErrorPage(res,error);
-                        }else{
-                            resolve(rows);
-                        }
-                    });
+                    if(menuFlag){
+                        let query = MenuModel.find({});
+                        query.where('menu_pid').equals(params.menuId);
+                        query.sort('menu_num').exec((error,rows)=> {
+                            if(error){
+                                resUtil.resetErrorPage(res,error);
+                            }else{
+                                menuObj.twoMenuNameList = rows;
+                                resolve(menu);
+                            }
+                        });
+                    }else{
+                        let query = MenuModel.find({});
+                        query.where('menu_pid').equals(menuObj.menuPid);
+                        query.sort('menu_num').exec((error,rows)=> {
+                            if(error){
+                                resUtil.resetErrorPage(res,error);
+                            }else{
+                                menuObj.twoMenuNameList = rows;
+                                resolve(menu);
+                            }
+                        });
+                    }
                 }).then((menu) => {
                     new Promise((resolve) => {
                         let query = NewsModel.find({});
-                        query.where('menu_id').equals('5c009d25b216fe33884ca89a');
+                        query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
+                        query.skip(parseInt('0')).limit(parseInt('5'));
                         query.sort({'_id':-1}).exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
                             }else{
-                                newsObj.profileList = rows;
+                                newsObj.recruitList = rows;
                                 resolve(menu);
                             }
                         })
                     }).then((menu) => {
                         new Promise((resolve) => {
                             let query = NewsModel.find({});
-                            query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                            query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
-                            query.skip(parseInt('0')).limit(parseInt('5'));
                             query.sort({'_id':-1}).exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{
-                                    newsObj.recruitList = rows;
+                                    newsObj.contactList = rows;
                                     resolve(menu);
                                 }
                             })
                         }).then((menu) => {
                             new Promise((resolve) => {
-                                let query = NewsModel.find({});
-                                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                                let query = NewsModel.find({}).count();
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
                                 query.where('news_status').equals('1');
-                                query.sort({'_id':-1}).exec((error,rows)=> {
+                                query.exec((error,rows)=> {
                                     if(error){
                                         resUtil.resetErrorPage(res,error);
                                     }else{
-                                        newsObj.contactList = rows;
+                                        pageObj.totalCount = rows;
                                         resolve(menu);
                                     }
                                 })
                             }).then((menu) => {
-                                new Promise((resolve) => {
-                                    let query = NewsModel.find({}).count();
-                                    if(params.menuId){
-                                        query.where('menu_id').equals(params.menuId);
-                                    }
-                                    query.where('news_status').equals('1');
-                                    query.exec((error,rows)=> {
-                                        if(error){
-                                            resUtil.resetErrorPage(res,error);
-                                        }else{
-                                            pageObj.totalCount = rows;
-                                            resolve(menu);
-                                        }
-                                    })
-                                }).then((menu) => {
-                                    let query = NewsModel.find({}).populate('menu_id');
-                                    if(params.pictureId){
-                                        query.where('_id').equals(params.pictureId);
-                                    }
-                                    if(params.menuId){
-                                        query.where('menu_id').equals(params.menuId);
-                                    }
-                                    query.skip(params.page-1).limit(1);
-                                    query.exec((error,rows)=> {
-                                        if(error){
-                                            resUtil.resetErrorPage(res,error);
-                                        }else{
-                                            const componentString = ReactDOMServer.renderToString(
-                                                <PictureDetailsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
-                                            resUtil.resetMainPage(res,'pictureDetails',componentString)
+                                let query = NewsModel.find({}).populate('menu_id');
+                                if(params.pictureId){
+                                    query.where('_id').equals(params.pictureId);
+                                }
+                                if(params.menuId){
+                                    query.where('menu_id').equals(params.menuId);
+                                }
+                                query.skip(params.page-1).limit(1);
+                                query.exec((error,rows)=> {
+                                    if(error){
+                                        resUtil.resetErrorPage(res,error);
+                                    }else{
+                                        const componentString = ReactDOMServer.renderToString(
+                                            <PictureDetailsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
+                                        resUtil.resetMainPage(res,'pictureDetails',componentString)
 
-                                        }
+                                    }
 
-                                    });
-                                })
-
+                                });
                             })
 
                         })
+
                     })
                 })
             })
 
         })
     })
-
-
-
 }
 
 const getNewsViewSearch = (req ,res ,next) => {
@@ -518,66 +442,51 @@ const getNewsViewSearch = (req ,res ,next) => {
     }).then((menu) => {
         new Promise((resolve) => {
             let query = NewsModel.find({});
-            query.where('menu_id').equals('5c009d25b216fe33884ca89a');
+            query.where('menu_id').equals('5c00a754a0c6192580565b26');
             query.where('news_status').equals('1');
+            query.skip(parseInt('0')).limit(parseInt('5'));
             query.sort({'_id':-1}).exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
-                    newsObj.profileList = rows;
+                    newsObj.recruitList = rows;
                     resolve(menu);
                 }
             })
         }).then((menu) => {
             new Promise((resolve) => {
                 let query = NewsModel.find({});
-                query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                 query.where('news_status').equals('1');
-                query.skip(parseInt('0')).limit(parseInt('5'));
                 query.sort({'_id':-1}).exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{
-                        newsObj.recruitList = rows;
+                        newsObj.contactList = rows;
                         resolve(menu);
                     }
                 })
             }).then((menu) => {
-                new Promise((resolve) => {
-                    let query = NewsModel.find({});
-                    query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
-                    query.where('news_status').equals('1');
-                    query.sort({'_id':-1}).exec((error,rows)=> {
-                        if(error){
-                            resUtil.resetErrorPage(res,error);
-                        }else{
-                            newsObj.contactList = rows;
-                            resolve(menu);
-                        }
-                    })
-                }).then((menu) => {
-                    let query = NewsModel.find({}).populate('menu_id');
-                    if(params.search){
-                        query.where('news_title').regex(params.search);
+                let query = NewsModel.find({}).populate('menu_id');
+                if(params.search){
+                    query.where('news_title').regex(params.search);
+                }
+
+                query.exec((error,rows)=> {
+                    if(error){
+                        resUtil.resetErrorPage(res,error);
+                    }else{
+                        const componentString = ReactDOMServer.renderToString(
+                            <SearchComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                        resUtil.resetMainPage(res,'search',componentString)
+
                     }
 
-                    query.exec((error,rows)=> {
-                        if(error){
-                            resUtil.resetErrorPage(res,error);
-                        }else{
-                            const componentString = ReactDOMServer.renderToString(
-                                <SearchComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                            resUtil.resetMainPage(res,'search',componentString)
-
-                        }
-
-                    });
-                })
-
+                });
             })
+
         })
     })
-
 }
 
 
