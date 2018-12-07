@@ -23,7 +23,7 @@ const getMenuView = (req, res, next) => {
         });
     }).then((menuList) => {
         new Promise((resolve) => {
-            let query = NewsModel.find({});
+            let query = NewsModel.find({}).populate('menu_id');
             query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
             query.where('news_status').equals('1');
             query.skip(parseInt('0')).limit(parseInt('8'));
@@ -37,7 +37,7 @@ const getMenuView = (req, res, next) => {
             })
         }).then((menuList) => {
             new Promise((resolve) => {
-                let query = NewsModel.find({});
+                let query = NewsModel.find({}).populate('menu_id');
                 query.where('menu_id').equals('5bfbb65606e91f3814c8d0ea');
                 query.where('news_status').equals('1');
                 query.skip(parseInt('0')).limit(parseInt('10'));
@@ -51,7 +51,7 @@ const getMenuView = (req, res, next) => {
                 })
             }).then((menuList) => {
                 new Promise((resolve) => {
-                    let query = NewsModel.find({});
+                    let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
                     query.where('menu_id').equals('5c00a754a0c6192580565b26');
                     query.where('news_status').equals('1');
                     query.skip(parseInt('0')).limit(parseInt('5'));
@@ -65,7 +65,7 @@ const getMenuView = (req, res, next) => {
                     })
                 }).then((menuList) => {
                     new Promise((resolve) => {
-                        let query = NewsModel.find({});
+                        let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
                         query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                         query.where('news_status').equals('1');
                         query.sort({'_id':-1}).exec((error,rows)=> {

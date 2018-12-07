@@ -21,7 +21,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><span><a href={"/view/menu/5c00a754a0c6192580565b26/menuType/2/page/1/news"}>人才招聘</a></span></h2>
+                                <h2><span><a href={"/view/menu/"+this.props.recruitList[0].menu_id._id+"/menuType/"+this.props.recruitList[0].menu_id.menu_type+"/page/1/news"}>人才招聘</a></span></h2>
                                 <h5>personnel recruitment</h5>
                                 <span className="bolded-line"> </span>
                             </div>
@@ -45,7 +45,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><span><a href={"/view/menu/5bfbb62c06e91f3814c8d0e8/menuType/1/page/1/news"}>联系我们</a></span></h2>
+                                <h2><span><a href={"/view/menu/"+this.props.contactList[0].menu_id._id+"/menuType/"+this.props.contactList[0].menu_id.menu_type+"/page/1/news"}>联系我们</a></span></h2>
                                 <h5>CONTACT US</h5>
                                 <span className="bolded-line"> </span>
                             </div>
