@@ -99,7 +99,7 @@ export default class ListComponent  extends React.Component {
 
                                         <li> {
                                             this.props.newsList.map((newsItem,index) =>
-                                                <a className="collection-item" key={index} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/news/"+newsItem._id.toString()}>{newsItem.news_title}
+                                                <a className="collection-item" key={index} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}
                                                     <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
                                                 </a>)
                                         }

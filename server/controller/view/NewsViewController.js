@@ -255,7 +255,7 @@ const getNewsViewDetails = (req ,res ,next) => {
                             resUtil.resetErrorPage(res,error);
                         }else{
                             const componentString = ReactDOMServer.renderToString(
-                                <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
+                                <NewsDetailsComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
                             resUtil.resetMainPage(res,'news',componentString)
 
                         }
@@ -407,7 +407,7 @@ const getPictureDetails = (req ,res ,next) => {
                                         resUtil.resetErrorPage(res,error);
                                     }else{
                                         const componentString = ReactDOMServer.renderToString(
-                                            <PictureDetailsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:rows[0].news_num}}/>);
+                                            <PictureDetailsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
                                         resUtil.resetMainPage(res,'pictureDetails',componentString)
 
                                     }
