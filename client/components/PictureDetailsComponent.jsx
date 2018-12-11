@@ -9,6 +9,67 @@ export default class PictureDetailsComponent  extends React.Component {
         super(props);
     }
     render () {
+        let prePage;
+        if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
+            prePage =(
+                <div className="pageItem">
+
+                    {
+                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
+                    }
+
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)+1)+"/pictureDetails"} >下一篇</a>
+                    }
+                </div>
+            )
+
+        }
+        else  if(this.props.currentPage!=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
+            prePage =(
+                <div className="pageItem">
+                    {
+                        <a  className="pageList" style={{marginLeft:10+'px'}}   href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)-1)+"/pictureDetails"}  >上一篇</a>
+                    }
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)+1)+"/pictureDetails"}>下一篇</a>
+                    }
+                </div>
+            )
+        }
+        else if(this.props.currentPage=== ""+this.props.pageObj.totalCount&&this.props.currentPage!=='1'){
+            prePage =(
+
+                <div className="pageItem">
+                    {
+                        <a  className="pageList" style={{marginLeft:10+'px'}}   href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)-1)+"/pictureDetails"}   >上一篇</a>
+                    }
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
+                    }
+                </div>
+            )
+        }
+        else {
+            prePage =(
+
+                <div className="pageItem">
+                    {
+                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
+                    }
+
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
+                    }
+                </div>
+            )
+        }
+
+
+
         let twoMenuName;
         if(this.props.newsList[0].menu_id.menu_pid!=='-1'){
             twoMenuName =(
@@ -49,14 +110,7 @@ export default class PictureDetailsComponent  extends React.Component {
                                         <p className="picture" dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }}  />
 
                                     </div>
-                                    <div className="pageItem">
-                                    {
-                                        <a style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)-1)+"/pictureDetails"} >上一篇</a>
-                                    }
-                                    {
-                                        <a style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/"+(parseInt(this.props.currentPage)+1)+"/pictureDetails"}  >下一篇</a>
-                                    }
-                                    </div>
+                                    {prePage}
                                 </div>
                             </div>
 

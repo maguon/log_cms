@@ -10,7 +10,7 @@ export default class NewsDetailsComponent  extends React.Component {
     }
     render () {
         let prePage;
-        if(this.props.currentPage==='1'){
+        if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
                 <div className="fenPian">
 
@@ -26,7 +26,7 @@ export default class NewsDetailsComponent  extends React.Component {
             )
 
         }
-        else  if(this.props.currentPage!==1&&this.props.currentPage!== ""+this.props.pageObj.totalCount){
+        else  if(this.props.currentPage!=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
                 <div className="fenPian">
                     {
@@ -39,7 +39,7 @@ export default class NewsDetailsComponent  extends React.Component {
                 </div>
             )
         }
-        else if(this.props.currentPage=== ""+this.props.pageObj.totalCount){
+        else if(this.props.currentPage=== ""+this.props.pageObj.totalCount&&this.props.currentPage!=='1'){
             prePage =(
 
                 <div className="fenPian">
@@ -54,7 +54,17 @@ export default class NewsDetailsComponent  extends React.Component {
             )
         }
         else {
-            return;
+            prePage =(
+
+                <div className="fenPian">
+                    {
+                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
+                    }
+                    {
+                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
+                    }
+                </div>
+            )
         }
         return (
 

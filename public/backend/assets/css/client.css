@@ -559,6 +559,11 @@ body {
     float: left;
     margin-bottom: 30px;
 }
+.pageItem a:hover{
+    width: 55px;
+    float: left;
+    margin-bottom: 30px;
+}
 .col{
     text-align: left;
 }
