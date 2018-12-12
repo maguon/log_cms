@@ -7,7 +7,7 @@ const logger = LogUtil.createLogger('SysLogController');
 
 const getSysLog = (req, res, next) => {
     let params = req.query;
-    let query = SysLogModel.find({}).populate('admin_id');
+    let query = SysLogModel.find({}).populate('admin_id',{password:0});
     if(params.ip){
         query.where('ip').equals(params.ip);
     }
