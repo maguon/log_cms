@@ -32,7 +32,23 @@ const getSysLog = (req, res, next) => {
     });
 }
 
+const removeSysLogAll = (req ,res ,next) => {
+    let params = req.params;
+    SysLogModel.remove(function(error,result){
+        logger.debug(' removeSysLogAll ') ;
+        if (error) {
+            logger.error(' removeSysLogAll ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' removeSysLogAll ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+            return next();
+        }
+    })
+}
+
 
 module.exports = {
-    getSysLog
+    getSysLog,
+    removeSysLogAll
 };

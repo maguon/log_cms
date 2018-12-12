@@ -33,6 +33,7 @@ apiRouter.put('/news/:newsId/image', NewsController.updateNewsImage);
 apiRouter.delete('/news/:newsId', NewsController.removeNews);
 
 apiRouter.get('/sysLog', SysLogController.getSysLog);
+apiRouter.delete('/sysLogAll', SysLogController.removeSysLogAll);
 
 
 module.exports = apiRouter
