@@ -1,6 +1,6 @@
 const express = require('express')
 const apiRouter = express.Router({mergeParams:true});
-import {ContentController,AdminController,UserController,MenuController,NewsController} from '../controller'
+import {ContentController,AdminController,UserController,MenuController,NewsController,SysLogController} from '../controller'
 
 
 
@@ -31,6 +31,10 @@ apiRouter.post('/menu/:menuId/news', NewsController.createNews);
 apiRouter.put('/news/:newsId', NewsController.updateNews);
 apiRouter.put('/news/:newsId/image', NewsController.updateNewsImage);
 apiRouter.delete('/news/:newsId', NewsController.removeNews);
+
+apiRouter.get('/sysLog', SysLogController.getSysLog);
+apiRouter.delete('/sysLogBatch', SysLogController.removeSysLog);
+apiRouter.delete('/sysLogAll', SysLogController.removeSysLogAll);
 
 
 module.exports = apiRouter
