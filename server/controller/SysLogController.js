@@ -32,6 +32,26 @@ const getSysLog = (req, res, next) => {
     });
 }
 
+const removeSysLog = (req ,res ,next) => {
+    let bodyParams = req.body;
+    let sysLogIds = bodyParams.sysLogIds;
+    Promise.all(sysLogIds.map(()=>{
+        const query = { _id:sysLogIds };
+        SysLogModel.findOneAndRemove(query,function(error,result){
+            if (error) {
+                logger.error(' removeSysLog ' + error.message);
+                resUtil.resInternalError(error,res);
+            } else {
+                logger.info(' removeSysLog ' + 'success');
+            }
+        })
+
+    })).then(()=>{
+        resUtil.resetQueryRes(res,[],null);
+        return next();
+    })
+}
+
 const removeSysLogAll = (req ,res ,next) => {
     let params = req.params;
     SysLogModel.remove(function(error,result){
@@ -50,5 +70,6 @@ const removeSysLogAll = (req ,res ,next) => {
 
 module.exports = {
     getSysLog,
+    removeSysLog,
     removeSysLogAll
 };

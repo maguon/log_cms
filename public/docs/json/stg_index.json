@@ -956,6 +956,64 @@
           }
         }
       }
+    },
+    "/sysLogBatch": {
+      "delete": {
+        "tags": [
+          "sysLog"
+        ],
+        "summary": "Deletes a sysLogBatch",
+        "description": "",
+        "operationId": "deleteSysLogBatch",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sysLogIds",
+            "in": "body",
+            "description": "sysLog info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sysLogIds"
+            }
+          }
+
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/sysLogAll": {
+      "delete": {
+        "tags": [
+          "sysLog"
+        ],
+        "summary": "Deletes a sysLogAll",
+        "description": "",
+        "operationId": "deleteSysLogAll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {
@@ -1126,6 +1184,18 @@
       },
       "xml": {
         "name": "image"
+      }
+    },
+    "sysLogIds": {
+      "type": "object",
+      "properties": {
+
+        "sysLogIds": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "sysLogIds"
       }
     }
   },
