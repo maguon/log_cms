@@ -1,6 +1,8 @@
 const express = require('express')
 const apiRouter = express.Router({mergeParams:true});
-import {ContentController,AdminController,UserController,MenuController,NewsController} from '../controller'
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart({uploadDir:__dirname+'/uploads'});
+import {ContentController,AdminController,UserController,MenuController,NewsController,ImageController} from '../controller'
 
 
 
@@ -31,6 +33,9 @@ apiRouter.post('/menu/:menuId/news', NewsController.createNews);
 apiRouter.put('/news/:newsId', NewsController.updateNews);
 apiRouter.put('/news/:newsId/image', NewsController.updateNewsImage);
 apiRouter.delete('/news/:newsId', NewsController.removeNews);
+
+apiRouter.post('/user/:userId/image',multipartMiddleware, ImageController.uploadImage);
+apiRouter.get('/image/:imageId', ImageController.getImage);
 
 
 module.exports = apiRouter
