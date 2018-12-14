@@ -33,10 +33,10 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
                 if (re.test(max_size_str)) {
                     max_size = parseInt(max_size_str.substring(0, max_size_str.length - 1)) * 1024 * 1024;
                     // $currentDom = $(dom).prev();
-                    _basic.formPost(dom_obj.parent().parent(), $host.file_url + '/user/' + userId + '/image?imageType=0', function (data) {
+                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image?imageType=0', function (data) {
 
                         if (data.success) {
-                            var imageId = data.imageId;
+                            var imageId = data.result.imageId;
                             callback(imageId);
 
                         } else {
@@ -69,7 +69,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
         uploadBrandImage(filename, dom_obj, function (imageId) {
             $scope.$apply(function () {
                 $scope.drive_img = [{
-                    img: $host.file_url + '/image/' + imageId,
+                    img: $host.api_url + '/image/' + imageId,
                 }];
             });
             $scope.obj = {
