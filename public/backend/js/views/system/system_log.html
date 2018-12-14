@@ -1,1 +1,89 @@
-<div>我是6</div>
+<div class="page" style="margin-left:15px;margin-right: 15px; ">
+    <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：系统日志</div>
+
+
+    <div  style="background-color:#fff ">
+
+        <!--系统日志-->
+        <div class="right_con_title row col s12">
+            <div class="right_con_title_l col s2"><i class="mdi  mdi-folder-multiple" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">系统日志</span></div>
+            <div class="right_con_title_r col s3 offset-s7"></div>
+        </div>
+
+
+        <!--搜索   清空-->
+        <div class="row col s12">
+            <div class="col s10">
+                <div class="input-field col s4">
+                    <input id="start_name" type="text" class="datepicker" date ng-model="createdStart">
+                    <label for="start_name">起始时间</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="last_name" type="text" class="datepicker" date ng-model="createdEnd">
+                    <label for="last_name">截止时间</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="ip" type="text"  ng-model="ip">
+                    <label for="ip">IP地址</label>
+                </div>
+            </div>
+            <div class="row col s2 center">
+                <div class="col s6 right-align">
+                    <a class="waves-effect waves-light btn col  circle_button  cyan"  ng-click="getItem()">查询</a>
+                </div>
+                <div class="col s6 center-align">
+                    <a class="waves-effect waves-light btn col  circle_button"  ng-click="deleteOperator()" style="background-color: #e4644b">清空</a>
+                </div>
+            </div>
+        </div>
+
+        <!--列表-->
+        <div  style="background-color:#fff ">
+
+            <div class="row">
+                <div class="col s12 center-align" style="width:99%;margin-left:0.5%;">
+                    <ul class="collapsible" data-collapsible="accordion" style="overflow: hidden;margin: 0;box-shadow: none">
+                        <!--列表头-->
+                        <li style="font-weight: bold;">
+                            <div class="col s12 center-align collapsible-header"  style="height: 40px;line-height: 40px;background-color: #f6f5fa;" >
+                                <div class="col s3" style="border-right: 1px solid #ccc;">用户</div>
+                                <div class="col s3" style="border-right: 1px solid #ccc">时间</div>
+                                <div class="col s3" style="border-right: 1px solid #ccc">IP地址</div>
+                                <div class="col s3">类型</div>
+                            </div>
+                        </li>
+
+                        <li ng-repeat="el in rootList">
+                            <div class="col s12 center-align collapsible-header" style="height: 40px;line-height: 40px;">
+                                <div class="col s3" style="border-right: 1px solid #ccc;">{{el.admin_id.user_name}}</div>
+                                <div class="col s3" style="border-right: 1px solid #ccc">{{el.created_at |date:"yyyy-MM-dd hh:mm:ss"}}</div>
+                                <div class="col s3" style="border-right: 1px solid #ccc">{{el.ip}}</div>
+                                <div class="col s3" ng-if="el.type==1">登录系统</div>
+                                <div class="col s3" ng-if="el.type!==1">退出系统</div>
+                            </div>
+                        </li>
+                        <li ng-if="rootList.length==0">
+                            <div class="col s12 center-align collapsible-header" style="height: 40px;line-height: 40px;">
+                                <div class="col s12">暂无数据</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row"> </div>
+        </div>
+
+
+        <!--分页-->
+
+        <div class="row" style="padding-bottom: 20px">
+            <div class="paging_box col s12">
+                <div class="right">
+                    <a class="waves-light waves-effect lighten-1 btn"  id="pre" ng-click="getPrePage()" style="background: #5a86ba">上一页</a>
+                    <a class="waves-light waves-effect lighten-1 btn" id="next" ng-click="getNextPage()" style="background: #5a86ba">下一页</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

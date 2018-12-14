@@ -31,6 +31,10 @@
     {
       "name": "news",
       "description": "News of log api"
+    },
+    {
+      "name": "sysLog",
+      "description": "SysLog of log api"
     }
   ],
   "schemes": [
@@ -883,6 +887,133 @@
           }
         }
       }
+    },
+    "/sysLog": {
+      "get": {
+        "tags": [
+          "sysLog"
+        ],
+        "summary": "query sysLog list",
+        "description": "query sysLog",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+          {
+            "name": "ip",
+            "in": "query",
+            "description": "sysLog ip",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "createDateStart",
+            "in": "query",
+            "description": "createDate start",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "createDateEnd",
+            "in": "query",
+            "description": "createDate end",
+            "required": false,
+            "type": "string"
+
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": " list start pos",
+            "required": false,
+            "type": "integer"
+
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "list size for pagination",
+            "required": false,
+            "type": "integer"
+
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "items": {
+                "$ref": "#/definitions/news"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid token value or invalid sysLog id"
+          }
+        }
+      }
+    },
+    "/sysLogBatch": {
+      "delete": {
+        "tags": [
+          "sysLog"
+        ],
+        "summary": "Deletes a sysLogBatch",
+        "description": "",
+        "operationId": "deleteSysLogBatch",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sysLogIds",
+            "in": "body",
+            "description": "sysLog info",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sysLogIds"
+            }
+          }
+
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
+    },
+    "/sysLogAll": {
+      "delete": {
+        "tags": [
+          "sysLog"
+        ],
+        "summary": "Deletes a sysLogAll",
+        "description": "",
+        "operationId": "deleteSysLogAll",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+
+
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "contacts not found"
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {
@@ -1053,6 +1184,18 @@
       },
       "xml": {
         "name": "image"
+      }
+    },
+    "sysLogIds": {
+      "type": "object",
+      "properties": {
+
+        "sysLogIds": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "sysLogIds"
       }
     }
   },
