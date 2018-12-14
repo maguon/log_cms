@@ -27,7 +27,8 @@ const  uploadImage = (req, res, next) => {
             resUtil.resInternalError(error,res);
         }).on('finish', function (result) {
             logger.info(' uploadImage ' + result._id+ ' success');
-            resUtil.resetQueryRes(res,result,null);
+            fs.unlink(filePath, (err) =>{})
+            resUtil.resetQueryRes(res,{imageId:result._id},null);
             return next();
         })
 
