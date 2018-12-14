@@ -10,6 +10,18 @@ export default class MenuComponent  extends React.Component {
         super(props);
     }
     render () {
+        let carLink;
+        let partnersLink;
+        if(this.props.newsImageList.length===0){
+            carLink = "";
+        }else{
+            carLink = "/view/menu/"+this.props.newsImageList[0].menu_id._id+"/menuType/"+this.props.newsImageList[0].menu_id.menu_type+"/page/1/news";
+        }
+        if(this.props.partnersList.length===0){
+            partnersLink = "";
+        }else{
+            partnersLink = "/view/menu/"+this.props.partnersList[0].menu_id._id+"/menuType/"+this.props.partnersList[0].menu_id.menu_type+"/page/1/news";
+        }
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
@@ -65,7 +77,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="hdjy">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index">
-                                        <span><a href={"/view/menu/"+this.props.newsImageList[0].menu_id._id+"/menuType/"+this.props.newsImageList[0].menu_id.menu_type+"/page/1/news"}>车辆场地展示</a></span>
+                                        <span><a href={carLink}>车辆场地展示</a></span>
                                     </h2>
                                     <h5>Car show</h5>
                                 </div>
@@ -91,7 +103,7 @@ export default class MenuComponent  extends React.Component {
                             <div id="yqlj">
                                 <div className="kect_index">
                                     <h2 className="ab_guanyu_index1">
-                                        <span><a href={"/view/menu/"+this.props.partnersList[0].menu_id._id+"/menuType/"+this.props.partnersList[0].menu_id.menu_type+"/page/1/news"}>合作伙伴</a></span>
+                                        <span><a href={partnersLink}>合作伙伴</a></span>
                                     </h2>
                                     <h5>partners</h5>
                                 </div>

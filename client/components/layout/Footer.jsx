@@ -7,6 +7,18 @@ class Footer extends React.Component {
     }
 
     render() {
+        let recruitLink;
+        let contactLink;
+        if(this.props.recruitList.length===0){
+            recruitLink = "";
+        }else{
+            recruitLink = "/view/menu/"+this.props.recruitList[0].menu_id._id+"/menuType/"+this.props.recruitList[0].menu_id.menu_type+"/page/1/news";
+        }
+        if(this.props.recruitList.length===0){
+            contactLink = "";
+        }else{
+            contactLink = "/view/menu/"+this.props.contactList[0].menu_id._id+"/menuType/"+this.props.contactList[0].menu_id.menu_type+"/page/1/news";
+        }
         return (
             <div className="page-footer">
                 <div className="foot" style={{height:265+'px'}}>
@@ -21,7 +33,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><span><a href={"/view/menu/"+this.props.recruitList[0].menu_id._id+"/menuType/"+this.props.recruitList[0].menu_id.menu_type+"/page/1/news"}>人才招聘</a></span></h2>
+                                <h2><span><a href={recruitLink}>人才招聘</a></span></h2>
                                 <h5>personnel recruitment</h5>
                                 <span className="bolded-line"> </span>
                             </div>
@@ -45,7 +57,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="span3 col">
                             <div className="lined">
-                                <h2><span><a href={"/view/menu/"+this.props.contactList[0].menu_id._id+"/menuType/"+this.props.contactList[0].menu_id.menu_type+"/page/1/news"}>联系我们</a></span></h2>
+                                <h2><span><a href={contactLink}>联系我们</a></span></h2>
                                 <h5>CONTACT US</h5>
                                 <span className="bolded-line"> </span>
                             </div>
