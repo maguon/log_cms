@@ -49,7 +49,7 @@ const  getImage = (req, res, next) => {
                 const gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db);
                 let openDownloadStream = gridFSBucket.openDownloadStream(mongoose.Types.ObjectId(params.imageId));
                 res.set('content-type', rows[0]._doc.contentType);
-                res.set('last-modified', rows[0]._doc.uploadDate);
+                //res.set('last-modified', rows[0]._doc.uploadDate);
                 res.set('etag', rows[0]._doc.md5);
                 res.set('content-length', rows[0]._doc.length);
 
