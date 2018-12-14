@@ -1,6 +1,8 @@
 const express = require('express')
 const apiRouter = express.Router({mergeParams:true});
-import {ContentController,AdminController,UserController,MenuController,NewsController} from '../controller'
+const multipart = require('connect-multiparty');
+const multipartMiddleware = multipart();
+import {ContentController,AdminController,UserController,MenuController,NewsController,SysLogController,ImageController} from '../controller'
 
 
 
