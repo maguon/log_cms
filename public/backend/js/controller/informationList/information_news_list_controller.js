@@ -55,7 +55,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
                     _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image?imageType=0', function (data) {
 
                         if (data.success) {
-                            var imageId = data.imageId;
+                            var imageId = data.result.imageId;
                             callback(imageId);
 
                         } else {
@@ -66,10 +66,10 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
                     })
                 }
 
-                if (dom_obj[0].files[0].size > max_size) {
+               /* if (dom_obj[0].files[0].size > max_size) {
                     swal('图片文件最大: ' + max_size_str, "", "error");
                     return false;
-                }
+                }*/
             }
             else if (filename && filename.length > 0) {
                 dom_obj.val('');
@@ -87,13 +87,21 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
         var filename = $(dom).val();
         uploadBrandImage(filename, dom_obj, function (imageId) {
             $scope.$apply(function () {
-                $scope.drive_img = [{
+                $scope.newsItem.news_image = [{
                     img: $host.api_url + '/image/' + imageId,
                 }];
             });
             $scope.obj = {
                 "newsImage": imageId
             };
+            _basic.put($host.api_url + "/news/" +  id+ "/image", $scope.obj).then(function (data) {
+                if (data.success == true) {
+                    swal("图片上传成功", "", "success");
+                    getNewsList()
+                } else {
+                    swal(data.msg, "", "error");
+                }
+            })
         });
     };
 
