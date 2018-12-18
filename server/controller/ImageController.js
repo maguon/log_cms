@@ -64,11 +64,11 @@ const  getImage = (req, res, next) => {
                         res.end();
                     })
                     .on('error', (error) => {
-                        logger.warning('getImage ' + params.imageId+' error ' )
+                        logger.warn('getImage ' + params.imageId+' error ' )
                         res.sendStatus(404);
                     });
             }else{
-                logger.warning('getImage ' + params.imageId+' not found ' )
+                logger.warn('getImage ' + params.imageId+' not found ' )
                 res.sendStatus(404);
             }
         }

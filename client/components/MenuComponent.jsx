@@ -34,7 +34,7 @@ export default class MenuComponent  extends React.Component {
                                         this.props.newsList.map((newsItem,index) =>
                                         <li className="carousel-item">
                                             <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()}>
-                                                <img src={"http://stg.myxxjs.com:9002/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
+                                                <img src={"/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
                                                 <span className="yx-rotation-title"> </span>
                                                 <span className="yx-rotation-t">{newsItem.news_title}</span>
                                             </a>
@@ -88,7 +88,7 @@ export default class MenuComponent  extends React.Component {
                                             <div className="silhouette_block">
                                                 <div className="silhouette_block_pic">
                                             <a className="collection-item" key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/picture/"+imageItem._id.toString()}>
-                                            <img className='imgShow' src={"http://stg.myxxjs.com:9002/api/image/"+imageItem.news_image} /></a> </div>
+                                            <img className='imgShow' src={"/api/image/"+imageItem.news_image} /></a> </div>
                                                  <div className="silhouette_block_word">   {imageItem.news_title} </div>
 
                                             </div>)
@@ -111,7 +111,7 @@ export default class MenuComponent  extends React.Component {
                                     <ul className="yoqlj">
                                         {
                                             this.props.partnersList.map((partnersItem,index) =>
-                                                <li><img src={"http://stg.myxxjs.com:9002/api/image/"+partnersItem.news_image} /> </li>)
+                                                <li><img src={"/api/image/"+partnersItem.news_image} /> </li>)
                                         }
                                     </ul>
                                 </div>
