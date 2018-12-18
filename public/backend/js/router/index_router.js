@@ -39,7 +39,7 @@ app_admin_module.config(['$stateProvider',"$urlRouterProvider",function($statePr
         })
         .state("add_news", {
             url: "/add_news/id/{id}/from/{from}",
-            templateUrl: "/backend/js/views/informationList/add_news.html",
+            templateUrl: "/backend/js/views/information/add_news.html",
             controller:"add_news_controller"
         })
 
