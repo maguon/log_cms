@@ -109,7 +109,7 @@ export default class PictureDetailsComponent  extends React.Component {
 
                                 <div className="">
                                     <div className="pictureText">
-                                        <img className="pictureImg" src={"http://stg.myxxjs.com:9002/api/image/"+this.props.newsList[0].news_image} />
+                                        <img className="pictureImg" src={"/api/image/"+this.props.newsList[0].news_image} />
                                         <p className="center-align" style={{marginBottom:20+'px'}}>{this.props.newsList[0].news_title}</p>
                                         <p className="picture" dangerouslySetInnerHTML={{ __html: this.props.newsList[0].news_content }}  />
 
