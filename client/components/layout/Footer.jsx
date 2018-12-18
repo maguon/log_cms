@@ -21,7 +21,7 @@ class Footer extends React.Component {
         }
         return (
             <div className="page-footer">
-                <div className="foot" style={{height:264+'px'}}>
+                <div className="foot" style={{height:265+'px'}}>
                     <div className="footerLi row col s12">
                         <div className="span3 col">
                             <div className="lined">
