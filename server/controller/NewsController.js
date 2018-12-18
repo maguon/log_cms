@@ -95,10 +95,11 @@ const updateNews = (req, res, next) => {
 const updateNewsImage = (req, res, next) => {
     let bodyParams = req.body;
     let params = req.params;
+
     let newsObj = {
+        //$push: { news_image: bodyParams.newsImage}
         news_image: bodyParams.newsImage
     }
-
     const query = { _id:params.newsId };
     NewsModel.findOneAndUpdate(query,newsObj,function(error,result){
         logger.debug(' updateNewsImage ') ;
