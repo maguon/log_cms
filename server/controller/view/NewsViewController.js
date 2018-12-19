@@ -477,7 +477,7 @@ const getNewsViewSearch = (req ,res ,next) => {
                         resUtil.resetErrorPage(res,error);
                     }else{
                         const componentString = ReactDOMServer.renderToString(
-                            <SearchComponent {... {newsList:rows,menuList:menu,menuName:rows[0].menu_id.menu_name,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+                            <SearchComponent {... {newsList:rows,menuList:menu,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
                         resUtil.resetMainPage(res,'search',componentString)
 
                     }

@@ -24,14 +24,10 @@ export default class SearchComponent  extends React.Component {
 
                                 <div className="ab_neir">
                                     {
-                                        this.props.newsList.map((newsItem,index) => <a className="collection-item" key={index} href={"/view/news/"+newsItem._id.toString()}>{newsItem.news_title}<span
+                                        this.props.newsList.map((newsItem,index) =>
+                                            <a className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}<span
                                             className="rq">{newsItem.created_at.toLocaleDateString()}</span></a>)
                                     }
-
-                                    <span className="fenyez12g fenyez1">上一篇</span>
-                                    <span className="fenyez12g fenyez1"
-                                          onClick="location.href='findnewsbypage?nd=240&amp;md=5&amp;prenext=2'">下一篇</span>
-
                                 </div>
                             </div>
 

@@ -111,7 +111,13 @@ const adminLogin = (req, res, next) => {
             }
         });
     }).then((user) => {
-        let ip = req.ip.match(/\d+.\d+.\d+.\d+/);
+        let getClientIp = function (req) {
+            return req.headers['x-forwarded-for'] ||
+                req.connection.remoteAddress ||
+                req.socket.remoteAddress ||
+                req.connection.socket.remoteAddress || '';
+        };
+        let ip = getClientIp(req).match(/\d+.\d+.\d+.\d+/);
         ip = ip ? ip.join('.') : null;
         let sysLogObj = {
             admin_id:user.userId,
