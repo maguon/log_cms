@@ -77,7 +77,7 @@ const getMenuView = (req, res, next) => {
                             }
                         })
                     }).then((menuList) => {
-                        let query = NewsModel.find({});
+                        let query = NewsModel.find({}).populate('menu_id');
                         query.where('roll_flag').equals('1');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('4'));

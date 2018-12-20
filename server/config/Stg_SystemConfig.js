@@ -1,5 +1,5 @@
 const mongodbConfig = {
-    connect : 'mongodb://192.168.191.143:27017/log_cms',
+    connect : 'mongodb://192.168.191.141:27017/log_cms',
     debug : true
 }
 
