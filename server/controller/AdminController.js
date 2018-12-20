@@ -93,7 +93,7 @@ const adminLogin = (req, res, next) => {
                             //admin user status is active,return token
 
                             //user.accessToken = oAuthUtil.createAccessToken(oAuthUtil.clientType.admin,user.userId,user.userStatus);
-                            oAuthUtil.saveToken(user,function(error,result){
+/*                            oAuthUtil.saveToken(user,function(error,result){
                                 if(error){
                                     logger.error(' adminLogin ' + error.stack);
                                     return next();
@@ -103,7 +103,8 @@ const adminLogin = (req, res, next) => {
                                     //return next();
                                     resolve(user);
                                 }
-                            })
+                            })*/
+                            resolve(user);
 
                         }
                     }
