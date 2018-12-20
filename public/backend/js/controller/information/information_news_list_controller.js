@@ -1,7 +1,39 @@
 app_admin_module.controller("information_news_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
     var id = $stateParams.id;//跳转过来的id
     var userId = _basic.getSession(_basic.USER_ID);
-    $scope.editor = CKEDITOR.replace( 'TextArea1');
+    function kedit(kedit){
+        $scope.editor = KindEditor.create(kedit,{
+            cssPath: '/backend/assets/plugins/kindeditor/plugins/code/prettify.css',
+            uploadJson: '../api/user/' + userId + '/image',
+            imageUploadJson: '../api/user/' + userId + '/image',
+            fileManagerJson: '../uploads',
+            allowFileManager: true,
+            items:[
+                'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+                'insertfile', 'table', 'hr', 'emoticons', 'baidumap'
+
+            ],
+            extraFileUploadParams: {
+                "csrfmiddlewaretoken": "{{ csrf_token }}"
+            },
+            afterUpload: function () {
+                this.sync();
+            }, //图片上传后，将上传内容同步到textarea中
+            afterBlur: function () {
+                this.sync();
+            },   ////失去焦点时，将上传内容同步到textarea中
+
+        });
+    }
+
+    $(function(){
+        kedit('textarea[name="content"]');
+    })
     // 返回
     $scope.return = function () {
         $state.go('information_menu_list', { id: $scope.menu_id, from: 'information_news_list'}, {reload: true});
@@ -12,6 +44,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
         _basic.get($host.api_url + "/news?newsId="+id).then(function (data) {
             if (data.success == true) {
                 $scope.newsItem = data.result[0];
+                $scope.newsItem.news_content=$scope.editor.html($scope.newsItem.news_content);
                 $scope.menu_id = data.result[0].menu_id._id;
                 if(data.result[0].news_image==null){
                     $scope.newsItem.news_image='';
@@ -52,7 +85,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
                 if (re.test(max_size_str)) {
                     max_size = parseInt(max_size_str.substring(0, max_size_str.length - 1)) * 1024 * 1024;
                     // $currentDom = $(dom).prev();
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image?imageType=0', function (data) {
+                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image?', function (data) {
 
                         if (data.success) {
                             var imageId = data.result.imageId;
@@ -107,7 +140,8 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
 
 
     $scope.putItem=function(){
-        var val = $scope.editor.getData();
+        var val = $('#editor_id').val();
+       /* var val = $scope.editor.getData();*/
         if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null||$scope.newsItem.news_num==null){
             swal('请输入完整数据！',"","error")
         }

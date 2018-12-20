@@ -71,9 +71,12 @@
                             <div class="col s2" style="border-right: 1px solid #ccc">
                                 <p style="margin: 0">图片:</p>
                             </div>
+
                             <div class="col s4">
                                 <input style="margin-top:16px;height: 30px;line-height: 30px" class="col s8" name="image" type="file" onchange="angular.element(this).scope().uploadBrandImage(this)" max_size="4M"/>
                             </div>
+
+
                             <div class="col s4">
                                 <form name="uploadImageForm" class="uploadImageForm">
                                     <div class="upload_btn left">
@@ -109,7 +112,11 @@
                                 <p style="margin: 0">内容:</p>
                             </div>
                             <div class="col s10">
-                                <textarea id="TextArea1" cols="20" rows="2" class="ckeditor">  </textarea>
+
+                                <textarea id="editor_id" name="content" style="width:700px;height:300px;">
+
+                                </textarea>
+
                             </div>
                         </div>
                     </li>

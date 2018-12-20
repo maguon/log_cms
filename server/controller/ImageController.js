@@ -20,7 +20,7 @@ const  uploadImage = (req, res, next) => {
     const filePath = req.files.image.path;
     const gridFSBucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db);
     const fileName = req.files.image.name;
-    let openUploadStream = gridFSBucket.openUploadStream(fileName,{metadata:metaData,contentType:req.files.image.type});
+    let openUploadStream = gridFSBucket.openUploadStream(fileName,{metadata:metaData});
     fs.createReadStream(filePath).pipe(openUploadStream)
         .on('error', function (error) {
             logger.error(' uploadImage ' + error.message);
@@ -78,6 +78,9 @@ const  getImage = (req, res, next) => {
 
 
 }
+
+
+
 module.exports = {
     uploadImage , getImage
 }

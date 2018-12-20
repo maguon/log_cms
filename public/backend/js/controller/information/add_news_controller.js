@@ -1,15 +1,45 @@
 app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
+
+    function kedit(kedit){
+        var editor = KindEditor.create(kedit,{
+            cssPath: '/backend/assets/plugins/kindeditor/plugins/code/prettify.css',
+            uploadJson: '../api/user/' + userId + '/image',
+            imageUploadJson: '../api/user/' + userId + '/image',
+            fileManagerJson: '../uploads',
+            allowFileManager: true,
+            items:[
+                'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+               'insertfile', 'table', 'hr', 'emoticons', 'baidumap'
+
+            ],
+            extraFileUploadParams: {
+                "csrfmiddlewaretoken": "{{ csrf_token }}"
+            },
+            afterUpload: function () {
+                this.sync();
+            }, //图片上传后，将上传内容同步到textarea中
+            afterBlur: function () {
+                this.sync();
+            },   ////失去焦点时，将上传内容同步到textarea中
+
+        });
+    }
+
+    $(function(){
+        kedit('textarea[name="content"]');
+    })
+
     var id = $stateParams.id;//跳转过来的id
     var userId = _basic.getSession(_basic.USER_ID);
-    $scope.editor = CKEDITOR.replace( 'TextArea1');
-
-
     // 返回
     $scope.return = function () {
         $state.go('information_menu_list', { id: id, from: 'add_news'}, {reload: true});
     };
-
-
 
     //获取菜单列表
     function getMenuList(){
@@ -19,7 +49,6 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
             }
         });
     }
-
 
     // 照片上传函数
     function uploadBrandImage(filename, dom_obj, callback) {
@@ -33,7 +62,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
                 if (re.test(max_size_str)) {
                     max_size = parseInt(max_size_str.substring(0, max_size_str.length - 1)) * 1024 * 1024;
                     // $currentDom = $(dom).prev();
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image?imageType=0', function (data) {
+                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image', function (data) {
 
                         if (data.success) {
                             var imageId = data.result.imageId;
@@ -61,8 +90,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
 
         }
     };
-
-    // 图片上传
+    //
     $scope.uploadBrandImage = function(dom) {
         var dom_obj = $(dom);
         var filename = $(dom).val();
@@ -78,11 +106,8 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
         });
     };
 
-
-
-
     $scope.addItem=function(){
-        var val = $scope.editor.getData();
+        var val = $('#editor_id').val();
         if( $scope.addNews==''||$scope.addMenuStatus==null||$scope.addLun==null||$scope.addNum==null){
             swal('请输入完整数据！',"","error")
         }
@@ -125,5 +150,6 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
     }
 
     getMenuList()
+
 
 }])
