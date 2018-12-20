@@ -92,7 +92,7 @@ const adminLogin = (req, res, next) => {
                         }else{
                             //admin user status is active,return token
 
-                            user.accessToken = oAuthUtil.createAccessToken(oAuthUtil.clientType.admin,user.userId,user.userStatus);
+                            //user.accessToken = oAuthUtil.createAccessToken(oAuthUtil.clientType.admin,user.userId,user.userStatus);
                             oAuthUtil.saveToken(user,function(error,result){
                                 if(error){
                                     logger.error(' adminLogin ' + error.stack);
