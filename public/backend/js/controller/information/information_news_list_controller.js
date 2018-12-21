@@ -1,6 +1,7 @@
 app_admin_module.controller("information_news_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
     var id = $stateParams.id;//跳转过来的id
     var userId = _basic.getSession(_basic.USER_ID);
+    $scope.editor='';
     function kedit(kedit){
         $scope.editor = KindEditor.create(kedit,{
             cssPath: '/backend/assets/plugins/kindeditor/plugins/code/prettify.css',
@@ -44,7 +45,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
         _basic.get($host.api_url + "/news?newsId="+id).then(function (data) {
             if (data.success == true) {
                 $scope.newsItem = data.result[0];
-                $scope.newsItem.news_content=$scope.editor.html($scope.newsItem.news_content);
+                $scope.news_content=$scope.editor.html($scope.newsItem.news_content);
                 $scope.menu_id = data.result[0].menu_id._id;
                 if(data.result[0].news_image==null){
                     $scope.newsItem.news_image='';
@@ -140,8 +141,14 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
 
 
     $scope.putItem=function(){
-        var val = $('#editor_id').val();
-       /* var val = $scope.editor.getData();*/
+        var val=null;
+        if($('#editor_id').val() == '                                ' ){
+            val = $scope.newsItem.news_content;
+        }
+        else {
+            val=$('#editor_id').val();
+        }
+        console.log(val)
         if($scope.newsItem.news_title==''||  $scope.newsItem.news_status==null|| $scope.newsItem.roll_flag==null||$scope.newsItem.news_num==null){
             swal('请输入完整数据！',"","error")
         }
