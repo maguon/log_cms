@@ -55,7 +55,7 @@ const getNews = (req, res, next) => {
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
     }
-    query.sort({'news_num':-1}).exec((error,rows)=> {
+    query.sort('news_num').exec((error,rows)=> {
         if (error) {
             logger.error(' getNews ' + error.message);
             resUtil.resInternalError(error,res);

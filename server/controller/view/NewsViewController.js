@@ -101,7 +101,7 @@ const getNewsView = (req ,res ,next) => {
                         query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('5'));
-                        query.sort({'_id':-1}).exec((error,rows)=> {
+                        query.sort('news_num').exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
                             }else{
@@ -114,7 +114,7 @@ const getNewsView = (req ,res ,next) => {
                             let query = NewsModel.find({}).populate('menu_id');
                             query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
-                            query.sort({'_id':-1}).exec((error,rows)=> {
+                            query.sort('news_num').exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{
@@ -134,7 +134,7 @@ const getNewsView = (req ,res ,next) => {
                                         resUtil.resetErrorPage(res,error);
                                     }else{
                                         pageObj.pageIndex = 1;
-                                        pageObj.pageSize = 5;
+                                        pageObj.pageSize = 10;
                                         pageObj.totalCount = rows;
                                         pageObj.totalPage = Math.ceil(pageObj.totalCount / pageObj.pageSize);
                                         resolve(menu);
@@ -150,9 +150,9 @@ const getNewsView = (req ,res ,next) => {
                                 }
                                 query.where('news_status').equals('1');
                                 if(params.menuType==2){
-                                    query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize*params.page);
+                                    query.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize);
                                 }
-                                query.sort({'news_num':-1}).exec((error,rows)=> {
+                                query.sort('news_num').exec((error,rows)=> {
                                     if(error){
                                         resUtil.resetErrorPage(res,error);
                                     }else{
@@ -204,7 +204,7 @@ const getNewsViewDetails = (req ,res ,next) => {
             query.where('menu_id').equals('5c00a754a0c6192580565b26');
             query.where('news_status').equals('1');
             query.skip(parseInt('0')).limit(parseInt('5'));
-            query.sort({'_id':-1}).exec((error,rows)=> {
+            query.sort('news_num').exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
@@ -217,7 +217,7 @@ const getNewsViewDetails = (req ,res ,next) => {
                 let query = NewsModel.find({}).populate('menu_id');
                 query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                 query.where('news_status').equals('1');
-                query.sort({'_id':-1}).exec((error,rows)=> {
+                query.sort('news_num').exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{
@@ -357,7 +357,7 @@ const getPictureDetails = (req ,res ,next) => {
                         query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('5'));
-                        query.sort({'_id':-1}).exec((error,rows)=> {
+                        query.sort('news_num').exec((error,rows)=> {
                             if(error){
                                 resUtil.resetErrorPage(res,error);
                             }else{
@@ -370,7 +370,7 @@ const getPictureDetails = (req ,res ,next) => {
                             let query = NewsModel.find({}).populate('menu_id');
                             query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
-                            query.sort({'_id':-1}).exec((error,rows)=> {
+                            query.sort('news_num').exec((error,rows)=> {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{
@@ -445,7 +445,7 @@ const getNewsViewSearch = (req ,res ,next) => {
             query.where('menu_id').equals('5c00a754a0c6192580565b26');
             query.where('news_status').equals('1');
             query.skip(parseInt('0')).limit(parseInt('5'));
-            query.sort({'_id':-1}).exec((error,rows)=> {
+            query.sort('news_num').exec((error,rows)=> {
                 if(error){
                     resUtil.resetErrorPage(res,error);
                 }else{
@@ -458,7 +458,7 @@ const getNewsViewSearch = (req ,res ,next) => {
                 let query = NewsModel.find({}).populate('menu_id');
                 query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                 query.where('news_status').equals('1');
-                query.sort({'_id':-1}).exec((error,rows)=> {
+                query.sort('news_num').exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{

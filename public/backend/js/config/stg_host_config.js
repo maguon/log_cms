@@ -4,7 +4,7 @@
 var hostService = angular.module("hostService", []);
 hostService.factory("$host", function () {
     var _this = {
-        api_url: "http://192.168.191.141:8100/api"
+        api_url: "http://59.110.10.25:8100/api"
 
     };
     return _this;
