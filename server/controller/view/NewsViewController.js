@@ -426,7 +426,7 @@ const getPictureDetails = (req ,res ,next) => {
 }
 
 const getNewsViewSearch = (req ,res ,next) => {
-    let params = req.params;
+    let params = req.query;
     let newsObj = {};
     new Promise((resolve) => {
         let query = MenuModel.find({});

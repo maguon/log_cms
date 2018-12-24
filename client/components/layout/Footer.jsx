@@ -1,9 +1,22 @@
+
+
 'use strict'
-const React = require('react')
+const React = require('react');
 
 class Footer extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {value:'' };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event){
+        this.setState({value:event.target.value});
+        console.log(this.state.value)
+    }
+    handleSubmit(event){
+        alert(this.state.value);
+        event.preventDefault();
     }
 
     render() {
@@ -13,15 +26,15 @@ class Footer extends React.Component {
             recruitLink = "";
         }else{
             recruitLink = "/view/menu/"+this.props.recruitList[0].menu_id._id+"/menuType/"+this.props.recruitList[0].menu_id.menu_type+"/page/1/news";
-        }
+        };
         if(this.props.recruitList.length===0){
             contactLink = "";
         }else{
             contactLink = "/view/menu/"+this.props.contactList[0].menu_id._id+"/menuType/"+this.props.contactList[0].menu_id.menu_type+"/page/1/news";
-        }
+        };
         return (
             <div className="page-footer">
-                <div className="foot" style={{height:265+'px'}}>
+                <div className="foot" style={{height:263+'px'}}>
                     <div className="footerLi row col s12">
                         <div className="span3 col">
                             <div className="lined">
@@ -42,7 +55,7 @@ class Footer extends React.Component {
                                     this.props.recruitList.map((recruitItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: recruitItem.news_title }} />)
                                 }
                             </div>
-                         </div>
+                        </div>
                         <div className="span3 col">
                             <div className="lined">
                                 <h2>站内查询</h2>
@@ -50,9 +63,11 @@ class Footer extends React.Component {
                                 <span className="bolded-line"></span>
                             </div>
                             <div className="input-append row  col s12">
-                                <input type="hidden" name="p" id="searchpage" value="1" />
-                                <input className="search-width col s9" id="appendedInputButton"  name="searchNews.newsName" type="text" value="inputValue"/>
-                                 <a  href={"/view/search/"} className="btn btn-theme col s3" type="submit">Go</a>
+                                <form action='/view/search'>
+                                    <input className="search-width col s9"  name="search" type="text"   />
+                                    <input className="btn btn-theme col s3" type="submit" value='Go'/>
+                                </form>
+
                             </div>
                         </div>
                         <div className="span3 col">
@@ -68,12 +83,14 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
 
 
                 <div className="footer">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
             </div>
-            );
-        }
-     }
-    export default (Footer)
+        );
+    }
+}
+
+export default (Footer)
+

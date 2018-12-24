@@ -1,9 +1,17 @@
 app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
 
+    var id = $stateParams.id;//跳转过来的id
+    var userId = _basic.getSession(_basic.USER_ID);
+    // 返回
+    $scope.return = function () {
+        $state.go('information_menu_list', { id: id, from: 'add_news'}, {reload: true});
+    };
+
+    //插件 富文本编辑器
     function kedit(kedit){
         var editor = KindEditor.create(kedit,{
             cssPath: '/backend/assets/plugins/kindeditor/plugins/code/prettify.css',
-            uploadJson: '../api/user/' + userId + '/image',
+            uploadJson: '../api/user/' + userId + '/image',   //上传图片的地址
             imageUploadJson: '../api/user/' + userId + '/image',
             fileManagerJson: '../uploads',
             allowFileManager: true,
@@ -34,12 +42,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
         kedit('textarea[name="content"]');
     })
 
-    var id = $stateParams.id;//跳转过来的id
-    var userId = _basic.getSession(_basic.USER_ID);
-    // 返回
-    $scope.return = function () {
-        $state.go('information_menu_list', { id: id, from: 'add_news'}, {reload: true});
-    };
+
 
     //获取菜单列表
     function getMenuList(){
@@ -51,7 +54,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
     }
 
     // 照片上传函数
-    function uploadBrandImage(filename, dom_obj, callback) {
+    function uploadImage(filename, dom_obj, callback) {
         if (filename) {
             if ((/\.(jpe?g|png|gif|svg|bmp|tiff?)$/i).test(filename)) {
                 //check size
@@ -91,10 +94,10 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
         }
     };
     //
-    $scope.uploadBrandImage = function(dom) {
+    $scope.uploadNewsImage = function(dom) {
         var dom_obj = $(dom);
         var filename = $(dom).val();
-        uploadBrandImage(filename, dom_obj, function (imageId) {
+        uploadImage(filename, dom_obj, function (imageId) {
             $scope.$apply(function () {
                 $scope.drive_img = [{
                     img: $host.api_url + '/image/' + imageId,

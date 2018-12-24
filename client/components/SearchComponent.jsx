@@ -16,7 +16,7 @@ export default class SearchComponent  extends React.Component {
                     <div className="collection">
                         <div className="wrap1003">
 
-                            <div className="about_word">
+                            <div className="about_word_seach">
                                 <div className="kect">
                                     <div className="mores"><a href={"/view/index"} >首页</a>&nbsp;&gt;&nbsp;
                                         高级搜索</div>

@@ -194,6 +194,16 @@ body {
     height: auto;
     float: left;
 }
+.about_word_seach{
+    display: inline;
+    border: 1px solid #e3e3e3;
+    width: 78%;
+    margin-bottom: 12px;
+    margin-top: 15px;
+    height: auto;
+    float: left;
+    margin-left: 11%;
+}
 .kect {
     width: 100%;
     float: left;

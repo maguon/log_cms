@@ -75,7 +75,7 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
     }
 
     // 照片上传函数
-    function uploadBrandImage(filename, dom_obj, callback) {
+    function uploadImage(filename, dom_obj, callback) {
         if (filename) {
             if ((/\.(jpe?g|png|gif|svg|bmp|tiff?)$/i).test(filename)) {
                 //check size
@@ -116,10 +116,10 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
     };
 
     // 图片上传
-    $scope.uploadBrandImage = function(dom) {
+    $scope.uploadNewsImage = function(dom) {
         var dom_obj = $(dom);
         var filename = $(dom).val();
-        uploadBrandImage(filename, dom_obj, function (imageId) {
+        uploadImage(filename, dom_obj, function (imageId) {
             $scope.$apply(function () {
                 $scope.newsItem.news_image = [{
                     img: $host.api_url + '/image/' + imageId,
