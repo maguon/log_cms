@@ -3,6 +3,8 @@
 const mongoose = require('../../db/connections/MongoCon.js').getMongo();
 const Schema = mongoose.Schema;
 const style = new Schema({
+        sid:Number,
+        title:String,
         css_link:Array,
         js_link:Array
     },

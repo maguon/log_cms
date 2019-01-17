@@ -42,8 +42,7 @@ apiRouter.post('/user/:userId/image',multipartMiddleware, ImageController.upload
 apiRouter.get('/image/:imageId', ImageController.getImage);
 
 apiRouter.get('/style', StyleController.getStyle);
-apiRouter.post('/cssLink', StyleController.createCssLink);
-apiRouter.post('/jsLink', StyleController.createJsLink);
+apiRouter.post('/sid/:sid/style', StyleController.createStyle);
 
 
 module.exports = apiRouter
