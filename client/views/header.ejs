@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
-    <link rel="stylesheet" href="/backend/assets/plugins/materialize/css/materialize.css"/>
-    <link rel="stylesheet" href="/backend/assets/css/client.css"/>
+    <% cssArray.forEach(function(item) { %>
+
+        <link rel="stylesheet" href=<%= item %> />
+    <% }) %>
+<!--    <link rel="stylesheet" href="/backend/assets/plugins/materialize/css/materialize.css"/>
+    <link rel="stylesheet" href="/backend/assets/css/client.css"/>-->
 </head>
 
 <body>
