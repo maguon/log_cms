@@ -1,0 +1,70 @@
+<!--列表-->
+<div class="setting" style="margin-left:15px;margin-right: 15px;">
+    <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：设置</div>
+
+
+    <div  style="background-color:#fff ">
+
+        <!--设置管理 新增 预览-->
+        <div class="right_con_title row col s12">
+            <div class="right_con_title_l col s2"><i class="mdi  mdi-table-large" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">设置管理</span></div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 center-align" style="width:99%;margin-left:0.5%;">
+                <!--题目-->
+                <div class="col s6 offset-s3"  style="height: 60px;line-height: 60px;" >
+                    <div class="col s2">
+                        <p style="margin: 0">题目:</p>
+                    </div>
+                    <div class="col s10">
+                        <input style="border: 1px solid #ccc;margin-top:16px;height: 30px;line-height: 30px" class="col s12" ng-model="styleList.title"/>
+                    </div>
+                </div>
+             <!--   &lt;!&ndash;css&ndash;&gt;
+                <div class="col s6">
+                    <div class="col s10 offset-s2" style="margin-top: 50px">
+                        <select style="display: block" ng-model="selectCss"  material-select watch ng-change="changeCss(selectCss)">
+                            <option value="" selected="selected" disabled>请选择</option>
+                            <option ng-repeat="el in cssLink" ng-value="el.css_text">{{el.css_text}}</option>
+                        </select>
+                    </div>
+                </div>
+                &lt;!&ndash;JS&ndash;&gt;
+                <div class="col s6">
+                    <div class="col s10 offset-s2" style="margin-top: 50px">
+                        <select style="display: block" ng-model="selectJs"  material-select watch ng-change="changeJs(selectJs)">
+                            <option value="" selected="selected" disabled>请选择</option>
+                            <option ng-repeat="el in jsLink" ng-value="el.js_text">{{el.js_text}}</option>
+                        </select>
+                    </div>
+                </div>-->
+                <!--css-->
+                <div class="col s6 "  style="height: 160px;margin-top: 50px" >
+                    <div class="col s2">
+                        <p style="margin: 0">css:</p>
+                    </div>
+                    <div class="col s10">
+                        <textarea    type="text" name="css"  style="border: 1px solid #ccc;height: 100px;resize: none;"  ng-model="styleList.css_link"  required> </textarea>
+                    </div>
+                </div>
+                <!--js-->
+                <div class="col s6 "  style="height: 160px;margin-top: 50px" >
+                    <div class="col s2" style="height: 160px">
+                        <p style="margin: 0">js:</p>
+                    </div>
+                    <div class="col s10">
+                        <textarea    type="text" name="js"  style="border: 1px solid #ccc;height: 100px;resize: none;"  ng-model="styleList.js_link" required> </textarea>
+                    </div>
+                </div>
+
+                <div class="right_con_title_r col s4 offset-s5">
+                      <a class="waves-effect waves-light btn col s5 circle_button offset-s2"  ng-click="postStyle()" style="background-color: #5a86ba">新增</a>
+                </div>
+            </div>
+        </div>
+        <div class="row"> </div>
+    </div>
+</div>
+
+

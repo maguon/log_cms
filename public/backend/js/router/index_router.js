@@ -68,5 +68,10 @@ app_admin_module.config(['$stateProvider',"$urlRouterProvider",function($statePr
             controller:'contact_information_controller'
         })
 
-
+        //设置
+        .state("setting", {  //路由状态
+            url: "/setting",  //路由路径
+            templateUrl: "/backend/js/views/setting/setting.html",  //路由填充的模板
+            controller:'setting_controller'
+        })
 }]);
