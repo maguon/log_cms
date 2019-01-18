@@ -19,7 +19,7 @@ body {
 /*header*/
 #nav_bg {
     width: 100%;
-    height: 80px;
+    height: 100px;
     background: url(../images/banner1.jpg) repeat-x;
     position: fixed;
     right: 0;
@@ -28,13 +28,13 @@ body {
     margin-bottom: 0;
 }
 .logo_img{
-    margin-top:20px;
+    margin-top:30px;
     height: 45px;
 }
 .nav_block {
     width: 12%;
     height: 60px;
-    line-height: 5px;
+    line-height: 30px;
     cursor: pointer;
     margin-top: 20px;
     font-size: 12px;
@@ -70,7 +70,7 @@ body {
     width: 80%;
     margin-left: 10%;
     padding-bottom: 20px;
-    height:252px ;
+    height:420px ;
 }
 .bolded-line {
     background-color: white;
@@ -140,7 +140,7 @@ body {
 /*轮播*/
 .example {
     width: 100%;
-    height: 530px;
+    height: 620px;
     font-size: 40px;
 }
 .ft-carousel {
@@ -188,9 +188,9 @@ body {
 }
 .mask{
     position: absolute;
-    right: 170px;
-    top:120px;
-    z-index: 1090;
+    right: 310px;
+    top:170px;
+    z-index: 1000;
     color: white;
     width: 360px;
     height: 150px;
@@ -209,16 +209,16 @@ body {
     font-size: 13px;
 }
 /*menu中的公司简介*/
-#companyProfile{
+.companyProfile{
     width: 100%;
-    height: 280px;
+    height: 370px;
     background-color: #835fa7;
 }
 #companyInter{
     width: 80%;
     margin-left: 10%;
     overflow: hidden;
-    padding-top: 55px;
+    padding-top: 100px;
     padding-bottom: 20px;
     height: 260px;
 
@@ -268,14 +268,14 @@ body {
 }
 
 /*业务范围*/
-#showCarPlace{
+.showCarPlace{
     width: 100%;
     overflow: hidden;
     padding-top: 20px;
     background: #fff;
 }
 #hdjy {
-    height: 700px;
+    height: 560px;
     margin: 0 auto;
 }
 .ab_guanyu_index {
@@ -291,6 +291,7 @@ body {
     float: left;
     display: inline;
     overflow: hidden;
+    margin-bottom: 30px;
 }
 .silhouette_block_pic {
     width: 100%;
@@ -324,7 +325,6 @@ body {
     width: 14%;
     border-bottom: 2px solid #333;
     margin: 0 auto;
-    margin-bottom: 20px;
 }
 .showBusiness{
     width: 80%;
@@ -334,7 +334,7 @@ body {
 .showBusinessAll{
     float: left;
     width: 27%;
-    margin: 30px 3%;
+    margin: 20px 3%;
     color: #9a9dad;
 }
 .showBusiness .showBusinessTitle{
@@ -372,10 +372,14 @@ body {
 }
 .f_end{
     margin-left: 35%;
+    margin-top: 20px;
 }
 .honglilogo{
     height: 50px;
 }
+
+
+
 .shuntong{
     display: none;
 }

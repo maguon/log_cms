@@ -70,7 +70,7 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="footerLi row col s12 hongli">
+                    <div className="footerLi row col s12 hongli" id='menu2'>
                         <div  id='showLinkMe'>
                             <div id="hdjy">
                                 <div className="kect_index">
