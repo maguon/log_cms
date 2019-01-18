@@ -27,9 +27,6 @@ const getMenuView = (req, res, next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
@@ -76,7 +73,7 @@ const getMenuView = (req, res, next) => {
                     })
                 }).then((menuList) => {
                     new Promise((resolve) => {
-                        let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
+                        let query = NewsModel.find({}).populate('menu_id');
                         query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('5'));
@@ -90,7 +87,7 @@ const getMenuView = (req, res, next) => {
                         })
                     }).then((menuList) => {
                         new Promise((resolve) => {
-                            let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
+                            let query = NewsModel.find({}).populate('menu_id');
                             query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
                             query.sort('news_num').exec((error,rows)=> {
@@ -142,9 +139,6 @@ const getHongliView = (req, res, next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
@@ -164,54 +158,54 @@ const getHongliView = (req, res, next) => {
         }).then((menuList) => {
             new Promise((resolve) => {
                 let query = NewsModel.find({}).populate('menu_id');
-                query.where('menu_id').equals('5bfbb72506e91f3814c8d0ec');
+                query.where('menu_id').equals('5bfbb5fb06e91f3814c8d0e5');
                 query.where('news_status').equals('1');
-                query.skip(parseInt('0')).limit(parseInt('8'));
+                query.skip(parseInt('0')).limit(parseInt('3'));
                 query.sort('news_num').exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{
-                        newsObj.newsImageList = rows;
+                        newsObj.businessList = rows;
                         resolve(menuList);
                     }
                 })
             }).then((menuList) => {
-                new Promise((resolve) => {//删除合作伙伴
+                new Promise((resolve) => {
                     let query = NewsModel.find({}).populate('menu_id');
-                    query.where('menu_id').equals('5bfbb65606e91f3814c8d0ea');
+                    query.where('menu_id').equals('5c41827df24ea739304c3917');
                     query.where('news_status').equals('1');
-                    query.skip(parseInt('0')).limit(parseInt('10'));
-                    query.sort('news_num').exec((error,rows)=> {
-                        if(error){
-                            resUtil.resetErrorPage(res,error);
-                        }else{
-                            newsObj.partnersList = rows;
+                    query.skip(parseInt('0')).limit(parseInt('4'));
+                    query.sort('news_num').exec((error, rows) => {
+                        if (error) {
+                            resUtil.resetErrorPage(res, error);
+                        } else {
+                            newsObj.newsImageList = rows;
                             resolve(menuList);
                         }
                     })
                 }).then((menuList) => {
                     new Promise((resolve) => {
-                        let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
+                        let query = NewsModel.find({}).populate('menu_id');
                         query.where('menu_id').equals('5c00a754a0c6192580565b26');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('5'));
-                        query.sort('news_num').exec((error,rows)=> {
-                            if(error){
-                                resUtil.resetErrorPage(res,error);
-                            }else{
+                        query.sort('news_num').exec((error, rows) => {
+                            if (error) {
+                                resUtil.resetErrorPage(res, error);
+                            } else {
                                 newsObj.recruitList = rows;
                                 resolve(menuList);
                             }
                         })
                     }).then((menuList) => {
                         new Promise((resolve) => {
-                            let query = NewsModel.find({}).populate('menu_id').populate('menu_id');
+                            let query = NewsModel.find({}).populate('menu_id');
                             query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
                             query.where('news_status').equals('1');
-                            query.sort('news_num').exec((error,rows)=> {
-                                if(error){
-                                    resUtil.resetErrorPage(res,error);
-                                }else{
+                            query.sort('news_num').exec((error, rows) => {
+                                if (error) {
+                                    resUtil.resetErrorPage(res, error);
+                                } else {
                                     newsObj.contactList = rows;
                                     resolve(menuList);
                                 }
@@ -221,13 +215,22 @@ const getHongliView = (req, res, next) => {
                             query.where('roll_flag').equals('1');
                             query.where('news_status').equals('1');
                             query.skip(parseInt('0')).limit(parseInt('4'));
-                            query.sort('news_num').exec((error,rows)=> {
-                                if(error){
-                                    resUtil.resetErrorPage(res,error);
-                                }else{
+                            query.sort('news_num').exec((error, rows) => {
+                                if (error) {
+                                    resUtil.resetErrorPage(res, error);
+                                } else {
                                     const componentString = ReactDOMServer.renderToString(
-                                        <HongliComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+                                        <HongliComponent {... {
+                                            menuList: menuList,
+                                            newsList: rows,
+                                            businessList: newsObj.businessList,
+                                            newsImageList: newsObj.newsImageList,
+                                            partnersList: newsObj.partnersList,
+                                            contactList: newsObj.contactList,
+                                            profileList: newsObj.profileList,
+                                            recruitList: newsObj.recruitList
+                                        }}/>);
+                                    resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)
                                 }
                             })
                         })

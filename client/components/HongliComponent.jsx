@@ -10,12 +10,6 @@ export default class HongliComponent  extends React.Component {
         super(props);
     }
     render () {
-        let carLink;
-        if(this.props.newsImageList.length===0){
-            carLink = "";
-        }else{
-            carLink = "/view/menu/"+this.props.newsImageList[0].menu_id._id+"/menuType/"+this.props.newsImageList[0].menu_id.menu_type+"/page/1/news";
-        }
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
@@ -67,24 +61,16 @@ export default class HongliComponent  extends React.Component {
                                 </div>
 
                                 <div className="showBusiness">
-                                    <div className='showBusinessAll'>
-                                        <div className='showBusinessTitle'>业务一</div>
-                                        <div className='showBusinessDetail'>
-                                            大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。
-                                        </div>
-                                    </div>
-                                    <div className='showBusinessAll'>
-                                        <div className='showBusinessTitle'>业务二</div>
-                                        <div className='showBusinessDetail'>
-                                            大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。
-                                        </div>
-                                    </div>
-                                    <div className='showBusinessAll'>
-                                        <div className='showBusinessTitle'>业务一</div>
-                                        <div className='showBusinessDetail'>
-                                            大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。
-                                        </div>
-                                    </div>
+                                    {
+                                    this.props.businessList.map((businessItem,index) =>
+
+                                        <div className='showBusinessAll'>
+                                            <div className='showBusinessTitle'>{businessItem.news_title}</div>
+                                            <div className='showBusinessDetail'>
+                                                <p dangerouslySetInnerHTML={{ __html: businessItem.news_content }} />
+                                            </div>
+                                        </div>)
+                                    }
                                 </div>
 
                                 <div className="showImg">

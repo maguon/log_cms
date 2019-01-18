@@ -35,9 +35,6 @@ const getNewsView = (req ,res ,next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
@@ -228,9 +225,6 @@ const getNewsViewDetails = (req ,res ,next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
@@ -350,9 +344,6 @@ const getPictureDetails = (req ,res ,next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
@@ -528,9 +519,6 @@ const getNewsViewSearch = (req ,res ,next) => {
                 for(let i = 0;i<rows[0].js_link.length;i++){
                     scriptArray[i] = rows[0].js_link[i];
                 }
-                console.log(title);
-                console.log(cssArray);
-                console.log(scriptArray);
                 resolve();
             }
         });
