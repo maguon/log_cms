@@ -14,9 +14,13 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
         if ($scope.styleList.title == ''||$scope.styleList.css_link==undefined||$scope.styleList.js_link==undefined) {
             swal('请录入完整信息!', "", "error")
         } else {
-            $scope.styleList.css_link=$scope.styleList.css_link.split(',');
-            $scope.styleList.js_link=$scope.styleList.js_link.split(',');
-            console.log($scope.styleList.js_link, $scope.styleList.css_link)
+            if(Array.isArray($scope.styleList.css_link)==false){
+                $scope.styleList.css_link=$scope.styleList.css_link.split(',');
+            }
+           if(Array.isArray($scope.styleList.js_link)==false){
+               $scope.styleList.js_link=$scope.styleList.js_link.split(',');
+           }
+
             var obj = {
                 title: $scope.styleList.title,
                 cssLink:$scope.styleList.css_link,
