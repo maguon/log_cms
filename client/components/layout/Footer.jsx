@@ -22,7 +22,7 @@ class Footer extends React.Component {
         return (
             <div className="page-footer">
                 <div className="foot" style={{height:263+'px'}}>
-                    <div className="footerLi row col s12">
+                    <div className="footerLi row col s12 shuntong">
                         <div className="span3 col">
                             <div className="lined">
                                 <h2><span><a href={"/view/menu/5bfbb5e606e91f3814c8d0e4/menuType/1/page/1/news"}>公司简介</a></span></h2>
@@ -70,10 +70,25 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div className="footerLi row col s12 hongli">
+                        <div  id='showLinkMe'>
+                            <div id="hdjy">
+                                <div className="kect_index">
+                                    <h4>联系我们</h4>
+                                </div>
+                                <div className="f_end">
+                                    {
+                                        this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
-                <div className="footer">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
+                <div className="footer shuntong">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
+              {/*  <div className="footer hongli">大连洪溧物流有限公司&nbsp;备案号:辽ICP备14011916号</div>*/}
             </div>
         );
     }

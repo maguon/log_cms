@@ -18,7 +18,8 @@ class Header extends React.Component {
 
                         <div className="logoimg col s4 offset-s1">
                             <a href={"/view/index"} className="col s12">
-                                <img alt="logo" src="/backend/assets/images/logo.png"  id="logo_img"/>
+                                <img alt="logo" className='shuntong' src="/backend/assets/images/logo.png"  id="logo_img"/>
+                                <img alt="logo" className='hongli logo_img' src="/backend/assets/images/honglilogo.png" />
                             </a>
                         </div>
 
