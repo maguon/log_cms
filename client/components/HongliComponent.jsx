@@ -49,7 +49,8 @@ export default class HongliComponent  extends React.Component {
                                         </h2>
                                         <span className="span1"> </span>
                                     </div>
-                                    {
+
+                                {
                                         this.props.briefList.map((briefItem,index) => <p className='Pspan' key={index} dangerouslySetInnerHTML={{ __html: briefItem.news_content }} />)
                                     }
                                 </div>

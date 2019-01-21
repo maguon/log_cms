@@ -215,7 +215,7 @@ body {
 /*menu中的公司简介*/
 .companyProfile{
     width: 100%;
-    height: 370px;
+    height: 470px;
     background-color: #835fa7;
 }
 #companyInter{
@@ -279,7 +279,7 @@ body {
 }
 #hdjy {
     height: 560px;
-    padding-top: 20px;
+    padding-top: 10px;
     margin: 0 auto;
 }
 .ab_guanyu_index {
@@ -382,7 +382,9 @@ body {
     height: 50px;
 }
 
-
+#menu0:target,#menu1:target{
+    padding-top:70px;
+}
 
 .shuntong{
     display: none;
