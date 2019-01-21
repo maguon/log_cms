@@ -46,7 +46,9 @@ export default class HongliComponent  extends React.Component {
                                         </h2>
                                         <span className="span1"> </span>
                                     </div>
-                                    <p className='Pspan'>大连顺通圣世物流有限公司成立于2013年1月14日，位于大连市保税区瑞港路，临近疏港高速，主营商品汽车运输、普通货物运输、集装箱运输、零部件运输、仓储等，并在沈阳、长春、天津、上海、广州、成都设有办事处。</p>
+                                    {
+                                        this.props.briefList.map((briefItem,index) => <p className='Pspan' key={index} dangerouslySetInnerHTML={{ __html: briefItem.news_content }} />)
+                                    }
                                 </div>
                             </div>
                         </div>

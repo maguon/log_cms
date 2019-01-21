@@ -158,80 +158,95 @@ const getHongliView = (req, res, next) => {
         }).then((menuList) => {
             new Promise((resolve) => {
                 let query = NewsModel.find({}).populate('menu_id');
-                query.where('menu_id').equals('5bfbb5fb06e91f3814c8d0e5');
+                query.where('menu_id').equals('5c41939f667d6d065c2aa5ed');
                 query.where('news_status').equals('1');
-                query.skip(parseInt('0')).limit(parseInt('3'));
                 query.sort('news_num').exec((error,rows)=> {
                     if(error){
                         resUtil.resetErrorPage(res,error);
                     }else{
-                        newsObj.businessList = rows;
+                        newsObj.briefList = rows;
                         resolve(menuList);
                     }
                 })
             }).then((menuList) => {
                 new Promise((resolve) => {
                     let query = NewsModel.find({}).populate('menu_id');
-                    query.where('menu_id').equals('5c41827df24ea739304c3917');
+                    query.where('menu_id').equals('5bfbb5fb06e91f3814c8d0e5');
                     query.where('news_status').equals('1');
-                    query.skip(parseInt('0')).limit(parseInt('4'));
+                    query.skip(parseInt('0')).limit(parseInt('3'));
                     query.sort('news_num').exec((error, rows) => {
                         if (error) {
                             resUtil.resetErrorPage(res, error);
                         } else {
-                            newsObj.newsImageList = rows;
+                            newsObj.businessList = rows;
                             resolve(menuList);
                         }
                     })
                 }).then((menuList) => {
                     new Promise((resolve) => {
                         let query = NewsModel.find({}).populate('menu_id');
-                        query.where('menu_id').equals('5c00a754a0c6192580565b26');
+                        query.where('menu_id').equals('5c41827df24ea739304c3917');
                         query.where('news_status').equals('1');
-                        query.skip(parseInt('0')).limit(parseInt('5'));
+                        query.skip(parseInt('0')).limit(parseInt('4'));
                         query.sort('news_num').exec((error, rows) => {
                             if (error) {
                                 resUtil.resetErrorPage(res, error);
                             } else {
-                                newsObj.recruitList = rows;
+                                newsObj.newsImageList = rows;
                                 resolve(menuList);
                             }
                         })
                     }).then((menuList) => {
                         new Promise((resolve) => {
                             let query = NewsModel.find({}).populate('menu_id');
-                            query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                            query.where('menu_id').equals('5c00a754a0c6192580565b26');
                             query.where('news_status').equals('1');
+                            query.skip(parseInt('0')).limit(parseInt('5'));
                             query.sort('news_num').exec((error, rows) => {
                                 if (error) {
                                     resUtil.resetErrorPage(res, error);
                                 } else {
-                                    newsObj.contactList = rows;
+                                    newsObj.recruitList = rows;
                                     resolve(menuList);
                                 }
                             })
                         }).then((menuList) => {
-                            let query = NewsModel.find({}).populate('menu_id');
-                            query.where('roll_flag').equals('1');
-                            query.where('news_status').equals('1');
-                            query.skip(parseInt('0')).limit(parseInt('4'));
-                            query.sort('news_num').exec((error, rows) => {
-                                if (error) {
-                                    resUtil.resetErrorPage(res, error);
-                                } else {
-                                    const componentString = ReactDOMServer.renderToString(
-                                        <HongliComponent {... {
-                                            menuList: menuList,
-                                            newsList: rows,
-                                            businessList: newsObj.businessList,
-                                            newsImageList: newsObj.newsImageList,
-                                            partnersList: newsObj.partnersList,
-                                            contactList: newsObj.contactList,
-                                            profileList: newsObj.profileList,
-                                            recruitList: newsObj.recruitList
-                                        }}/>);
-                                    resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)
-                                }
+                            new Promise((resolve) => {
+                                let query = NewsModel.find({}).populate('menu_id');
+                                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                                query.where('news_status').equals('1');
+                                query.sort('news_num').exec((error, rows) => {
+                                    if (error) {
+                                        resUtil.resetErrorPage(res, error);
+                                    } else {
+                                        newsObj.contactList = rows;
+                                        resolve(menuList);
+                                    }
+                                })
+                            }).then((menuList) => {
+                                let query = NewsModel.find({}).populate('menu_id');
+                                query.where('roll_flag').equals('1');
+                                query.where('news_status').equals('1');
+                                query.skip(parseInt('0')).limit(parseInt('4'));
+                                query.sort('news_num').exec((error, rows) => {
+                                    if (error) {
+                                        resUtil.resetErrorPage(res, error);
+                                    } else {
+                                        const componentString = ReactDOMServer.renderToString(
+                                            <HongliComponent {... {
+                                                menuList: menuList,
+                                                newsList: rows,
+                                                briefList:newsObj.briefList,
+                                                businessList: newsObj.businessList,
+                                                newsImageList: newsObj.newsImageList,
+                                                partnersList: newsObj.partnersList,
+                                                contactList: newsObj.contactList,
+                                                profileList: newsObj.profileList,
+                                                recruitList: newsObj.recruitList
+                                            }}/>);
+                                        resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)
+                                    }
+                                })
                             })
                         })
                     })
