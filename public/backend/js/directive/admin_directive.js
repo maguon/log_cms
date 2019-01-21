@@ -55,7 +55,7 @@ adminDirective.directive('header', function () {
 
 
             else {
-              window.location = "./backend/admin_login.html"
+              window.location = "./admin_login.html"
             }
         }
     };
