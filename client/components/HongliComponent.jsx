@@ -26,7 +26,10 @@ export default class HongliComponent  extends React.Component {
                                     {
                                         this.props.newsList.map((newsItem,index) =>
                                             <li className="carousel-item">
-                                                <img src={"/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
+                                                <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href="javascript:void(0)">
+                                                    <img src={"/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
+                                                </a>
+
 
                                             </li>
                                         )
@@ -37,7 +40,7 @@ export default class HongliComponent  extends React.Component {
 
 
 
-                        <div id="companyProfile">
+                        <div className="companyProfile" id='menu0'>
                             <div id="companyInter">
                                 <div className="ff">
                                     <div className="companyH2">
@@ -54,7 +57,7 @@ export default class HongliComponent  extends React.Component {
                         </div>
 
 
-                        <div  id='showCarPlace'>
+                        <div  className='showCarPlace' id='menu1'>
                             <div id="hdjy">
                                 <div className="kect_index">
                                     <h4>业务范围</h4>
@@ -62,14 +65,14 @@ export default class HongliComponent  extends React.Component {
 
                                 <div className="showBusiness">
                                     {
-                                    this.props.businessList.map((businessItem,index) =>
+                                        this.props.businessList.map((businessItem,index) =>
 
-                                        <div className='showBusinessAll'>
-                                            <div className='showBusinessTitle'>{businessItem.news_title}</div>
-                                            <div className='showBusinessDetail'>
-                                                <p dangerouslySetInnerHTML={{ __html: businessItem.news_content }} />
-                                            </div>
-                                        </div>)
+                                            <div className='showBusinessAll'>
+                                                <div className='showBusinessTitle'>{businessItem.news_title}</div>
+                                                <div className='showBusinessDetail'>
+                                                    <p dangerouslySetInnerHTML={{ __html: businessItem.news_content }} />
+                                                </div>
+                                            </div>)
                                     }
                                 </div>
 
@@ -78,7 +81,12 @@ export default class HongliComponent  extends React.Component {
                                         this.props.newsImageList.map((imageItem,index) =>
                                             <div className="silhouette_block">
                                                 <div className="silhouette_block_pic">
-                                                    <img className='imgShow' src={"/api/image/"+imageItem.news_image} /></div>
+
+                                                <a className="collection-item" key={index} href="javascript:void(0)">
+                                                    <img className='imgShow' src={"/api/image/"+imageItem.news_image} />
+                                                </a>
+                                                </div>
+
 
                                             </div>)
                                     }
