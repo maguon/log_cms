@@ -156,9 +156,9 @@ const getHongliView = (req, res, next) => {
                 }
             });
         }).then((menuList) => {
-            new Promise((resolve) => {
+            new Promise((resolve) => {  //简介
                 let query = NewsModel.find({}).populate('menu_id');
-                query.where('menu_id').equals('5c41939f667d6d065c2aa5ed');
+                query.where('menu_id').equals('5c45604bebe4b95fab90bd4f');
                 query.where('news_status').equals('1');
                 query.sort('news_num').exec((error,rows)=> {
                     if(error){
@@ -168,10 +168,10 @@ const getHongliView = (req, res, next) => {
                         resolve(menuList);
                     }
                 })
-            }).then((menuList) => {
+            }).then((menuList) => { //业务范围
                 new Promise((resolve) => {
                     let query = NewsModel.find({}).populate('menu_id');
-                    query.where('menu_id').equals('5bfbb5fb06e91f3814c8d0e5');
+                    query.where('menu_id').equals('5c456072ebe4b95fab90bd50');
                     query.where('news_status').equals('1');
                     query.skip(parseInt('0')).limit(parseInt('3'));
                     query.sort('news_num').exec((error, rows) => {
@@ -182,10 +182,10 @@ const getHongliView = (req, res, next) => {
                             resolve(menuList);
                         }
                     })
-                }).then((menuList) => {
+                }).then((menuList) => { //物流图片
                     new Promise((resolve) => {
                         let query = NewsModel.find({}).populate('menu_id');
-                        query.where('menu_id').equals('5c41827df24ea739304c3917');
+                        query.where('menu_id').equals('5c45611eebe4b95fab90bd53');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('4'));
                         query.sort('news_num').exec((error, rows) => {
@@ -213,7 +213,7 @@ const getHongliView = (req, res, next) => {
                         }).then((menuList) => {
                             new Promise((resolve) => {
                                 let query = NewsModel.find({}).populate('menu_id');
-                                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                                query.where('menu_id').equals('5c45608aebe4b95fab90bd51');
                                 query.where('news_status').equals('1');
                                 query.sort('news_num').exec((error, rows) => {
                                     if (error) {

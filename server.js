@@ -10,6 +10,7 @@ const logUtil = require('./server/util/LogUtil');
 const logger = logUtil.createLogger('server.js');
 const apiRouter = require('./server/router/ApiRouter');
 const viewRouter = require('./server/router/ViewRouter');
+const system = require('./server/config/SystemConfig');
 const app = express();
 
 app.use(cors());
@@ -39,7 +40,7 @@ app.use('/view',viewRouter);
 
 
 app.get('/', function (req, res) {
-    res.redirect('/view/');
+    res.redirect(system.record.path);
 });
 
 app.listen(8100, () => {

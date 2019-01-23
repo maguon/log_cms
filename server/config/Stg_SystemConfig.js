@@ -1,5 +1,5 @@
 const mongodbConfig = {
-    connect : 'mongodb://59.110.10.25:27017/log_cms',
+    connect : 'mongodb://192.168.191.138:27017/hongli_cms',
     debug : true
 }
 
@@ -36,6 +36,12 @@ const logConfig = {
         },
     }
 }
+
+const record = {
+    path : "/view/hongli"
+}
+
+
 module.exports = {
-    mongodbConfig  ,logConfig
+    mongodbConfig  ,logConfig ,record
 }
