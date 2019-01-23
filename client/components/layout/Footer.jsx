@@ -88,7 +88,7 @@ class Footer extends React.Component {
 
 
                 <div className="footer shuntong">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
-                <div className="footer hongli">大连洪溧物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
+                <div className="footer hongli">技术支持:洺源信息技术(大连)有限公司&nbsp;备案号:辽ICP备19000937号-1</div>
             </div>
         );
     }
