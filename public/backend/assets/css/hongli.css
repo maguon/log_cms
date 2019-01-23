@@ -144,7 +144,7 @@ body {
 /*轮播*/
 .example {
     width: 100%;
-    height: 620px;
+    height: 820px;
     font-size: 40px;
 }
 .ft-carousel {
@@ -166,6 +166,7 @@ body {
 }
 .ft-carousel .carousel-item img {
     width: 100%;
+    height:800px;
 }
 .ft-carousel .carousel-indicators span {
     display: inline-block;
@@ -216,7 +217,7 @@ body {
 .companyProfile{
     width: 100%;
     height: 470px;
-    background-color: #835fa7;
+    background: url(../images/back.jpg) repeat-x;
 }
 #companyInter{
     width: 80%;
