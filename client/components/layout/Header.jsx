@@ -45,7 +45,7 @@ class Header extends React.Component {
                         </div>
 
                         <div className="nav_ce col s7">
-                            <ul className="tree_1 col s12">
+                            <ul className="tree_1 col s7 offset-s5">
                                 {
                                     this.props.menuList.map((menuItem,index) => <li className='nav_block col'><a className="collection-item white-text"  href={"#menu"+index}>{menuItem.menu_name}</a></li>)
                                 }
