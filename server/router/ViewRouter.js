@@ -6,10 +6,11 @@ const React = require('react');
 import {MenuViewController,NewsViewController} from '../controller/view/'
 
 router.get('/st', MenuViewController.getMenuView);
-//router.get('/', MenuViewController.getMenuView);
 
 router.get('/hongli', MenuViewController.getHongliView);
-//router.get('/', MenuViewController.getHongliView);
+
+router.get('/mingyuan', MenuViewController.getMingyuanView);
+
 
 router.get('/menu/:menuId/menuType/:menuType/page/:page/news', NewsViewController.getNewsView);
 router.get('/menu/:menuId/menuType/:menuType/news/:newsId/page/:page', NewsViewController.getNewsViewDetails);

@@ -1,0 +1,401 @@
+
+p{
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: scroll;
+}
+.container{
+    margin:0 0 70px 0;
+    background: #f1f5f5;
+    overflow-y: scroll;
+}
+.collection{
+    border: 0px !important;
+}
+/*header*/
+#nav_bg {
+    width: 100%;
+    height: 100px;
+    background: url(../images/banner1.jpg) repeat-x;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    margin-bottom: 0;
+}
+.nav_bg{
+    width: 100%;
+    height: 100px;
+}
+.logo_img{
+    margin-top:30px;
+    height: 45px;
+}
+.nav_block {
+    width: 30%;
+    height: 60px;
+    line-height: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 12px;
+}
+.nav_block a:hover{
+    color: #2828ff !important;
+}
+
+/*footer*/
+.page-footer{
+    width: 100%;
+    z-index: 1030;
+    background-color: #212830 !important;
+    padding:0 !important;
+}
+.footer {
+    background-color: #222222;
+    color: #555555;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    font-family: "microsoft yahei",Tahoma, sans-serif;
+}
+.lined {
+    border-bottom-color: #505050;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #b6b6b6;
+}
+.lined h2 span a{
+    color: white;
+}
+.footerLi{
+    width: 80%;
+    margin-left: 10%;
+    padding-bottom: 20px;
+    height:420px ;
+}
+.bolded-line {
+    background-color: white;
+    display: block;
+    margin-bottom: -2px;
+    margin-top: 16px;
+    width: 22px;
+    height: 2px;
+}
+.foot {
+    color: white;
+    overflow: hidden;
+    text-align: left;
+    font-size: 12px;
+}
+.lined h2 {
+    color: white;
+    font-size: 18px;
+    font-family: 'PT Sans';
+    height:20px;
+    line-height: 20px;
+    font-weight: bold;
+    overflow: hidden;
+}
+.lined span {
+    color: white;
+}
+.lined h5 {
+    color: #999999;
+    margin: 0;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: 'PT Sans';
+}
+.span3 {
+    width: 21%;
+    min-height: 1px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.search-width {
+    border: 1px solid #cccccc;
+    width: 75%;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border-radius: 3px;
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+    background-color: white;
+    display: inline-block;
+    height: 26px;
+    padding: 4px 6px;
+    line-height: 20px;
+    color: #555555;
+    font-size: 12px;
+}
+.input-append {
+    margin-bottom: 5px;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+
+
+/*轮播*/
+.example {
+    width: 100%;
+    height: 820px;
+    font-size: 40px;
+}
+.ft-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.ft-carousel .carousel-inner {
+    position: absolute;
+    left: -1px;
+    top: 19px;
+    height: 100%;
+}
+.ft-carousel .carousel-inner .carousel-item {
+    float: left;
+    height: 100%;
+    color: #fff;
+}
+.ft-carousel .carousel-item img {
+    width: 100%;
+    height:800px;
+}
+.ft-carousel .carousel-indicators span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    margin: 0 4px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.ft-carousel .carousel-indicators span.active {
+    background-color: #de3a3a;
+}
+.ft-carousel .carousel-indicators {
+    position: absolute;
+    padding-right: 30px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 35px;
+    line-height: 53px;
+    text-align: right;
+    font-size: 0;
+}
+.mask{
+    position: absolute;
+    right: 310px;
+    top:170px;
+    z-index: 1000;
+    color: white;
+    width: 360px;
+    height: 150px;
+    text-align: left;
+}
+.mask h4{
+    font-size: 45px;
+    font-weight: bold;
+}
+.mask h5{
+    font-size: 21px;
+    margin: 20px 0;
+    font-weight: normal;
+}
+.mask p{
+    font-size: 13px;
+}
+/*menu中的公司简介*/
+.companyProfile{
+    width: 100%;
+    height: 470px;
+    background: url(../images/back.jpg) repeat-x;
+}
+#companyInter{
+    width: 80%;
+    margin-left: 10%;
+    overflow: hidden;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    height: 260px;
+
+}
+.ff {
+    float: left;
+    margin-left: 30px;
+    width: 30%;
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.companyH2{
+    margin-bottom: 15px;
+}
+.companyH2 h2{
+    font-size: 18px;
+    font-family: 'PT Sans';
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+.companyH2 h2 span{
+    color: #ffffff;
+}
+.companyH2 h5{
+    color: #fff;
+    font-weight: normal;
+    font-family: 'PT Sans';
+    font-size: 12px;
+}
+.span1{
+    display: block;
+    margin-top: 16px;
+    width: 200px;
+    height: 1px;
+    background-color: #ffffff;
+}
+.Pspan{
+    line-height: 20px;
+    color: #fff;
+}
+.carName{
+    text-align: left;
+    margin-top: 3px;
+    color: #333333;
+}
+
+/*业务范围*/
+.showCarPlace{
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+#hdjy {
+    height: 560px;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+.ab_guanyu_index {
+    font-size: 18px;
+    margin: 0 auto;
+}
+.ab_guanyu_index {
+    color: black;
+    font-weight: bold;
+}
+.silhouette_block {
+    width: 25%;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.silhouette_block_pic {
+    width: 100%;
+    height: 197px;
+    float: left;
+    display: inline;
+    overflow: hidden;
+}
+.showImg{
+    width: 80%;
+    margin: 0 auto;
+}
+.imgShow{
+    width: 100%;
+    height: 200px;
+}
+.collection .collection-item{
+    padding:0;
+    margin: 0;
+}
+
+.wrap1003_index {
+    margin: 0 auto;
+    height: 230px;
+}
+#yqlj {
+    width: 100%;
+    margin-top: 50px;
+}
+.kect_index {
+    width: 14%;
+    border-bottom: 2px solid #333;
+    margin: 0 auto;
+}
+.showBusiness{
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+}
+.showBusinessAll{
+    float: left;
+    width: 27%;
+    margin: 20px 3%;
+    color: #9a9dad;
+}
+.showBusiness .showBusinessTitle{
+    margin: 30px 0px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #444;
+
+}
+.showBusiness .showBusinessDetail{
+    text-align: left;
+}
+
+.ab_neirMenu {
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    line-height: 30px;
+    color: #5a5a5a;
+}
+.yoqlj li {
+    float: left;
+    width: 10%;
+    height: 80px;
+}
+
+/*联系我们*/
+#showLinkMe{
+    width: 100%;
+    overflow: hidden;
+    padding-top: 20px;
+}
+.f_end{
+    margin-left: 35%;
+    margin-top: 20px;
+}
+.honglilogo{
+    height: 50px;
+}
+
+#menu0:target,#menu1:target{
+    padding-top:70px;
+}
+
+.shuntong{
+    display: none;
+}
+.hongli{
+    display: block;
+}
+
+
+
+
+
+

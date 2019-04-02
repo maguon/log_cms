@@ -1,5 +1,5 @@
 const mongodbConfig = {
-    connect : 'mongodb://192.168.191.138:27017/hongli_cms',
+    connect : 'mongodb://192.168.191.138:27017/mingyuan_cms',
     debug : true
 }
 
@@ -38,7 +38,7 @@ const logConfig = {
 }
 
 const record = {
-    path : "/view/hongli"
+    path : "/view/mingyuan"
 }
 
 
