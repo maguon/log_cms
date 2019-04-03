@@ -70,6 +70,7 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
+
                     <div className="footerLi row col s12 hongli" id='menu2'>
                         <div  id='showLinkMe'>
                             <div id="hdjy">
@@ -84,11 +85,36 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
+
+
+                    <div className="footerLi row col s12 mingyuan" id='menu5'>
+                        <div  id='showLinkMe'>
+                            <div id="hdjy">
+                                <div className="kect_index">
+                                    <h4>关于我们</h4>
+                                    <h6>ABOUT US</h6>
+                                </div>
+                                <div className="f_end col  s4 offset-s4">
+                                    <p>
+                                        我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目。
+                                    </p>
+
+
+                                    {
+                                        this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
 
                 <div className="footer shuntong">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
                 <div className="footer hongli">技术支持:鸿溧科技（大连）有限公司&nbsp;备案号:辽ICP备19000937号-1</div>
+                <div className="footer mingyuan">大连洺源科技有限公司&nbsp;备案号:辽ICP备19000937号</div>
             </div>
         );
     }

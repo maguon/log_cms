@@ -20,7 +20,7 @@ body {
 #nav_bg {
     width: 100%;
     height: 100px;
-    background: url(../images/banner1.jpg) repeat-x;
+    background: white;
     position: fixed;
     right: 0;
     left: 0;
@@ -36,23 +36,28 @@ body {
     height: 45px;
 }
 .nav_block {
-    width: 30%;
+    width: 16%;
     height: 60px;
     line-height: 30px;
     cursor: pointer;
     margin-top: 20px;
-    font-size: 12px;
+    font-size: 15px;
 }
 .nav_block a:hover{
-    color: #2828ff !important;
+    color: yellow !important;
 }
-
+.nameLogo{
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 100px;
+}
 /*footer*/
 .page-footer{
     width: 100%;
     z-index: 1030;
-    background-color: #212830 !important;
+    background: url(../images/back.jpg) repeat-x !important;
     padding:0 !important;
+    margin-top: -15px;
 }
 .footer {
     background-color: #222222;
@@ -89,6 +94,7 @@ body {
     overflow: hidden;
     text-align: left;
     font-size: 12px;
+    border-top:3px solid #1E88E5;
 }
 .lined h2 {
     color: white;
@@ -138,36 +144,53 @@ body {
     font-size: 0;
     white-space: nowrap;
 }
+.kect_index {
+    width: 14%;
+    border-bottom: 2px solid yellow;
+    margin: 0 auto;
+}
 
-
+/*blank*/
+.blank{
+     height: 100px;
+     width: 100%;
+ }
 
 /*轮播*/
 .example {
     width: 100%;
-    height: 820px;
+    height: 800px;
     font-size: 40px;
+    border-top:3px solid #1E88E5;
+    overflow: hidden;
 }
 .ft-carousel {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
+
 .ft-carousel .carousel-inner {
     position: absolute;
-    left: -1px;
-    top: 19px;
+    left: 0px;
+    top: 0px;
     height: 100%;
 }
 .ft-carousel .carousel-inner .carousel-item {
     float: left;
     height: 100%;
     color: #fff;
+    margin-top: -40px;
 }
 .ft-carousel .carousel-item img {
     width: 100%;
-    height:800px;
+    height:780px;
 }
+
+
+
 .ft-carousel .carousel-indicators span {
     display: inline-block;
     width: 12px;
@@ -187,112 +210,138 @@ body {
     bottom: 0px;
     width: 100%;
     height: 35px;
-    line-height: 53px;
+    line-height: 0px;
     text-align: right;
     font-size: 0;
 }
-.mask{
+
+
+#menu0:target,#menu1:target{
+    padding-top:0px;
+}
+.mask1{
     position: absolute;
-    right: 310px;
-    top:170px;
+    top:380px;
+    left: 41%;
+    z-index: 1000;
+    color: yellow;
+    font-size:13px ;
+}
+.mask2{
+    position: absolute;
+    top:650px;
+    left: 26%;
     z-index: 1000;
     color: white;
-    width: 360px;
-    height: 150px;
-    text-align: left;
+    font-size:15px ;
 }
-.mask h4{
-    font-size: 45px;
-    font-weight: bold;
+.mask3{
+    position: absolute;
+    top:780px;
+    left: 20%;
+    z-index: 1000;
+    height: 60px;
+    width: 60%;
 }
-.mask h5{
-    font-size: 21px;
-    margin: 20px 0;
-    font-weight: normal;
+.mask3 .maskLine1,.mask3 .maskLine2 {
+    border-bottom: 1px solid white;
+    margin-top: 20px;
 }
-.mask p{
-    font-size: 13px;
+.mask3 .maskClick{
+    height: 60px;
 }
-/*menu中的公司简介*/
-.companyProfile{
+.mask3 .maskClick i{
+    height: 60px;
     width: 100%;
-    height: 470px;
-    background: url(../images/back.jpg) repeat-x;
-}
-#companyInter{
-    width: 80%;
-    margin-left: 10%;
-    overflow: hidden;
-    padding-top: 100px;
-    padding-bottom: 20px;
-    height: 260px;
-
-}
-.ff {
-    float: left;
-    margin-left: 30px;
-    width: 30%;
-    text-align: left;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-.companyH2{
-    margin-bottom: 15px;
-}
-.companyH2 h2{
-    font-size: 18px;
-    font-family: 'PT Sans';
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-}
-.companyH2 h2 span{
-    color: #ffffff;
-}
-.companyH2 h5{
-    color: #fff;
-    font-weight: normal;
-    font-family: 'PT Sans';
-    font-size: 12px;
-}
-.span1{
+    color: white;
     display: block;
-    margin-top: 16px;
-    width: 200px;
-    height: 1px;
-    background-color: #ffffff;
-}
-.Pspan{
-    line-height: 20px;
-    color: #fff;
-}
-.carName{
-    text-align: left;
-    margin-top: 3px;
-    color: #333333;
 }
 
-/*业务范围*/
-.showCarPlace{
+
+
+/*公司简介*/
+.companyPro{
+    height: 650px;
     width: 100%;
-    overflow: hidden;
-    background: #fff;
+    background: pink;
+    margin-top: -53px;
+    border-top:3px solid #1E88E5;
+    position: relative;
 }
-#hdjy {
-    height: 560px;
-    padding-top: 10px;
-    margin: 0 auto;
+.companyInter{
+    position: absolute;
+    top:100px;
+    left:50%;
+    border-bottom:2px solid yellow;
+    color: white;
 }
-.ab_guanyu_index {
-    font-size: 18px;
-    margin: 0 auto;
+.companyInter h5{
+    text-align: left;
 }
-.ab_guanyu_index {
+.companyContent{
+    width: 470px;
+    position: absolute;
+    top:300px;
+    left:50%;
+    color: white;
+    text-align: left;
+}
+.companyMask{
+    position: absolute;
+    top:550px;
+    left: 20%;
+    z-index: 1000;
+    height: 60px;
+    width: 60%;
+}
+.companyMask .maskLine1,.companyMask .maskLine2 {
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+}
+.companyMask .maskClick{
+    height: 60px;
+}
+.companyMask .maskClick i{
+    height: 60px;
+    width: 100%;
+    color: white;
+    display: block;
+    font-size: 40px;
+}
+
+/*核心业务*/
+.coreBusiness{
+    height: 750px;
+    width: 100%;
+    border-top:3px solid #1E88E5;
+    position: relative;
+}
+.coreBusinessInter{
+    position: absolute;
+    top:100px;
+    left: 45%;
+    border-bottom:2px solid yellow;
     color: black;
-    font-weight: bold;
 }
-.silhouette_block {
-    width: 25%;
+.showBusiness{
+    width: 60%;
+    height: 80px;
+    position: absolute;
+    top:250px;
+    left: 20%;
+    text-align: left;
+    color: lightgray;
+}
+.businessShowImg{
+    width: 80%;
+    height: 200px;
+    position: absolute;
+    top:370px;
+    left: 10%;
+    text-align: left;
+}
+.businessShowImg .silhouette_block {
+    width:33.3%;
     float: left;
     display: inline;
     overflow: hidden;
@@ -313,61 +362,166 @@ body {
     width: 100%;
     height: 200px;
 }
-.collection .collection-item{
-    padding:0;
-    margin: 0;
+.businessMask{
+    position: absolute;
+    top:650px;
+    left: 20%;
+    z-index: 1000;
+    height: 60px;
+    width: 60%;
 }
-
-.wrap1003_index {
-    margin: 0 auto;
-    height: 230px;
+.businessMask .maskLine1,.businessMask .maskLine2 {
+    border-bottom: 1px solid black;
+    margin-top: 20px;
 }
-#yqlj {
+.businessMask .maskClick{
+    height: 60px;
+}
+.businessMask .maskClick i{
+    height: 60px;
     width: 100%;
-    margin-top: 50px;
-}
-.kect_index {
-    width: 14%;
-    border-bottom: 2px solid #333;
-    margin: 0 auto;
-}
-.showBusiness{
-    width: 80%;
-    height: 300px;
-    margin: 0 auto;
-}
-.showBusinessAll{
-    float: left;
-    width: 27%;
-    margin: 20px 3%;
-    color: #9a9dad;
-}
-.showBusiness .showBusinessTitle{
-    margin: 30px 0px;
-    font-weight: bold;
-    font-size: 18px;
-    color: #444;
-
-}
-.showBusiness .showBusinessDetail{
-    text-align: left;
+    color: black;
+    display: block;
+    font-size: 40px;
 }
 
-.ab_neirMenu {
+/*产品介绍*/
+.productPresentation{
+    height: 750px;
+    width: 100%;
+    border-top:3px solid #1E88E5;
+    position: relative;
+}
+.productInter {
+    position: absolute;
+    top:100px;
+    left: 41%;
+    border-bottom:2px solid yellow;
+    color: black;
+}
+.showProduct{
+    position: absolute;
+    top:250px;
+    left: 10%;
     width: 80%;
-    margin-left: 10%;
+    height: 200px;
+    color: black;
+}
+.productPart{
+    width:33.3%;
     float: left;
-    padding: 0;
+    display: inline;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.productPart p{
+    margin-top: 15px;
+    width: 80%;
+    margin-left:10% ;
     text-align: left;
-    font-size: 14px;
-    line-height: 30px;
-    color: #5a5a5a;
+    font-size: 13px;
 }
-.yoqlj li {
+.productPart .productPartPic{
+    width: 80%;
+    margin-left:10%;
+    margin-top: 20px;
+    height: 197px;
+}
+.productPart .silhouette_block_pic {
+    width: 100%;
+    height: 197px;
     float: left;
-    width: 10%;
-    height: 80px;
+    display: inline;
+    overflow: hidden;
 }
+.productPartMask{
+    position: absolute;
+    top:650px;
+    left: 12.5%;
+    z-index: 1000;
+    height: 60px;
+    width: 75%;
+}
+.productPartMask .maskLine1,.productPartMask .maskLine2 {
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+}
+.productPartMask .maskClick{
+    height: 60px;
+}
+.productPartMask .maskClick i{
+    height: 60px;
+    width: 100%;
+    color: black;
+    display: block;
+    font-size: 40px;
+}
+
+
+/*应用领域*/
+.applicationArea{
+    height: 650px;
+    width: 100%;
+    background: pink;
+    border-top:3px solid #1E88E5;
+    position: relative;
+}
+.applicationAreaInter{
+    position: absolute;
+    top:100px;
+    left:50%;
+    border-bottom:2px solid yellow;
+    color: white;
+}
+.applicationAreaInter h5{
+    text-align: left;
+}
+.applicationAreaContent{
+    width: 470px;
+    position: absolute;
+    top:300px;
+    left:50%;
+    color: white;
+    text-align: left;
+}
+.applicationAreaMask{
+    position: absolute;
+    top:550px;
+    left: 20%;
+    z-index: 1000;
+    height: 60px;
+    width: 60%;
+}
+.applicationAreaMask .maskLine1,.applicationAreaMask .maskLine2 {
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+}
+.applicationAreaMask .maskClick{
+    height: 60px;
+}
+.applicationAreaMask .maskClick i{
+    height: 60px;
+    width: 100%;
+    color: white;
+    display: block;
+    font-size: 40px;
+}
+
+.applicationAreaImg{
+    position: absolute;
+    top:100px;
+    left:15%;
+    width: 400px;
+    height: 400px;
+}
+.applicationAreaImgShow img{
+    width: 150px;
+    height: 150px;
+    margin: 25px;
+}
+
+
+
 
 /*联系我们*/
 #showLinkMe{
@@ -376,24 +530,21 @@ body {
     padding-top: 20px;
 }
 .f_end{
-    margin-left: 35%;
     margin-top: 20px;
 }
-.honglilogo{
+.mingyuanlogo{
     height: 50px;
-}
-
-#menu0:target,#menu1:target{
-    padding-top:70px;
 }
 
 .shuntong{
     display: none;
 }
 .hongli{
+    display: none;
+}
+.mingyuan{
     display: block;
 }
-
 
 
 

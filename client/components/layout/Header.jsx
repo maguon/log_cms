@@ -54,6 +54,27 @@ class Header extends React.Component {
 
                     </div>
                 </div>
+
+                <div className="row mingyuan">
+                    <a className="target-fix" id="experts"></a>
+                    <div className="col s12 m4 l3" id="nav_bg">
+                        <div className="logoimg col s4 offset-s1">
+                            <a href={"/view/mingyuan"} className="col s2">
+                                <img alt="logo" className='logo_img' src="/backend/assets/images/mingyuanlogo.png" />
+                            </a>
+                            <p className='col s10 nameLogo left-align'>洺源科技</p>
+                        </div>
+
+                        <div className="nav_ce col s6">
+                            <ul className="tree_1 col s12">
+                                {
+                                    this.props.menuList.map((menuItem,index) => <li className='nav_block col'><a className="collection-item black-text"  href={"#menu"+index}>{menuItem.menu_name}</a></li>)
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
         );
