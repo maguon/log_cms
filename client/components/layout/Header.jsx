@@ -56,7 +56,6 @@ class Header extends React.Component {
                 </div>
 
                 <div className="row mingyuan">
-                    <a className="target-fix" id="experts"></a>
                     <div className="col s12 m4 l3" id="nav_bg">
                         <div className="logoimg col s4 offset-s1">
                             <a href={"/view/mingyuan"} className="col s2">
