@@ -14,7 +14,7 @@ class Footer extends React.Component {
         }else{
             recruitLink = "/view/menu/"+this.props.recruitList[0].menu_id._id+"/menuType/"+this.props.recruitList[0].menu_id.menu_type+"/page/1/news";
         };
-        if(this.props.recruitList.length===0){
+        if(this.props.contactList.length===0){
             contactLink = "";
         }else{
             contactLink = "/view/menu/"+this.props.contactList[0].menu_id._id+"/menuType/"+this.props.contactList[0].menu_id.menu_type+"/page/1/news";
@@ -95,11 +95,6 @@ class Footer extends React.Component {
                                     <h6>ABOUT US</h6>
                                 </div>
                                 <div className="f_end col  s4 offset-s4">
-                                    <p>
-                                        我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目我们每一个项目。
-                                    </p>
-
-
                                     {
                                         this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)
                                     }
