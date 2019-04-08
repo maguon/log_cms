@@ -17,8 +17,8 @@ export default class MingyuanComponent  extends React.Component {
                     <div className="collection">
                         <div className='blank'> </div>
                         <div className="example" id='menu0'>
-                            <div className="mask1"> SIX BRANCH OF SCIENCE AND TECHNOLOGY</div>
-                            <div className="mask2"> 我们专注于品质化定制构建,企业品牌在网站中的整体梳理,网络互动的体验,以及在手机登移动端的优质呈现。</div>
+                           {/* <div className="mask1"> SIX BRANCH OF SCIENCE AND TECHNOLOGY</div>
+                            <div className="mask2"> 我们专注于品质化定制构建,企业品牌在网站中的整体梳理,网络互动的体验,以及在手机登移动端的优质呈现。</div>*/}
                             <div className="mask3 row  col s12">
                                 <div className='maskLine1 col s5'></div>
                                 <div className='maskClick col s2'>
@@ -45,10 +45,7 @@ export default class MingyuanComponent  extends React.Component {
 
                         <div className="companyPro" id='menu1'>
 
-                                <div className="companyInter">
-                                    <h5>公司简介</h5>
-                                    <h5>COMPANY PROFILE</h5>
-                                </div>
+                                <div className="companyInter"> </div>
                                 <div className="companyContent">
                                     {
                                         this.props.briefList.map((briefItem, index) => <p className='' key={index}
@@ -66,62 +63,22 @@ export default class MingyuanComponent  extends React.Component {
                                 </div>
                         </div>
 
-
-                        <div className='coreBusiness' id='menu2'>
-
-                                <div className="coreBusinessInter row col s12">
-                                    <h5 className='center-align'>核心业务</h5>
-                                    <h5 className='center-align'>CORE BUSINESS</h5>
-                                </div>
-
-                                <div className="showBusiness">
-                                    {
-                                        this.props.businessList.map((businessItem, index) =>
-
-                                            <div className='showBusinessAll'>
-                                                <div className='showBusinessTitle'>{businessItem.news_title}</div>
-                                                <div className='showBusinessDetail'>
-                                                    <p dangerouslySetInnerHTML={{__html: businessItem.news_content}}/>
-                                                </div>
-                                            </div>)
-                                    }
-                                </div>
-
-                                <div className="businessShowImg">
-                                    {
-                                        this.props.newsImageList.map((imageItem, index) =>
-                                            <div className="silhouette_block">
-                                                <div className="silhouette_block_pic">
-
-                                                    <a className="collection-item" key={index}
-                                                       href="javascript:void(0)">
-                                                        <img className='imgShow'
-                                                             src={"/api/image/" + imageItem.news_image}/>
-                                                    </a>
-                                                </div>
-                                            </div>)
-                                    }
-
-                                </div>
-
-                            <div className="businessMask row  col s12">
-                                <div className='maskLine1 col s5'></div>
-                                <div className='maskClick col s2'>
-                                    <a className="black-text"  href="#menu3">
-                                        <i className='mdi mdi-chevron-double-down'> </i>
-                                    </a>
-                                </div>
-                                <div className='maskLine2 col s5'></div>
-                            </div>
-
-                        </div>
-
-
-                        <div className="productPresentation" id='menu3'>
+                        <div className="productPresentation" id='menu2'>
                             <div className="productInter row col s12">
                                 <h5 className='center-align'>产品介绍</h5>
                                 <h5 className='center-align'>PRODUCT INTRODUCTION</h5>
                             </div>
+                            <div className="borderYellow row col s12"> </div>
+
+                            <div className='productInterduce'>
+                                产品优势：洺源科技（大连）有限公司36kW系列车用燃料电池系统（MY-FCE40）
+                                是专门针对燃料电池商用车需求开发，
+                                具有功率密度高，响应速度快，安全性能高，燃料经济性能好等特点。系统由电堆模块、
+                                空气系统、氢气系统、
+                                冷却系统及电气及控制系统等部分组成，可为燃料电池车辆提供持久稳定的动力输入，
+                                满足中重型燃料电池商用车的动力需求。
+                            </div>
+
 
                             <div className='showProduct'>
                                 {
@@ -142,10 +99,12 @@ export default class MingyuanComponent  extends React.Component {
                                 }
                             </div>
 
+                            <h5 className='carH5'>车用燃料电池系统</h5>
+
                             <div className="productPartMask row  col s12">
                                 <div className='maskLine1 col s5'></div>
                                 <div className='maskClick col s2'>
-                                    <a className="black-text"  href="#menu4">
+                                    <a className="black-text"  href="#menu3">
                                         <i className='mdi mdi-chevron-double-down'> </i>
                                     </a>
                                 </div>
@@ -153,27 +112,40 @@ export default class MingyuanComponent  extends React.Component {
                             </div>
                         </div>
 
-                        <div className="applicationArea" id='menu4'>
-                            <div className="applicationAreaInter">
-                                <h5>应用领域</h5>
-                                <h5>APPLICATION AREA</h5>
-                            </div>
-                                <div className="applicationAreaImg row col s12">
-                                    {
-                                        this.props.areaImageList.map((imageItem, index) =>
-                                            <div className='applicationAreaImgShow col s6'>
-                                                <img className='imgShow' src={"/api/image/" + imageItem.news_image}/>
-                                            </div>)
-                                    }
 
-                                </div>
-                            <div className="applicationAreaContent">
-                                {
-                                    this.props.recruitList.map((areaItem, index) => <p className='' key={index}
-                                                                                      dangerouslySetInnerHTML={{__html: areaItem.news_content}}/>)
-                                }
+
+                        <div className='coreBusiness' id='menu3'>
+
+                            <div className="coreBusinessInter row col s12">
+                                <h5 className='center-align'>新闻资讯</h5>
+                                <h5 className='center-align'>NEWS</h5>
                             </div>
-                            <div className="applicationAreaMask row  col s12">
+                            <div className="borderYellow3 row col s12"> </div>
+
+                            <div className='enterpriseNews'>
+                                <h6>企业动态 </h6>
+                                <a  href=''>MORE</a>
+                                <ul type="square">
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                </ul>
+
+                            </div>
+                            <div className='companyNews'>
+                                <h6>公司动态 </h6>
+                                <a  href=''>MORE</a>
+                                <ul type="square">
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
+                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                </ul>
+
+
+                            </div>
+                            <div className="businessMask row  col s12">
                                 <div className='maskLine1 col s5'></div>
                                 <div className='maskClick col s2'>
                                     <a className="black-text"  href="#menu5">
@@ -182,7 +154,9 @@ export default class MingyuanComponent  extends React.Component {
                                 </div>
                                 <div className='maskLine2 col s5'></div>
                             </div>
+
                         </div>
+
 
 
                     </div>

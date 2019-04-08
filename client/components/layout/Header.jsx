@@ -67,8 +67,16 @@ class Header extends React.Component {
                         <div className="nav_ce col s6">
                             <ul className="tree_1 col s12">
                                 {
-                                    this.props.menuList.map((menuItem,index) => <li className='nav_block col'><a className="collection-item black-text"  href={"#menu"+index}>{menuItem.menu_name}</a></li>)
+                                    this.props.menuList.map((menuItem,index) =>{
+                                        return index === 4 ?
+                                        <li className='nav_block col'>
+                                            <a className="collection-item black-text"  key='0' href={"/view/menu/"+menuItem._id.toString()+"/menuType/"+menuItem.menu_type+"/page/1/news"}>{menuItem.menu_name}</a>
+                                        </li>:
+                                            <li className='nav_block col'><a className="collection-item black-text"  href={"/view/mingyuan#menu"+index}>{menuItem.menu_name}</a></li>
+
+                                    })
                                 }
+
                             </ul>
                         </div>
 

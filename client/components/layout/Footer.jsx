@@ -21,7 +21,7 @@ class Footer extends React.Component {
         };
         return (
             <div className="page-footer">
-                <div className="foot" style={{height:263+'px'}}>
+                <div className="foot">
                     <div className="footerLi row col s12 shuntong">
                         <div className="span3 col">
                             <div className="lined">
@@ -93,12 +93,21 @@ class Footer extends React.Component {
                                 <div className="kect_index">
                                     <h4>关于我们</h4>
                                     <h6>ABOUT US</h6>
+                                    <div className="borderYellow5"> </div>
+                                    <h5 className='companyName'>洺源科技（大连）有限公司</h5>
                                 </div>
-                                <div className="f_end col  s4 offset-s4">
+                                <div className="f_end">
+                                    {/*<p> 电话：010-88703280</p>
+                                    <p>传真：邮编:116600</p>
+                                    <p>企业邮箱：</p>
+                                    <p>公司地址： 大连市经济技术区 金港企业配套园2期15B</p>
+                                    <p>公司设计中心： 大连市经济技术区 金港企业配套园2期15B</p>*/}
                                     {
                                         this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)
                                     }
                                 </div>
+
+                                <div className='mapFoot'></div>
                             </div>
                         </div>
                     </div>
