@@ -1,6 +1,8 @@
 'use strict'
 
 const path = require('path');
+const process = require('process');
+const mod_getopt = require('posix-getopt');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -23,7 +25,20 @@ app.engine('ejs', require('ejs').renderFile);
 app.use('/api',apiRouter);
 app.use('/view',viewRouter);
 
+const  parser = new mod_getopt.BasicParser('p:(output)', process.argv);
+let option = parser.getopt();
+let port ;
+while (option  !== undefined) {
+    switch (option.option) {
+        case 'p':
+            port = process.argv[parser.optind()-1]
+            break;
+        default:
+            break;
+    }
+    option = parser.getopt();
 
+}
 
 /*app.get('*', (req ,res)=>{
     console.log(req);
@@ -43,6 +58,6 @@ app.get('/', function (req, res) {
     res.redirect(system.record.path);
 });
 
-app.listen(8100, () => {
-    logger.info(`server started at localhost:${8100} ` + new Date().toLocaleString());
+app.listen(port||8100, () => {
+    logger.info(`server started at localhost:${port||8100} ` + new Date().toLocaleString());
 })
