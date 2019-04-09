@@ -2,7 +2,7 @@
 config/config.js
 conf.json
 server/config/SystemConfig.js
-public/backend/js/config/host_config.js
+host_config.js
 public/docs/json/index.json
 .idea/*
 uploads/*
