@@ -107,7 +107,7 @@ class Footer extends React.Component {
                                     }
                                 </div>
 
-                                <div className='mapFoot'></div>
+                                <div id="map_div" className='mapFoot'></div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ class Footer extends React.Component {
 
                 <div className="footer shuntong">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
                 <div className="footer hongli">技术支持:鸿溧科技（大连）有限公司&nbsp;备案号:辽ICP备19000937号-1</div>
-                <div className="footer mingyuan">大连洺源科技有限公司&nbsp;备案号:辽ICP备19000937号</div>
+                <div className="footer mingyuan">洺源科技(大连)有限公司&nbsp;备案号:辽ICP备19000937号</div>
             </div>
         );
     }
