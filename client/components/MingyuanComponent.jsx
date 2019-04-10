@@ -119,7 +119,7 @@ export default class MingyuanComponent  extends React.Component {
                             <div className="borderYellow3 row col s12"> </div>
 
                             <div className='enterpriseNews'>
-                                <h6>企业动态 </h6>
+                                <h6>行业动态 </h6>
                                 <a  href={"/view/menu/5caa9fdadec99d1ffc89d4e1/menuType/2/page/1/news"}>MORE</a>
                                 <ul type="square">
                                     {
