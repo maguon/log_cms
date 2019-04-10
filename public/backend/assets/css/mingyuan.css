@@ -495,10 +495,9 @@ body {
 .showProduct{
     position: absolute;
     top:330px;
-    left: 10%;
-    width: 80%;
-    height: 200px;
+    height: 350px;
     color: black;
+    overflow: hidden;
 }
 .productInterduce{
     position: absolute;
@@ -517,7 +516,6 @@ body {
      color: dimgrey;
 }
 .productPart{
-    width:33.3%;
     float: left;
     display: inline;
     margin-bottom: 30px;
@@ -531,11 +529,11 @@ body {
 }
 .productPart .productPartPic{
     width: 100%;
-    height: 250px;
+    height: 280px;
 }
 .productPart .silhouette_block_pic {
     width: 100%;
-    height: 250px;
+    height: 280px;
     float: left;
     display: inline;
 }
