@@ -334,7 +334,7 @@ const getMingyuanView = (req, res, next) => {
                     }).then((menuList) => {
                         new Promise((resolve) =>{   //行业动态
                             let query = NewsModel.find({}).populate('menu_id');
-                            query.where('menu_id').equals('5cad3f3c3160aa601f6de037');
+                            query.where('menu_id').equals('5cada7f258f3df67d9d4b7ff');
                             query.where('news_status').equals('1');
                             query.skip(parseInt('0')).limit(parseInt('4'));
                             query.sort('news_num').exec((error, rows) => {
@@ -362,7 +362,7 @@ const getMingyuanView = (req, res, next) => {
                             }).then((menuList) => {
                                 new Promise((resolve) => {  //招贤纳士
                                     let query = NewsModel.find({}).populate('menu_id');
-                                    query.where('menu_id').equals('5cad3f563160aa601f6de038');
+                                    query.where('menu_id').equals('5cada6adb466a367b4939d16');
                                     query.where('news_status').equals('1');
                                     query.sort('news_num').exec((error, rows) => {
                                         if (error) {
