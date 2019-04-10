@@ -305,7 +305,7 @@ const getMingyuanView = (req, res, next) => {
                     }
                 })
             }).then((menuList) => {
-                new Promise((resolve) => {  //业务
+                new Promise((resolve) => {  //产品介绍
                     let query = NewsModel.find({}).populate('menu_id');
                     query.where('menu_id').equals('5ca30a4d83613532986ce8ff');
                     query.where('news_status').equals('1');
@@ -313,12 +313,12 @@ const getMingyuanView = (req, res, next) => {
                         if (error) {
                             resUtil.resetErrorPage(res, error);
                         } else {
-                            newsObj.businessList = rows;
+                            newsObj.productList = rows;
                             resolve(menuList);
                         }
                     })
                 }).then((menuList) => {
-                    new Promise((resolve) => {  //业务图片
+                    new Promise((resolve) => {  //产品图片
                         let query = NewsModel.find({}).populate('menu_id');
                         query.where('menu_id').equals('5ca557b9436184301869f187');
                         query.where('news_status').equals('1');
@@ -332,46 +332,47 @@ const getMingyuanView = (req, res, next) => {
                             }
                         })
                     }).then((menuList) => {
-                        new Promise((resolve) => {  //产品介绍
+                        new Promise((resolve) =>{   //企业动态
                             let query = NewsModel.find({}).populate('menu_id');
-                            query.where('menu_id').equals('5ca30a6483613532986ce900');
+                            query.where('menu_id').equals('5caa9fdadec99d1ffc89d4e1');
                             query.where('news_status').equals('1');
-                            query.skip(parseInt('0')).limit(parseInt('3'));
+                            query.skip(parseInt('0')).limit(parseInt('4'));
                             query.sort('news_num').exec((error, rows) => {
                                 if (error) {
                                     resUtil.resetErrorPage(res, error);
                                 } else {
-                                    newsObj.productList = rows;
+                                    newsObj.enterpriseList = rows;
                                     resolve(menuList);
                                 }
                             })
                         }).then((menuList) => {
-                            new Promise((resolve) => {  //领域
+                            new Promise((resolve) =>{   //公司动态
                                 let query = NewsModel.find({}).populate('menu_id');
-                                query.where('menu_id').equals('5ca30a7e83613532986ce901');
+                                query.where('menu_id').equals('5cad5a569b471312c0664727');
                                 query.where('news_status').equals('1');
+                                query.skip(parseInt('0')).limit(parseInt('4'));
                                 query.sort('news_num').exec((error, rows) => {
                                     if (error) {
                                         resUtil.resetErrorPage(res, error);
                                     } else {
-                                        newsObj.recruitList = rows;
+                                        newsObj.companyList = rows;
                                         resolve(menuList);
                                     }
                                 })
                             }).then((menuList) => {
-                                new Promise((resolve) =>{   //领域图片
+                                new Promise((resolve) => {  //招贤纳士
                                     let query = NewsModel.find({}).populate('menu_id');
-                                    query.where('menu_id').equals('5ca55a7b0dbf752a584b758f');
+                                    query.where('menu_id').equals('5caa9dea10f2371c74058caa');
                                     query.where('news_status').equals('1');
-                                    query.skip(parseInt('0')).limit(parseInt('4'));
                                     query.sort('news_num').exec((error, rows) => {
                                         if (error) {
                                             resUtil.resetErrorPage(res, error);
                                         } else {
-                                            newsObj.areaImageList = rows;
+                                            newsObj.recruitList = rows;
                                             resolve(menuList);
                                         }
                                     })
+
                                 }).then((menuList) => {
                                     new Promise((resolve) => {  //关于我们
                                         let query = NewsModel.find({}).populate('menu_id');
@@ -399,11 +400,11 @@ const getMingyuanView = (req, res, next) => {
                                                         menuList: menuList,
                                                         newsList: rows,
                                                         briefList:newsObj.briefList,
-                                                        businessList: newsObj.businessList,
-                                                        newsImageList: newsObj.newsImageList,
                                                         productList: newsObj.productList,
+                                                        newsImageList: newsObj.newsImageList,
+                                                        enterpriseList : newsObj.enterpriseList,
+                                                        companyList: newsObj.companyList,
                                                         recruitList: newsObj.recruitList,
-                                                        areaImageList: newsObj.areaImageList,
                                                         contactList: newsObj.contactList
                                                     }}/>);
                                                 resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)

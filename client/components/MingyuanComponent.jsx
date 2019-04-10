@@ -71,26 +71,22 @@ export default class MingyuanComponent  extends React.Component {
                             <div className="borderYellow row col s12"> </div>
 
                             <div className='productInterduce'>
-                                产品优势：洺源科技（大连）有限公司36kW系列车用燃料电池系统（MY-FCE40）
-                                是专门针对燃料电池商用车需求开发，
-                                具有功率密度高，响应速度快，安全性能高，燃料经济性能好等特点。系统由电堆模块、
-                                空气系统、氢气系统、
-                                冷却系统及电气及控制系统等部分组成，可为燃料电池车辆提供持久稳定的动力输入，
-                                满足中重型燃料电池商用车的动力需求。
+                                {
+                                    this.props.productList.map((briefItem, index) => <p className='' key={index}
+                                                                                      dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)
+                                }
                             </div>
 
 
                             <div className='showProduct'>
                                 {
-                                    this.props.productList.map((productItem, index) =>
+                                    this.props.newsImageList.map((newsItem, index) =>
                                         <div className='productPart'>
-                                            <h6>{productItem.news_title}</h6>
-                                            <p>{productItem.news_content}</p>
                                             <div className="productPartPic">
                                                 <div className="silhouette_block_pic">
 
                                                     <a className="collection-item" href="javascript:void(0)">
-                                                        <img className='imgShow' src={"/api/image/" + productItem.news_image}/>
+                                                        <img className='imgShow' src={"/api/image/" + newsItem.news_image}/>
                                                     </a>
                                                 </div>
                                             </div>
@@ -124,23 +120,29 @@ export default class MingyuanComponent  extends React.Component {
 
                             <div className='enterpriseNews'>
                                 <h6>企业动态 </h6>
-                                <a  href=''>MORE</a>
+                                <a  href={"/view/menu/5caa9fdadec99d1ffc89d4e1/menuType/2/page/1/news"}>MORE</a>
                                 <ul type="square">
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                    {
+                                        this.props.enterpriseList.map((newsItem,index) =>
+                                            <li>
+                                                <span className='liSpan'></span>
+                                                <span className='totalSpan'>{newsItem.news_title}</span>
+                                            </li>)
+                                    }
                                 </ul>
 
                             </div>
                             <div className='companyNews'>
                                 <h6>公司动态 </h6>
-                                <a  href=''>MORE</a>
+                                <a  href={"/view/menu/5cad5a569b471312c0664727/menuType/2/page/1/news"}>MORE</a>
                                 <ul type="square">
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发</span></li>
-                                    <li> <span className='liSpan'></span> <span className='totalSpan'>和狗波反馈结果返回的空间发和狗波反馈结果返回的空间发</span></li>
+                                    {
+                                        this.props.companyList.map((newsItem,index) =>
+                                            <li>
+                                                <span className='liSpan'></span>
+                                                <span className='totalSpan'>{newsItem.news_title}</span>
+                                            </li>)
+                                    }
                                 </ul>
 
 
