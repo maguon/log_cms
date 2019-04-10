@@ -348,7 +348,7 @@ const getMingyuanView = (req, res, next) => {
                         }).then((menuList) => {
                             new Promise((resolve) =>{   //公司动态
                                 let query = NewsModel.find({}).populate('menu_id');
-                                query.where('menu_id').equals('5cad3f3c3160aa601f6de037');
+                                query.where('menu_id').equals('5cad8928f74c7c4d457c433f');
                                 query.where('news_status').equals('1');
                                 query.skip(parseInt('0')).limit(parseInt('4'));
                                 query.sort('news_num').exec((error, rows) => {

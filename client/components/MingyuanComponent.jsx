@@ -134,7 +134,7 @@ export default class MingyuanComponent  extends React.Component {
                             </div>
                             <div className='companyNews'>
                                 <h6>公司动态 </h6>
-                                <a  href={"/view/menu/5cad3f3c3160aa601f6de037/menuType/2/page/1/news"}>MORE</a>
+                                <a  href={"/view/menu/5cad8928f74c7c4d457c433f/menuType/2/page/1/news"}>MORE</a>
                                 <ul type="square">
                                     {
                                         this.props.companyList.map((newsItem,index) =>
