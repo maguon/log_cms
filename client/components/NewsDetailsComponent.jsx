@@ -78,7 +78,7 @@ export default class NewsDetailsComponent  extends React.Component {
                             </div>
                             <div className="about_word">
                                 <div className="kect">
-                                    <div className="mores"><a href={"/view/index"} className="black-text" >首页</a>&nbsp;&gt;&nbsp;
+                                    <div className="mores"><a href="/" className="black-text" >首页</a>&nbsp;&gt;&nbsp;
                                         <a className="black-text"  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
                                 </div>
 

@@ -120,7 +120,7 @@ export default class ListComponent  extends React.Component {
                             </div>
                             <div className="about_word">
                                 <div className="kect">
-                                    <div className="mores"><a href="index" className="black-text">首页</a>&nbsp;&gt;&nbsp;
+                                    <div className="mores"><a href="/" className="black-text">首页</a>&nbsp;&gt;&nbsp;
                                         <a href={"/view/menu/"+this.props.menu[0]._id+"/menuType/"+this.props.menu[0].menu_type+"/page/1/news"} className="black-text" >{this.props.menu[0].menu_name}</a></div>
                                 </div>
 
