@@ -125,7 +125,9 @@ export default class MingyuanComponent  extends React.Component {
                                         this.props.enterpriseList.map((newsItem,index) =>
                                             <li>
                                                 <span className='liSpan'></span>
-                                                <span className='totalSpan'>{newsItem.news_title}</span>
+                                                <a className="totalSpan" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
+                                                    {newsItem.news_title}
+                                                </a>
                                             </li>)
                                     }
                                 </ul>
@@ -139,7 +141,9 @@ export default class MingyuanComponent  extends React.Component {
                                         this.props.companyList.map((newsItem,index) =>
                                             <li>
                                                 <span className='liSpan'></span>
-                                                <span className='totalSpan'>{newsItem.news_title}</span>
+                                                <a className="totalSpan" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
+                                                    {newsItem.news_title}
+                                                </a>
                                             </li>)
                                     }
                                 </ul>
