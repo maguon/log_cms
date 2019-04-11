@@ -84,7 +84,6 @@ export default class MingyuanComponent  extends React.Component {
                                         <div className='col s4 productPart'>
                                             <div className="productPartPic">
                                                 <div className="silhouette_block_pic">
-
                                                     <a className="collection-item" href="javascript:void(0)">
                                                         <img className='imgShow' src={"/api/image/" + newsItem.news_image}/>
                                                     </a>
