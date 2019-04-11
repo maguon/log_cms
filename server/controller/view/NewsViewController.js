@@ -133,7 +133,7 @@ const getNewsView = (req ,res ,next) => {
                         }).then((menu) => {
                             new Promise((resolve) => {  //底部联系
                                 let query = NewsModel.find({}).populate('menu_id');
-                                query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                                query.where('menu_id').equals('5ca30a9883613532986ce902');
                                 query.where('news_status').equals('1');
                                 query.sort('news_num').exec((error,rows)=> {
                                     if(error){
@@ -258,7 +258,7 @@ const getNewsViewDetails = (req ,res ,next) => {
             }).then((menu) => {
                 new Promise((resolve) => {
                     let query = NewsModel.find({}).populate('menu_id');
-                    query.where('menu_id').equals('5bfbb62c06e91f3814c8d0e8');
+                    query.where('menu_id').equals('5ca30a9883613532986ce902');
                     query.where('news_status').equals('1');
                     query.sort('news_num').exec((error, rows) => {
                         if (error) {

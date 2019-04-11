@@ -376,7 +376,7 @@ const getMingyuanView = (req, res, next) => {
                                 }).then((menuList) => {
                                     new Promise((resolve) => {  //关于我们
                                         let query = NewsModel.find({}).populate('menu_id');
-                                        query.where('menu_id').equals('5cad3f663160aa601f6de039');
+                                        query.where('menu_id').equals('5ca30a9883613532986ce902');
                                         query.where('news_status').equals('1');
                                         query.sort('news_num').exec((error, rows) => {
                                             if (error) {
@@ -390,7 +390,7 @@ const getMingyuanView = (req, res, next) => {
                                         let query = NewsModel.find({}).populate('menu_id');
                                         query.where('roll_flag').equals('1');
                                         query.where('news_status').equals('1');
-                                        query.skip(parseInt('0')).limit(parseInt('4'));
+                                        //query.skip(parseInt('0')).limit(parseInt('4'));
                                         query.sort('news_num').exec((error, rows) => {
                                             if (error) {
                                                 resUtil.resetErrorPage(res, error);
