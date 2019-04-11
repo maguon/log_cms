@@ -498,6 +498,8 @@ body {
     height: 350px;
     color: black;
     overflow: hidden;
+    width: 90%;
+    margin-left: 5%;
 }
 .productInterduce{
     position: absolute;
@@ -542,7 +544,7 @@ body {
 }
 .productPart .silhouette_block_pic img{
     width: 430px;
-    height: 266px;
+    height: 260px;
 
 }
 
