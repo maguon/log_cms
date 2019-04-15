@@ -496,10 +496,10 @@ body {
     position: absolute;
     top:330px;
     height: 350px;
-    color: black;
-    overflow: hidden;
-    width:74%;
-    margin-left: 13%;
+    width:100%;
+}
+.collection a.collection-item:not(.active):hover{
+    background: white !important;
 }
 .productInterduce{
     position: absolute;
