@@ -22,14 +22,7 @@ body {
     height: 100px;
     background: white;
     position: fixed;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-    margin-bottom: 0;
-}
-.nav_bg{
-    width: 100%;
-    height: 100px;
+    z-index: 10;
 }
 .logo_img{
     margin-top:30px;
@@ -96,6 +89,11 @@ body {
     font-size: 12px;
     height: 600px;
     border-top:3px solid #1E88E5;
+}
+.hdjy{
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 .lined h2 {
     color: white;
@@ -173,87 +171,39 @@ body {
     width: 100%;
 }
 
+
 /*轮播*/
 .example {
     width: 100%;
-    height: 800px;
-    font-size: 40px;
-    overflow: hidden;
-}
-.ft-carousel {
-    position: relative;
-    width: 100%;
     height: 100%;
+}
+
+.carousel{
+    width: 100%;
     padding: 0;
+    margin: 0;
+    position: relative;
+}
+.carousel .indicators {
+    position: absolute;
+    text-align: right !important;;
+    right: 30px !important;
+    bottom: 0px !important;
     margin: 0;
 }
 
-.ft-carousel .carousel-inner {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    height: 100%;
-}
-.ft-carousel .carousel-inner .carousel-item {
-    float: left;
-    height: 100%;
-    color: #fff;
-    margin-top: -40px;
-}
-.ft-carousel .carousel-item img {
-    width: 100%;
-    height:780px;
-}
-
-
-
-.ft-carousel .carousel-indicators span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #fff;
-    margin: 0 4px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-.ft-carousel .carousel-indicators span.active {
-    background-color: #de3a3a;
-}
-.ft-carousel .carousel-indicators {
-    position: absolute;
-    padding-right: 30px;
-    right: 0px;
-    bottom: 55px;
-    width: 100%;
-    height: 35px;
-    line-height: 0px;
-    text-align: right;
-    font-size: 0;
+.carousel .carousel-item{
+    visibility:visible !important;
 }
 
 
 #menu0:target,#menu1:target{
     padding-top:0px;
 }
-.mask1{
-    position: absolute;
-    top:380px;
-    left: 41%;
-    z-index: 1000;
-    color: yellow;
-    font-size:13px ;
-}
-.mask2{
-    position: absolute;
-    top:650px;
-    left: 26%;
-    z-index: 1000;
-    color: white;
-    font-size:15px ;
-}
+
 .mask3{
     position: absolute;
-    top:780px;
+    bottom:0px;
     left:20%;
     z-index: 1000;
     height: 60px;
@@ -271,6 +221,7 @@ body {
     width: 100%;
     color: white;
     display: block;
+    font-size: 40px;
 }
 
 
@@ -280,7 +231,6 @@ body {
     height: 700px;
     width: 100%;
     background: url(../images/company_bg.jpg) repeat-x !important;
-    margin-top: -53px;
     border-top:3px solid #1E88E5;
     position: relative;
 }
@@ -305,7 +255,7 @@ body {
 }
 .companyMask{
     position: absolute;
-    top:620px;
+    bottom:0px;
     left: 20%;
     z-index: 1000;
     height: 60px;
@@ -450,9 +400,8 @@ body {
 
 .businessMask{
     position: absolute;
-    top:650px;
+    bottom:15px;
     left: 20%;
-    z-index: 1000;
     height: 60px;
     width: 60%;
 }
@@ -550,9 +499,8 @@ body {
 
 .productPartMask{
     position: absolute;
-    top:680px;
+    bottom:0px;
     left: 20%;
-    z-index: 1000;
     height: 60px;
     width: 60%;
 }

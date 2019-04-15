@@ -15,3 +15,15 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
+
+
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+});
+$('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+});
+
+

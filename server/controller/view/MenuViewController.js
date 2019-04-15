@@ -294,7 +294,7 @@ const getMingyuanView = (req, res, next) => {
         }).then((menuList) => {
             new Promise((resolve) => {  //简介
                 let query = NewsModel.find({}).populate('menu_id');
-                query.where('menu_id').equals('5cad3ee93160aa601f6de035');
+                query.where('menu_id').equals('5ca557b9436184301869f187');
                 query.where('news_status').equals('1');
                 query.sort('news_num').exec((error,rows)=> {
                     if(error){
@@ -307,7 +307,7 @@ const getMingyuanView = (req, res, next) => {
             }).then((menuList) => {
                 new Promise((resolve) => {  //产品介绍
                     let query = NewsModel.find({}).populate('menu_id');
-                    query.where('menu_id').equals('5cad3f163160aa601f6de036');
+                    query.where('menu_id').equals('5ca557b9436184301869f187');
                     query.where('news_status').equals('1');
                     query.sort('news_num').exec((error, rows) => {
                         if (error) {
@@ -320,7 +320,7 @@ const getMingyuanView = (req, res, next) => {
                 }).then((menuList) => {
                     new Promise((resolve) => {  //产品图片
                         let query = NewsModel.find({}).populate('menu_id');
-                        query.where('menu_id').equals('5cad8a49b479af6077816a52');
+                        query.where('menu_id').equals('5ca557b9436184301869f187');
                         query.where('news_status').equals('1');
                         query.skip(parseInt('0')).limit(parseInt('3'));
                         query.sort('news_num').exec((error, rows) => {
@@ -334,7 +334,7 @@ const getMingyuanView = (req, res, next) => {
                     }).then((menuList) => {
                         new Promise((resolve) =>{   //行业动态
                             let query = NewsModel.find({}).populate('menu_id');
-                            query.where('menu_id').equals('5cada7f258f3df67d9d4b7ff');
+                            query.where('menu_id').equals('5ca557b9436184301869f187');
                             query.where('news_status').equals('1');
                             query.skip(parseInt('0')).limit(parseInt('4'));
                             query.sort('news_num').exec((error, rows) => {
@@ -362,7 +362,7 @@ const getMingyuanView = (req, res, next) => {
                             }).then((menuList) => {
                                 new Promise((resolve) => {  //招贤纳士
                                     let query = NewsModel.find({}).populate('menu_id');
-                                    query.where('menu_id').equals('5cada6adb466a367b4939d16');
+                                    query.where('menu_id').equals('5ca557b9436184301869f187');
                                     query.where('news_status').equals('1');
                                     query.sort('news_num').exec((error, rows) => {
                                         if (error) {
@@ -376,7 +376,7 @@ const getMingyuanView = (req, res, next) => {
                                 }).then((menuList) => {
                                     new Promise((resolve) => {  //关于我们
                                         let query = NewsModel.find({}).populate('menu_id');
-                                        query.where('menu_id').equals('5cad3f663160aa601f6de039');
+                                        query.where('menu_id').equals('5ca557b9436184301869f187');
                                         query.where('news_status').equals('1');
                                         query.sort('news_num').exec((error, rows) => {
                                             if (error) {

@@ -97,11 +97,6 @@ class Footer extends React.Component {
                                     <h5 className='companyName'>洺源科技（大连）有限公司</h5>
                                 </div>
                                 <div className="f_end">
-                                    {/*<p> 电话：010-88703280</p>
-                                    <p>传真：邮编:116600</p>
-                                    <p>企业邮箱：</p>
-                                    <p>公司地址： 大连市经济技术区 金港企业配套园2期15B</p>
-                                    <p>公司设计中心： 大连市经济技术区 金港企业配套园2期15B</p>*/}
                                     {
                                         this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)
                                     }

@@ -55,7 +55,7 @@ class Header extends React.Component {
                     </div>
                 </div>
 
-                <div className="row mingyuan">
+                <div className="row mingyuan" style={{margin:0}}>
                     <div className="col s12 m4 l3" id="nav_bg">
                         <div className="logoimg col s4 offset-s1">
                             <a href={"/view/mingyuan"} className="col s2">
