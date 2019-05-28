@@ -69,7 +69,7 @@ body {
     color: white;
 }
 .footerLi{
-    height: 650px;
+    /*height: 650px;*/
     width: 100%;
     border-top:3px solid #1E88E5;
     position: relative;
@@ -87,7 +87,7 @@ body {
     overflow: hidden;
     text-align: left;
     font-size: 12px;
-    height: 600px;
+    /*height: 600px;*/
     border-top:3px solid #1E88E5;
 }
 .hdjy{
@@ -151,7 +151,6 @@ body {
     left: 55%;
 }
 .kect_index .borderYellow5{
-    position: absolute;
     top:120px;
     left: 0;
     height: 4px;
@@ -159,7 +158,6 @@ body {
     border-bottom:4px solid orange;
 }
 .kect_index .companyName{
-    position: absolute;
     top:180px;
     left: 0;
     color: #90a3ae;
@@ -533,7 +531,7 @@ body {
     width: 100%;
     overflow: hidden;
     padding-top: 20px;
-    margin-left: 14%;
+    margin-left: 20px;
 }
 .f_end{
     width: 30%;
@@ -546,9 +544,9 @@ body {
     line-height: 2;
 }
 .mapFoot{
-    height: 540px;
+    height: 400px;
     margin: 10px 0;
-    width: 100%;
+    width: 90%;
     overflow: hidden;
     position: relative;
     z-index: 0;
