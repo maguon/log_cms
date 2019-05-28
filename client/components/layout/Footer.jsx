@@ -86,7 +86,6 @@ class Footer extends React.Component {
                         </div>
                     </div>
 
-
                     {/* 2019-05-28 修改样式匹配 电脑手机 */}
                     <div className="footerLi row col s12 mingyuan" id='menu5'>
                         <div  id='showLinkMe'>
@@ -108,10 +107,7 @@ class Footer extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
 
                 <div className="footer shuntong">大连顺通圣世物流有限公司&nbsp;备案号:辽ICP备14011916号</div>
                 <div className="footer hongli">技术支持:鸿溧科技（大连）有限公司&nbsp;备案号:辽ICP备19000937号-1</div>

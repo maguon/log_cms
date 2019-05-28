@@ -15,6 +15,7 @@ export default class MingyuanComponent  extends React.Component {
                 <Header menuList={this.props.menuList}/>
 
 
+
                 <div id="menu0" className="pushpin example" data-target="menu0" style={{height:'100%'}}>
                     <div className="mask3 row  col s12" style={{margin:0}}>
                         <div className='maskLine1 col s5'></div>
@@ -36,13 +37,17 @@ export default class MingyuanComponent  extends React.Component {
 
                     </div>
                 </div>
+
+
+
+                {/* 公司简介 2019-05-28 修改样式 */}
                 <div id="menu1" className="pushpin companyPro" data-target="menu1"  style={{height:'100%'}}>
-                    <div className="companyInter"> </div>
+                    <div className="companyInter"/>
+                    <div>
+                        <img src="../../backend/assets/images/compan_title.png" className="img-responsive"/>
+                    </div>
                     <div className="companyContent">
-                        {
-                            this.props.briefList.map((briefItem, index) => <p className='' key={index}
-                                                                              dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)
-                        }
+                        {this.props.briefList.map((briefItem, index) => <p className='' key={index} dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)}
                     </div>
                     <div className="companyMask row  col s12" style={{margin:0}}>
                         <div className='maskLine1 col s5'></div>
@@ -53,8 +58,11 @@ export default class MingyuanComponent  extends React.Component {
                         </div>
                         <div className='maskLine2 col s5'></div>
                     </div>
-
                 </div>
+
+
+
+
                 <div id="menu2" className="pushpin productPresentation" data-target="menu2"  style={{height:'100%'}}>
                     <div className="productInter row col s12">
                         <h5 className='center-align'>产品介绍</h5>
