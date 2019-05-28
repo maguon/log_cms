@@ -146,16 +146,8 @@ body {
 .kect_index {
     width: 100%;
     margin: 0 auto;
-    position: absolute;
     top:100px;
     left: 55%;
-}
-.kect_index .borderYellow5{
-    top:120px;
-    left: 0;
-    height: 4px;
-    width: 50px;
-    border-bottom:4px solid orange;
 }
 .kect_index .companyName{
     top:180px;
@@ -222,42 +214,36 @@ body {
     font-size: 40px;
 }
 
+.borderYellow{
+    width: 70px;
+    border-bottom:4px solid orange;
+}
 
+/* TODO */
 
 /*公司简介*/
 .companyPro{
-    height: 700px;
     width: 100%;
     background: url(../images/company_bg.jpg) repeat-x !important;
     border-top:3px solid #1E88E5;
     position: relative;
 }
 .companyInter{
-    background: url(../images/compan_title.png) repeat-x !important;
-    position: absolute;
-    top:100px;
-    left:55%;
     color: white;
     height: 220px;
     width: 500px;
 }
 .companyContent{
-    width: 70%;
-    position: absolute;
-    top:350px;
-    left:15%;
-    color: black;
-    font-family: "宋体 ","SimSun";
+    margin-left: 10%;
+    margin-right: 10%;
     line-height: 2;
     text-align: left;
 }
 .companyMask{
-    position: absolute;
-    bottom:0px;
+    bottom:0;
     left: 20%;
     z-index: 1000;
     height: 60px;
-    width: 60%;
 }
 .companyMask .maskLine1,.companyMask .maskLine2 {
     border-bottom: 1px solid white;
@@ -273,6 +259,104 @@ body {
     display: block;
     font-size: 40px;
 }
+
+/*产品介绍*/
+.productPresentation{
+    width: 100%;
+    border-top:3px solid #1E88E5;
+    position: relative;
+}
+
+.productInter {
+    margin-top: 50px;
+}
+
+.productInterduce{
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 2;
+    text-align: left;
+    color: dimgrey;
+}
+
+.showProduct{
+    margin-top:30px;
+}
+.collection a.collection-item:not(.active):hover{
+    background: white !important;
+}
+
+.carH5{
+    bottom: 75px;
+    left: 10%;
+    width: 80%;
+    height: 20px;
+    color: dimgrey;
+}
+.productPart{
+    float: left;
+    display: inline;
+    margin-bottom: 30px;
+}
+.productPart p{
+    margin-top: 15px;
+    width: 80%;
+    margin-left:10% ;
+    text-align: left;
+    font-size: 13px;
+}
+.collection a.collection-item:not(.active):hover{
+    background: white;!important;
+}
+.productPart .productPartPic{
+    width: 100%;
+    height: 280px;
+}
+.productPart .silhouette_block_pic {
+    width: 100%;
+    height: 280px;
+    float: left;
+    display: inline;
+}
+.productPart .silhouette_block_pic img{
+    width: 430px;
+    height: 260px;
+
+}
+
+.productPartMask{
+    bottom:0;
+    left: 20%;
+    height: 60px;
+}
+.productPartMask .maskLine1,.productPartMask .maskLine2 {
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+}
+.productPartMask .maskClick{
+    height: 60px;
+}
+.productPartMask .maskClick i{
+    height: 60px;
+    width: 100%;
+    color: black;
+    display: block;
+    font-size: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*核心业务*/
 .coreBusiness{
@@ -418,114 +502,6 @@ body {
     font-size: 40px;
 }
 
-/*产品介绍*/
-.productPresentation{
-    height: 750px;
-    width: 100%;
-    border-top:3px solid #1E88E5;
-    position: relative;
-}
-.productInter {
-    position: absolute;
-    top:100px;
-    left: 41%;
-    color: black;
-}
-.borderYellow{
-    position: absolute;
-    top:200px;
-    left: 48%;
-    height: 4px;
-    width: 70px;
-    border-bottom:4px solid orange;
-}
-.showProduct{
-    position: absolute;
-    top:330px;
-    height: 350px;
-    width:100%;
-}
-.collection a.collection-item:not(.active):hover{
-    background: white !important;
-}
-.productInterduce{
-    position: absolute;
-    top:240px;
-    left: 20%;
-    width: 60%;
-    text-align: left;
-    color: dimgrey;
-}
-.carH5{
-     position: absolute;
-     bottom: 75px;
-     left: 10%;
-     width: 80%;
-     height: 20px;
-     color: dimgrey;
-}
-.productPart{
-    float: left;
-    display: inline;
-    margin-bottom: 30px;
-}
-.productPart p{
-    margin-top: 15px;
-    width: 80%;
-    margin-left:10% ;
-    text-align: left;
-    font-size: 13px;
-}
-.collection a.collection-item:not(.active):hover{
-    background: white;!important;
-}
-.productPart .productPartPic{
-    width: 100%;
-    height: 280px;
-}
-.productPart .silhouette_block_pic {
-    width: 100%;
-    height: 280px;
-    float: left;
-    display: inline;
-}
-.productPart .silhouette_block_pic img{
-    width: 430px;
-    height: 260px;
-
-}
-
-.productPartMask{
-    position: absolute;
-    bottom:0px;
-    left: 20%;
-    height: 60px;
-    width: 60%;
-}
-.productPartMask .maskLine1,.productPartMask .maskLine2 {
-    border-bottom: 1px solid black;
-    margin-top: 20px;
-}
-.productPartMask .maskClick{
-    height: 60px;
-}
-.productPartMask .maskClick i{
-    height: 60px;
-    width: 100%;
-    color: black;
-    display: block;
-    font-size: 40px;
-}
-
-.borderYellow3{
-    position: absolute;
-    top:200px;
-    left: 48%;
-    height: 4px;
-    width: 50px;
-    border-bottom:4px solid orange;
-}
-
 /*联系我们*/
 #showLinkMe{
     width: 100%;
@@ -534,6 +510,7 @@ body {
     padding-left: 20px;
 }
 .f_end{
+    width: 90%;
     color: #90a3ae;
     font-size: 15px;
     line-height: 2;

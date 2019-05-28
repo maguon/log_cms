@@ -97,7 +97,7 @@ class Footer extends React.Component {
                                     <div className="kect_index">
                                         <h4>关于我们</h4>
                                         <h6>ABOUT US</h6>
-                                        <div className="borderYellow5"/>
+                                        <div className="borderYellow"/>
                                         <h5 className='companyName'>洺源科技（大连）有限公司</h5>
                                     </div>
                                     <div className="f_end">

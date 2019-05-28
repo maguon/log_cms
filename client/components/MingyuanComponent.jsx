@@ -40,78 +40,78 @@ export default class MingyuanComponent  extends React.Component {
 
 
 
-                {/* 公司简介 2019-05-28 修改样式 */}
-                <div id="menu1" className="pushpin companyPro" data-target="menu1"  style={{height:'100%'}}>
-                    <div className="companyInter"/>
-                    <div>
-                        <img src="../../backend/assets/images/compan_title.png" className="img-responsive"/>
+                {/* 公司简介 */}
+                <div id="menu1" className="pushpin companyPro" data-target="menu1">
+                    {/* 公司简介 header */}
+                    <div className="row">
+                        <img src="../../backend/assets/images/compan_title.png" className="companyInter"/>
                     </div>
-                    <div className="companyContent">
+                    {/* 公司简介 body */}
+                    <div className="row companyContent">
                         {this.props.briefList.map((briefItem, index) => <p className='' key={index} dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)}
                     </div>
-                    <div className="companyMask row  col s12" style={{margin:0}}>
-                        <div className='maskLine1 col s5'></div>
+                    {/* 公司简介 footer */}
+                    <div className="row companyMask" style={{margin:0}}>
+                        <div className='maskLine1 col s5'/>
                         <div className='maskClick col s2'>
                             <a className="black-text"  href="#menu2">
                                 <i className='mdi mdi-chevron-double-down'> </i>
                             </a>
                         </div>
-                        <div className='maskLine2 col s5'></div>
+                        <div className='maskLine2 col s5'/>
                     </div>
                 </div>
 
-
-
-
-                <div id="menu2" className="pushpin productPresentation" data-target="menu2"  style={{height:'100%'}}>
-                    <div className="productInter row col s12">
+                {/* 产品介绍 */}
+                <div id="menu2" className="pushpin productPresentation" data-target="menu2">
+                    {/* 产品介绍 header */}
+                    <div className="row productInter">
                         <h5 className='center-align'>产品介绍</h5>
                         <h5 className='center-align'>PRODUCT INTRODUCTION</h5>
                     </div>
-                    <div className="borderYellow row col s12" > </div>
+                    <div className="row borderYellow"/>
 
-                    <div className='productInterduce'>
-                        {
-                            this.props.productList.map((briefItem, index) => <p className='' key={index}
-                                                                                dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)
-                        }
+                    {/* 产品介绍 body */}
+                    <div className='row productInterduce'>
+                        {this.props.productList.map((briefItem, index) => <p className='' key={index} dangerouslySetInnerHTML={{__html: briefItem.news_content}}/>)}
                     </div>
 
-
                     <div className='row showProduct'>
-                        {
-                            this.props.newsImageList.map((newsItem, index) =>
-                                <div className='col s4 productPart' >
-                                    <div className="productPartPic">
-                                        <div className="silhouette_block_pic">
-                                            <a className="collection-item" href="javascript:void(0)">
-                                                <img className='imgShow' src={"/api/image/" + newsItem.news_image}/>
-                                            </a>
-                                        </div>
+                        {this.props.newsImageList.map((newsItem, index) =>
+                            <div className='col s12 m4 productPart'>
+                                <div className="productPartPic">
+                                    <div className="silhouette_block_pic">
+                                        <a className="collection-item" href="javascript:void(0)">
+                                            <img className='imgShow' src={"/api/image/" + newsItem.news_image}/>
+                                        </a>
                                     </div>
+                                </div>
 
-                                </div>)
+                            </div>)
                         }
                     </div>
 
                     <h5 className='carH5'>车用燃料电池系统</h5>
-
-                    <div className="productPartMask row  col s12" style={{margin:0}}>
-                        <div className='maskLine1 col s5'></div>
+                    {/* 产品介绍 footer */}
+                    <div className="row productPartMask" style={{margin:0}}>
+                        <div className='maskLine1 col s5'/>
                         <div className='maskClick col s2'>
                             <a className="black-text"  href="#menu3">
                                 <i className='mdi mdi-chevron-double-down'> </i>
                             </a>
                         </div>
-                        <div className='maskLine2 col s5'></div>
+                        <div className='maskLine2 col s5'/>
                     </div>
                 </div>
+
+
+                {/* 新闻资讯 */}
                 <div id="menu3" className="pushpin coreBusiness" data-target="menu3"  style={{height:'100%'}}>
                     <div className="coreBusinessInter row col s12">
                         <h5 className='center-align'>新闻资讯</h5>
                         <h5 className='center-align'>NEWS</h5>
                     </div>
-                    <div className="borderYellow3 row col s12"> </div>
+                    <div className="borderYellow row col s12"> </div>
 
                     <div className='enterpriseNews'>
                         <h6>行业动态 </h6>
