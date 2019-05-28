@@ -89,20 +89,20 @@ class Footer extends React.Component {
 
                     {/* 2019-05-28 修改样式匹配 电脑手机 */}
                     <div className="footerLi row col s12 mingyuan" id='menu5'>
-                        <div id='showLinkMe'>
-                            <div className="row" id="hdjy">
-                                <div className="col s12 m6" style="border:1px solid">
+                        <div  id='showLinkMe'>
+                            <div id="hdjy" className="row">
+                                <div className="col s12 m6">
                                     <div id="map_div" className='mapFoot'></div>
                                 </div>
-                                <div className="col s12 m6" style="border:1px solid">
+                                <div className="col s12 m6">
                                     <div className="kect_index">
                                         <h4>关于我们</h4>
                                         <h6>ABOUT US</h6>
-                                        <div className="borderYellow5"/>
+                                        <div className="borderYellow5"> </div>
                                         <h5 className='companyName'>洺源科技（大连）有限公司</h5>
                                     </div>
                                     <div className="f_end">
-                                        {this.props.contactList.map((contactItem, index) => <p key={index} dangerouslySetInnerHTML={{__html: contactItem.news_content}}/>)}
+                                        {this.props.contactList.map((contactItem,index) => <p key={index} dangerouslySetInnerHTML={{ __html: contactItem.news_content }} />)}
                                     </div>
                                 </div>
                             </div>
