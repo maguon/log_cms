@@ -92,7 +92,7 @@ class Footer extends React.Component {
                         <div  id='showLinkMe'>
                             <div id="hdjy" className="row">
                                 <div className="col s12 m6">
-                                    <div id="map_div" className='mapFoot'></div>
+                                    <div id="map_div" className='mapFoot'/>
                                 </div>
                                 <div className="col s12 m6">
                                     <div className="kect_index">
