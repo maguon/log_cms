@@ -50,7 +50,6 @@ body {
     z-index: 1030;
     background: url(../images/about_bg.jpg) repeat-x !important;
     padding:0 !important;
-    margin-top: -15px;
 }
 .footer {
     background-color: #222222;
@@ -289,7 +288,6 @@ body {
     height: 280px;
     position: relative;
     overflow: hidden;
-    margin:10px 10px 0 0;
     font-size: 100px;
 }
 .productPart p{
@@ -349,10 +347,17 @@ body {
     width: 35%;
     height: 300px;
 }
-.enterpriseNews h6{
+
+.news_type {
     font-weight: bolder;
-    width: 130px;
+    font-size: 16px;
+    margin-left: 12%;
 }
+
+.news_more {
+    margin-right: 12%;
+}
+
 .enterpriseNews a{
     color: cyan;
     top:8px;
@@ -396,10 +401,6 @@ body {
     left: 50%;
     width: 35%;
     height: 300px;
-}
-.companyNews h6{
-    font-weight: bolder;
-    width: 130px;
 }
 .companyNews a{
     color: cyan;
