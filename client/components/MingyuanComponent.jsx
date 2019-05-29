@@ -15,7 +15,20 @@ export default class MingyuanComponent  extends React.Component {
                 {/* 项目 Header */}
                 <Header menuList={this.props.menuList}/>
 
-                <div id="menu0" className="pushpin example" data-target="menu0" style={{height:'100%'}}>
+                {/* 轮播图片 */}
+                <div id="menu0" className="pushpin example" data-target="menu0">
+                    <div className="row">
+                        <div className="col s12">
+                            <div className="carousel carousel-slider">
+                                <a className="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"/></a>
+                                <a className="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"/></a>
+                                <a className="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"/></a>
+                                <a className="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"/></a>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div className="mask3 row  col s12" style={{margin:0}}>
                         <div className='maskLine1 col s5'/>
                         <div className='maskClick col s2'>
@@ -25,6 +38,7 @@ export default class MingyuanComponent  extends React.Component {
                         </div>
                         <div className='maskLine2 col s5'/>
                     </div>
+
                     <div className="carousel carousel-slider" id='carousel' style={{height: '100%'}}>
                         {this.props.newsList.map((newsItem, index) =>
                             <a className="carousel-item" id='imgA' style={{padding: 0 + 'em'}} key={index}
@@ -34,6 +48,7 @@ export default class MingyuanComponent  extends React.Component {
                             </a>
                         )}
                     </div>
+
                 </div>
 
                 {/* 公司简介 */}
