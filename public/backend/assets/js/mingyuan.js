@@ -19,18 +19,11 @@ var _hmt = _hmt || [];
 
 
 $(document).ready(function(){
+    $('.carousel').carousel();
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true
     });
-    window.setInterval(function() { $(".carousel").carousel('next') }, 4500);
+
 });
-// $('.carousel.carousel-slider').carousel({
-//     fullWidth: true,
-//     indicators: true
-// });
-
-
-
-
-
+window.setInterval(function() { $(".carousel").carousel('next') }, 4500);
