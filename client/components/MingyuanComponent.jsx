@@ -96,7 +96,7 @@ export default class MingyuanComponent  extends React.Component {
                 </div>
 
                 {/* 新闻资讯 */}
-                <div id="menu3" className="pushpin coreBusiness" data-target="menu3"  style={{height:'100%'}}>
+                <div id="menu3" className="pushpin coreBusiness" data-target="menu3">
                     {/* 新闻资讯 header */}
                     <div className="row coreBusinessInter">
                         <h5 className='center-align'>新闻资讯</h5>
@@ -105,7 +105,7 @@ export default class MingyuanComponent  extends React.Component {
                     <div className="row borderYellow"> </div>
 
                     {/* 新闻资讯 body */}
-                    <div className="row">
+                    <div className="row" style={{marginTop:'50px'}}>
                         <div className="col s12 m6">
                             <div className="col s6 left-align"><span className="news_type">行业动态</span></div>
                             <div className="col s6 right-align">
