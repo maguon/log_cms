@@ -19,11 +19,14 @@ var _hmt = _hmt || [];
 
 
 $(document).ready(function(){
+    console.log('')
+    $("#sideNav").sideNav({closeOnClick: true});
     $('.carousel').carousel();
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true
     });
 
+    $("#sideNav").sideNav({closeOnClick: true});
 });
 window.setInterval(function() { $(".carousel").carousel('next') }, 4500);

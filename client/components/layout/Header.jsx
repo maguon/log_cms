@@ -57,10 +57,10 @@ class Header extends React.Component {
 
                 <div className="row mingyuan" style={{margin:0}}>
 
-                    <nav>
+                    <nav className="nav-extended">
                         <div className="nav-wrapper">
-                            <a href="#!" className="brand-logo">Logo</a>
-                            <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                            <a href="#" className="brand-logo">Logo</a>
+                            <a href="#" data-activates="mobile-demo" className="sidenav-trigger"><i className="mdi mdi-menu mdi-36px"/></a>
                             <ul className="right hide-on-med-and-down">
                                 <li><a href="sass.html">Sass</a></li>
                                 <li><a href="badges.html">Components</a></li>
@@ -79,31 +79,32 @@ class Header extends React.Component {
 
 
 
-                    {/*<div className="col s12 m4 l3" id="nav_bg">*/}
-                        {/*<div className="logoimg col s4 offset-s1">*/}
-                            {/*<a href={"/view/mingyuan"} className="col s2">*/}
-                                {/*<img alt="logo" className='logo_img' src="/backend/assets/images/mingyuanlogo.png" />*/}
-                            {/*</a>*/}
-                            {/*<p className='col s10 nameLogo left-align'>洺源科技</p>*/}
-                        {/*</div>*/}
 
-                        {/*<div className="nav_ce col s6">*/}
-                            {/*<ul className="tree_1 col s12">*/}
-                                {/*{*/}
-                                    {/*this.props.menuList.map((menuItem,index) =>{*/}
-                                        {/*return index === 4 ?*/}
-                                        {/*<li className='nav_block col'>*/}
-                                            {/*<a className="collection-item black-text"  key='0' href={"/view/menu/"+menuItem._id.toString()+"/menuType/"+menuItem.menu_type+"/page/1/news"}>{menuItem.menu_name}</a>*/}
-                                        {/*</li>:*/}
-                                            {/*<li className='nav_block col'><a className="collection-item black-text"  href={"/view/mingyuan#menu"+index}>{menuItem.menu_name}</a></li>*/}
+                    <div className="col s12 m4 l3" id="nav_bg">
+                        <div className="logoimg col s4 offset-s1">
+                            <a href={"/view/mingyuan"} className="col s2">
+                                <img alt="logo" className='logo_img' src="/backend/assets/images/mingyuanlogo.png" />
+                            </a>
+                            <p className='col s10 nameLogo left-align'>洺源科技</p>
+                        </div>
 
-                                    {/*})*/}
-                                {/*}*/}
+                        <div className="nav_ce col s6">
+                            <ul className="tree_1 col s12">
+                                {
+                                    this.props.menuList.map((menuItem,index) =>{
+                                        return index === 4 ?
+                                        <li className='nav_block col'>
+                                            <a className="collection-item black-text"  key='0' href={"/view/menu/"+menuItem._id.toString()+"/menuType/"+menuItem.menu_type+"/page/1/news"}>{menuItem.menu_name}</a>
+                                        </li>:
+                                            <li className='nav_block col'><a className="collection-item black-text"  href={"/view/mingyuan#menu"+index}>{menuItem.menu_name}</a></li>
 
-                            {/*</ul>*/}
-                        {/*</div>*/}
+                                    })
+                                }
 
-                    {/*</div>*/}
+                            </ul>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
