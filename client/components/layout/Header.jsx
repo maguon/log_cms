@@ -60,7 +60,7 @@ class Header extends React.Component {
                     <nav className="nav-extended">
                         <div className="nav-wrapper">
                             <a href="#" className="brand-logo">Logo</a>
-                            <a href="#" data-activates="mobile-demo" className="sidenav-trigger"><i className="mdi mdi-menu mdi-36px"/></a>
+                            <a href="#" id="sideNav" data-activates="mobile-menu" className="sidenav-trigger"><i className="mdi mdi-menu mdi-36px"/></a>
                             <ul className="right hide-on-med-and-down">
                                 <li><a href="sass.html">Sass</a></li>
                                 <li><a href="badges.html">Components</a></li>
@@ -70,7 +70,7 @@ class Header extends React.Component {
                         </div>
                     </nav>
 
-                    <ul className="sidenav" id="mobile-demo">
+                    <ul id="mobile-menu" className="sidenav">
                         <li><a href="sass.html">Sass</a></li>
                         <li><a href="badges.html">Components</a></li>
                         <li><a href="collapsible.html">Javascript</a></li>
