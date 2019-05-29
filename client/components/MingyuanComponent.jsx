@@ -17,16 +17,16 @@ export default class MingyuanComponent  extends React.Component {
 
                 {/* 轮播图片 */}
                 <div id="menu0" className="pushpin example" data-target="menu0">
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="carousel carousel-slider">
-                                <a className="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"/></a>
-                                <a className="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"/></a>
-                                <a className="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"/></a>
-                                <a className="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"/></a>
-                            </div>
-                        </div>
-                    </div>
+                    {/*<div className="row">*/}
+                        {/*<div className="col s12">*/}
+                            {/*<div className="carousel carousel-slider">*/}
+                                {/*<a className="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"/></a>*/}
+                                {/*<a className="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"/></a>*/}
+                                {/*<a className="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"/></a>*/}
+                                {/*<a className="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"/></a>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
 
 
                     <div className="mask3 row  col s12" style={{margin:0}}>
