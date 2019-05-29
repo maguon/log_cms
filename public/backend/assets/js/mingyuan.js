@@ -18,23 +18,23 @@ var _hmt = _hmt || [];
 
 
 
-$(document).ready(function(){
-    console.log('123')
-    $("#sideNav").sideNav({closeOnClick: true});
-    // $("#sideNav").sideNav({
-    //     menuWidth: 280, // Default is 300
-    //     edge: 'left', // Choose the horizontal origin
-    //     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    //     draggable: true // Choose whether you can drag to open on touch screens
-    // });
-    console.log('456')
-
-    $('.carousel').carousel();
-    $('.carousel.carousel-slider').carousel({
-        fullWidth: true,
-        indicators: true
-    });
-
-    $("#sideNav").sideNav({closeOnClick: true});
-});
-window.setInterval(function() { $(".carousel").carousel('next') }, 4500);
+// $(document).ready(function(){
+//     console.log('123')
+//     $("#sideNav").sideNav({closeOnClick: true});
+//     // $("#sideNav").sideNav({
+//     //     menuWidth: 280, // Default is 300
+//     //     edge: 'left', // Choose the horizontal origin
+//     //     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+//     //     draggable: true // Choose whether you can drag to open on touch screens
+//     // });
+//     console.log('456')
+//
+//     $('.carousel').carousel();
+//     $('.carousel.carousel-slider').carousel({
+//         fullWidth: true,
+//         indicators: true
+//     });
+//
+//     $("#sideNav").sideNav({closeOnClick: true});
+// });
+// window.setInterval(function() { $(".carousel").carousel('next') }, 4500);
