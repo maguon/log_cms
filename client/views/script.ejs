@@ -7,15 +7,21 @@
 
 <script>
     // $("#carousel_1").FtCarousel();
-    $("#sideNav").sideNav({closeOnClick: true});
+    $("#sideNav").Sidenav({closeOnClick: true});
+    // $("#sideNav").Sidenav({
+    //     menuWidth: 280, // Default is 300
+    //     edge: 'left', // Choose the horizontal origin
+    //     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    // });
 
-    $('.carousel').carousel();
-    $('.carousel.carousel-slider').carousel({
+
+    $('.carousel').Carousel();
+    $('.carousel.carousel-slider').Carousel({
         fullWidth: true,
         indicators: true
     });
 
-    window.setInterval(function() { $(".carousel").carousel('next') }, 4500);
+    window.setInterval(function() { $(".carousel").Carousel('next') }, 4500);
 </script>
 
 </html>
