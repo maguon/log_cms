@@ -74,13 +74,9 @@ export default class MingyuanComponent  extends React.Component {
                     <div className='row showProduct'>
                         {this.props.newsImageList.map((newsItem, index) =>
                             <div className='col s12 m4 productPart'>
-                                <div className="productPartPic">
-                                    <div className="silhouette_block_pic">
-                                        <a className="collection-item" href="javascript:void(0)">
-                                            <img className='imgShow' src={"/api/image/" + newsItem.news_image}/>
-                                        </a>
-                                    </div>
-                                </div>
+                                <a className="collection-item" href="javascript:void(0)">
+                                    <img className='responsive-img' src={"/api/image/" + newsItem.news_image}/>
+                                </a>
                             </div>)
                         }
                     </div>
@@ -100,21 +96,27 @@ export default class MingyuanComponent  extends React.Component {
 
                 {/* 新闻资讯 */}
                 <div id="menu3" className="pushpin coreBusiness" data-target="menu3"  style={{height:'100%'}}>
+                    {/* 新闻资讯 header */}
                     <div className="row coreBusinessInter">
                         <h5 className='center-align'>新闻资讯</h5>
                         <h5 className='center-align'>NEWS</h5>
                     </div>
                     <div className="row borderYellow"> </div>
 
+                    {/* 新闻资讯 body */}
                     <div className="row">
                         <div className="col s12 m6">
-                            <div className='enterpriseNews'>
-                                <h6>行业动态 </h6>
+                            <div className="col s6">
+                                <h6>行业动态</h6>
+                            </div>
+                            <div className="col s6 right-align">
                                 <a  href={"/view/menu/5cada7f258f3df67d9d4b7ff/menuType/2/page/1/news"}>MORE</a>
+                            </div>
+                            <div className='col s12 enterpriseNews'>
                                 <ul type="square">
                                     {this.props.enterpriseList.map((newsItem, index) =>
                                         <li>
-                                            <span className='liSpan'></span>
+                                            <span className='liSpan'/>
                                             <a className="totalSpan" key={index}
                                                href={"/view/menu/" + newsItem.menu_id._id + "/menuType/" + newsItem.menu_id.menu_type + "/news/" + newsItem._id.toString() + "/page/1"}>
                                                 {newsItem.news_title}
@@ -124,6 +126,8 @@ export default class MingyuanComponent  extends React.Component {
                                 </ul>
                             </div>
                         </div>
+
+
                         <div className="col s12 m6">
                             <div className='companyNews'>
                                 <h6>公司动态 </h6>
@@ -147,7 +151,7 @@ export default class MingyuanComponent  extends React.Component {
 
 
 
-
+                    {/* 新闻资讯 footer */}
                     <div className="row businessMask" style={{margin:0}}>
                         <div className='maskLine1 col s5'/>
                         <div className='maskClick col s2'>
