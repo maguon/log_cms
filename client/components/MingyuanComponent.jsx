@@ -1,9 +1,8 @@
 'use strict'
 
 import React from 'react';
-
-import  Header from './layout/Header';
-import  Footer from './layout/Footer';
+import Header from './layout/Header';
+import Footer from './layout/Footer';
 
 export default class MingyuanComponent  extends React.Component {
     constructor(props) {
@@ -17,38 +16,22 @@ export default class MingyuanComponent  extends React.Component {
 
                 {/* 轮播图片 */}
                 <div id="menu0" className="pushpin example" data-target="menu0">
-                    {/*<div className="row">*/}
-                        {/*<div className="col s12">*/}
-                            {/*<div className="carousel carousel-slider">*/}
-                                {/*<a className="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"/></a>*/}
-                                {/*<a className="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"/></a>*/}
-                                {/*<a className="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"/></a>*/}
-                                {/*<a className="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"/></a>*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
+                    <div className="row">
 
-
-                    <div className="mask3 row  col s12" style={{margin:0}}>
-                        <div className='maskLine1 col s5'/>
-                        <div className='maskClick col s2'>
-                            <a className="black-text"  href="#menu1">
-                                <i className='mdi mdi-chevron-double-down'> </i>
-                            </a>
+                        <div className="slider">
+                            <ul className="slides">
+                                {this.props.newsList.map((newsItem, index) =>
+                                    <li>
+                                        <img src={"/api/image/" + newsItem.news_image} alt={newsItem.news_title}/>
+                                        <div className="caption right-align">
+                                            <h4 style={{color:'#0A4454'}}>{newsItem.news_title}</h4>
+                                            <h6 style={{color:'#0A4454'}}>{newsItem.news_content}</h6>
+                                        </div>
+                                    </li>
+                                )}
+                            </ul>
                         </div>
-                        <div className='maskLine2 col s5'/>
                     </div>
-
-                    <div className="carousel carousel-slider" id='carousel' style={{height: '100%'}}>
-                        {this.props.newsList.map((newsItem, index) =>
-                            <a className="carousel-item" id='imgA' style={{padding: 0 + 'em'}} key={index}
-                               href="javascript:void(0)">
-                                <img src={"/api/image/" + newsItem.news_image} alt={newsItem.news_title} className="hdp"
-                                     id='hdp'/>
-                            </a>
-                        )}
-                    </div>
-
                 </div>
 
                 {/* 公司简介 */}

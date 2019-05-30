@@ -6,22 +6,13 @@
 <% }) %>
 
 <script>
-    // $("#carousel_1").FtCarousel();
-    $("#sideNav").Sidenav({closeOnClick: true});
-    // $("#sideNav").Sidenav({
-    //     menuWidth: 280, // Default is 300
-    //     edge: 'left', // Choose the horizontal origin
-    //     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    // });
+    $("#carousel_1").FtCarousel();
 
+    // 主页面 引入Material侧边导航
+    $('.sidenav').sidenav();
 
-    $('.carousel').Carousel();
-    $('.carousel.carousel-slider').Carousel({
-        fullWidth: true,
-        indicators: true
-    });
-
-    window.setInterval(function() { $(".carousel").Carousel('next') }, 4500);
+    // 主页面 引入Material轮播
+    $('.slider').slider({height:500});
 </script>
 
 </html>

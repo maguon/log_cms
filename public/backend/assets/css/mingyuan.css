@@ -17,15 +17,15 @@ body {
     border: 0px !important;
 }
 /*header*/
-#nav_bg {
+.nav_bg {
     width: 100%;
-    height: 100px;
+    height: 64px;
     background: white;
     position: fixed;
     z-index: 10;
 }
 .logo_img{
-    margin-top:30px;
+    margin-top:10px;
     height: 45px;
 }
 .nav_block {
@@ -162,56 +162,63 @@ body {
 
 
 /*轮播*/
-.example {
-    width: 100%;
-    height: 100%;
-}
+/*.example {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
 
-.carousel{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    position: relative;
-}
-.carousel .indicators {
+/*.carousel{*/
+    /*width: 100%;*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*position: relative;*/
+/*}*/
+/*.carousel .indicators {*/
+    /*position: absolute;*/
+    /*text-align: right !important;;*/
+    /*right: 30px !important;*/
+    /*bottom: 0px !important;*/
+    /*margin: 0;*/
+/*}*/
+
+/*.carousel .carousel-item{*/
+    /*visibility:visible !important;*/
+/*}*/
+.slider .slides li .caption {
+    color: #fff;
     position: absolute;
-    text-align: right !important;;
-    right: 30px !important;
-    bottom: 0px !important;
-    margin: 0;
+    top: 15%;
+    left: 10%;
+    width: 88%;
+    opacity: 0;
 }
-
-.carousel .carousel-item{
-    visibility:visible !important;
-}
-
 
 #menu0:target,#menu1:target{
     padding-top:0px;
 }
 
-.mask3{
-    position: absolute;
-    bottom:0px;
-    left:20%;
-    z-index: 1000;
-    height: 60px;
-    width: 60%;
-}
-.mask3 .maskLine1,.mask3 .maskLine2 {
-    border-bottom: 1px solid white;
-    margin-top: 20px;
-}
-.mask3 .maskClick{
-    height: 60px;
-}
-.mask3 .maskClick i{
-    height: 60px;
-    width: 100%;
-    color: white;
-    display: block;
-    font-size: 40px;
-}
+/*.mask3{*/
+    /*position: absolute;*/
+    /*bottom:0px;*/
+    /*left:20%;*/
+    /*z-index: 1000;*/
+    /*height: 60px;*/
+    /*width: 60%;*/
+/*}*/
+/*.mask3 .maskLine1,.mask3 .maskLine2 {*/
+    /*border-bottom: 1px solid white;*/
+    /*margin-top: 20px;*/
+/*}*/
+/*.mask3 .maskClick{*/
+    /*height: 60px;*/
+/*}*/
+/*.mask3 .maskClick i{*/
+    /*height: 60px;*/
+    /*width: 100%;*/
+    /*color: white;*/
+    /*display: block;*/
+    /*font-size: 40px;*/
+/*}*/
 
 .borderYellow{
     width: 70px;
@@ -658,8 +665,3 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-
-
