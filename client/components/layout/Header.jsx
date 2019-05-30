@@ -73,9 +73,9 @@ class Header extends React.Component {
                     <ul className="sidenav left-align" id="mobile-demo">
                         {this.props.menuList.map((menuItem, index) => {
                             return index === 4 ?
-                                <li><a href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
+                                <li><a className="sidenav-close" href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
                                 :
-                                <li><a href={"/view/mingyuan#menu" + index}>{menuItem.menu_name}</a></li>
+                                <li><a className="sidenav-close" href={"/view/mingyuan#menu" + index}>{menuItem.menu_name}</a></li>
                         })}
                     </ul>
                 </div>
