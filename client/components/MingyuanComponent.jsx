@@ -16,7 +16,7 @@ export default class MingyuanComponent  extends React.Component {
 
                 {/* 轮播图片 */}
                 <div id="menu0" className="pushpin example" data-target="menu0">
-                    <div className="row">
+                    <div className="row" style={{marginBottom:'0'}}>
 
                         <div className="slider">
                             <ul className="slides">
