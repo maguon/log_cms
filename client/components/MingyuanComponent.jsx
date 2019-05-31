@@ -37,8 +37,8 @@ export default class MingyuanComponent  extends React.Component {
                 {/* 公司简介 */}
                 <div id="menu1" className="pushpin companyPro" data-target="menu1">
                     {/* 公司简介 header */}
-                    <div className="row">
-                        <img src="../../backend/assets/images/compan_title.png" className="companyInter"/>
+                    <div className="row companyInter">
+                        {/*<img src="../../backend/assets/images/compan_title.png" className="companyInter"/>*/}
                     </div>
                     {/* 公司简介 body */}
                     <div className="row companyContent">

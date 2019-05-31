@@ -233,10 +233,11 @@ body {
     position: relative;
 }
 .companyInter{
+    height: 220px;
+    width: 100%;
+    background: url(../images/compan_title.png) no-repeat 50% 0 !important;
     margin-top: 100px;
     color: white;
-    height: 220px;
-    width: 500px;
 }
 .companyContent{
     margin-left: 10%;
