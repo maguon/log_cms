@@ -91,15 +91,7 @@ const getNewsView = (req ,res ,next) => {
         if(params.menuType==2){
             listQuery.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize);
         }
-        return listQuery.sort('news_num').exec((error,rows)=> {
-            if(error){
-                resUtil.resetErrorPage(res,error);
-            }else{
-
-
-            }
-
-        });
+        return listQuery.sort('news_num').exec();
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
