@@ -32,7 +32,7 @@ export default class MenuComponent  extends React.Component {
                                 <ul className="carousel-inner">
                                     {
                                         this.props.newsList.map((newsItem,index) =>
-                                        <li className="carousel-item">
+                                        <li key={index} className="carousel-item">
                                             <a className="collection-item" style={{padding: 0 + 'em'}} key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
                                                 <img src={"/api/image/"+newsItem.news_image} alt={newsItem.news_title} className="hdp" />
                                                 <span className="yx-rotation-title"> </span>
@@ -111,7 +111,7 @@ export default class MenuComponent  extends React.Component {
                                     <ul className="yoqlj">
                                         {
                                             this.props.partnersList.map((partnersItem,index) =>
-                                                <li><img src={"/api/image/"+partnersItem.news_image} /> </li>)
+                                                <li key={index} ><img src={"/api/image/"+partnersItem.news_image} /> </li>)
                                         }
                                     </ul>
                                 </div>
