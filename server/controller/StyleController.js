@@ -21,6 +21,7 @@ const  createStyle = (req, res, next) => {
                     let styleObj = {
                         sid: 0,
                         title: '',
+                        meta:[],
                         css_link: [],
                         js_link: []
                     }
@@ -42,9 +43,10 @@ const  createStyle = (req, res, next) => {
     }).then(() => {
         let styleObj = {
             title: bodyParams.title,
+            meta: bodyParams.meta,
             css_link:bodyParams.cssLink,
             js_link:bodyParams.jsLink
-        }
+        };
         const query = { sid:params.sid };
         StyleModel.findOneAndUpdate(query,styleObj,function(error,result){
             logger.debug(' updateStyle ') ;
