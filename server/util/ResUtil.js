@@ -31,11 +31,12 @@ const resInternalError = (error , res ) =>{
 }
 
 
-const resetMainPage = (res,title,cssArray,scriptArray,componentString)=>{
-
+const resetMainPage = (res,title,cssArray,scriptArray,metaArray,componentString)=>{
+    console.log(metaArray.toString())
     res.render("index",{title:title,
         cssArray : cssArray,
         scriptArray : scriptArray,
+        metaArray:metaArray,
         component:componentString
         //scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js","/backend/assets/plugins/slider/ft-carousel.min.js"]
         }

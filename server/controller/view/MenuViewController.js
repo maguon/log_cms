@@ -114,7 +114,7 @@ const getMenuView = (req, res, next) => {
                                 }else{
                                     const componentString = ReactDOMServer.renderToString(
                                         <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,title,metaArray,cssArray,scriptArray,componentString)
+                                    resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray,componentString)
                                 }
                             })
                         })
