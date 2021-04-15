@@ -51,6 +51,7 @@ adminDirective.directive('header', function () {
                     minus="0"+minus;
                 }
                 $scope.hm =hours+':'+minus;
+                $scope.groundNameShengShi=_config.groundNameShengShi;
             }
 
 
