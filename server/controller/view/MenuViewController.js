@@ -13,6 +13,7 @@ import MingyuanComponent from '../../../client/components/MingyuanComponent';
 const getMenuView = (req, res, next) => {
     let newsObj = {};
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -22,6 +23,9 @@ const getMenuView = (req, res, next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
+                for(let i = 0;i<rows[0].meta.length;i++){
+                    metaArray[i] = rows[0].meta[i];
+                }
                 for(let i = 0;i<rows[0].css_link.length;i++){
                     cssArray[i] = rows[0].css_link[i];
                 }
@@ -110,7 +114,7 @@ const getMenuView = (req, res, next) => {
                                 }else{
                                     const componentString = ReactDOMServer.renderToString(
                                         <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+                                    resUtil.resetMainPage(res,title,metaArray,cssArray,scriptArray,componentString)
                                 }
                             })
                         })

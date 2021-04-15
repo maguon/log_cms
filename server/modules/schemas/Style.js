@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const style = new Schema({
         sid:Number,
         title:String,
+        meta:Array,
         css_link:Array,
         js_link:Array
     },
