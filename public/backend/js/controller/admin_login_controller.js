@@ -7,7 +7,7 @@ admin_login_controller.controller("admin_login_controller", ['$rootScope','$scop
     function($rootScope,$scope,$location,$q,_basic,$host,_config){
         $scope.username='';
         $scope.password='';
-        $scope.groundNameShengShi=_config.groundNameShengShi;
+        $scope.hostName=$host.host_name;
         $scope.login = function(){
             if($scope.username==''||$scope.password==''){
                 swal("账号或密码不能为空", "", "error");
