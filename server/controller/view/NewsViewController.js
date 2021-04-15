@@ -13,7 +13,112 @@ import PictureComponent from '../../../client/components/PictureComponent';
 import PictureDetailsComponent from '../../../client/components/PictureDetailsComponent';
 import SearchComponent from '../../../client/components/SearchComponent';
 
+
 const getNewsView = (req ,res ,next) => {
+    let params = req.params;
+    let pageObj = {};
+    let newsObj = {};
+    let menuObj = {};
+    let menuFlag = true;
+    let title = "";
+    let cssArray=[];
+    let metaArray=[];
+    let scriptArray=[];
+    let menuList = [];
+    StyleModel.find({}).exec().then((rows)=>{
+        title = rows[0].title;
+        cssArray = rows[0].css_link || [];
+        metaArray = rows[0].meta_link || [];
+        scriptArray = rows[0].js_link || [];
+        return;
+    }).then(()=>{
+        //header menu list
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+
+    }).then(rows=>{
+        menuList = rows;
+        return MenuModel.find({}).where('_id').equals(params.menuId).sort('menu_num').exec();
+    }).then(rows=>{
+        if(rows[0].menu_pid!=="-1"){
+            menuObj.menuPid = rows[0].menu_pid;
+            menuFlag = false;
+        }
+        if(menuFlag){
+            return MenuModel.find({}).where('_id').equals(params.menuId).sort('menu_num').exec();
+        }else{
+            return MenuModel.find({}).where('_id').equals(menuObj.menuPid).sort('menu_num').exec();
+        }
+
+    }).then(rows=>{
+        menuObj.menu = rows;
+        if(menuFlag){
+            return MenuModel.find({}).where('menu_pid').equals(params.menuId).sort('menu_num').exec();
+        }else{
+            return MenuModel.find({}).where('menu_pid').equals(menuObj.menuPid).sort('menu_num').exec();
+        }
+    }).then(rows=>{
+        menuObj.twoMenuNameList = rows;
+        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26')
+            .where('news_status').equals('1')
+            .skip(parseInt('0')).limit(parseInt('5'))
+            .sort('news_num').exec()
+    }).then((rows)=>{
+        newsObj.recruitList = rows;
+        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5cad3f663160aa601f6de039')
+            .where('news_status').equals('1')
+            .sort('news_num').exec()
+    }).then(rows=>{
+        newsObj.contactList = rows;
+        let countQuery =NewsModel.find({}).count();
+        if(params.menuId){
+            countQuery.where('menu_id').equals(params.menuId);
+        }
+        countQuery.where('news_status').equals('1');
+        return countQuery.exec();
+    }).then(rows=>{
+        pageObj.pageIndex = 1;
+        pageObj.pageSize = 10;
+        pageObj.totalCount = rows;
+        pageObj.totalPage = Math.ceil(pageObj.totalCount / pageObj.pageSize);
+        let listQuery = NewsModel.find({}).populate('menu_id');
+        if(params.newsId){
+            listQuery.where('_id').equals(params.newsId);
+        }
+        if(params.menuId){
+            listQuery.where('menu_id').equals(params.menuId);
+        }
+        listQuery.where('news_status').equals('1');
+        if(params.menuType==2){
+            listQuery.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize);
+        }
+        return listQuery.sort('news_num').exec((error,rows)=> {
+            if(error){
+                resUtil.resetErrorPage(res,error);
+            }else{
+
+
+            }
+
+        });
+    }).then(rows=>{
+        if(params.menuType==1){
+            const componentString = ReactDOMServer.renderToString(
+                <NewsComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+        }else if(params.menuType==2){
+            const componentString = ReactDOMServer.renderToString(
+                <ListComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+        }else{
+            const componentString = ReactDOMServer.renderToString(
+                <PictureComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+        }
+    }).catch(error=>{
+        resUtil.resetErrorPage(res,error);
+    })
+}
+/*const getNewsView = (req ,res ,next) => {
     let params = req.params;
     let pageObj = {};
     let newsObj = {};
@@ -203,7 +308,7 @@ const getNewsView = (req ,res ,next) => {
             })
         })
     })
-}
+}*/
 
 const getNewsViewDetails = (req ,res ,next) => {
     let params = req.params;
