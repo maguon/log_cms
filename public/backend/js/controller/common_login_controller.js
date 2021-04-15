@@ -1,10 +1,9 @@
 Login_model.controller("common_login_controller", ['$rootScope', '$scope', '$location', '$q', "_basic", "$host", "_config",
-
     function ($rootScope, $scope, $location, $q, _basic, $host, _config) {
         $scope.username = '';
         $scope.password = '';
+        $scope.groundNameShengShi=_config.groundNameShengShi;
         $scope.login = function () {
-
             if ($scope.username == '' || $scope.password == '') {
                 swal("账号或密码不能为空", "", "error");
             } else {

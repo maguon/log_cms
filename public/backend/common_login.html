@@ -10,7 +10,7 @@
 
 
 </head>
-<body class="lighten-1" ng-controller="admin_login_controller" style="background: #e5e5e5">
+<body class="lighten-1" ng-controller="common_login_controller" style="background: #e5e5e5">
 <div>
     <div>
         <div class="row">
@@ -18,7 +18,7 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12 center">
-                            <p class="center text-lighten-1 login-form-text login_title">大连顺通圣世后台管理系统</p>
+                            <p class="center text-lighten-1 login-form-text login_title">{{groundNameShengShi}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -64,6 +64,7 @@
 <script src="/backend/js/service/config_service.js"></script>
 <script src="/backend/js/service/socket_service.js"></script>
 <script src="/backend/js/config/host_config.js"></script>
-<script src="/backend/js/controller/admin_login_controller.js"></script>
-<script src="/backend/js/module/admin_login_module.js"></script>
+<script src="/backend/js/module/common_login_module.js"></script>
+<script src="/backend/js/controller/common_login_controller.js"></script>
+
 </html>
