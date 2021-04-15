@@ -5,6 +5,7 @@ server/config/SystemConfig.js
 host_config.js
 public/docs/json/index.json
 public/backend/js/config/host_config.js
+public/uploads/*
 .idea/*
 uploads/*
 node_modules
