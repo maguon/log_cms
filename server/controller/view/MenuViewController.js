@@ -23,15 +23,9 @@ const getMenuView = (req, res, next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].meta.length;i++){
-                    metaArray[i] = rows[0].meta[i];
-                }
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -129,6 +123,7 @@ const getMenuView = (req, res, next) => {
 const getHongliView = (req, res, next) => {
     let newsObj = {};
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -138,12 +133,9 @@ const getHongliView = (req, res, next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -248,7 +240,7 @@ const getHongliView = (req, res, next) => {
                                                 contactList: newsObj.contactList,
                                                 recruitList: newsObj.recruitList
                                             }}/>);
-                                        resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)
+                                        resUtil.resetMainPage(res, title, cssArray, scriptArray, metaArray, componentString)
                                     }
                                 })
                             })
@@ -264,6 +256,7 @@ const getHongliView = (req, res, next) => {
 const getMingyuanView = (req, res, next) => {
     let newsObj = {};
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -273,12 +266,9 @@ const getMingyuanView = (req, res, next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -411,7 +401,7 @@ const getMingyuanView = (req, res, next) => {
                                                         recruitList: newsObj.recruitList,
                                                         contactList: newsObj.contactList
                                                     }}/>);
-                                                resUtil.resetMainPage(res, title, cssArray, scriptArray, componentString)
+                                                resUtil.resetMainPage(res, title, cssArray, scriptArray, metaArray, componentString)
                                             }
                                         })
                                     })
