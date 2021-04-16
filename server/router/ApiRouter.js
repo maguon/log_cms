@@ -41,6 +41,9 @@ apiRouter.delete('/sysLogAll', SysLogController.removeSysLogAll);
 apiRouter.post('/user/:userId/image',multipartMiddleware, ImageController.uploadImage);
 apiRouter.get('/image/:imageId', ImageController.getImage);
 
+apiRouter.post('/user/:userId/favicon',multipartMiddleware, ImageController.uploadFavicon);
+apiRouter.post('/user/:userId/logo',multipartMiddleware, ImageController.uploadLogo);
+
 apiRouter.get('/style', StyleController.getStyle);
 apiRouter.post('/sid/:sid/style', StyleController.createStyle);
 
