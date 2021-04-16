@@ -1,7 +1,7 @@
 const express = require('express')
 const apiRouter = express.Router({mergeParams:true});
 const multipart = require('connect-multiparty');
-const multipartMiddleware = multipart({ uploadDir: './uploads' });
+const multipartMiddleware = multipart({ uploadDir: './public/uploads' });
 import {ContentController,AdminController,UserController,MenuController,NewsController,SysLogController,ImageController,StyleController} from '../controller'
 
 
