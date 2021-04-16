@@ -7,7 +7,6 @@ const LogUtil = require('../util/LogUtil');
 const encrypt = require('../util/Encrypt');
 const sysConst = require('../util/SysConst');
 const sysMsg = require('../util/SystemMsg');
-const oAuthUtil = require('../util/OAuthUtil');
 const logger = LogUtil.createLogger('AdminController');
 
 const createAdmin = (req, res, next) => {
@@ -17,7 +16,7 @@ const createAdmin = (req, res, next) => {
         password:encrypt.encryptByMd5(bodyParams.password),
         phone:bodyParams.phone,
         sex:bodyParams.sex
-    }
+    };
 
     let adminModel = new AdminModel(adminObj);
     adminModel.save(function(error,result){
@@ -30,7 +29,7 @@ const createAdmin = (req, res, next) => {
             return next();
         }
     })
-}
+};
 
 const getAdmin = (req, res, next) => {
     let params = req.params;
@@ -49,69 +48,51 @@ const getAdmin = (req, res, next) => {
             return next();
         }
     });
-}
+};
 
+/**
+ * 系统登录页面，点击【登录】按钮，进行身份验证
+ * @param req request请求
+ * @param res response相应
+ * @param next 跳转回调
+ */
 const adminLogin = (req, res, next) => {
+    // 参数：用户名，密码
     let bodyParams = req.body;
-    new Promise((resolve) => {
-        let query = AdminModel.find({});
 
-        if(bodyParams.userName){
-            query.where('user_name').equals(bodyParams.userName);
-        }
-        query.where('type').equals(sysConst.USER_TYPE.admin);
-        query.exec((error,rows)=> {
-            if (error) {
-                logger.error(' getAdmin ' + error.message);
-                resUtil.resInternalError(error,res);
-            } else {
-                if(rows && rows.length<1){
-                    logger.warn(' adminLogin ' + sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
-                    resUtil.resetFailedRes(res,sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
-                    return next();
-                }else{
-                    let passwordMd5 = encrypt.encryptByMd5(bodyParams.password);
-                    if(passwordMd5 != rows[0].password){
-                        logger.warn(' adminLogin ' + sysMsg.CUST_LOGIN_PSWD_ERROR);
-                        resUtil.resetFailedRes(res,sysMsg.CUST_LOGIN_PSWD_ERROR) ;
-                        return next();
-
-                    }else{
-                        let user = {
-                            userId : rows[0]._id,
-                            phone : rows[0].phone,
-                            type : rows[0].type,
-                            userStatus : rows[0].status
-                        }
-                        if(rows[0].status == sysConst.USER_STATUS.not_active){
-                            //Admin User status is not verified return user id
-
-                            logger.info('adminLogin' + " not verified");
-                            resUtil.resetQueryRes(res,user,null);
-                            return next();
-                        }else{
-                            //admin user status is active,return token
-
-                            //user.accessToken = oAuthUtil.createAccessToken(oAuthUtil.clientType.admin,user.userId,user.userStatus);
-/*                            oAuthUtil.saveToken(user,function(error,result){
-                                if(error){
-                                    logger.error(' adminLogin ' + error.stack);
-                                    return next();
-                                }else{
-                                    logger.info('adminLogin' + " success");
-                                    //resUtil.resetQueryRes(res,user,null);
-                                    //return next();
-                                    resolve(user);
-                                }
-                            })*/
-                            resolve(user);
-
-                        }
-                    }
+    let query = AdminModel.find({});
+    if(bodyParams.userName){
+        query.where('user_name').equals(bodyParams.userName);
+    }
+    query.where('type').equals(sysConst.USER_TYPE.admin).exec().then((rows)=> {
+        if(rows && rows.length<1){
+            // 用户不存在
+            logger.warn(' adminLogin ' + sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
+            resUtil.resetFailedRes(res,sysMsg.ADMIN_LOGIN_USER_UNREGISTERED);
+        }else{
+            // 密码验证
+            let passwordMd5 = encrypt.encryptByMd5(bodyParams.password);
+            if(passwordMd5 != rows[0].password){
+                // 登录密码错误
+                logger.warn(' adminLogin ' + sysMsg.CUST_LOGIN_PSWD_ERROR);
+                resUtil.resetFailedRes(res,sysMsg.CUST_LOGIN_PSWD_ERROR) ;
+            }else{
+                // 用户信息
+                let user = {
+                    userId : rows[0]._id,
+                    phone : rows[0].phone,
+                    type : rows[0].type,
+                    userStatus : rows[0].status
+                };
+                // 用户状态 判定
+                if(rows[0].status == sysConst.USER_STATUS.not_active){
+                    logger.info('adminLogin' + " not verified");
+                    resUtil.resetQueryRes(res,user,null);
                 }
+                return user;
             }
-        });
-    }).then((user) => {
+        }
+    }).then(user => {
         let getClientIp = function (req) {
             return req.headers['x-forwarded-for'] ||
                 req.connection.remoteAddress ||
@@ -124,9 +105,10 @@ const adminLogin = (req, res, next) => {
             admin_id:user.userId,
             ip:ip,
             type:1
-        }
+        };
 
         let sysLogModel = new SysLogModel(sysLogObj);
+        // 写入log日志
         sysLogModel.save(function(error,result){
             if (error) {
                 logger.error(' createSysLog ' + error.message);
@@ -134,13 +116,10 @@ const adminLogin = (req, res, next) => {
             } else {
                 logger.info(' createSysLog ' + 'success');
                 resUtil.resetQueryRes(res,user,null);
-                return next();
             }
         })
     })
-
-}
-
+};
 
 module.exports = {
     createAdmin,
