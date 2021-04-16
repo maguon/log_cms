@@ -21,14 +21,14 @@ const getNewsView = (req ,res ,next) => {
     let menuObj = {};
     let menuFlag = true;
     let title = "";
-    let cssArray=[];
     let metaArray=[];
+    let cssArray=[];
     let scriptArray=[];
     let menuList = [];
     StyleModel.find({}).exec().then((rows)=>{
         title = rows[0].title;
+        metaArray = rows[0].meta || [];
         cssArray = rows[0].css_link || [];
-        metaArray = rows[0].meta_link || [];
         scriptArray = rows[0].js_link || [];
         return;
     }).then(()=>{
@@ -96,15 +96,15 @@ const getNewsView = (req ,res ,next) => {
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
                 <NewsComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
-            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray, componentString)
         }else if(params.menuType==2){
             const componentString = ReactDOMServer.renderToString(
                 <ListComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
-            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray,componentString)
         }else{
             const componentString = ReactDOMServer.renderToString(
                 <PictureComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
-            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+            resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray,componentString)
         }
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
@@ -307,6 +307,7 @@ const getNewsViewDetails = (req ,res ,next) => {
     let pageObj = {};
     let newsObj = {};
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -316,12 +317,9 @@ const getNewsViewDetails = (req ,res ,next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -405,7 +403,7 @@ const getNewsViewDetails = (req ,res ,next) => {
                                         pageObj: pageObj,
                                         currentPage: params.page
                                     }}/>);
-                                resUtil.resetMainPage(res,title,cssArray,scriptArray, componentString)
+                                resUtil.resetMainPage(res,title,cssArray,scriptArray, metaArray, componentString)
 
                             }
 
@@ -426,6 +424,7 @@ const getPictureDetails = (req ,res ,next) => {
     let menuObj = {};
     let menuFlag = true;
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -435,12 +434,9 @@ const getPictureDetails = (req ,res ,next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -579,7 +575,7 @@ const getPictureDetails = (req ,res ,next) => {
                                         }else{
                                             const componentString = ReactDOMServer.renderToString(
                                                 <PictureDetailsComponent {... {newsList:rows,menuList:menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
-                                            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+                                            resUtil.resetMainPage(res,title,cssArray,scriptArray, metaArray, componentString)
 
                                         }
 
@@ -601,6 +597,7 @@ const getNewsViewSearch = (req ,res ,next) => {
     let params = req.query;
     let newsObj = {};
     let title = "";
+    let metaArray=[];
     let cssArray=[];
     let scriptArray=[];
     new Promise((resolve) => {
@@ -610,12 +607,9 @@ const getNewsViewSearch = (req ,res ,next) => {
                 resUtil.resetErrorPage(res,error);
             }else{
                 title = rows[0].title;
-                for(let i = 0;i<rows[0].css_link.length;i++){
-                    cssArray[i] = rows[0].css_link[i];
-                }
-                for(let i = 0;i<rows[0].js_link.length;i++){
-                    scriptArray[i] = rows[0].js_link[i];
-                }
+                metaArray = rows[0].meta || [];
+                cssArray = rows[0].css_link || [];
+                scriptArray = rows[0].js_link || [];
                 resolve();
             }
         });
@@ -671,7 +665,7 @@ const getNewsViewSearch = (req ,res ,next) => {
                         }else{
                             const componentString = ReactDOMServer.renderToString(
                                 <SearchComponent {... {newsList:rows,menuList:menu,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
-                            resUtil.resetMainPage(res,title,cssArray,scriptArray,componentString)
+                            resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray, componentString)
 
                         }
 
