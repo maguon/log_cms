@@ -2,86 +2,64 @@
 <div id="newOperator" class="modal">
     <form name="operatorForm" ng-submit="submitForm()" novalidate>
         <div class="modal-content">
-            <h4 class="center-align ">新增栏目</h4>
-            <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+            <div class="center-align" style="font-size: 20px">新增栏目</div>
+            <div class="divider" style="background: #5a86ba;height: 2px;margin-top:10px;"></div>
             <div class="container">
                 <div class="row" style="margin-top: 40px">
 
                     <!--父菜单-->
                     <div class="row">
-                        <h5 class="col s4">
-                            <span style="color: red">*</span> 父菜单:
-                        </h5>
-                        <div class="col s8">
-
+                        <div class="col s4" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
+                        <div class="col s8" style="padding-left:0;">
                             <select style="display: block" ng-model="addColumn"  material-select watch>
                                 <option value="" selected="selected">请选择</option>
                                 <option value="-1">根目录</option>
                                 <option ng-repeat="el in columnList" ng-value="el._id">{{el.menu_name}}</option>
                             </select>
                         </div>
-
                     </div>
 
                     <!--序列号-->
                     <div class="row">
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            序列号:
-                        </h5>
-                        <input id="password" name="password" autocomplete="off" ng-model="addnum" type="number" required class=" col s8">
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
+                        <input class=" col s8" style="height:32px" id="password" name="password" autocomplete="off" ng-model="addnum" type="number" required >
                     </div>
-
 
                     <!--栏目名称-->
                     <div class="row" >
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            栏目名称:
-                        </h5>
-                        <input  id="phone" name="phone" autocomplete="off" ng-model="addMenuName" type="text"   required class="col s8">
-
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
+                        <input class=" col s8" style="height:32px" id="phone" name="phone" autocomplete="off" ng-model="addMenuName" type="text" required>
                     </div>
 
                     <!--设置关联-->
                     <div class="row">
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            设置关联:
-                        </h5>
-                        <label class="col s2" style="padding-top: 20px">
+                        <div class="col s4" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 设置关联:</div>
+                        <label class="col s2" style="padding-top: 8px">
                             <input name="group1" type="radio"  ng-value="1" ng-model="addLink"/>
                             <span>新闻</span>
                         </label>
-                        <label class="col s2" style="padding-top: 20px">
+                        <label class="col s2" style="padding-top: 8px">
                             <input name="group1" type="radio" ng-value="2" ng-model="addLink"/>
                             <span>列表</span>
                         </label>
-                        <label class="col s2" style="padding-top: 20px">
+                        <label class="col s2" style="padding-top: 8px">
                             <input name="group1" type="radio" ng-value="3" ng-model="addLink"/>
                             <span>图片</span>
                         </label>
-
                     </div>
 
                     <!--是否显示-->
                     <div class="row" >
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            是否显示:
-                        </h5>
-                        <div class="col s8" style="font-size: 30px;padding-top: 20px">
-                            <label class="col s4">
-                                <input name="group2" type="radio" ng-value="1" ng-model="addMenuStatus"/>
-                                <span>显示</span>
-                            </label>
-                            <label class="col s4">
-                                <input name="group2" type="radio" ng-value="0" ng-model="addMenuStatus"/>
-                                <span>隐藏</span>
-                            </label>
-                        </div>
+                        <div class="col s4" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 是否显示:</div>
+                        <label class="col s2" style="padding-top: 8px;">
+                            <input name="group2" type="radio" ng-value="1" ng-model="addMenuStatus"/>
+                            <span>显示</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 8px;">
+                            <input name="group2" type="radio" ng-value="0" ng-model="addMenuStatus"/>
+                            <span>隐藏</span>
+                        </label>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -95,69 +73,52 @@
             </a>
         </div>
     </form>
-
 </div>
 
 <!--编辑模态框-->
 <div id="look_Operator" class="modal">
     <form name="change_operatorForm" ng-submit="changeOperatorForm(look_operation._id)" novalidate>
         <div class="modal-content">
-            <h4 class="center-align">编辑栏目</h4>
-            <div class="divider" style="background: #5a86ba;height: 2px;"></div>
+            <div class="center-align" style="font-size: 20px">编辑栏目</div>
+            <div class="divider" style="background: #5a86ba;height: 2px;margin-top:10px;"></div>
             <div class="container">
                 <div class="row" style="margin-top: 40px">
 
                     <!--父菜单-->
                     <div class="row">
-                        <h5 class="col s4">
-                            <span style="color: red">*</span> 父菜单:
-                        </h5>
-                        <div class="col s8">
-
+                        <div class="col s4" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
+                        <div class="col s8" style="padding-left:0;">
                             <select style="display: block" ng-model="look_operation.menu_pid"  material-select watch>
                                 <option value="" selected="selected">请选择</option>
                                 <option value="-1">根目录</option>
                                 <option ng-repeat="el in columnList" ng-value="el._id">{{el.menu_name}}</option>
                             </select>
                         </div>
-
                     </div>
 
                     <!--序列号-->
                     <div class="row">
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            序列号:
-                        </h5>
-                        <input name="password" autocomplete="off" ng-model="look_operation.menu_num" type="number" required class=" col s8">
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
+                        <input class=" col s8" style="height:32px" name="password" autocomplete="off" ng-model="look_operation.menu_num" type="number" required>
                     </div>
-
 
                     <!--栏目名称-->
                     <div class="row" >
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            栏目名称:
-                        </h5>
-                        <input  name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text"   required class="col s8">
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
+                        <input class="col s8" style="height:32px" name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text" required>
                     </div>
 
                     <!--是否显示-->
                     <div class="row" >
-                        <h5 class="col s4">
-                            <span style="color: red">*</span>
-                            是否显示:
-                        </h5>
-                        <div class="col s8" style="font-size: 30px;padding-top: 20px">
-                            <label class="col s4">
-                                <input name="group2" type="radio" ng-value="1" ng-model="look_operation.menu_status"/>
-                                <span>显示</span>
-                            </label>
-                            <label class="col s4">
-                                <input name="group2" type="radio" ng-value="0" ng-model="look_operation.menu_status"/>
-                                <span>隐藏</span>
-                            </label>
-                        </div>
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否显示:</div>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="group2" type="radio" ng-value="1" ng-model="look_operation.menu_status"/>
+                            <span>显示</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="group2" type="radio" ng-value="0" ng-model="look_operation.menu_status"/>
+                            <span>隐藏</span>
+                        </label>
                     </div>
 
                 </div>
