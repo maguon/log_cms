@@ -32,7 +32,7 @@ export default class NewsComponent  extends React.Component {
                                 <ul className="ab_huod_fenlei" id="treeDemo">
                                     {
                                         this.props.twoMenuNameList.map((twoMenuNameItem,index) =>
-                                            <li className="level0 treeDemo">
+                                            <li key={index}  className="level0 treeDemo">
                                                 <a className="level0" key={index} href={"/view/menu/"+twoMenuNameItem._id+"/menuType/"+twoMenuNameItem.menu_type+"/page/1/news"}>{twoMenuNameItem.menu_name}</a>
                                             </li>)
                                     }
@@ -49,7 +49,7 @@ export default class NewsComponent  extends React.Component {
                                 <div className="ab_neir">
                                     {
                                         this.props.newsList.map((newsItem,index) =>
-                                            <div>
+                                            <div key={index} >
                                                 <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
                                             </div>)

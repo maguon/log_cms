@@ -25,7 +25,7 @@ export default class SearchComponent  extends React.Component {
                                 <div className="ab_neir">
                                     {
                                         this.props.newsList.map((newsItem,index) =>
-                                            <a className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}<span
+                                            <a key={index} className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}<span
                                             className="rq">{newsItem.created_at.toLocaleDateString()}</span></a>)
                                     }
                                 </div>

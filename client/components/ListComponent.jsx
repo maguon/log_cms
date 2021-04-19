@@ -109,7 +109,7 @@ export default class ListComponent  extends React.Component {
                                 <ul className="ab_huod_fenlei" id="treeDemo">
                                     {
                                         this.props.twoMenuNameList.map((twoMenuNameItem,index) =>
-                                            <li className="level0 treeDemo">
+                                            <li key={index}  className="level0 treeDemo">
                                                 <a className="level0" key={index} href={"/view/menu/"+twoMenuNameItem._id+"/menuType/"+twoMenuNameItem.menu_type+"/page/1/news"}>{twoMenuNameItem.menu_name}</a>
                                             </li>)
                                     }
@@ -129,7 +129,7 @@ export default class ListComponent  extends React.Component {
 
                                         <li> {
                                             this.props.newsList.map((newsItem,index) =>
-                                                <a className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}
+                                                <a key={index} className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>{newsItem.news_title}
                                                     <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
                                                 </a>)
                                         }

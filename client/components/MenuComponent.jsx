@@ -85,7 +85,7 @@ export default class MenuComponent  extends React.Component {
                                 <div className="showImg">
                                     {
                                         this.props.newsImageList.map((imageItem,index) =>
-                                            <div className="silhouette_block">
+                                            <div key={index} className="silhouette_block">
                                                 <div className="silhouette_block_pic">
                                             <a className="collection-item" key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/picture/"+imageItem._id.toString()+"/page/1"}>
                                             <img className='imgShow' src={"/api/image/"+imageItem.news_image} /></a> </div>

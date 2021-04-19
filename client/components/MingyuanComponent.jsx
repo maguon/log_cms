@@ -21,7 +21,7 @@ export default class MingyuanComponent  extends React.Component {
                         <div className="slider">
                             <ul className="slides">
                                 {this.props.newsList.map((newsItem, index) =>
-                                    <li>
+                                    <li key={index} >
                                         <img src={"/api/image/" + newsItem.news_image} alt={newsItem.news_title}/>
                                         <div className="caption right-align">
                                             <h4 style={{color:'#0A4454'}}>{newsItem.news_title}</h4>
@@ -112,7 +112,7 @@ export default class MingyuanComponent  extends React.Component {
                             <div className='col s12 enterpriseNews'>
                                 <ul type="square">
                                     {this.props.enterpriseList.map((newsItem, index) =>
-                                        <li>
+                                        <li key={index} >
                                             <span className='liSpan'/>
                                             <a className="totalSpan" key={index}
                                                href={"/view/menu/" + newsItem.menu_id._id + "/menuType/" + newsItem.menu_id.menu_type + "/news/" + newsItem._id.toString() + "/page/1"}>
@@ -133,7 +133,7 @@ export default class MingyuanComponent  extends React.Component {
                             <div className='col s12 companyNews'>
                                 <ul type="square">
                                     {this.props.companyList.map((newsItem, index) =>
-                                        <li>
+                                        <li key={index} >
                                             <span className='liSpan'/>
                                             <a className="totalSpan" key={index}
                                                href={"/view/menu/" + newsItem.menu_id._id + "/menuType/" + newsItem.menu_id.menu_type + "/news/" + newsItem._id.toString() + "/page/1"}>
