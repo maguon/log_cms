@@ -58,17 +58,6 @@ const getNewsView = (req ,res ,next) => {
         }
     }).then(rows=>{
         menuObj.twoMenuNameList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26')
-            .where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('5'))
-            .sort('news_num').exec()
-    }).then((rows)=>{
-        newsObj.recruitList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5cad3f663160aa601f6de039')
-            .where('news_status').equals('1')
-            .sort('news_num').exec()
-    }).then(rows=>{
-        newsObj.contactList = rows;
         let countQuery =NewsModel.find({}).count();
         if(params.menuId){
             countQuery.where('menu_id').equals(params.menuId);

@@ -40,6 +40,7 @@ const getMenuView = (req, res, next) => {
                     resUtil.resetErrorPage(res,error);
                 }else{
                     resolve(rows);
+
                 }
             });
         }).then((menuList) => {
@@ -106,6 +107,7 @@ const getMenuView = (req, res, next) => {
                                 if(error){
                                     resUtil.resetErrorPage(res,error);
                                 }else{
+
                                     const componentString = ReactDOMServer.renderToString(
                                         <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
                                     resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray,componentString)

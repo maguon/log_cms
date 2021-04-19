@@ -1,5 +1,6 @@
 'use strict'
 
+import {MenuViewController} from './server/controller/view/'
 const path = require('path');
 const process = require('process');
 const mod_getopt = require('posix-getopt');
@@ -54,9 +55,7 @@ while (option  !== undefined) {
 
 
 
-app.get('/', function (req, res) {
-    res.redirect(system.record.path);
-});
+app.get('/', MenuViewController.getMenuView);
 
 app.listen(port||8100, () => {
     logger.info(`server started at localhost:${port||8100} ` + new Date().toLocaleString());
