@@ -40,22 +40,20 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     }
 
     $scope.showLastTr2 =function (id,index){
-        if($scope.showTr2==true){
-            $(".load1_mission" + index).show();
+        $(".load1_mission").hide();
+
+        if($scope.showTr2){
             $scope.showTr2=false;
-        }
-       else{
-            $(".load1_mission" + index).hide();
+        } else{
+            $(".load1_mission" + index).show();
             $scope.showTr2=true;
         }
         _basic.get($host.api_url + "/menu?menuPid="+id).then(function (data) {
-            if (data.success == true) {
+            if (data.success) {
                 $scope.scondList = data.result;
             }
         })
-    }
-
-
+    };
 
     /*新增按钮*/
     $scope.newOperator = function () {
