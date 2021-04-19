@@ -44,7 +44,7 @@ const uploadImage = (req, res, next) => {
 };
 
 const uploadFavicon = (req, res, next) => {
-    let filePath = req.files.image.path;
+    let filePath = req.files.favicon.path;
     return fs.rename(filePath,"./public/uploads/favicon.ico", function(err){
         if(err){
             resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;
@@ -55,7 +55,7 @@ const uploadFavicon = (req, res, next) => {
 };
 
 const uploadLogo = (req, res, next) => {
-    let filePath = req.files.image.path;
+    let filePath = req.files.logo.path;
     return fs.rename(filePath,"./public/uploads/logo.png", function(err){
         if(err){
             resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;

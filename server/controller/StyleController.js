@@ -21,11 +21,13 @@ const  createStyle = (req, res, next) => {
                     let styleObj = {
                         sid: 0,
                         title: '',
+                        logo_title:'',
+                        page_footer:'',
                         meta:[],
                         css_link: [],
                         js_link: []
-                    }
-                    let styleModel = new StyleModel(styleObj)
+                    };
+                    let styleModel = new StyleModel(styleObj);
                     styleModel.save(function(error,result){
                         if (error) {
                             logger.error(' createStyle ' + error.message);
@@ -35,14 +37,14 @@ const  createStyle = (req, res, next) => {
                             resolve();
                         }
                     })
-
                 }
-
             }
         });
     }).then(() => {
         let styleObj = {
             title: bodyParams.title,
+            logo_title: bodyParams.logoTitle,
+            page_footer: bodyParams.pageFooter,
             meta: bodyParams.meta,
             css_link:bodyParams.cssLink,
             js_link:bodyParams.jsLink
@@ -60,7 +62,7 @@ const  createStyle = (req, res, next) => {
             }
         })
     })
-}
+};
 
 const getStyle = (req, res, next) => {
     let params = req.query;
@@ -79,8 +81,7 @@ const getStyle = (req, res, next) => {
             return next();
         }
     });
-}
-
+};
 
 module.exports = {
     createStyle,

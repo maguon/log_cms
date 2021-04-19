@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <!--css-->
-                <div class="col s6 "  style="height: 160px;margin-top: 50px" >
+                <div class="col s6 "  style="height: 120px;margin-top: 20px" >
                     <div class="col s2 left-align">
                         <p style="margin: 0">css:</p>
                     </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <!--js-->
-                <div class="col s6 "  style="height: 160px;margin-top: 50px" >
+                <div class="col s6 "  style="height: 120px;margin-top: 20px" >
                     <div class="col s2" style="height: 160px">
                         <p style="margin: 0">js:</p>
                     </div>
@@ -50,12 +50,39 @@
                     </div>
                 </div>
 
-                <div class="right_con_title_r col s4 offset-s5">
-                      <a class="waves-effect waves-light btn col s5 circle_button offset-s2"  ng-click="postStyle()" style="background-color: #5a86ba">新增</a>
+                <!-- logo title -->
+                <div class="col s12"  style="height: 30px;margin-top: 0" >
+                    <div class="col s1 left-align" style="margin-top: 8px;"><p style="margin: 0">logo标题:</p></div>
+                    <div class="col s11"><input style="border: 1px solid #ccc;height: 30px;line-height: 30px;font-size: 14px;" ng-model="styleList.logo_title"/></div>
+                </div>
+
+                <!-- 页脚内容 -->
+                <div class="col s12"  style="height: 30px;margin-top: 20px" >
+                    <div class="col s1 left-align" style="margin-top: 8px;"> <p style="margin: 0">页脚内容:</p></div>
+                    <div class="col s11"><input style="border: 1px solid #ccc;height: 30px;line-height: 30px;font-size: 14px;" ng-model="styleList.page_footer"/></div>
+                </div>
+
+                <!-- favicon ico -->
+                <div class="col s12" style="height: 32px;margin-top: 30px;">
+                    <div class="col s1 left-align"><p style="margin: 0">favicon:</p></div>
+                    <input class="col s6" style="height: 32px;line-height: 22px" name="favicon" type="file" onchange="angular.element(this).scope().uploadFavicon(this)"  max_size="1M"/>
+                    <img width="32px" src={{faviconSrc}}/>
+                </div>
+
+                <!-- logo -->
+                <div class="col s12"  style="height: 30px;margin-top: 30px" >
+                    <div class="col s1 left-align"><p style="margin: 0">logo:</p></div>
+                    <input class="col s6" style="height: 32px;line-height: 22px" name="logo" type="file" onchange="angular.element(this).scope().uploadLogo(this)"  max_size="4M"/>
+                    <img height="80px" src={{logoSrc}}/>
                 </div>
             </div>
         </div>
-        <div class="row"> </div>
+
+        <div class="row" style="margin-top:100px;padding-bottom: 30px;">
+            <div class="right_con_title_r col s4 offset-s5" style="margin-top: 20px;">
+                <a class="waves-effect waves-light btn col s5 circle_button offset-s2"  ng-click="postStyle()" style="background-color: #5a86ba">保存</a>
+            </div>
+        </div>
     </div>
 </div>
 
