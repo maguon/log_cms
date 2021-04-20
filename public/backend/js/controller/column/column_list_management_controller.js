@@ -20,34 +20,30 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         })
     }
 
-    //获取子一级
+    // 获取子一级
     $scope.showLastTr =function (id,index){
-        if($scope.showTr1==true){
-            $(".load_mission" + index).show();
-            $scope.showTr1=false;
-            $scope.showTr2=false;
-        }
-        else{
-            $(".load_mission" + index).hide();
-            $scope.showTr1=true;
-        }
-         $(".load_mission" + index).show();
+        // 子一级 全部隐藏
+        $(".load_mission").hide();
+        // 子一级 点击显示
+        $(".load_mission" + index).show();
+        // 取得 子一级 数据
         _basic.get($host.api_url + "/menu?menuPid="+id).then(function (data) {
-            if (data.success == true) {
+            if (data.success) {
+                // 子一级 数据
                 $scope.firstList = data.result;
+                // 子二级 数据
+                $scope.scondList = [];
             }
         })
-    }
+    };
 
+    // 获取子二级
     $scope.showLastTr2 =function (id,index){
+        // 子二级 全部隐藏
         $(".load1_mission").hide();
-
-        if($scope.showTr2){
-            $scope.showTr2=false;
-        } else{
-            $(".load1_mission" + index).show();
-            $scope.showTr2=true;
-        }
+        // 子二级 点击显示
+        $(".load1_mission" + index).show();
+        // 取得 子二级 数据
         _basic.get($host.api_url + "/menu?menuPid="+id).then(function (data) {
             if (data.success) {
                 $scope.scondList = data.result;

@@ -191,10 +191,10 @@
                         </div>
                     </div>
 
-                    <div class="collapsible-body load_mission load_mission{{$index}}"  ng-show="showTr1" style="height: 40px;line-height: 40px;padding: 0; !important;margin: 0;" >
+                    <div class="collapsible-body load_mission load_mission{{$index}}" style="height: 40px;line-height: 40px;padding: 0; !important;margin: 0;" >
                         <!--列表1-->
                         <div ng-repeat="el in firstList" style="border: 1px solid #ccc;background: #fafafa;padding: 0;margin: 0;">
-                            <div ng-click="el.lower_flag==1 ? showLastTr2(el._id,$index) : null" style="padding: 0;margin: 0;">
+                            <div ng-click="showLastTr2(el._id,$index)" style="padding: 0;margin: 0;">
                                 <div style="height: 40px;line-height: 40px;">
                                     <div class="col s1 right-align">
                                         <p style="margin: 0">
@@ -221,7 +221,7 @@
                                 </div>
 
                                 <!-- 子 -->
-                                <div class="load1_mission load1_mission{{$index}}" ng-show="showTr2">
+                                <div class="load1_mission load1_mission{{$index}}">
                                     <!--列表2-->
                                     <div ng-repeat="el in scondList" style="height: 40px;line-height: 40px;border: 1px solid #ccc;background: #eee;padding: 0;margin: 0;">
                                         <div ng-click="showLastTr3(el._id,$index)" style="padding: 0;margin: 0;">
