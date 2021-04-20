@@ -12,20 +12,14 @@ import MingyuanComponent from '../../../client/components/MingyuanComponent';
 
 const getMenuView = (req, res, next) => {
     let newsObj = {};
-    let title = "";
-    let metaArray=[];
-    let cssArray=[];
-    let scriptArray=[];
+    let webSetting ={};
     new Promise((resolve) => {
         let query = StyleModel.find({});
         query.exec((error,rows)=> {
             if(error){
                 resUtil.resetErrorPage(res,error);
             }else{
-                title = rows[0].title;
-                metaArray = rows[0].meta || [];
-                cssArray = rows[0].css_link || [];
-                scriptArray = rows[0].js_link || [];
+                webSetting = rows[0]||{}
                 resolve();
             }
         });
@@ -109,8 +103,8 @@ const getMenuView = (req, res, next) => {
                                 }else{
 
                                     const componentString = ReactDOMServer.renderToString(
-                                        <MenuComponent {... {menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
-                                    resUtil.resetMainPage(res,title,cssArray,scriptArray,metaArray,componentString)
+                                        <MenuComponent {... {pageFooter:webSetting.page_footer||"",menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
+                                    resUtil.resetMainPage(res,webSetting,componentString)
                                 }
                             })
                         })

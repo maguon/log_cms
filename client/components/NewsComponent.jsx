@@ -60,6 +60,7 @@ export default class NewsComponent  extends React.Component {
                         </div>
                     </div>
                 </div>
+                <Footer pageFooter={this.props.pageFooter}/>
             </div>
         );
     }

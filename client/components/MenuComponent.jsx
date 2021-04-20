@@ -120,7 +120,7 @@ export default class MenuComponent  extends React.Component {
 
                     </div>
                 </div>
-
+                <Footer pageFooter={this.props.pageFooter}/>
             </div>
         );
     }
