@@ -40,6 +40,7 @@ apiRouter.delete('/sysLogAll', SysLogController.removeSysLogAll);
 
 apiRouter.post('/user/:userId/image',multipartMiddleware, ImageController.uploadImage);
 apiRouter.get('/image/:imageId', ImageController.getImage);
+apiRouter.delete('/image/:imageId', ImageController.deleteImage);
 
 apiRouter.post('/user/:userId/favicon',multipartMiddleware, ImageController.uploadFavicon);
 apiRouter.post('/user/:userId/logo',multipartMiddleware, ImageController.uploadLogo);

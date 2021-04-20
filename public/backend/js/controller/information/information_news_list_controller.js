@@ -1,5 +1,6 @@
 app_admin_module.controller("information_news_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
     var id = $stateParams.id;//跳转过来的id
+    const imgPath = '../uploads/';
     var userId = _basic.getSession(_basic.USER_ID);
     $scope.editor='';
     function kedit(kedit){
@@ -70,9 +71,9 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
             $scope.img=''
         }
         else {
-            $scope.img=$host.api_url + '/image/'+src;
+            $scope.img= imgPath +src+ '?' + new Date().getTime();
         }
-    }
+    };
 
     // 照片上传函数
     function uploadImage(filename, dom_obj, callback) {
@@ -131,7 +132,8 @@ app_admin_module.controller("information_news_list_controller", ["$scope", "_bas
             _basic.put($host.api_url + "/news/" +  id+ "/image", $scope.obj).then(function (data) {
                 if (data.success == true) {
                     swal("图片上传成功", "", "success");
-                    getNewsList()
+                    getNewsList();
+                    $scope.getBigImg(imageId);
                 } else {
                     swal(data.msg, "", "error");
                 }

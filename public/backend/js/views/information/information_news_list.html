@@ -71,9 +71,9 @@
                             <div class="col s2" style="border-right: 1px solid #ccc">
                                 <p style="margin: 0">图片:</p>
                             </div>
-                            <div class="col s4">
-                                <a ng-click="getBigImg(newsItem.news_image)"  title="点击查看原图片" class="col s6" style="cursor: pointer">{{newsItem.news_image}}</a>
-                                <input style="margin-top:16px;height: 30px;line-height: 30px" class="col s6" name="image" type="file" onchange="angular.element(this).scope().uploadNewsImage(this)"  max_size="4M"/>
+                            <div class="col s6">
+                                <a class="col s7" ng-click="getBigImg(newsItem.news_image)"  title="点击查看原图片" style="cursor: pointer">{{newsItem.news_image}}</a>
+                                <input class="col s5" style="margin-top:16px;height: 30px;line-height: 30px" name="image" type="file" onchange="angular.element(this).scope().uploadNewsImage(this)"  max_size="4M"/>
                             </div>
                             <div class="col s4">
                                 <form name="uploadImageForm" class="uploadImageForm">
@@ -84,7 +84,6 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col s2"></div>
                         </div>
                     </li>
                     <li>

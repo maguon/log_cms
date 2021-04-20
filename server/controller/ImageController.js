@@ -12,6 +12,9 @@ const sysMsg = require('../util/SystemMsg');
 const resUtil = require('../util/ResUtil');
 const LogUtil = require('../util/LogUtil');
 const logger = LogUtil.createLogger('ImageController');
+const imgPath = './public/uploads/';
+const favicon = 'favicon.ico';
+const logo = 'logo.png';
 
 // const  uploadImage = (req, res, next) => {
 //     let params = req.params;
@@ -36,8 +39,8 @@ const logger = LogUtil.createLogger('ImageController');
 
 const uploadImage = (req, res, next) => {
     let filePath = req.files.image.path;
-    let idx = filePath.indexOf("\\");
-    let imageId = filePath.substr(idx, filePath.length);
+    let idx = filePath.lastIndexOf("\\");
+    let imageId = filePath.substr(idx + 1, filePath.length);
     logger.info(' uploadImage ' + filePath + ' success');
     resUtil.resetQueryRes(res, {imageId: imageId}, null);
     return next();
@@ -45,7 +48,7 @@ const uploadImage = (req, res, next) => {
 
 const uploadFavicon = (req, res, next) => {
     let filePath = req.files.favicon.path;
-    return fs.rename(filePath,"./public/uploads/favicon.ico", function(err){
+    return fs.rename(filePath, imgPath + favicon, function(err){
         if(err){
             resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;
         }
@@ -56,13 +59,22 @@ const uploadFavicon = (req, res, next) => {
 
 const uploadLogo = (req, res, next) => {
     let filePath = req.files.logo.path;
-    return fs.rename(filePath,"./public/uploads/logo.png", function(err){
+    return fs.rename(filePath, imgPath + logo, function(err){
         if(err){
             resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;
         }
         resUtil.resetQueryRes(res, null, null);
         return next();
     })
+};
+
+const deleteImage = (req, res, next) => {
+    let imageId = req.params.imageId;
+    // 删除图片
+    fs.unlink(imgPath + imageId, (err) =>{});
+    logger.info(' deleteImage ' + imgPath + imageId + ' success');
+    resUtil.resetQueryRes(res, {}, null);
+    return next();
 };
 
 //favor.ico logo.png
@@ -147,5 +159,5 @@ const  getImage = (req, res, next) => {
 };
 
 module.exports = {
-    uploadImage, uploadFavicon, uploadLogo, getImage
+    uploadImage, uploadFavicon, uploadLogo, getImage, deleteImage
 };

@@ -1,4 +1,5 @@
 app_admin_module.controller("information_menu_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams", function ($scope, _basic, _config, $host,$state, $stateParams) {
+    const imgPath = '../uploads/';
     var id = $stateParams.id;//跳转过来的id
     // 返回
     $scope.return = function () {
@@ -42,7 +43,7 @@ app_admin_module.controller("information_menu_list_controller", ["$scope", "_bas
 
 
     //删除
-    $scope.delete =function(id){
+    $scope.delete =function(id, imageId){
         swal({
                 title: "确定删除当前栏目？",
                 text: "",
@@ -59,15 +60,19 @@ app_admin_module.controller("information_menu_list_controller", ["$scope", "_bas
                     if (data.success === true) {
                         swal("删除成功", "", "success");
                         getRootList()
-                    }
-                    else {
+                    } else {
                         swal(data.msg, "", "error");
                     }
                 });
+
+                // 删除对应图片
+                if (imageId !== undefined) {
+                    _basic.delete($host.api_url + "/image/" + imageId).then(function (data) {});
+                }
             });
-    }
+    };
 
 
     getRootList();
     getMenuList();
-}])
+}]);
