@@ -8,30 +8,45 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div className="nav-wrapper">
-                <div className="row" style={{margin:0}}>
-                    <nav className="nav_bg left-align">
-                        <div className="nav-wrapper">
-                            <a href={"/view/mingyuan"}>
-                                <img alt="logo" className='logo_img' style={{marginLeft:'50px'}} src="/backend/assets/images/mingyuanlogo.png" />
-                            </a>
-                            <a href="#" data-target="mobile-demo" className="sidenav-trigger black-text"><i className="mdi mdi-menu mdi-36px"/></a>
-                            <ul className="right hide-on-med-and-down black-text">
+            <nav className="one-page-header one-page-header-style-2 navbar navbar-default navbar-fixed-top"
+                 role="navigation">
+                <div className="container">
+                    <div className="menu-container page-scroll">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-ex1-collapse">
+                            <span className="sr-only">Toggle navigation</span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                        <a className="navbar-brand" href={"/view"}>
+                            <img alt="logo" className='logo_img' src="/uploads/logo.png" />
+                            <span className='logoTitle'>洺源科技</span>
+                        </a>
+
+
+                      {/*  <div className="log-reg-block-simple cd-log_reg">
+                            <a className="btn-u cd-signin" href="javascript:void(0);">Login</a>
+                        </div>
+
+                        <div className="top-contact-block">
+                            <i className="fa fa-phone fa-1"></i> <a href="tel:0 800 2000 123">0 800 2000 123</a>
+                        </div>*/}
+                    </div>
+                    <div className="collapse navbar-collapse navbar-ex1-collapse">
+                        <div className="menu-container">
+                            <ul className="nav navbar-nav">
+
                                 {this.props.menuList.map((menuItem, index) => {
-                                    return <li key={index} ><a  className="black-text" href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
+                                    return <li className="page-scroll" key={index} ><a  href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
                                 })}
+
                             </ul>
                         </div>
-                    </nav>
+                    </div>
 
-                    <ul className="sidenav left-align" id="mobile-demo">
-                        {this.props.menuList.map((menuItem, index) => {
-                            return <li key={index} ><a className="sidenav-close" href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
-                        })}
-                    </ul>
                 </div>
-            </div>
-
+            </nav>
         );
     }
 }
