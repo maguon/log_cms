@@ -80,15 +80,15 @@ const getNewsView = (req ,res ,next) => {
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
-                <NewsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <NewsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting, componentString)
         }else if(params.menuType==2){
             const componentString = ReactDOMServer.renderToString(
-                <ListComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
+                <ListComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }else{
             const componentString = ReactDOMServer.renderToString(
-                <PictureComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <PictureComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }
     }).catch(error=>{
