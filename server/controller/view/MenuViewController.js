@@ -23,21 +23,6 @@ const getMenuView = (req, res, next) => {
         return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5bfbb72506e91f3814c8d0ec').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('8')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.newsImageList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5bfbb65606e91f3814c8d0ea').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('10')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.partnersList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('5')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.recruitList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5bfbb62c06e91f3814c8d0e8').where('news_status').equals('1').sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.contactList = rows;
         return NewsModel.find({}).populate('menu_id').where('roll_flag').equals('1').where('news_status').equals('1')
             .skip(parseInt('0')).limit(parseInt('4')).sort('news_num').exec();
     }).then(rows=>{

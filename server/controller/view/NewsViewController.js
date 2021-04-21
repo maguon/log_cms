@@ -80,15 +80,15 @@ const getNewsView = (req ,res ,next) => {
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
-                <NewsComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+                <NewsComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting, componentString)
         }else if(params.menuType==2){
             const componentString = ReactDOMServer.renderToString(
-                <ListComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
+                <ListComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }else{
             const componentString = ReactDOMServer.renderToString(
-                <PictureComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,currentPage:params.page}}/>);
+                <PictureComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }
     }).catch(error=>{
@@ -415,13 +415,6 @@ const getNewsViewDetails = (req ,res ,next) => {
         return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('5')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.recruitList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5cad3f663160aa601f6de039').where('news_status').equals('1').sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.contactList = rows;
         let query = NewsModel.find({}).count();
         if (params.menuId) {
             query.where('menu_id').equals(params.menuId);
@@ -441,12 +434,10 @@ const getNewsViewDetails = (req ,res ,next) => {
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
             <NewsDetailsComponent {... {
+                pageFooter:webSetting.page_footer||"",
                 newsList: rows,
                 menuList: menuList,
                 menuName: rows[0].menu_id.menu_name,
-                profileList: newsObj.profileList,
-                recruitList: newsObj.recruitList,
-                contactList: newsObj.contactList,
                 pageObj: pageObj,
                 currentPage: params.page
             }}/>);
@@ -669,13 +660,6 @@ const getPictureDetails = (req ,res ,next) => {
         }
     }).then(rows=>{
         menuObj.twoMenuNameList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('5')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.recruitList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5bfbb62c06e91f3814c8d0e8').where('news_status').equals('1').sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.contactList = rows;
         let query = NewsModel.find({}).count();
         if(params.menuId){
             query.where('menu_id').equals(params.menuId);
@@ -694,7 +678,7 @@ const getPictureDetails = (req ,res ,next) => {
         return query.skip(params.page-1).limit(1).exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <PictureDetailsComponent {... {newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList,pageObj:pageObj,currentPage:params.page}}/>);
+            <PictureDetailsComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
         resUtil.resetMainPage(res, webSetting, componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
@@ -797,13 +781,6 @@ const getNewsViewSearch = (req ,res ,next) => {
         return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5c00a754a0c6192580565b26').where('news_status').equals('1')
-            .skip(parseInt('0')).limit(parseInt('5')).sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.recruitList = rows;
-        return NewsModel.find({}).populate('menu_id').where('menu_id').equals('5bfbb62c06e91f3814c8d0e8').where('news_status').equals('1').sort('news_num').exec();
-    }).then(rows=>{
-        newsObj.contactList = rows;
         let query = NewsModel.find({}).populate('menu_id');
         if(params.search){
             query.where('news_title').regex(params.search);
@@ -811,7 +788,7 @@ const getNewsViewSearch = (req ,res ,next) => {
         return query.exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <SearchComponent {... {newsList:rows,menuList:menuList,profileList:newsObj.profileList,recruitList:newsObj.recruitList,contactList:newsObj.contactList}}/>);
+            <SearchComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList}}/>);
         resUtil.resetMainPage(res, webSetting, componentString)
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
