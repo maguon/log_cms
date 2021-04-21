@@ -23,12 +23,15 @@
                             <div class="col s12">
                                 <div class="col s12">
                                     <div class="col s3 " style="border-right: 1px solid #ccc;">
-                                        <p style="margin: 0">标题</p>
+                                        <p style="margin: 0">ID</p>
                                     </div>
                                     <div class="col s3 " style="border-right: 1px solid #ccc;">
+                                        <p style="margin: 0">标题</p>
+                                    </div>
+                                    <div class="col s1 " style="border-right: 1px solid #ccc;">
                                         <p style="margin: 0">显示状态</p>
                                     </div>
-                                    <div class="col s2 " style="border-right: 1px solid #ccc;">
+                                    <div class="col s1 " style="border-right: 1px solid #ccc;">
                                         <p style="margin: 0">图片轮播</p>
                                     </div>
                                     <div class="col s2 " style="border-right: 1px solid #ccc;">
@@ -46,13 +49,16 @@
                             <div class="col s12">
                                 <div class="col s12">
                                     <div class="col s3 " style="border-right: 1px solid #ccc;">
-                                        <p style="margin: 0">{{el.news_title}}</p>
+                                        <p style="margin: 0">{{el._id}}</p>
                                     </div>
                                     <div class="col s3 " style="border-right: 1px solid #ccc;">
+                                        <p style="margin: 0">{{el.news_title}}</p>
+                                    </div>
+                                    <div class="col s1 " style="border-right: 1px solid #ccc;">
                                         <p style="margin: 0" ng-if="el.news_status==0">隐藏</p>
                                         <p style="margin: 0" ng-if="el.news_status==1">显示</p>
                                     </div>
-                                    <div class="col s2 " style="border-right: 1px solid #ccc;">
+                                    <div class="col s1 " style="border-right: 1px solid #ccc;">
                                         <p style="margin: 0" ng-if="el.roll_flag==0">未添加</p>
                                         <p style="margin: 0" ng-if="el.roll_flag==1">已添加</p>
                                     </div>
