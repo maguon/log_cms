@@ -9,18 +9,7 @@ export default class MenuComponent  extends React.Component {
         super(props);
     }
     render () {
-        let carLink;
-        let partnersLink;
-        if(this.props.newsImageList.length===0){
-            carLink = "";
-        }else{
-            carLink = "/view/menu/"+this.props.newsImageList[0].menu_id._id+"/menuType/"+this.props.newsImageList[0].menu_id.menu_type+"/page/1/news";
-        }
-        if(this.props.partnersList.length===0){
-            partnersLink = "";
-        }else{
-            partnersLink = "/view/menu/"+this.props.partnersList[0].menu_id._id+"/menuType/"+this.props.partnersList[0].menu_id.menu_type+"/page/1/news";
-        }
+
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
