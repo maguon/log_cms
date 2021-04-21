@@ -80,15 +80,15 @@ const getNewsView = (req ,res ,next) => {
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
-                <NewsComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <NewsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting, componentString)
         }else if(params.menuType==2){
             const componentString = ReactDOMServer.renderToString(
-                <ListComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
+                <ListComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }else{
             const componentString = ReactDOMServer.renderToString(
-                <PictureComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <PictureComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }
     }).catch(error=>{
@@ -434,6 +434,7 @@ const getNewsViewDetails = (req ,res ,next) => {
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
             <NewsDetailsComponent {... {
+                logoTitle:webSetting.logo_title||"",
                 pageFooter:webSetting.page_footer||"",
                 newsList: rows,
                 menuList: menuList,
@@ -678,7 +679,7 @@ const getPictureDetails = (req ,res ,next) => {
         return query.skip(params.page-1).limit(1).exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <PictureDetailsComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
+            <PictureDetailsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
         resUtil.resetMainPage(res, webSetting, componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
@@ -788,7 +789,7 @@ const getNewsViewSearch = (req ,res ,next) => {
         return query.exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <SearchComponent {... {pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList}}/>);
+            <SearchComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList}}/>);
         resUtil.resetMainPage(res, webSetting, componentString)
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);

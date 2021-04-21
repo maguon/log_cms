@@ -27,7 +27,7 @@ const getMenuView = (req, res, next) => {
             .skip(parseInt('0')).limit(parseInt('4')).sort('news_num').exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <MenuComponent {... {pageFooter:webSetting.page_footer||"",menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
+            <MenuComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
         resUtil.resetMainPage(res,webSetting,componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
