@@ -7362,7 +7362,7 @@ KindEditor.plugin('image', function(K) {
 			afterUpload : function(data) {
 				dialog.hideLoading();
 				if (data.success && data.result) {
-					var url = '/api/image/'+data.result.imageId;
+					var url = '/'+data.result.imageId;
 					if (formatUploadUrl) {
 						url = K.formatUrl(url, 'absolute');
 					}
