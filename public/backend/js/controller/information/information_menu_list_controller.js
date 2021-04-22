@@ -1,5 +1,4 @@
 app_admin_module.controller("information_menu_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams", function ($scope, _basic, _config, $host,$state, $stateParams) {
-    const imgPath = '../uploads/';
     var id = $stateParams.id;//跳转过来的id
     // 返回
     $scope.return = function () {

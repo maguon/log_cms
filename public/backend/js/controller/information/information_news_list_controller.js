@@ -1,6 +1,6 @@
 app_admin_module.controller("information_news_list_controller", ["$scope", "_basic", "_config", "$host","$state", "$stateParams",  function ($scope, _basic, _config, $host,$state, $stateParams) {
     var id = $stateParams.id;//跳转过来的id
-    const imgPath = '../uploads/';
+    const imgPath = '../';
     var userId = _basic.getSession(_basic.USER_ID);
     $scope.editor='';
     function kedit(kedit){

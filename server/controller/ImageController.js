@@ -18,7 +18,7 @@ const logo = 'logo.png';
 
 const uploadImage = (req, res, next) => {
     let filePath = req.files.image.path;
-    let idx = filePath.lastIndexOf("\\");
+    let idx = filePath.indexOf("\\");
     let imageId = filePath.substr(idx + 1, filePath.length);
     logger.info(' uploadImage ' + filePath + ' success');
     resUtil.resetQueryRes(res, {imageId: imageId}, null);
