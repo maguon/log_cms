@@ -22,7 +22,7 @@ export default class IndexComponent  extends React.Component {
                             <ul className="slides">
                                 {this.props.newsList.map((newsItem, index) =>
                                     <li key={index} >
-                                        <img src={"/api/image/" + newsItem.news_image} alt={newsItem.news_title}/>
+                                        <img src={newsItem.news_image} alt={newsItem.news_title}/>
                                         <div className="caption right-align">
                                             <h4 style={{color:'#0A4454'}}>{newsItem.news_title}</h4>
                                             <h6 style={{color:'#0A4454'}}>{newsItem.news_content}</h6>

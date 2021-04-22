@@ -19,7 +19,7 @@ export default class MenuComponent  extends React.Component {
                             <ul>
                                 {this.props.newsList.map((newsItem, index) =>
                                     <li key={index} data-transition="curtain-1" data-slotamount="5" data-masterspeed="700">
-                                        <img src={"/api/image/" + newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
+                                        <img src={newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
                                              data-bgposition="center center" data-bgrepeat="no-repeat"/>
 
                                         <div className="tp-caption rs-caption-1 sft start"

@@ -21,9 +21,8 @@ class Header extends React.Component {
                         </button>
                         <a className="navbar-brand" href={"/view"}>
                             <img alt="logo" className='logo_img' src="/uploads/logo.png" />
-                            <span className='logoTitle'>洺源科技</span>
                         </a>
-
+                        <span className='logoTitle'>{this.props.logoTitle}</span>
 
                       {/*  <div className="log-reg-block-simple cd-log_reg">
                             <a className="btn-u cd-signin" href="javascript:void(0);">Login</a>
@@ -35,8 +34,8 @@ class Header extends React.Component {
                     </div>
                     <div className="collapse navbar-collapse navbar-ex1-collapse">
                         <div className="menu-container">
-                            <ul className="nav navbar-nav">
-
+                            <ul className="nav navbar-nav floatRight">
+                                <li className="page-scroll"  ><a  href={"/"}>首页</a></li>
                                 {this.props.menuList.map((menuItem, index) => {
                                     return <li className="page-scroll" key={index} ><a  href={"/view/menu/" + menuItem._id.toString() + "/menuType/" + menuItem.menu_type + "/page/1/news"}>{menuItem.menu_name}</a></li>
                                 })}

@@ -21,7 +21,7 @@ export default class NewsComponent  extends React.Component {
         }
         return (
             <div>
-                <Header menuList={this.props.menuList}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
                 <div>
                     <div className="job-img margin-bottom-30"></div>
                     <div className="container content profile wrap1003">
@@ -57,7 +57,7 @@ export default class NewsComponent  extends React.Component {
                                                 {
                                                     this.props.newsList.map((newsItem,index) =>
                                                         <div>
-                                                            <div className="titleh5"><h5 className="center-align">{newsItem.news_title}</h5></div>
+                                                            <div className="titleh5"><h5 className="center-align"></h5></div>
                                                             <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
                                                         </div>)

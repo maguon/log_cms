@@ -13,15 +13,11 @@ export default class NewsDetailsComponent  extends React.Component {
         if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
                 <div className="fenPian">
-
-                    {
-                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
-                    }
-
-
-                    {
-                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
-                    }
+                    <ul role="menu" aria-label="Pagination" >
+                        <li>{<a role="menuitem" className='darkColor' style={{marginLeft:10+'px'}}>上一篇</a>}</li>
+                        <li>{<a role="menuitem"  className='greenColor' style={{marginLeft:10+'px'}}
+                                href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}>下一篇</a>}</li>
+                    </ul>
                 </div>
             )
 
@@ -29,27 +25,24 @@ export default class NewsDetailsComponent  extends React.Component {
         else  if(this.props.currentPage!=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
                 <div className="fenPian">
-                    {
-                        <a  className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}   >上一篇</a>
-                    }
+                    <ul role="menu" aria-label="Pagination" >
+                        <li>{<a role="menuitem"   className='greenColor' style={{marginLeft:10+'px'}}
+                                href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}>上一篇</a>}</li>
+                        <li>{<a role="menuitem"  className='greenColor' style={{marginLeft:10+'px'}}
+                                href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}>下一篇</a>}</li>
+                    </ul>
 
-                    {
-                        <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/newsListDetails"}  >下一篇</a>
-                    }
                 </div>
             )
         }
         else if(this.props.currentPage=== ""+this.props.pageObj.totalCount&&this.props.currentPage!=='1'){
             prePage =(
-
                 <div className="fenPian">
-                    {
-                        <a  className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}   >上一篇</a>
-                    }
-
-                    {
-                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
-                    }
+                    <ul role="menu" aria-label="Pagination" >
+                        <li>{<a role="menuitem"  className='greenColor' style={{marginLeft:10+'px'}}
+                                href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/newsListDetails"}>上一篇</a>}</li>
+                        <li>{<a role="menuitem"  className='darkColor' style={{marginLeft:10+'px'}}>下一篇</a>}</li>
+                    </ul>
                 </div>
             )
         }
@@ -57,12 +50,10 @@ export default class NewsDetailsComponent  extends React.Component {
             prePage =(
 
                 <div className="fenPian">
-                    {
-                        <a   className="pageList" style={{marginLeft:10+'px'}}  >上一篇</a>
-                    }
-                    {
-                        <a className="pageList" style={{marginLeft:10+'px'}}  >下一篇</a>
-                    }
+                    <ul role="menu" aria-label="Pagination" >
+                        <li>{<a role="menuitem"  className='darkColor' style={{marginLeft:10+'px'}}>上一篇</a>}</li>
+                        <li>{<a role="menuitem"  className='darkColor' style={{marginLeft:10+'px'}}>下一篇</a>}</li>
+                    </ul>
                 </div>
             )
         }
