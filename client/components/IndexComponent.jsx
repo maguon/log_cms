@@ -12,7 +12,7 @@ export default class IndexComponent  extends React.Component {
         return (
             <div style={{height:'100%'}}>
                 {/* 项目 Header */}
-                <Header menuList={this.props.menuList}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
 
                 {/* 轮播图片 */}
                 <div id="menu0" className="pushpin example" data-target="menu0">

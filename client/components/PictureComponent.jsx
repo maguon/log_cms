@@ -22,7 +22,7 @@ export default class PictureComponent  extends React.Component {
         return (
 
             <div>
-                <Header menuList={this.props.menuList}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
                 <div className="job-img margin-bottom-30"></div>
                 <div className="container content profile wrap1003">
                     <div className="row marginTop50" >

@@ -11,7 +11,7 @@ export default class SearchComponent  extends React.Component {
     render () {
         return (
             <div>
-                <Header menuList={this.props.menuList}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
                 <div className="rows">
                     <div className="collection">
                         <div className="wrap1003">
