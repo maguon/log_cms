@@ -22,9 +22,9 @@ export default class NewsComponent  extends React.Component {
         return (
             <div>
                 <Header menuList={this.props.menuList}/>
-                <div >
+                <div>
                     <div className="job-img margin-bottom-30"></div>
-                    <div className="container content profile">
+                    <div className="container content profile wrap1003">
                         <div className="row marginTop50" >
                             <div className="col-md-3 md-margin-bottom-40">
 
@@ -41,26 +41,30 @@ export default class NewsComponent  extends React.Component {
 
                             </div>
                             <div className="col-md-9">
-                                <div className="profile-body">
-                                    <div className="row margin-bottom-20">
-                                        {
-                                            this.props.newsList.map((newsItem,index) =>
-                                                <div key={index} >
-                                                    <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
-
-                                                </div>)
-                                        }
+                                <div className="kect">
+                                    <div className="mores">
+                                        <a href={"/view"} className="black-text" >首页</a>
+                                        &nbsp;&gt;&nbsp;
+                                        <a className="black-text" href={"/view/menu/"+this.props.menu[0]._id+"/menuType/"+this.props.menu[0].menu_type+"/page/1/news"}>{this.props.menu[0].menu_name}</a>
+                                        {twoMenuName}
                                     </div>
+                                </div>
+                                <div className="profile-body">
+                                    <div className="row">
+                                        <div className="ab_neir">
 
+                                            <div className="fenPianText">
+                                                {
+                                                    this.props.newsList.map((newsItem,index) =>
+                                                        <div>
+                                                            <div className="titleh5"><h5 className="center-align">{newsItem.news_title}</h5></div>
+                                                            <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
-                                    <div className="ab_neir">
-                                        {
-                                            this.props.newsList.map((newsItem,index) =>
-                                                <div key={index} >
-                                                    <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
+                                                        </div>)
+                                                }
+                                            </div>
 
-                                                </div>)
-                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>

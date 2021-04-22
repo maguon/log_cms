@@ -70,39 +70,45 @@ export default class NewsDetailsComponent  extends React.Component {
 
             <div>
                 <Header menuList={this.props.menuList}/>
-                <div className="rows">
-                    <div className="collection">
-                        <div className="wrap1003">
-                            <div className="ab_huod">
-                                <div className="ab_huod_tit">{this.props.menuName}</div>
+                <div className="job-img margin-bottom-30"></div>
+                <div className="container content profile wrap1003">
+                    <div className="row marginTop50" >
+                        <div className="col-md-3 md-margin-bottom-40">
+
+                            <ul className="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                                <div className={"list-group-item menuName"}>{this.props.menuName}</div>
+                            </ul>
+
+                        </div>
+                        <div className="col-md-9">
+                            <div className="kect">
+                                <div className="mores"><a href="/" className="black-text" >首页</a>&nbsp;&gt;&nbsp;
+                                    <a className="black-text"  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
                             </div>
-                            <div className="about_word">
-                                <div className="kect">
-                                    <div className="mores"><a href="/" className="black-text" >首页</a>&nbsp;&gt;&nbsp;
-                                        <a className="black-text"  href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/"+this.props.newsList[0].menu_id.menu_type+"/page/1/news"}>{this.props.menuName}</a></div>
-                                </div>
 
-                                <div className="ab_neir">
+                            <div className="profile-body">
+                                <div className="row">
+                                    <div className="ab_neir">
 
-                                    <div className="fenPianText">
-                                        {
-                                            this.props.newsList.map((newsItem,index) =>
-                                                <div>
-                                                    <div className="titleh5"><h5 className="center-align">{newsItem.news_title}</h5></div>
-                                                    <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
+                                        <div className="fenPianText">
+                                            {
+                                                this.props.newsList.map((newsItem,index) =>
+                                                    <div>
+                                                        <div className="titleh5"><h5 className="center-align">{newsItem.news_title}</h5></div>
+                                                        <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
-                                                </div>)
-                                        }
+                                                    </div>)
+                                            }
+                                        </div>
+
+                                        {prePage}
                                     </div>
-
-                                    {prePage}
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <Footer profileList={this.props.profileList} recruitList={this.props.recruitList} contactList={this.props.contactList} />
+                <Footer pageFooter={this.props.pageFooter}/>
             </div>
         );
     }

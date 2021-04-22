@@ -1,13 +1,3 @@
-jQuery('.list-group-item').click(function (){
-    //把之前已有的active去掉
-    jQuery('.active').removeClass('active');
-    //当前点击的li加上class
-    jQuery(this).addClass("active");
-
-});
-
-
-
 jQuery(document).ready(function() {
     RevolutionSlider.initRSfullScreen();
 });
