@@ -2526,6 +2526,7 @@ zoom: 1;
 	color: #5a5a5a;
 }
 .jididong {
+	min-height: 300px;
 	width: 100%;
 	float: left;
 	list-style: none;
@@ -2544,6 +2545,7 @@ zoom: 1;
 	line-height: 35px;
 	display: block;
 	color: #5a5a5a;!important;
+	margin-left: -40px;
 }
 .jididong li a:hover {
 	width: 100%;
@@ -2552,11 +2554,6 @@ zoom: 1;
 	line-height: 35px;
 	display: block;
 	color: #8b1014;
-}
-.fenye {
-	position: absolute;
-	left:35%;
-	bottom: 0px;
 }
 .rq {
 	float: right;
@@ -2592,12 +2589,6 @@ zoom: 1;
 .floatRight{
 	float:right;
 }
-/*.pageList:hover{
-	color: #8b1014;
-	border: 1px solid #8b1014;
-	width: 20px;
-	cursor: pointer;
-}*/
 
 .fenPian ul{
 	text-align: center;
@@ -2619,7 +2610,9 @@ zoom: 1;
 	text-decoration: none;
 	text-transform: uppercase;
 }
-
+.greenColor:hover{
+	color: #fff;
+}
 .darkColor{
 	color: #fff;
 	display: block;
@@ -2666,7 +2659,7 @@ zoom: 1;
 	margin-bottom: 20px;
 }
 .fenPianText{
-	margin: 30px 0px;
+	margin: 30px 40px;
 	min-height: 350px;
 }
 .titleh5{
@@ -2714,6 +2707,9 @@ zoom: 1;
 }
 .fontWeight{
 	font-weight: bold;
+}
+.listItem{
+	padding:0 30px;
 }
 .revicon-search-1:before { content: '\e802'} /* '' */
 .revicon-pencil-1:before { content: '\e831'} /* '' */
