@@ -1323,29 +1323,12 @@ img.tp-slider-alternative-image	{	width:100%; height:auto;}
 .tp-seek-bar		{	width:100%; cursor: pointer;  outline:none; line-height:12px;margin:0; padding:0;}
 
 
-/********************************
-	-	FULLSCREEN VIDEO ENDS	-
-*********************************/
-
-
-/********************************
-	-	DOTTED OVERLAYS	-
-*********************************/
-/*.tp-dottedoverlay						{	background-repeat:repeat;width:100%;height:100%;position:absolute;top:0px;left:0px;z-index:4}
-.tp-dottedoverlay.twoxtwo				{	background:url(../assets/gridtile.png)}
-.tp-dottedoverlay.twoxtwowhite			{	background:url(../assets/gridtile_white.png)}
-.tp-dottedoverlay.threexthree			{	background:url(../assets/gridtile_3x3.png)}
-.tp-dottedoverlay.threexthreewhite		{	background:url(../assets/gridtile_3x3_white.png)}*/
-/********************************
-	-	DOTTED OVERLAYS ENDS	-
-*********************************/
-
-
-/************************
-	-	NAVIGATION	-
-*************************/
-
 /** BULLETS **/
+.tp-dottedoverlay						{	background-repeat:repeat;width:100%;height:100%;position:absolute;top:0px;left:0px;}
+.tp-dottedoverlay.twoxtwo				{	background:url(../images/gridtile.png)}
+.tp-dottedoverlay.twoxtwowhite			{	background:url(../images/gridtile_white.png)}
+.tp-dottedoverlay.threexthree			{	background:url(../images/gridtile_3x3.png)}
+.tp-dottedoverlay.threexthreewhite		{	background:url(../images/gridtile_3x3_white.png)}
 
 .tpclear		{	clear:both}
 
@@ -1634,7 +1617,9 @@ tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	ba
 }
 
 
-
+.tp-dottedoverlay{
+	z-index: 1!important;
+}
 
 /* NAVIGATION PREVIEW 2 */
 .tparrows.preview2 							{	min-width:60px; min-height:60px; background:#fff; ;
@@ -2245,6 +2230,7 @@ zoom: 1;
 /*额外加入*/
 /*Slides*/
 .rs-caption-1 {
+  z-index: 6;
   color: #fff;
   font-size: 32px;
   font-weight: 200;
@@ -2285,6 +2271,7 @@ zoom: 1;
   line-height: 40px;
   padding: 10px 50px;
   text-align: center;
+  z-index: 6;
 }
 
 .rs-caption-2:after {
@@ -2297,13 +2284,6 @@ zoom: 1;
   margin-right: -50px;
   position: absolute;
 }
-
-.rs-caption-3 a {
-  margin: 0 5px;
-  padding: 7px 20px;
-  text-transform: uppercase;
-}
-
 @media (max-width: 768px) {
   .rs-caption-1,
   .rs-caption-2,
@@ -2382,15 +2362,17 @@ zoom: 1;
 .page-scroll{
 	float: left;
 }
-.navbar-ex1-collapse{
-	float: right;!important;
+.menu-container-scroll{
+	min-width: 325px;
 }
+/*.navbar-ex1-collapse{
+	float: right;!important;
+}*/
 .logoTitle{
 	display: inline-block;
 	font-size: 18px;
 	color: #fff;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: bold;
 	margin: 12px 15px;
 }
 .menuName{
@@ -2592,18 +2574,17 @@ zoom: 1;
 
 .fenPian ul{
 	text-align: center;
-	vertical-align: center;
 }
 .fenPian ul li{
 	text-decoration: none;
 	display: inline-block;
-	margin-left: 30px;
+	margin-left: 10px;
 }
 .greenColor {
 	color: #fff;
 	display: block;
 	font-size: 16px;
-	min-width: 126px;
+	min-width: 90px;
 	padding: 8px 10px;
 	text-align: center;
 	background: #72c02c;
@@ -2617,7 +2598,7 @@ zoom: 1;
 	color: #fff;
 	display: block;
 	font-size: 16px;
-	min-width: 126px;
+	min-width: 90px;
 	padding: 8px 10px;
 	text-align: center;
 	background: #e3e3e3;

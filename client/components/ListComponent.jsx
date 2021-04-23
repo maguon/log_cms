@@ -13,29 +13,28 @@ export default class ListComponent  extends React.Component {
 
     render () {
         let prePage;
-        console.log(this.props.pageObj)
         let items = [];
         for (var i = 1; i <= this.props.pageObj.totalPage; i++) {
-        if(this.props.pageObj.totalPage!==0&&this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalPage){
-            if(this.props.currentPage==i){
-                items.push( <li className="active"><a href="#">{i}</a></li>);
-            }
-            else {
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
-            }
+            if(this.props.pageObj.totalPage!==0&&this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalPage){
+                if(this.props.currentPage==i){
+                    items.push( <li className="active"><a href="#">{i}</a></li>);
+                }
+                else {
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
+                }
 
 
-            prePage =(
-                <div className="fenye">
-                    <div className="text-center">
-                        <ul className="pagination">
-                            {items}
-                        </ul>
-                    </div>
+                prePage =(
+                    <div className="fenye">
+                        <div className="text-center">
+                            <ul className="pagination">
+                                {items}
+                            </ul>
+                        </div>
 
 
-                {/*    <span className="fenyez12g fenyez1 pageList">共{
+                        {/*    <span className="fenyez12g fenyez1 pageList">共{
                         this.props.pageObj.totalCount
                     }条
                     </span>
@@ -48,32 +47,32 @@ export default class ListComponent  extends React.Component {
                     {
                         <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"}  >下一页</a>
                     }*/}
-                </div>
-            )
-
-        }
-        else if(this.props.pageObj.totalPage!==0&&this.props.currentPage!=='1'&&this.props.currentPage!== ""+this.props.pageObj.totalPage){
-            if(this.props.currentPage==i){
-                items.push( <li className="active"><a href="#">{i}</a></li>);
-            }
-            else if(this.props.currentPage<i){
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
-            }
-            else{
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
-
-            }
-            prePage =(
-                <div className="fenye">
-                    <div className="text-center">
-                        <ul className="pagination">
-                            {items}
-                        </ul>
                     </div>
+                )
 
-                   {/* <span className="fenyez12g fenyez1 pageList">共{
+            }
+            else if(this.props.pageObj.totalPage!==0&&this.props.currentPage!=='1'&&this.props.currentPage!== ""+this.props.pageObj.totalPage){
+                if(this.props.currentPage==i){
+                    items.push( <li className="active"><a href="#">{i}</a></li>);
+                }
+                else if(this.props.currentPage<i){
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
+                }
+                else{
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
+
+                }
+                prePage =(
+                    <div className="fenye">
+                        <div className="text-center">
+                            <ul className="pagination">
+                                {items}
+                            </ul>
+                        </div>
+
+                        {/* <span className="fenyez12g fenyez1 pageList">共{
                         this.props.pageObj.totalCount
                     }条
                     </span>
@@ -86,34 +85,34 @@ export default class ListComponent  extends React.Component {
                     {
                         <a className="pageList" style={{marginLeft:10+'px'}} href={"/view/menu/"+this.props.newsList[0].menu_id._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"}  >下一页</a>
                     }*/}
-                </div>
-            )
-        }
-        else if(this.props.pageObj.totalPage!==0&&this.props.currentPage=== ""+this.props.pageObj.totalPage&&this.props.currentPage!=='1'){
-            if(this.props.currentPage==i){
-                items.push( <li className="active"><a href="#">{i}</a></li>);
-            }
-            else if(this.props.currentPage<i){
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
-            }
-            else{
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
-
-            }
-
-            prePage =(
-
-                <div className="fenye">
-                    <div className="text-center">
-                        <ul className="pagination">
-                            {items}
-                        </ul>
                     </div>
+                )
+            }
+            else if(this.props.pageObj.totalPage!==0&&this.props.currentPage=== ""+this.props.pageObj.totalPage&&this.props.currentPage!=='1'){
+                if(this.props.currentPage==i){
+                    items.push( <li className="active"><a href="#">{i}</a></li>);
+                }
+                else if(this.props.currentPage<i){
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
+                }
+                else{
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
+
+                }
+
+                prePage =(
+
+                    <div className="fenye">
+                        <div className="text-center">
+                            <ul className="pagination">
+                                {items}
+                            </ul>
+                        </div>
 
 
-{/*
+                        {/*
                         <span className="fenyez12g fenyez1 pageList">共{
                             this.props.pageObj.totalCount
                         }条
@@ -127,32 +126,32 @@ export default class ListComponent  extends React.Component {
                     {
                         <a className="pageList" style={{marginLeft:10+'px'}}  >下一页</a>
                     }*/}
-                </div>
-            )
-        }
-        else {
-            if(this.props.currentPage==i){
-                items.push( <li className="active"><a href="#">{i}</a></li>);
-            }
-            else if(this.props.currentPage<i){
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
-            }
-            else{
-                items.push( <li><a style={{marginLeft:10*{i}+'px'}}
-                                   href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
-
-            }
-
-
-            prePage =(
-                <div className="fenye">
-                    <div className="text-center">
-                        <ul className="pagination">
-                            {items}
-                        </ul>
                     </div>
-                   {/* <span className="fenyez12g fenyez1 pageList">共{
+                )
+            }
+            else {
+                if(this.props.currentPage==i){
+                    items.push( <li className="active"><a href="#">{i}</a></li>);
+                }
+                else if(this.props.currentPage<i){
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)+1)+"/news"} >{i}</a></li>);
+                }
+                else{
+                    items.push( <li><a style={{marginLeft:10*{i}+'px'}}
+                                       href={"/view/menu/"+this.props.menu[0]._id+"/menuType/2/page/"+(parseInt(this.props.currentPage)-1)+"/news"} >{i}</a></li>);
+
+                }
+
+
+                prePage =(
+                    <div className="fenye">
+                        <div className="text-center">
+                            <ul className="pagination">
+                                {items}
+                            </ul>
+                        </div>
+                        {/* <span className="fenyez12g fenyez1 pageList">共{
                         this.props.pageObj.totalCount
                     }条
                     </span>
@@ -165,16 +164,16 @@ export default class ListComponent  extends React.Component {
                     {
                         <a className="pageList" style={{marginLeft:10+'px'}}  >下一页</a>
                     }*/}
-                </div>
-            )
-        }
+                    </div>
+                )
+            }
         }
 
 
 
         return (
             <div>
-                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
+                <Header menuList={this.props.menuList}/>
                 <div className="job-img margin-bottom-30"></div>
                 <div className="container content profile wrap1003">
                     <div className="row marginTop50" >
@@ -204,11 +203,11 @@ export default class ListComponent  extends React.Component {
 
                                             <li> {
                                                 this.props.newsList.map((newsItem,index) =>
-                                                <a key={index} className="collection-item" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
-                                                    <span className='fontWeight'> > </span>{newsItem.news_title}
-                                                    <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
-                                                </a>
-                                                    )
+                                                    <a key={index} className="collection-item listItem" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
+                                                        <span className='fontWeight'> > </span>{newsItem.news_title}
+                                                        <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
+                                                    </a>
+                                                )
                                             }
                                             </li>
 
@@ -227,4 +226,6 @@ export default class ListComponent  extends React.Component {
     }
 
 }
+
+
 

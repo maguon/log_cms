@@ -11,7 +11,7 @@ class Header extends React.Component {
             <nav className="one-page-header one-page-header-style-2 navbar navbar-default navbar-fixed-top"
                  role="navigation">
                 <div className="container">
-                    <div className="menu-container page-scroll">
+                    <div className="menu-container page-scroll menu-container-scroll">
                         <button type="button" className="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-ex1-collapse">
                             <span className="sr-only">Toggle navigation</span>
@@ -32,7 +32,9 @@ class Header extends React.Component {
                             <i className="fa fa-phone fa-1"></i> <a href="tel:0 800 2000 123">0 800 2000 123</a>
                         </div>*/}
                     </div>
+
                     <div className="collapse navbar-collapse navbar-ex1-collapse">
+
                         <div className="menu-container">
                             <ul className="nav navbar-nav floatRight">
                                 <li className="page-scroll"  ><a  href={"/"}>首页</a></li>

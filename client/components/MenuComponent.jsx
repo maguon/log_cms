@@ -29,7 +29,8 @@ export default class MenuComponent  extends React.Component {
                                              data-speed="800"
                                              data-start="2000"
                                              data-easing="Back.easeInOut"
-                                             data-endspeed="300">
+                                             data-endspeed="300"
+                                             style={{zIndex:6}}>
                                             { newsItem.news_title}
                                         </div>
                                         <div className="tp-caption rs-caption-2 sft"
@@ -41,21 +42,9 @@ export default class MenuComponent  extends React.Component {
                                              data-easing="Power4.easeOut"
                                              data-endspeed="300"
                                              data-endeasing="Power1.easeIn"
-                                             data-captionhidden="off">
+                                             data-captionhidden="off"
+                                             style={{zIndex:6}}>
                                             { newsItem.news_content}
-                                        </div>
-
-
-                                        <div className="tp-caption rs-caption-3 sft"
-                                             data-x="center"
-                                             data-hoffset="0"
-                                             data-y="360"
-                                             data-speed="800"
-                                             data-start="3500"
-                                             data-easing="Power4.easeOut"
-                                             data-endspeed="300"
-                                             data-endeasing="Power1.easeIn"
-                                             data-captionhidden="off">
                                         </div>
                                     </li>
                                 )}
