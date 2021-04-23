@@ -1088,14 +1088,14 @@ img.tp-slider-alternative-image	{	width:100%; height:auto;}
 
 
 	@media only screen and (min-width: 480px) and (max-width: 767px) {
-		.tp-simpleresponsive  .button	{	padding:4px 8px 3px; line-height:25px !important; font-size:11px !important;font-weight:normal;	}
+		.tp-simpleresponsive  .button	{	padding:4px 8px 3px; line-height:25px !important; font-size:32px !important;font-weight:normal;	}
 		.tp-simpleresponsive  a.button { -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none;	 }
 
 
 	}
 
     @media only screen and (min-width: 0px) and (max-width: 479px) {
-		.tp-simpleresponsive  .button	{	padding:2px 5px 2px; line-height:20px !important; font-size:10px !important}
+		.tp-simpleresponsive  .button	{	padding:2px 5px 2px; line-height:20px !important; font-size:30px !important}
 		.tp-simpleresponsive  a.button { -webkit-transition: none; -moz-transition: none; -o-transition: none; -ms-transition: none;	 }
 	}
 
@@ -1561,13 +1561,13 @@ tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	ba
 
 	@media only screen and (min-width: 768px) and (max-width: 979px) {
 		.tparrows.preview1,
-		.tparrows.preview1:after	{	width:80px; height:80px;line-height:80px; font-size:24px}
+		.tparrows.preview1:after	{	width:80px; height:80px;line-height:80px; font-size:30px}
 
 	}
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
 		.tparrows.preview1,
-		.tparrows.preview1:after	{	width:60px; height:60px;line-height:60px;font-size:20px}
+		.tparrows.preview1:after	{	width:60px; height:60px;line-height:60px;font-size:30px}
 
 	}
 
@@ -1575,7 +1575,7 @@ tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	ba
 
     @media only screen and (min-width: 0px) and (max-width: 479px) {
 		.tparrows.preview1,
-		.tparrows.preview1:after	{	width:40px; height:40px;line-height:40px; font-size:12px}
+		.tparrows.preview1:after	{	width:40px; height:40px;line-height:40px; font-size:30px}
     }
 
 /* PREVIEW 1 BULLETS */
@@ -1720,6 +1720,8 @@ tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	ba
 		.tp-rightarrow.preview2 .tp-arr-titleholder	{	right:35px}
 		.tp-leftarrow.preview2 .tp-arr-titleholder	{	left:35px}
 
+
+
 	}
 
     @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -1732,6 +1734,7 @@ tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	ba
 		.tparrows.preview2 .tp-arr-titleholder		{	font-size:10px; line-height:30px; letter-spacing: 0px}
 		.tp-rightarrow.preview2 .tp-arr-titleholder	{	right:25px}
 		.tp-leftarrow.preview2 .tp-arr-titleholder	{	left:25px}
+
 
 
 
@@ -2232,7 +2235,7 @@ zoom: 1;
 .rs-caption-1 {
   z-index: 6;
   color: #fff;
-  font-size: 32px;
+  font-size: 32px!important;
   font-weight: 200;
   padding: 6px 75px;
   position: relative;
@@ -2266,12 +2269,13 @@ zoom: 1;
 .rs-caption-2 {
   color: #fff;
   position: relative;
-  font-size: 26px;
+  font-size: 26px!important;
   font-weight: 200;
   line-height: 40px;
   padding: 10px 50px;
   text-align: center;
   z-index: 6;
+
 }
 
 .rs-caption-2:after {
@@ -2285,10 +2289,14 @@ zoom: 1;
   position: absolute;
 }
 @media (max-width: 768px) {
-  .rs-caption-1,
-  .rs-caption-2,
-  .rs-caption-3 {
+  .rs-caption-1 {
+	  font-weight: normal;
+	  font-size: 25px!important;
+  }
+  .rs-caption-2
+  {
     font-weight: normal;
+	font-size: 20px!important;
   }
 }
 .btn {
