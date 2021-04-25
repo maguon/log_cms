@@ -14,6 +14,7 @@ export default class ListComponent  extends React.Component {
     render () {
         let prePage;
         let items = [];
+        let pageList;
         for (var i = 1; i <= this.props.pageObj.totalPage; i++) {
             if(this.props.pageObj.totalPage!==0&&this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalPage){
                 if(this.props.currentPage==i){
@@ -168,6 +169,26 @@ export default class ListComponent  extends React.Component {
                 )
             }
         }
+        if(this.props.currentPage==='1'){
+            pageList=(
+                this.props.newsList.map((newsItem,index) =>
+                    <a key={index} className="collection-item listItem" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/page/"+(index+1)+"/newsListDetails"}>
+                        <span className='fontWeight'> > </span>{newsItem.news_title}
+                        <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
+                    </a>
+                )
+            )
+        }
+        else {
+            pageList=(
+                this.props.newsList.map((newsItem,index) =>
+                    <a key={index} className="collection-item listItem" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/page/"+((index+1)+(this.props.currentPage-1)*10)+"/newsListDetails"}>
+                        <span className='fontWeight'> > </span>{newsItem.news_title}
+                        <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
+                    </a>
+                )
+            )
+        }
 
 
 
@@ -200,17 +221,7 @@ export default class ListComponent  extends React.Component {
                                 <div className="row">
                                     <div className="ab_neir">
                                         <ul className="jididong">
-
-                                            <li> {
-                                                this.props.newsList.map((newsItem,index) =>
-                                                    <a key={index} className="collection-item listItem" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/news/"+newsItem._id.toString()+"/page/1"}>
-                                                        <span className='fontWeight'> > </span>{newsItem.news_title}
-                                                        <span className="rq">{newsItem.created_at.toLocaleDateString()}</span>
-                                                    </a>
-                                                )
-                                            }
-                                            </li>
-
+                                            <li> {pageList}</li>
                                         </ul>
 
                                         {prePage}

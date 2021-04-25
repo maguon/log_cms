@@ -51,7 +51,7 @@ export default class PictureComponent  extends React.Component {
 
                                         {
                                             this.props.newsList.map((imageItem,index) =>
-                                                <a  key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/picture/"+imageItem._id.toString()+"/page/1"}>
+                                                <a  key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/page/"+(index+1)+'/pictureDetails'}>
                                                     <img className="ab_neir_img" src={imageItem.news_image} /></a>)
                                         }
 
