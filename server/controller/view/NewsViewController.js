@@ -76,7 +76,7 @@ const getNewsView = (req ,res ,next) => {
         if(params.menuType==2){
             listQuery.skip(params.page*pageObj.pageSize -pageObj.pageSize).limit(pageObj.pageSize);
         }
-        return listQuery.sort('news_num').exec();
+        return listQuery.sort('news_num').sort({'created_at':-1}).exec();
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
@@ -430,7 +430,7 @@ const getNewsViewDetails = (req ,res ,next) => {
         if (params.menuId) {
             query.where('menu_id').equals(params.menuId);
         }
-        return query.where('news_status').equals('1').skip(params.page - 1).limit(1).exec();
+        return query.where('news_status').equals('1').sort('news_num').sort({'created_at':-1}).skip(params.page - 1).limit(1).exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
             <NewsDetailsComponent {... {
