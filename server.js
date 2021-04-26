@@ -56,6 +56,7 @@ while (option  !== undefined) {
 
 
 app.get('/', MenuViewController.getMenuView);
+app.get('/index.html', MenuViewController.getMenuView);
 
 app.listen(port||8100, () => {
     logger.info(`server started at localhost:${port||8100} ` + new Date().toLocaleString());
