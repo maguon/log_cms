@@ -2663,6 +2663,12 @@ zoom: 1;
 	float: left;
 	padding:1%;
 }
+.page-footer{
+	width: 100%;
+	z-index: 1030;
+	background: url(../images/about_bg.jpg) repeat-x !important;
+	padding:0 !important;
+}
 .footer {
 	text-align: center;
 	background-color: #222222;

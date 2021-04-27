@@ -74,4 +74,10 @@ app_admin_module.config(['$stateProvider',"$urlRouterProvider",function($statePr
             templateUrl: "/backend/js/views/setting/setting.html",  //路由填充的模板
             controller:'setting_controller'
         })
+        //样式设置
+        .state("style_setting", {  //路由状态
+            url: "/style_setting",  //路由路径
+            templateUrl: "/backend/js/views/setting/style_setting.html",  //路由填充的模板
+            controller:'style_setting_controller'
+        })
 }]);

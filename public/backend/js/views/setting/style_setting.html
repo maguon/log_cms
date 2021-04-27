@@ -1,0 +1,51 @@
+<!--样式设置-->
+<div class="style_setting" style="margin-left:15px;margin-right: 15px;">
+    <div class="right_title row col s12" style="background-color:#e5e5e5">当前位置：样式设置</div>
+
+
+    <div  style="background-color:#fff ">
+
+        <span class="mdi mdi-silverware-variant"></span>
+        <!--设置管理 -->
+        <div class="right_con_title row col s12">
+            <div class="right_con_title_l col s2"><i class="mdi  mdi-table-large" style="color: #5a86ba;font-size:28px;"> </i><span style="font-size: 20px">样式设置</span></div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 center-align" style="width:99%;margin-left:0.5%;">
+                <!--header-->
+                <div class="col s6 offset-s3 input-field"  style="height: 60px;line-height: 60px;" >
+                    <select style="display: block" material-select watch ng-model="layoutList.multi_menu"  style="width: 100%" id="multiLevelMenu">
+                        <option value="" selected="selected">是否显示多级菜单</option>
+                        <option ng-value="1" >是</option>
+                        <option ng-value="0" >否</option>
+                    </select>
+                </div>
+                <!--轮播图-->
+                <div class="col s6 offset-s3 input-field"  style="height: 60px;line-height: 60px;" >
+                    <select style="display: block" material-select watch ng-model="layoutList.carousel"  style="width: 100%" id="carousel">
+                        <option value="" selected="selected">请选轮播菜单</option>
+                        <option ng-repeat="carouselItem in carouselList" ng-value="carouselItem._id">{{carouselItem.menu_name}}</option>
+                    </select>
+                </div>
+
+                <!--首页显示-->
+
+                <div class="col s6 offset-s3 input-field"  style="height: 60px;line-height: 60px;" >
+                    <select style="display: block"  ng-model="addIndex"  style="width: 100%" id="addIndex" material-select watch  ng-change="chageSelect(addIndex)">
+                          <option value="" selected="selected">选择添加至首页</option>
+                          <option ng-repeat="el in  columnList" ng-value="el">{{el.menu_name}}</option>
+                    </select>
+                    <div class="chips"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:100px;padding-bottom: 30px;">
+            <div class="right_con_title_r col s4 offset-s5" style="margin-top: 20px;">
+                <a class="waves-effect waves-light btn col s5 circle_button offset-s2"  ng-click="postStyle()" style="background-color: #5a86ba">保存</a>
+            </div>
+        </div>
+    </div>
+</div>

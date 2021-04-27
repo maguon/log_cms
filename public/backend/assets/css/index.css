@@ -216,3 +216,6 @@ body{
 .fz12{
     font-size: 12px;
 }
+.chips .input {
+    display: none !important;
+}
