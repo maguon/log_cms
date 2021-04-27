@@ -7,7 +7,7 @@ const {StyleModel} = require('../../modules/schemas');
 const {LayoutModel} = require('../../modules/schemas');
 const {MenuModel} = require('../../modules/schemas');
 const {NewsModel} = require('../../modules/schemas');
-import MenuComponent from '../../../client/components/MenuComponent';
+import IndexComponent from '../../../client/components/IndexComponent';
 
 const getIndexView = (req, res, next) => {
     let webSetting ={};
@@ -56,7 +56,7 @@ const getIndexView = (req, res, next) => {
         return contentList;
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <MenuComponent {... {logoTitle:webSetting.logo_title||"", pageFooter:webSetting.page_footer||"", menuList:menuList, multiMenu:layoutSetting.multi_menu, newsList:newsList, contentList:rows}}/>);
+            <IndexComponent {... {logoTitle:webSetting.logo_title||"", pageFooter:webSetting.page_footer||"", menuList:menuList, multiMenu:layoutSetting.multi_menu, newsList:newsList, contentList:rows}}/>);
         resUtil.resetMainPage(res,webSetting,componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
