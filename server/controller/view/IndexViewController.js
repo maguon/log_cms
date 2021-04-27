@@ -14,7 +14,7 @@ const getIndexView = (req, res, next) => {
     let layoutSetting ={};
     let menuList ={};
     let newsList ={};
-    let contentTypeList = [];
+    let contentList = [];
 
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
@@ -29,30 +29,34 @@ const getIndexView = (req, res, next) => {
     }).then(rows=>{
         menuList = rows;
         return NewsModel.find({}).where('menu_id').equals(layoutSetting.carousel).sort('news_num').exec();
-    }).then(rows=>{
+    }).then(async (rows)=>{
         newsList = rows;
-        return MenuModel.find({}).where('_id').in(layoutSetting.content).sort('_id').exec();
-    }).then(rows =>{
-        contentTypeList = rows;
-        return NewsModel.find({}).where('menu_id').in(layoutSetting.content).sort('menu_id').exec();
+        for (let item of layoutSetting.content) {
+            let val;
+            switch (item.menuType) {
+                case 1 :
+                    // 1-新闻
+                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('1')).exec();
+                    contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
+                    break;
+                case 2 :
+                    // 2-列表
+                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('5')).exec();
+                    contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
+                    break;
+                case 3 :
+                    // 3-图片
+                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('8')).exec();
+                    contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
+                    break;
+                default:
+                    break;
+            }
+        }
+        return contentList;
     }).then(rows=>{
-
         const componentString = ReactDOMServer.renderToString(
-            <MenuComponent {... {logoTitle:webSetting.logo_title||"", pageFooter:webSetting.page_footer||"", menuList:menuList, multiMenu:layoutSetting.multi_menu, newsList:newsList, contentTypeList:contentTypeList, contentList:rows}}/>);
-        // console.log('webSetting.logo_title 111111111111111',webSetting.logo_title);
-        // console.log('webSetting.page_footer 22222222222222222',webSetting.page_footer);
-        // console.log('menuList 3333333333333333333333',menuList);
-        // console.log('layoutSetting.multi_menu 44444444444444',layoutSetting.multi_menu);
-        //
-        // console.log('newsList 55555555555555555555555555555555555',newsList);
-        console.log('contentTypeList 666666666666666666666666',contentTypeList);
-        console.log('contentList -------------------------');
-        console.log('contentList -------------------------');
-        console.log('contentList -------------------------');
-        console.log('contentList -------------------------');
-        console.log('contentList -------------------------');
-        console.log('contentList 7777777777777777777777777777',rows);
-
+            <MenuComponent {... {logoTitle:webSetting.logo_title||"", pageFooter:webSetting.page_footer||"", menuList:menuList, multiMenu:layoutSetting.multi_menu, newsList:newsList, contentList:rows}}/>);
         resUtil.resetMainPage(res,webSetting,componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
