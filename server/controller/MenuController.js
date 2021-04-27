@@ -74,6 +74,9 @@ const getMenu = (req, res, next) => {
     if(params.menuStatus){
         query.where('menu_status').equals(params.menuStatus);
     }
+    if(params.menuType){
+        query.where('menu_type').equals(params.menuType);
+    }
     if(params.start && params.size){
         query.skip(parseInt(params.start)).limit(parseInt(params.size));
     }

@@ -22,17 +22,21 @@ export default class MenuComponent  extends React.Component {
                                         <img src={newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
                                              data-bgposition="center center" data-bgrepeat="no-repeat"/>
 
-                                        <div className="tp-caption rs-caption-1 sft start"
-                                             data-x="center"
-                                             data-hoffset="0"
-                                             data-y="100"
-                                             data-speed="800"
-                                             data-start="2000"
-                                             data-easing="Back.easeInOut"
-                                             data-endspeed="300"
-                                             style={{zIndex:6}}>
-                                            { newsItem.news_title}
-                                        </div>
+                                        {newsItem.news_title===""?"":
+                                            <div className="tp-caption rs-caption-1 sft start"
+                                                 data-x="center"
+                                                 data-hoffset="0"
+                                                 data-y="100"
+                                                 data-speed="800"
+                                                 data-start="2000"
+                                                 data-easing="Back.easeInOut"
+                                                 data-endspeed="300"
+                                                 style={{zIndex:6}}>
+                                                { newsItem.news_title}
+                                            </div>
+                                        }
+
+                                        {newsItem.news_content===""?"":
                                         <div className="tp-caption rs-caption-2 sft"
                                              data-x="center"
                                              data-hoffset="0"
@@ -45,7 +49,7 @@ export default class MenuComponent  extends React.Component {
                                              data-captionhidden="off"
                                              style={{zIndex:6}}>
                                             { newsItem.news_content}
-                                        </div>
+                                        </div>}
                                     </li>
                                 )}
                             </ul>

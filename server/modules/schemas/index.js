@@ -6,3 +6,4 @@ exports.MenuModel = require('./Menu').MenuModel;
 exports.NewsModel = require('./News').NewsModel;
 exports.SysLogModel = require('./SysLog').SysLogModel;
 exports.StyleModel = require('./Style').StyleModel;
+exports.LayoutModel = require('./Layout').LayoutModel;
