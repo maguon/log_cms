@@ -1,5 +1,4 @@
 app_admin_module.controller("style_setting_controller", ["$scope", "_basic", "_config", "$host", function ($scope, _basic, _config, $host) {
-    let userId = _basic.getSession(_basic.USER_ID);
     var item = [];
     var dataPost =[];
     const viewInput =$('input');  //获取元素
@@ -26,8 +25,8 @@ app_admin_module.controller("style_setting_controller", ["$scope", "_basic", "_c
                     $scope.layoutList.content=data.result[0].content;
                     for (var i = 0; i < $scope.columnList.length; i++) {
                         for(var j = 0; j < $scope.layoutList.content.length; j++){
-                            if($scope.columnList[i]._id==$scope.layoutList.content[j]){
-                                item.push({tag:$scope.columnList[i].menu_name,id:$scope.columnList[i]._id})
+                            if($scope.columnList[i]._id==$scope.layoutList.content[j].menuId){
+                                item.push({tag:$scope.columnList[i].menu_name,menuType:$scope.columnList[i].menu_type,menuId:$scope.columnList[i]._id})
                             }
                         }
                     }
@@ -46,7 +45,7 @@ app_admin_module.controller("style_setting_controller", ["$scope", "_basic", "_c
         var length= $('.chip').length;
         if(el!=='') {
             if(item.length==0){
-                item=[{tag: el.menu_name,id:el._id}];
+                item=[{tag: el.menu_name,menuType:el.menu_type,menuId:el._id}];
                 $('.chips').chips({
                    data: item,
                 })
@@ -58,7 +57,7 @@ app_admin_module.controller("style_setting_controller", ["$scope", "_basic", "_c
                         return;
                     }
                 }
-                item.push({tag:el.menu_name,id:el._id})
+                item.push({tag:el.menu_name,menuType:el.menu_type,menuId:el._id})
                chip();
             }
         }
@@ -69,8 +68,8 @@ app_admin_module.controller("style_setting_controller", ["$scope", "_basic", "_c
 
     // 提交新增
     $scope.postStyle = function () {
-        for(i=0;i<item.length;i++){
-            dataPost.push(item[i].id);
+        for(var i=0;i<item.length;i++){
+            dataPost.push({menuType:item[i].menuType,menuId:item[i].menuId});
         };
         if(dataPost.length==0){
             dataPost=[];
