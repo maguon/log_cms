@@ -6,7 +6,9 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
 
     function getList(){
         _basic.get($host.api_url + "/style").then(function (data) {
+            console.log(data);
             if (data.success) {
+                console.log($scope.styleList)
                 $scope.styleList = data.result[0];
                 $scope.faviconSrc = imgPath + favicon + '?' + new Date().getTime();
                 $scope.logoSrc = imgPath + logo + '?' + new Date().getTime();
@@ -16,7 +18,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
 
     // 提交新增
     $scope.postStyle = function () {
-        if ($scope.styleList.title == ''||$scope.styleList.logo_title == ''||$scope.styleList.page_footer == ''
+        if ($scope.styleList == undefined || $scope.styleList.title == ''||$scope.styleList.logo_title == ''||$scope.styleList.page_footer == ''
             ||$scope.styleList.meta==undefined||$scope.styleList.css_link==undefined||$scope.styleList.js_link==undefined) {
             swal('请录入完整信息!', "", "error")
         } else {
