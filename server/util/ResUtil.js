@@ -36,11 +36,12 @@ const resetMainPage = (res,webSetting,componentString)=>{
         cssArray : webSetting.css_link || [],
         scriptArray : webSetting.js_link || [],
         metaArray:webSetting.meta ||[],
+        scriptText:webSetting.script_text ||'',
         component:componentString
         //scriptArray:["/backend/lib/jquery.min.js","/backend/assets/plugins/materialize/js/materialize.js","/backend/assets/plugins/slider/ft-carousel.min.js"]
         }
     );
-}
+};
 
 
 const resetErrorPage = (res ,error) => {

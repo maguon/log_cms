@@ -67,13 +67,14 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     // 提交新增
     $scope.submitForm = function () {
         $scope.submitted = true;
-        if($scope.addColumn==''||$scope.addMenuName==''||$scope.addnum==""||$scope.addMenuStatus==null||$scope.addLink==""){
+        if($scope.addColumn==''||$scope.addMenuName==''||$scope.addnum==""||$scope.addHeaderShow==null||$scope.addMenuStatus==null||$scope.addLink==""){
             swal('请录入完整信息!',"","error")
         }else{
             var obj = {
                 menuPid: $scope.addColumn,
                 menuName: $scope.addMenuName,
                 menuNum:$scope.addnum,
+                menuHeaderShow:$scope.addHeaderShow,
                 menuStatus:$scope.addMenuStatus,
                 menuType: $scope.addLink
             };
@@ -111,13 +112,14 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     $scope.changeOperatorForm = function (id) {
         $scope.submitted = true;
         if($scope.look_operation.menu_pid==''||$scope.look_operation.menu_name==''||$scope.look_operation.menu_num==null
-            ||$scope.look_operation.menu_status==null){
+            ||$scope.look_operation.menu_header_show==null||$scope.look_operation.menu_status==null){
             swal('请录入完整信息!',"","error")
         }else {
             var obj = {
                 menuPid: $scope.look_operation.menu_pid,
                 menuName: $scope.look_operation.menu_name,
                 menuNum: $scope.look_operation.menu_num,
+                menuHeaderShow: $scope.look_operation.menu_header_show,
                 menuStatus: $scope.look_operation.menu_status
             };
             _basic.put($host.api_url + "/menu/" + id, obj).then(function (data) {

@@ -15,9 +15,10 @@ const  createMenu = (req, res, next) => {
             menu_name: bodyParams.menuName,
             menu_num: bodyParams.menuNum,
             menu_type: bodyParams.menuType,
+            menu_header_show: bodyParams.menuHeaderShow,
             menu_status: bodyParams.menuStatus,
             menu_link: bodyParams.menuLink
-        }
+        };
 
         let menuModel = new MenuModel(menuObj);
         menuModel.save(function(error,result){
@@ -99,8 +100,9 @@ const updateMenu = (req, res, next) => {
         menu_pid: bodyParams.menuPid,
         menu_name: bodyParams.menuName,
         menu_num: bodyParams.menuNum,
+        menu_header_show: bodyParams.menuHeaderShow,
         menu_status: bodyParams.menuStatus
-    }
+    };
 
     const query = { _id:params.menuId };
     MenuModel.findOneAndUpdate(query,menuObj,function(error,result){

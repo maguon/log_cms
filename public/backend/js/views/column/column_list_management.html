@@ -31,6 +31,19 @@
                         <input class=" col s8" style="height:32px" id="phone" name="phone" autocomplete="off" ng-model="addMenuName" type="text" required>
                     </div>
 
+                    <!--是否页头显示-->
+                    <div class="row" >
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="newHeaderShow" type="radio" ng-value="1" ng-model="addHeaderShow"/>
+                            <span>显示</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="newHeaderShow" type="radio" ng-value="0" ng-model="addHeaderShow"/>
+                            <span>隐藏</span>
+                        </label>
+                    </div>
+
                     <!--设置关联-->
                     <div class="row">
                         <div class="col s4" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 设置关联:</div>
@@ -112,6 +125,19 @@
                     <div class="row" >
                         <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
                         <input class="col s8" style="height:32px" name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text" required>
+                    </div>
+
+                    <!--是否页头显示-->
+                    <div class="row" >
+                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="headerShow" type="radio" ng-value="1" ng-model="look_operation.menu_header_show"/>
+                            <span>显示</span>
+                        </label>
+                        <label class="col s2" style="padding-top: 8px">
+                            <input name="headerShow" type="radio" ng-value="0" ng-model="look_operation.menu_header_show"/>
+                            <span>隐藏</span>
+                        </label>
                     </div>
 
                     <!--是否显示-->
