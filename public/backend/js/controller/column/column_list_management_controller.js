@@ -54,11 +54,13 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     /*新增按钮*/
     $scope.newOperator = function () {
         $scope.submitted = false;
-        $scope.newRealName = "";
-        $scope.newUserName = "";
-        $scope.newUserSex = "";
-        $scope.newUserPassword = "";
-        $scope.addLink ='';
+        $scope.addColumn = "";
+        $scope.addnum = "";
+        $scope.addMenuName = "";
+        $scope.addHeaderShow = "";
+        $scope.addLink ="";
+        $scope.addMenuStatus ="";
+        $scope.addMenuLink ="";
         $(".modal").modal();
         $("#newOperator").modal("open");
 
@@ -76,7 +78,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 menuNum:$scope.addnum,
                 menuHeaderShow:$scope.addHeaderShow,
                 menuStatus:$scope.addMenuStatus,
-                menuType: $scope.addLink
+                menuType: $scope.addLink,
+                menuLink: $scope.addMenuLink
             };
             _basic.post($host.api_url + "/menu", obj).then(function (data) {
                 if (data.success == true) {
@@ -120,7 +123,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 menuName: $scope.look_operation.menu_name,
                 menuNum: $scope.look_operation.menu_num,
                 menuHeaderShow: $scope.look_operation.menu_header_show,
-                menuStatus: $scope.look_operation.menu_status
+                menuStatus: $scope.look_operation.menu_status,
+                menuLink: $scope.look_operation.menu_link
             };
             _basic.put($host.api_url + "/menu/" + id, obj).then(function (data) {
                 if (data.success == true) {

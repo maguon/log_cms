@@ -101,7 +101,8 @@ const updateMenu = (req, res, next) => {
         menu_name: bodyParams.menuName,
         menu_num: bodyParams.menuNum,
         menu_header_show: bodyParams.menuHeaderShow,
-        menu_status: bodyParams.menuStatus
+        menu_status: bodyParams.menuStatus,
+        menu_link: bodyParams.menuLink
     };
 
     const query = { _id:params.menuId };
