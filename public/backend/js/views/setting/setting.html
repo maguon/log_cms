@@ -31,6 +31,7 @@
                         <textarea    type="text" name="css"  style="border: 1px solid #ccc;height: 30px;resize: none;"  ng-model="styleList.meta" > </textarea>
                     </div>
                 </div>
+
                 <!--css-->
                 <div class="col s6 "  style="height: 120px;margin-top: 20px" >
                     <div class="col s2 left-align">
@@ -40,6 +41,7 @@
                         <textarea    type="text" name="css"  style="border: 1px solid #ccc;height: 100px;resize: none;"  ng-model="styleList.css_link"  required> </textarea>
                     </div>
                 </div>
+
                 <!--js-->
                 <div class="col s6 "  style="height: 120px;margin-top: 20px" >
                     <div class="col s2" style="height: 160px">
@@ -47,6 +49,14 @@
                     </div>
                     <div class="col s10">
                         <textarea    type="text" name="js"  style="border: 1px solid #ccc;height: 100px;resize: none;"  ng-model="styleList.js_link" required> </textarea>
+                    </div>
+                </div>
+
+                <!-- 执行脚本 -->
+                <div class="col s12" style="height: 120px;margin-top: 10px">
+                    <div class="col s1 left-align"><p style="margin: 0">执行脚本:</p></div>
+                    <div class="col s11">
+                        <textarea  type="text" name="scriptText"  style="border: 1px solid #ccc;height: 100px;resize: none;"  ng-model="styleList.script_text" required> </textarea>
                     </div>
                 </div>
 

@@ -9,7 +9,8 @@ const style = new Schema({
         page_footer:String,
         meta:Array,
         css_link:Array,
-        js_link:Array
+        js_link:Array,
+        script_text:String
     },
     { timestamps: { createdAt: 'created_at',updatedAt : 'updated_at' }
     });

@@ -8,59 +8,66 @@ const logger = LogUtil.createLogger('StyleController');
 const  createStyle = (req, res, next) => {
     let bodyParams = req.body;
     let params = req.params;
-    new Promise((resolve) => {
-        let query = StyleModel.find({});
-        query.exec((error,rows)=> {
-            if (error) {
-                logger.error(' getStyle ' + error.message);
-                resUtil.resInternalError(error,res);
-            } else {
-                if(rows && rows.length>0){
-                    resolve();
-                }else{
-                    let styleObj = {
-                        sid: 0,
-                        title: '',
-                        logo_title:'',
-                        page_footer:'',
-                        meta:[],
-                        css_link: [],
-                        js_link: []
-                    };
-                    let styleModel = new StyleModel(styleObj);
-                    styleModel.save(function(error,result){
-                        if (error) {
-                            logger.error(' createStyle ' + error.message);
-                            resUtil.resInternalError(error,res);
-                        } else {
-                            logger.info(' createStyle ' + 'success');
-                            resolve();
-                        }
-                    })
+    let hasOne = false;
+
+    StyleModel.find({}).exec().then((rows)=>{
+        // 查询
+        if(rows && rows.length > 0){
+            // 有数据，则下一步 进行更新
+            hasOne = true;
+        } else {
+            // 没有数据时，创建默认数据
+            let dataObj = {
+                sid: 0,
+                title: '',
+                logo_title:'',
+                page_footer:'',
+                meta:[],
+                css_link: [],
+                js_link: [],
+                script_text: ''
+            };
+
+            let styleModel = new StyleModel(dataObj);
+            styleModel.save(function(error,result){
+                if (error) {
+                    logger.error(' createStyle ' + error.message);
+                    resUtil.resInternalError(error,res);
+                } else {
+                    logger.info(' createStyle ' + 'success');
                 }
-            }
-        });
+            })
+        }
     }).then(() => {
-        let styleObj = {
-            title: bodyParams.title,
-            logo_title: bodyParams.logoTitle,
-            page_footer: bodyParams.pageFooter,
-            meta: bodyParams.meta,
-            css_link:bodyParams.cssLink,
-            js_link:bodyParams.jsLink
-        };
-        const query = { sid:params.sid };
-        StyleModel.findOneAndUpdate(query,styleObj,function(error,result){
-            logger.debug(' updateStyle ') ;
-            if (error) {
-                logger.error(' updateStyle ' + error.message);
-                resUtil.resInternalError(error,res);
-            } else {
-                logger.info(' updateStyle ' + 'success');
-                resUtil.resetUpdateRes(res,result,null);
-                return next();
-            }
-        })
+        if (hasOne) {
+            // 接收的数据
+            let dataObj = {
+                title: bodyParams.title,
+                logo_title: bodyParams.logoTitle,
+                page_footer: bodyParams.pageFooter,
+                meta: bodyParams.meta,
+                css_link:bodyParams.cssLink,
+                js_link:bodyParams.jsLink,
+                script_text:bodyParams.scriptText
+            };
+
+            // 查询条件
+            const query = { sid:params.sid };
+            StyleModel.findOneAndUpdate(query,dataObj,function(error,result){
+                logger.debug(' updateStyle ') ;
+                if (error) {
+                    logger.error(' updateStyle ' + error.message);
+                    resUtil.resInternalError(error,res);
+                } else {
+                    logger.info(' updateStyle ' + 'success');
+                    resUtil.resetUpdateRes(res,result,null);
+                    return next();
+                }
+            })
+        }
+    }).catch(error=>{
+        logger.error(' createStyle ' + error.message);
+        resUtil.resetErrorPage(res,error);
     })
 };
 
