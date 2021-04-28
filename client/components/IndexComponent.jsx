@@ -9,35 +9,162 @@ export default class IndexComponent  extends React.Component {
         super(props);
     }
     render () {
+        let newsArray=[];
+        let listItem=[];
+        let imgItem=[];
+        for(let i=0;i<this.props.contentList.length;i++) {
+            /*新闻类型*/
+            if (this.props.contentList[i].menuType === 1) {
+                newsArray.push(
+                        this.props.contentList[i].list.map((newsItem, index) =>
+                                <div key={index} className="container content-sm" id={newsItem.menu_id._id}>
+                                        <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                            <h2>{newsItem.news_title}</h2>
+                                            <span className="bordered-icon"><span
+                                                className="glyphicon glyphicon-th-large"></span></span>
+                                            <div className='textNews'><p
+                                                dangerouslySetInnerHTML={{__html: newsItem.news_content}}/>
+                                            </div>
+                                        </div>
+                                    </div>
+                        )
+                )
+
+
+            }
+            /*列表类型*/
+            else if (this.props.contentList[i].menuType === 2) {
+                listItem = (
+                    this.props.contentList[i].list.map((listItem, index) =>{
+                        return  <a key={index} className="collection-item listItem" key={index}
+                                   href={"/view/menu/" + listItem.menu_id._id + "/menuType/" + listItem.menu_id.menu_type + "/page/" + (index + 1) + "/newsListDetails"}>
+                            <span className='fontWeight'>> </span>{listItem.news_title}
+                            <span className="rq">{listItem.created_at.toLocaleDateString()}</span>
+                        </a>
+                    }
+                 )
+                );
+                if(this.props.contentList[i].list.length!==0) {
+                    newsArray.push(
+                        <div className="service-info margin-bottom-60"  id={this.props.contentList[i].list[0].menu_id._id}>
+                            <div className="container content-sm">
+                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                    <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
+                                    <span className="bordered-icon"><span
+                                        className="glyphicon glyphicon-th-large"></span></span>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="margin-bottom-30">
+                                            <i className="service-info-icon rounded-x icon-wrench"></i>
+                                            <div className="info-description">
+                                                <ul className="jididong">
+                                                    <li>
+                                                        {listItem}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            }
+            /*图片类型*/
+            else if (this.props.contentList[i].menuType === 3) {
+                imgItem = (
+                    this.props.contentList[i].list.map((imageItem, index) =>{
+                        return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/page/"+(index+1)+'/pictureDetails'}>
+                            <img className="imgItems" src={imageItem.news_image} /></a>
+                    }
+                    )
+                )
+                if(this.props.contentList[i].list.length!==0){
+                    newsArray.push(
+                        <div className="content-sm" id={this.props.contentList[i].list[0].menu_id._id}>
+                            <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
+                                <span className="bordered-icon"><span
+                                    className="glyphicon glyphicon-th-large"></span></span>
+                                <div className="profile-body">
+                                    <div className="row">
+                                        <div > {imgItem}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    )
+                }
+
+
+            }
+        }
+
         return (
             <div style={{height:'100%'}}>
-                {/* 项目 Header */}
+                 {/*项目 Header*/}
                 <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
 
-                {/* 轮播图片 */}
-                <div id="menu0" className="pushpin example" data-target="menu0">
-                    <div className="row" style={{marginBottom:'0'}}>
-
-                        <div className="slider">
-                            <ul className="slides">
+                 {/*轮播图片*/}
+                <section id="intro" className="intro-section">
+                    <div className="fullscreenbanner-container">
+                        <div className="fullscreenbanner">
+                            <ul>
                                 {this.props.newsList.map((newsItem, index) =>
-                                    <li key={index} >
-                                        <img src={newsItem.news_image} alt={newsItem.news_title}/>
-                                        <div className="caption right-align">
-                                            <h4 style={{color:'#0A4454'}}>{newsItem.news_title}</h4>
-                                            <h6 style={{color:'#0A4454'}}>{newsItem.news_content}</h6>
-                                        </div>
+                                    <li key={index} data-transition="curtain-1" data-slotamount="5" data-masterspeed="700">
+                                        <img src={newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
+                                             data-bgposition="center center" data-bgrepeat="no-repeat"/>
+
+                                        {newsItem.news_title===""?"":
+                                            <div className="tp-caption rs-caption-1 sft start"
+                                                 data-x="center"
+                                                 data-hoffset="0"
+                                                 data-y="100"
+                                                 data-speed="800"
+                                                 data-start="2000"
+                                                 data-easing="Back.easeInOut"
+                                                 data-endspeed="300"
+                                                 style={{zIndex:6}}>
+                                                { newsItem.news_title}
+                                            </div>
+                                        }
+
+                                        {newsItem.news_content===""?"":
+                                            <div className="tp-caption rs-caption-2 sft"
+                                                 data-x="center"
+                                                 data-hoffset="0"
+                                                 data-y="200"
+                                                 data-speed="1000"
+                                                 data-start="3000"
+                                                 data-easing="Power4.easeOut"
+                                                 data-endspeed="300"
+                                                 data-endeasing="Power1.easeIn"
+                                                 data-captionhidden="off"
+                                                 style={{zIndex:6}}>
+                                                { newsItem.news_content}
+                                            </div>}
                                     </li>
                                 )}
                             </ul>
+                            <div className="tp-bannertimer tp-bottom"></div>
                         </div>
                     </div>
+                </section>
+
+                {/*layOut*/}
+                <div className='layout'>
+                    {newsArray}
+                  {/*  {listArray}
+                    {imgArray}*/}
                 </div>
 
 
-
                 {/* 项目 Footer */}
-                <Footer recruitList={this.props.recruitList} contactList={this.props.contactList}/>
+                <Footer pageFooter={this.props.pageFooter}/>
             </div>
         );
     }
