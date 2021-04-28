@@ -77,7 +77,7 @@ export default class IndexComponent  extends React.Component {
             else if (this.props.contentList[i].menuType === 3) {
                 imgItem = (
                     this.props.contentList[i].list.map((imageItem, index) =>{
-                        return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index} href={"/view/menu/"+imageItem.menu_id._id+"/menuType/"+imageItem.menu_id.menu_type+"/page/"+(index+1)+'/pictureDetails'}>
+                        return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index}>
                             <img className="imgItems" src={imageItem.news_image} /></a>
                     }
                     )
