@@ -28,7 +28,7 @@ const getIndexView = (req, res, next) => {
         return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
-        return NewsModel.find({}).where('menu_id').equals(layoutSetting.carousel).sort('news_num').exec();
+        return NewsModel.find({}).populate('menu_id').where('menu_id').equals(layoutSetting.carousel).sort('news_num').exec();
     }).then(async (rows)=>{
         newsList = rows;
         for (let item of layoutSetting.content) {
@@ -36,17 +36,17 @@ const getIndexView = (req, res, next) => {
             switch (item.menuType) {
                 case 1 :
                     // 1-新闻
-                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('1')).exec();
+                    val = await NewsModel.find({}).populate('menu_id').where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('1')).exec();
                     contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
                     break;
                 case 2 :
                     // 2-列表
-                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('5')).exec();
+                    val = await NewsModel.find({}).populate('menu_id').where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('5')).exec();
                     contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
                     break;
                 case 3 :
                     // 3-图片
-                    val = await NewsModel.find({}).where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('8')).exec();
+                    val = await NewsModel.find({}).populate('menu_id').where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('8')).exec();
                     contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
                     break;
                 default:
