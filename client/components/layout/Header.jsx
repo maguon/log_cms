@@ -7,7 +7,6 @@ class Header extends React.Component {
     }
 
     render() {
-        console.log(this.props.menuList)
         let Item=[];
         for(let i=0;i<this.props.menuList.length;i++){
             if(this.props.menuList[i].menu_link!==""){

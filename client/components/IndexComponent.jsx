@@ -89,7 +89,7 @@ export default class IndexComponent  extends React.Component {
                                 <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
                                 <span className="bordered-icon"><span
                                     className="glyphicon glyphicon-th-large"></span></span>
-                                <div className="profile-body">
+                                <div className="profile-body imgList">
                                     <div > {imgItem}</div>
                                 </div>
 
