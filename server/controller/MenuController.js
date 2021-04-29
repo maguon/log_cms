@@ -9,58 +9,49 @@ const logger = LogUtil.createLogger('MenuController');
 const  createMenu = (req, res, next) => {
     let bodyParams = req.body;
     let menuId = 0;
-    new Promise((resolve) => {
-        let menuObj = {
-            menu_pid: bodyParams.menuPid,
-            menu_name: bodyParams.menuName,
-            menu_num: bodyParams.menuNum,
-            menu_type: bodyParams.menuType,
-            menu_header_show: bodyParams.menuHeaderShow,
-            menu_status: bodyParams.menuStatus,
-            menu_link: bodyParams.menuLink
-        };
 
-        let menuModel = new MenuModel(menuObj);
-        menuModel.save(function(error,result){
-            if(error){
-                logger.error(' createMenu ' + error.message);
-                reject(error)
-            }else{
-                menuId = result.id;
-                console.log(1);
-                resolve(menuId);
-            }
-        })
-    }).then(() => {
-        new Promise((resolve) => {
-            if(bodyParams.menuPid!="-1"){
+    // 新menu数据
+    let menuObj = {
+        menu_pid: bodyParams.menuPid,
+        menu_name: bodyParams.menuName,
+        menu_num: bodyParams.menuNum,
+        menu_type: bodyParams.menuType,
+        menu_header_show: bodyParams.menuHeaderShow,
+        menu_status: bodyParams.menuStatus,
+        menu_link: bodyParams.menuLink
+    };
+
+    let menuModel = new MenuModel(menuObj);
+    menuModel.save(function(error,result){
+        if (error) {
+            logger.error(' createMenu ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            menuId = result.id;
+            // 菜单添加成功，且菜单存在父菜单，则更新父菜单属性
+            if(bodyParams.menuPid!=="-1"){
+                // 是否有下级(0-没有，1-有)
                 let menuObj = {
                     lower_flag: 1
-                }
+                };
 
-                const query = { _id:bodyParams.menuPid };
+                const query = { _id: bodyParams.menuPid };
                 MenuModel.findOneAndUpdate(query,menuObj,function(error,result){
                     if(error){
                         logger.error(' updateMenu ' + error.message);
-                        reject(error)
+                        resUtil.resInternalError(error,res);
                     }else{
-                        console.log(2);
-                        resolve(menuId)
+                        logger.info(' updateMenu ' + 'success');
                     }
                 })
-            }else{
-                console.log(3);
-                resolve(menuId);
             }
-        }).then((menuId) => {
             logger.info(' createMenu ' + 'success');
             resUtil.resetQueryRes(res, {menuId:menuId});
-            return next();
-        })
+        }
     }).catch((error)=>{
         resUtil.resInternalError(error,res);
     })
-}
+};
 
 const getMenu = (req, res, next) => {
     let params = req.query;
@@ -91,7 +82,7 @@ const getMenu = (req, res, next) => {
             return next();
         }
     });
-}
+};
 
 const updateMenu = (req, res, next) => {
     let bodyParams = req.body;
@@ -117,69 +108,52 @@ const updateMenu = (req, res, next) => {
             return next();
         }
     })
-}
+};
 
 const removeMenu = (req ,res ,next) => {
     let params = req.params;
-    new Promise((resolve) => {
-        let query = MenuModel.find({});
+    let hasErr = false;
 
-        if(params.menuId){
-            query.where('menu_pid').equals(params.menuId);
-        }
-        query.exec((error,rows)=> {
-            if (error) {
-                logger.error(' getMenu ' + error.message);
-                resUtil.resInternalError(error,res);
-            } else {
-                if(rows && rows.length>0){
-                    logger.warn(' getMenu ' + 'failed');
-                    resUtil.resetFailedRes(res," 请先删除子级栏目 ");
-                    return next();
-                }else{
-                    resolve();
-                }
-            }
-        });
-    }).then(() => {
-        new Promise((resolve) => {
-            let query = NewsModel.find({});
-
+    let query = MenuModel.find({});
+    if(params.menuId){
+        query.where('menu_pid').equals(params.menuId);
+    }
+    query.exec().then((rows)=>{
+        if(rows && rows.length>0){
+            logger.warn(' getMenu ' + 'failed');
+            resUtil.resetFailedRes(res," 请先删除子级栏目 ");
+            hasErr = true;
+        }else{
+            let queryNews = NewsModel.find({});
             if(params.menuId){
-                query.where('menu_id').equals(params.menuId);
+                queryNews.where('menu_id').equals(params.menuId);
             }
-            query.exec((error,rows)=> {
-                if (error) {
-                    logger.error(' getNews ' + error.message);
-                    resUtil.resInternalError(error,res);
-                } else {
-                    if(rows && rows.length>0){
-                        logger.warn(' getNews ' + 'failed');
-                        resUtil.resetFailedRes(res," 请先删除栏目下的全部内容 ");
-                        return next();
-                    }else{
-                        resolve();
+            return queryNews.exec();
+        }
+    }).then((rows) => {
+        if (!hasErr) {
+            if(rows && rows.length>0){
+                logger.warn(' getNews ' + 'failed');
+                resUtil.resetFailedRes(res," 请先删除栏目下的全部内容 ");
+            }else{
+                const query = { _id:params.menuId };
+                MenuModel.findOneAndRemove(query,function(error,result){
+                    logger.debug(' removeMenu ') ;
+                    if (error) {
+                        logger.error(' removeMenu ' + error.message);
+                        resUtil.resInternalError(error,res);
+                    } else {
+                        logger.info(' removeMenu ' + 'success');
+                        resUtil.resetUpdateRes(res,result,null);
                     }
-                }
-            });
-        }).then(() => {
-            const query = { _id:params.menuId };
-            MenuModel.findOneAndRemove(query,function(error,result){
-                logger.debug(' removeMenu ') ;
-                if (error) {
-                    logger.error(' removeMenu ' + error.message);
-                    resUtil.resInternalError(error,res);
-                } else {
-                    logger.info(' removeMenu ' + 'success');
-                    resUtil.resetUpdateRes(res,result,null);
-                    return next();
-                }
-            })
-        })
-    })
-
-}
-
+                })
+            }
+        }
+    }).catch(error=>{
+        logger.error(' getMenu ' + error.message);
+        resUtil.resetErrorPage(error,res);
+    });
+};
 
 module.exports = {
     createMenu,

@@ -6,9 +6,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
 
     function getList(){
         _basic.get($host.api_url + "/style").then(function (data) {
-            console.log(data);
             if (data.success) {
-                console.log($scope.styleList)
                 $scope.styleList = data.result[0];
                 $scope.faviconSrc = imgPath + favicon + '?' + new Date().getTime();
                 $scope.logoSrc = imgPath + logo + '?' + new Date().getTime();

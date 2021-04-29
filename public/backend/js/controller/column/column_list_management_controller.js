@@ -63,7 +63,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         $scope.addMenuLink ="";
         $(".modal").modal();
         $("#newOperator").modal("open");
-
+        // 重新取得最新的 menu 列表
+        getMenu();
     };
 
     // 提交新增
