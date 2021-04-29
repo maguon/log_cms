@@ -90,9 +90,7 @@ export default class IndexComponent  extends React.Component {
                                 <span className="bordered-icon"><span
                                     className="glyphicon glyphicon-th-large"></span></span>
                                 <div className="profile-body">
-                                    <div className="row">
-                                        <div > {imgItem}</div>
-                                    </div>
+                                    <div > {imgItem}</div>
                                 </div>
 
                             </div>
@@ -158,8 +156,6 @@ export default class IndexComponent  extends React.Component {
                 {/*layOut*/}
                 <div className='layout'>
                     {newsArray}
-                  {/*  {listArray}
-                    {imgArray}*/}
                 </div>
 
 
