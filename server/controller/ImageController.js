@@ -18,8 +18,7 @@ const logo = 'logo.png';
 
 const uploadImage = (req, res, next) => {
     let filePath = req.files.image.path;
-    let idx = filePath.indexOf("\\");
-    let imageId = filePath.replace('public','');
+    let imageId = filePath.replace('public\\','/').replace('\\','/');
     logger.info(' uploadImage ' + filePath + ' success');
     resUtil.resetQueryRes(res, {imageId: imageId}, null);
     return next();
