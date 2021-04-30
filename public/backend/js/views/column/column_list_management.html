@@ -179,15 +179,19 @@
                     <!-- banner图片 -->
                     <div class="row" >
                         <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> banner图片:</div>
-                        <div class="col s4" style="height: 32px;line-height: 26px">{{bannerImg}}</div>
-                        <input class="col s5" style="height: 32px;line-height: 26px" id="editBanner" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBanner(this, 1)" max_size="4M"/>
+                        <div class="col s5" style="height: 32px;line-height: 26px">
+                            <i ng-show="bannerImg !== ''" class="mdi mdi-delete-forever red-text" style="font-size: 24px" ng-click="deleteBannerImg()"> </i>{{bannerImg}}
+                        </div>
+                        <input class="col s4" style="height: 32px;line-height: 26px" id="editBanner" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBanner(this, 1)" max_size="4M"/>
                     </div>
 
                     <!-- 背景图片 -->
                     <div class="row" >
                         <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 背景图片:</div>
-                        <div class="col s4" style="height: 32px;line-height: 26px">{{bgImg}}</div>
-                        <input class="col s5" style="height: 32px;line-height: 26px" id="editBgImg" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBgImg(this, 1)" max_size="4M"/>
+                        <div class="col s5" style="height: 32px;line-height: 26px">
+                            <i ng-show="bgImg !== ''" class="mdi mdi-delete-forever red-text" style="font-size: 24px" ng-click="deleteBgImg()"> </i>{{bgImg}}
+                        </div>
+                        <input class="col s4" style="height: 32px;line-height: 26px" id="editBgImg" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBgImg(this, 1)" max_size="4M"/>
                     </div>
                 </div>
             </div>

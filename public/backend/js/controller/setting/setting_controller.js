@@ -62,7 +62,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
                 var max_size_str = dom_obj.attr('max_size');
                 var re = /\d+m/i;
                 if (re.test(max_size_str)) {
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/favicon?', function (data) {
+                    _basic.formPost(dom_obj.parent(), $host.api_url + '/user/' + userId + '/favicon?', function (data) {
                         if (data.success) {
                             $scope.faviconSrc = imgPath + favicon + '?' + new Date().getTime();
                             swal("favicon上传成功", "", "success");
@@ -92,7 +92,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
                 var max_size_str = dom_obj.attr('max_size');
                 var re = /\d+m/i;
                 if (re.test(max_size_str)) {
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/logo?', function (data) {
+                    _basic.formPost(dom_obj.parent(), $host.api_url + '/user/' + userId + '/logo?', function (data) {
                         if (data.success) {
                             $scope.logoSrc = imgPath + logo + '?' + new Date().getTime();
                             swal("logo上传成功", "", "success");
@@ -122,7 +122,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
                 let max_size_str = dom_obj.attr('max_size');
                 let re = /\d+m/i;
                 if (re.test(max_size_str)) {
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/banner?', function (data) {
+                    _basic.formPost(dom_obj.parent(), $host.api_url + '/user/' + userId + '/banner?', function (data) {
                         if (data.success) {
                             $scope.bannerSrc = imgPath + banner + '?' + new Date().getTime();
                             swal("banner上传成功", "", "success");

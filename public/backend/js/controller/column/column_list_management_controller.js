@@ -122,8 +122,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         _basic.get($host.api_url + "/menu?menuId=" + id).then(function (data) {
             if (data.success == true) {
                 $scope.look_operation = data.result[0];
-                $scope.bannerImg = $scope.look_operation.banner_image;
-                $scope.bgImg = $scope.look_operation.bg_image;
+                $scope.bannerImg = $scope.look_operation.banner_image || '';
+                $scope.bgImg = $scope.look_operation.bg_image || '';
             } else {
                 swal(data.msg, "", "error");
             }
@@ -200,9 +200,7 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 let re = /\d+m/i;
                 if (re.test(max_size_str)) {
                     max_size = parseInt(max_size_str.substring(0, max_size_str.length - 1)) * 1024 * 1024;
-                    // $currentDom = $(dom).prev();
-                    _basic.formPost(dom_obj.parent().parent(), $host.api_url + '/user/' + userId + '/image', function (data) {
-
+                    _basic.formPost(dom_obj.parent(), $host.api_url + '/user/' + userId + '/image', function (data) {
                         if (data.success) {
                             let imageId = data.result.imageId;
                             $scope.bg_image = imageId;
@@ -257,16 +255,40 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     };
 
     function uploadImg(menuId) {
-        if($scope.bannerImg!=="" || $scope.bgImg!==""){
-            _basic.put($host.api_url + "/menu/" + menuId + "/image", {"bannerImage": $scope.bannerImg,"bgImage": $scope.bgImg}).then(function (data) {
-                if (data.success) {
-                    swal('新增成功！', "", "success")
-                } else {
-                    swal(data.msg, "", "error")
-                }
-            })
-        }
+        _basic.put($host.api_url + "/menu/" + menuId + "/image", {"bannerImage": $scope.bannerImg,"bgImage": $scope.bgImg}).then(function (data) {
+            if (data.success) {
+                swal('新增成功！', "", "success")
+            } else {
+                swal(data.msg, "", "error")
+            }
+        })
     }
+
+    $scope.deleteBannerImg = function() {
+        _basic.delete($host.api_url + "/image/" + $scope.bannerImg.replace('/uploads/','')).then(function (data) {
+            if (data.success) {
+                $scope.bannerImg = "";
+                // 清空文件选择路径
+                document.getElementById('editBanner').value = '';
+                swal('删除图片成功！', "", "success")
+            } else {
+                swal(data.msg, "", "error")
+            }
+        });
+    };
+
+    $scope.deleteBgImg = function() {
+        _basic.delete($host.api_url + "/image/" + $scope.bgImg.replace('/uploads/','')).then(function (data) {
+            if (data.success) {
+                // 清空文件选择路径
+                document.getElementById('editBgImg').value = '';
+                $scope.bgImg = "";
+                swal('删除图片成功！', "", "success")
+            } else {
+                swal(data.msg, "", "error")
+            }
+        });
+    };
 
     getMenu();
     getRootList();

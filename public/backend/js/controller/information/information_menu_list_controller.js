@@ -66,7 +66,7 @@ app_admin_module.controller("information_menu_list_controller", ["$scope", "_bas
 
                 // 删除对应图片
                 if (imageId !== undefined) {
-                    _basic.delete($host.api_url + "/image/" + imageId).then(function (data) {});
+                    _basic.delete($host.api_url + "/image/" + imageId.replace('/uploads/','')).then(function (data) {});
                 }
             });
     };
