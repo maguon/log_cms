@@ -14,7 +14,6 @@ export default class IndexComponent  extends React.Component {
         let listItem=[];
         let imgItem=[];
         for(let i=0;i<this.props.contentList.length;i++) {
-            console.log(this.props.contentList[i].list)
             /*新闻类型*/
             if (this.props.contentList[i].menuType === 1) {
                 for(let j=0;j<this.props.contentList[i].list.length;j++) {

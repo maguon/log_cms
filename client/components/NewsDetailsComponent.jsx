@@ -11,14 +11,18 @@ export default class NewsDetailsComponent  extends React.Component {
         super(props);
     }
     render () {
-        if(this.props.menu[0].banner_image==undefined){
-            sectionStyle={
-                backgroundImage: `url(/uploads/banner.png)`
-            };
-        }else {
-            sectionStyle={
-                backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
-            };
+        for(let i=0;i<this.props.menuList.length;i++) {
+            if(this.props.menuName===this.props.menuList[i].menu_name){
+                if(this.props.menuList[i].banner_image==undefined||this.props.menuList[i].banner_image==null){
+                    sectionStyle={
+                        backgroundImage: `url(/uploads/banner.png)`
+                    };
+                }else {
+                    sectionStyle={
+                        backgroundImage: `url(`+(this.props.menuList[i].banner_image)+`)`
+                    };
+                }
+            }
         }
         let prePage;
         if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){

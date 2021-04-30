@@ -11,25 +11,32 @@ export default class NewsComponent  extends React.Component {
         super(props);
     }
     render () {
-
-        if(this.props.menu[0].banner_image==undefined){
+        let twoMenuName;
+        if(this.props.newsList.length===0){
             sectionStyle={
                 backgroundImage: `url(/uploads/banner.png)`
             };
-        }else {
-            sectionStyle={
-                backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
-            };
-        }
-        let twoMenuName;
-        if(this.props.newsList.length===0){
             twoMenuName = "";
         }else if (this.props.newsList[0].menu_id.menu_pid !== '-1') {
+            if(this.props.newsList[0].menu_id.banner_image==undefined){
+                sectionStyle={
+                    backgroundImage: `url(/uploads/banner.png)`
+                };
+            }
+            else {
+                sectionStyle={
+                    backgroundImage: `url(`+(this.props.newsList[0].menu_id.banner_image)+`)`
+                };
+            }
+
             twoMenuName = (
                 <a className="black-text"
                    href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/" + this.props.newsList[0].menu_id.menu_type + "/page/1/news"}>&nbsp;&gt;&nbsp;{this.props.newsList[0].menu_id.menu_name}</a>
             )
         }else{
+            sectionStyle={
+                backgroundImage: `url(/uploads/banner.png)`
+            };
             twoMenuName = "";
         }
         return (
