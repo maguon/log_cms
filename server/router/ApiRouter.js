@@ -44,6 +44,7 @@ apiRouter.delete('/image/:imageId', ImageController.deleteImage);
 
 apiRouter.post('/user/:userId/favicon',multipartMiddleware, ImageController.uploadFavicon);
 apiRouter.post('/user/:userId/logo',multipartMiddleware, ImageController.uploadLogo);
+apiRouter.post('/user/:userId/banner',multipartMiddleware, ImageController.uploadBanner);
 
 apiRouter.get('/style', StyleController.getStyle);
 apiRouter.post('/sid/:sid/style', StyleController.createStyle);

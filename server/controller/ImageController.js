@@ -15,6 +15,7 @@ const logger = LogUtil.createLogger('ImageController');
 const imgPath = './public/uploads/';
 const favicon = 'favicon.ico';
 const logo = 'logo.png';
+const banner = 'banner.png';
 
 const uploadImage = (req, res, next) => {
     let filePath = req.files.image.path;
@@ -38,6 +39,17 @@ const uploadFavicon = (req, res, next) => {
 const uploadLogo = (req, res, next) => {
     let filePath = req.files.logo.path;
     return fs.rename(filePath, imgPath + logo, function(err){
+        if(err){
+            resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;
+        }
+        resUtil.resetQueryRes(res, null, null);
+        return next();
+    })
+};
+
+const uploadBanner = (req, res, next) => {
+    let filePath = req.files.banner.path;
+    return fs.rename(filePath, imgPath + banner, function(err){
         if(err){
             resUtil.resetFailedRes(res,sysMsg.IMG_QUERY_NO_EXIST) ;
         }
@@ -99,5 +111,5 @@ const  getImage = (req, res, next) => {
 
 
 module.exports = {
-    uploadImage, uploadFavicon, uploadLogo, getImage, deleteImage
+    uploadImage, uploadFavicon, uploadLogo, uploadBanner, getImage, deleteImage
 };

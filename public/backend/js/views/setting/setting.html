@@ -85,6 +85,13 @@
                     <input class="col s6" style="height: 32px;line-height: 22px" name="logo" type="file" onchange="angular.element(this).scope().uploadLogo(this)"  max_size="4M"/>
                     <img height="80px" src={{logoSrc}}/>
                 </div>
+
+                <!-- banner -->
+                <div class="col s12"  style="height: 30px;margin-top: 30px" >
+                    <div class="col s1 left-align"><p style="margin: 0">banner:</p></div>
+                    <input class="col s6" style="height: 32px;line-height: 22px" name="banner" type="file" onchange="angular.element(this).scope().uploadBanner(this)"  max_size="4M"/>
+                    <img height="80px" src={{bannerSrc}}/>
+                </div>
             </div>
         </div>
 
