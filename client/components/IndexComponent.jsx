@@ -3,30 +3,44 @@
 import React from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-
+var sectionStyle;
 export default class IndexComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
     render () {
+
         let newsArray=[];
         let listItem=[];
         let imgItem=[];
         for(let i=0;i<this.props.contentList.length;i++) {
+            console.log(this.props.contentList[i].list)
             /*新闻类型*/
             if (this.props.contentList[i].menuType === 1) {
+                for(let j=0;j<this.props.contentList[i].list.length;j++) {
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                        sectionStyle={};
+                    }else {
+                        sectionStyle={
+                            backgroundImage: `url(`+(this.props.contentList[i].list[j].menu_id.bg_image)+`)`
+                        };
+                    }
+                }
+
                 newsArray.push(
                         this.props.contentList[i].list.map((newsItem, index) =>
-                                <div key={index} className="container content-sm" id={newsItem.menu_id._id}>
-                                        <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                            <div className="service-info" style={sectionStyle} id={newsItem.menu_id._id}>
+                                <div className="container content-sm">
+                                    <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
                                             <h2>{newsItem.news_title}</h2>
                                             <span className="bordered-icon"><span
                                                 className="glyphicon glyphicon-th-large"></span></span>
                                             <div className='textNews'><p
                                                 dangerouslySetInnerHTML={{__html: newsItem.news_content}}/>
                                             </div>
-                                        </div>
                                     </div>
+                                </div>
+                            </div>
                         )
                 )
 
@@ -34,6 +48,15 @@ export default class IndexComponent  extends React.Component {
             }
             /*列表类型*/
             else if (this.props.contentList[i].menuType === 2) {
+                for(let j=0;j<this.props.contentList[i].list.length;j++) {
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                        sectionStyle={};
+                    }else {
+                        sectionStyle={
+                            backgroundImage: `url(`+(this.props.contentList[i].list[j].menu_id.bg_image)+`)`
+                        };
+                    }
+                }
                 listItem = (
                     this.props.contentList[i].list.map((listItem, index) =>{
                         return  <a key={index} className="collection-item listItem" key={index}
@@ -46,7 +69,7 @@ export default class IndexComponent  extends React.Component {
                 );
                 if(this.props.contentList[i].list.length!==0) {
                     newsArray.push(
-                        <div className="service-info margin-bottom-60"  id={this.props.contentList[i].list[0].menu_id._id}>
+                        <div className="service-info" style={sectionStyle}  id={this.props.contentList[i].list[0].menu_id._id}>
                             <div className="container content-sm">
                                 <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
                                     <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
@@ -75,6 +98,15 @@ export default class IndexComponent  extends React.Component {
             }
             /*图片类型*/
             else if (this.props.contentList[i].menuType === 3) {
+                for(let j=0;j<this.props.contentList[i].list.length;j++) {
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                        sectionStyle={};
+                    }else {
+                        sectionStyle={
+                            backgroundImage: `url(`+(this.props.contentList[i].list[j].menu_id.bg_image)+`)`
+                        };
+                    }
+                }
                 imgItem = (
                     this.props.contentList[i].list.map((imageItem, index) =>{
                         return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index}>
@@ -84,17 +116,20 @@ export default class IndexComponent  extends React.Component {
                 )
                 if(this.props.contentList[i].list.length!==0){
                     newsArray.push(
-                        <div className="content-sm" id={this.props.contentList[i].list[0].menu_id._id}>
-                            <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
-                                <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
-                                <span className="bordered-icon"><span
-                                    className="glyphicon glyphicon-th-large"></span></span>
-                                <div className="profile-body imgList">
-                                    <div > {imgItem}</div>
-                                </div>
+                        <div className="service-info" style={sectionStyle} id={this.props.contentList[i].list[0].menu_id._id}>
+                            <div className="container content-sm">
+                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                    <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
+                                    <span className="bordered-icon"><span
+                                        className="glyphicon glyphicon-th-large"></span></span>
+                                    <div className="profile-body imgList">
+                                        <div > {imgItem}</div>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
+
                     )
                 }
 

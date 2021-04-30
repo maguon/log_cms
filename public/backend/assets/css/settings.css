@@ -2342,7 +2342,7 @@ zoom: 1;
 	overflow: hidden;
 	position: relative;
 	min-height: 300px;
-	background: url(../images/11.jpg) no-repeat;
+	/*background: url(../images/11.jpg) no-repeat;*/
 	background-position: 0% 40%;
 	background-size: cover;
 }
@@ -2722,7 +2722,7 @@ zoom: 1;
 .service-info {
 	position: relative;
 	padding: 40px 0 50px;
-	background: url(../images/img.png) repeat;
+	/*background: url(../images/img.png) repeat;*/
 }
 .imgList{
 	min-height: 120px;
@@ -6330,7 +6330,7 @@ img.image-md {
 }
 
 .content {
-	padding-top: 40px;
+	/*padding-top: 40px;*/
 	padding-bottom: 40px;
 }
 

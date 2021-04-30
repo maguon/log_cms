@@ -4,11 +4,22 @@ import React from 'react';
 
 import  Header from './layout/Header';
 import  Footer from './layout/Footer';
+var sectionStyle;
+
 export default class NewsDetailsComponent  extends React.Component {
     constructor(props) {
         super(props);
     }
     render () {
+        if(this.props.menu[0].banner_image==undefined){
+            sectionStyle={
+                backgroundImage: `url(/uploads/banner.png)`
+            };
+        }else {
+            sectionStyle={
+                backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
+            };
+        }
         let prePage;
         if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
@@ -61,7 +72,7 @@ export default class NewsDetailsComponent  extends React.Component {
 
             <div>
                 <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
-                <div className="job-img margin-bottom-30"></div>
+                <div className="job-img margin-bottom-30 "  style={sectionStyle}></div>
                 <div className="container content profile wrap1003">
                     <div className="row marginTop50" >
                         <div className="col-md-3 md-margin-bottom-40">
