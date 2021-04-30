@@ -26,6 +26,7 @@ apiRouter.put('/user/:userId/status/:status', UserController.updateUserStatus);
 apiRouter.get('/menu', MenuController.getMenu);
 apiRouter.post('/menu', MenuController.createMenu);
 apiRouter.put('/menu/:menuId', MenuController.updateMenu);
+apiRouter.put('/menu/:menuId/image', MenuController.updateMenuImage);
 apiRouter.delete('/menu/:menuId', MenuController.removeMenu);
 
 apiRouter.get('/news', NewsController.getNews);

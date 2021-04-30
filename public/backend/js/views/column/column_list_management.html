@@ -1,16 +1,16 @@
 <!--新增模态框-->
 <div id="newOperator" class="modal">
     <form name="operatorForm" ng-submit="submitForm()" novalidate>
-        <div class="modal-content">
+        <div style="margin-top: 15px">
             <div class="center-align" style="font-size: 20px">新增栏目</div>
             <div class="divider" style="background: #5a86ba;height: 2px;margin-top:10px;"></div>
-            <div class="container">
-                <div class="row" style="margin-top: 40px">
+            <div style="margin-left:50px;margin-right:50px;">
+                <div class="row" style="margin-top: 20px">
 
                     <!--父菜单-->
                     <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
-                        <div class="col s8" style="padding-left:0;">
+                        <div class="col s3" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
+                        <div class="col s9" style="padding-left:0;">
                             <select style="display: block" ng-model="addColumn"  material-select watch>
                                 <option value="" selected="selected">请选择</option>
                                 <option value="-1">根目录</option>
@@ -21,19 +21,19 @@
 
                     <!--序列号-->
                     <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
-                        <input class=" col s8" style="height:32px" id="password" name="password" autocomplete="off" ng-model="addnum" type="number" required >
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
+                        <input class=" col s9" style="height:32px" id="password" name="password" autocomplete="off" ng-model="addnum" type="number" required >
                     </div>
 
                     <!--栏目名称-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
-                        <input class=" col s8" style="height:32px" id="phone" name="phone" autocomplete="off" ng-model="addMenuName" type="text" required>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
+                        <input class=" col s9" style="height:32px" id="phone" name="phone" autocomplete="off" ng-model="addMenuName" type="text" required>
                     </div>
 
                     <!--是否页头显示-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
                         <label class="col s2" style="padding-top: 8px">
                             <input name="newHeaderShow" type="radio" ng-value="1" ng-model="addHeaderShow"/>
                             <span>显示</span>
@@ -46,7 +46,7 @@
 
                     <!--设置关联-->
                     <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 设置关联:</div>
+                        <div class="col s3" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 设置关联:</div>
                         <label class="col s2" style="padding-top: 8px">
                             <input name="group1" type="radio"  ng-value="1" ng-model="addLink"/>
                             <span>新闻</span>
@@ -63,7 +63,7 @@
 
                     <!--是否显示-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 是否显示:</div>
+                        <div class="col s3" style="font-size: 16px;margin-top:10px;"><span style="color: red">*</span> 是否显示:</div>
                         <label class="col s2" style="padding-top: 8px;">
                             <input name="group2" type="radio" ng-value="1" ng-model="addMenuStatus"/>
                             <span>显示</span>
@@ -76,8 +76,20 @@
 
                     <!-- 菜单链接 -->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 菜单链接:</div>
-                        <input class=" col s8" style="height:32px" id="menuLink" name="menuLink" autocomplete="off" ng-model="addMenuLink" type="text" required>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 菜单链接:</div>
+                        <input class=" col s9" style="height:32px" id="menuLink" name="menuLink" autocomplete="off" ng-model="addMenuLink" type="text">
+                    </div>
+
+                    <!-- banner图片 -->
+                    <div class="row" >
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> banner图片:</div>
+                        <input class="col s9" style="height: 32px;line-height: 26px" id="addBanner" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBanner(this, 0)" max_size="4M"/>
+                    </div>
+
+                    <!-- 背景图片 -->
+                    <div class="row" >
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 背景图片:</div>
+                        <input class="col s9" style="height: 32px;line-height: 26px" id="addBgImg" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBgImg(this, 0)" max_size="4M"/>
                     </div>
                 </div>
             </div>
@@ -97,22 +109,21 @@
 <!--编辑模态框-->
 <div id="look_Operator" class="modal">
     <form name="change_operatorForm" ng-submit="changeOperatorForm(look_operation._id)" novalidate>
-        <div class="modal-content">
+        <div style="margin-top: 15px">
             <div class="center-align" style="font-size: 20px">编辑栏目</div>
             <div class="divider" style="background: #5a86ba;height: 2px;margin-top:10px;"></div>
-            <div class="container">
-                <div class="row" style="margin-top: 40px">
-
+            <div style="margin-left:20px;margin-right:20px;">
+                <div class="row" style="margin-top: 20px">
                     <!-- 栏目ID -->
-                    <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:12px;"> 栏目ID:</div>
-                        <input class="col s8" style="height:32px" ng-model="look_operation._id" type="text" disabled>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col s3" style="font-size: 16px;margin-top:12px;"> 栏目ID:</div>
+                        <input class="col s9" style="height:32px" ng-model="look_operation._id" type="text" disabled>
                     </div>
 
                     <!--父菜单-->
                     <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
-                        <div class="col s8" style="padding-left:0;">
+                        <div class="col s3" style="font-size: 16px;margin-top:12px;"><span style="color: red">*</span> 父菜单:</div>
+                        <div class="col s9" style="padding-left:0;">
                             <select style="display: block" ng-model="look_operation.menu_pid"  material-select watch>
                                 <option value="" selected="selected">请选择</option>
                                 <option value="-1">根目录</option>
@@ -123,19 +134,19 @@
 
                     <!--序列号-->
                     <div class="row">
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
-                        <input class=" col s8" style="height:32px" name="password" autocomplete="off" ng-model="look_operation.menu_num" type="number" required>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 序列号:</div>
+                        <input class="col s9" style="height:32px" name="password" autocomplete="off" ng-model="look_operation.menu_num" type="number" required>
                     </div>
 
                     <!--栏目名称-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
-                        <input class="col s8" style="height:32px" name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text" required>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 栏目名称:</div>
+                        <input class="col s9" style="height:32px" name="phone" autocomplete="off" ng-model="look_operation.menu_name" type="text" required>
                     </div>
 
                     <!--是否页头显示-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否页头显示:</div>
                         <label class="col s2" style="padding-top: 8px">
                             <input name="headerShow" type="radio" ng-value="1" ng-model="look_operation.menu_header_show"/>
                             <span>显示</span>
@@ -148,7 +159,7 @@
 
                     <!--是否显示-->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否显示:</div>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">*</span> 是否显示:</div>
                         <label class="col s2" style="padding-top: 8px">
                             <input name="group2" type="radio" ng-value="1" ng-model="look_operation.menu_status"/>
                             <span>显示</span>
@@ -161,8 +172,22 @@
 
                     <!-- 菜单链接 -->
                     <div class="row" >
-                        <div class="col s4" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 菜单链接:</div>
-                        <input class=" col s8" style="height:32px" name="menuLink" autocomplete="off" ng-model="look_operation.menu_link" type="text" required>
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 菜单链接:</div>
+                        <input class=" col s9" style="height:32px" name="menuLink" autocomplete="off" ng-model="look_operation.menu_link" type="text" required>
+                    </div>
+
+                    <!-- banner图片 -->
+                    <div class="row" >
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> banner图片:</div>
+                        <div class="col s4" style="height: 32px;line-height: 26px">{{bannerImg}}</div>
+                        <input class="col s5" style="height: 32px;line-height: 26px" id="editBanner" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBanner(this, 1)" max_size="4M"/>
+                    </div>
+
+                    <!-- 背景图片 -->
+                    <div class="row" >
+                        <div class="col s3" style="font-size: 16px;margin-top:8px;"><span style="color: red">&nbsp;&nbsp;</span> 背景图片:</div>
+                        <div class="col s4" style="height: 32px;line-height: 26px">{{bgImg}}</div>
+                        <input class="col s5" style="height: 32px;line-height: 26px" id="editBgImg" name="image" type="file" onchange="angular.element(this).scope().uploadMenuBgImg(this, 1)" max_size="4M"/>
                     </div>
                 </div>
             </div>

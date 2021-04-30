@@ -110,6 +110,29 @@ const updateMenu = (req, res, next) => {
     })
 };
 
+const updateMenuImage = (req, res, next) => {
+    let bodyParams = req.body;
+    let params = req.params;
+
+    let dataObj = {
+        banner_image: bodyParams.bannerImage,
+        bg_image: bodyParams.bgImage
+    };
+
+    const query = { _id:params.menuId };
+    MenuModel.findOneAndUpdate(query,dataObj,function(error,result){
+        logger.debug(' updateMenuImage ') ;
+        if (error) {
+            logger.error(' updateMenuImage ' + error.message);
+            resUtil.resInternalError(error,res);
+        } else {
+            logger.info(' updateMenuImage ' + 'success');
+            resUtil.resetUpdateRes(res,result,null);
+            return next();
+        }
+    })
+};
+
 const removeMenu = (req ,res ,next) => {
     let params = req.params;
     let hasErr = false;
@@ -159,5 +182,6 @@ module.exports = {
     createMenu,
     getMenu,
     updateMenu,
+    updateMenuImage,
     removeMenu
 };
