@@ -77,7 +77,7 @@ export default class NewsComponent  extends React.Component {
                                                 {
                                                     this.props.newsList.map((newsItem,index) =>
                                                         <div>
-                                                            <div className="titleh5"><h5 className="center-align"></h5></div>
+                                                            <div key={index} className="titleh5"><h5 className="center-align"></h5></div>
                                                             <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 
                                                         </div>)
