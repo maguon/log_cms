@@ -10,7 +10,7 @@ const  createStyle = (req, res, next) => {
     let params = req.params;
     let hasOne = false;
 
-    StyleModel.find({}).exec().then((rows)=>{
+    StyleModel.find({}).exec().then(async (rows)=>{
         // 查询
         if(rows && rows.length > 0){
             // 有数据，则下一步 进行更新
@@ -29,16 +29,18 @@ const  createStyle = (req, res, next) => {
             };
 
             let styleModel = new StyleModel(dataObj);
-            styleModel.save(function(error,result){
+            await styleModel.save(function(error,result){
                 if (error) {
                     logger.error(' createStyle ' + error.message);
                     resUtil.resInternalError(error,res);
                 } else {
+                    hasOne = true;
                     logger.info(' createStyle ' + 'success');
                 }
-            })
+            });
         }
-    }).then(() => {
+        return hasOne;
+    }).then((hasOne) => {
         if (hasOne) {
             // 接收的数据
             let dataObj = {
