@@ -39,8 +39,7 @@ const  createStyle = (req, res, next) => {
                 }
             });
         }
-        return hasOne;
-    }).then((hasOne) => {
+    }).then(() => {
         if (hasOne) {
             // 接收的数据
             let dataObj = {
