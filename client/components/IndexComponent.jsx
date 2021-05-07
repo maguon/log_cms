@@ -9,7 +9,6 @@ export default class IndexComponent  extends React.Component {
         super(props);
     }
     render () {
-
         let newsArray=[];
         let listItem=[];
         let imgItem=[];
@@ -28,7 +27,7 @@ export default class IndexComponent  extends React.Component {
 
                 newsArray.push(
                         this.props.contentList[i].list.map((newsItem, index) =>
-                            <div className="service-info" style={sectionStyle} id={newsItem.menu_id._id}>
+                            <div className="service-info" style={sectionStyle} id={newsItem.menu_id._id} key={index}>
                                 <div className="container content-sm">
                                     <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
                                             <h2>{newsItem.news_title}</h2>
@@ -188,10 +187,22 @@ export default class IndexComponent  extends React.Component {
                 </section>
 
                 {/*layOut*/}
-                <div className='layout'>
+
+
+                {(newsArray===""||newsArray===null||newsArray===undefined)?"":
+                    <div className='layout'>
+                        {newsArray}
+                    </div>
+                }
+
+
+
+
+
+             {/*   <div className='layout'>
                     {newsArray}
                 </div>
-
+*/}
 
                 {/* 项目 Footer */}
                 <Footer pageFooter={this.props.pageFooter}/>
