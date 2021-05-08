@@ -31,8 +31,9 @@ export default class IndexComponent  extends React.Component {
                                 <div className="container content-sm">
                                     <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
                                             <h2>{newsItem.news_title}</h2>
-                                            <span className="bordered-icon"><span
-                                                className="glyphicon glyphicon-th-large"></span></span>
+                                            <span className="bordered-icon">
+                                                <span className="glyphicon glyphicon-th-large"></span>
+                                            </span>
                                             <div className='textNews'><p
                                                 dangerouslySetInnerHTML={{__html: newsItem.news_content}}/>
                                             </div>
@@ -41,8 +42,6 @@ export default class IndexComponent  extends React.Component {
                             </div>
                         )
                 )
-
-
             }
             /*列表类型*/
             else if (this.props.contentList[i].menuType == 2) {
@@ -192,16 +191,6 @@ export default class IndexComponent  extends React.Component {
                         {newsArray}
                     </div>
                 }
-
-
-
-
-
-             {/*   <div className='layout'>
-                    {newsArray}
-                </div>
-*/}
-
                 {/* 项目 Footer */}
                 <Footer pageFooter={this.props.pageFooter}/>
             </div>
