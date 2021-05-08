@@ -20,7 +20,7 @@ const banner = 'banner.png';
 const uploadImage = (req, res, next) => {
     // 同页面 上传2个图片时，会出现数组
     let filePath = Array.isArray(req.files.image) ? req.files.image[req.files.image.length-1].path : req.files.image.path;
-    let imageId = filePath.replace('public\\','/').replace('\\','/');
+    let imageId = filePath.replace('public','').replace('\\','/');
     logger.info(' uploadImage ' + filePath + ' success');
     resUtil.resetQueryRes(res, {imageId: imageId}, null);
     return next();

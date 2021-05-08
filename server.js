@@ -56,7 +56,7 @@ while (option  !== undefined) {
 
 
 
-app.get('/', MenuViewController.getMenuView);
+app.get('/', IndexViewController.getIndexView);
 app.get('/index.html', IndexViewController.getIndexView);
 
 app.listen(port||8100, () => {
