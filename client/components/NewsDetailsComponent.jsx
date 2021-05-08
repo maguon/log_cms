@@ -99,7 +99,7 @@ export default class NewsDetailsComponent  extends React.Component {
                                         <div className="fenPianText">
                                             {
                                                 this.props.newsList.map((newsItem,index) =>
-                                                    <div>
+                                                    <div key={index}>
                                                         <div className="titleh5"><h5 className="center-align">{newsItem.news_title}</h5></div>
                                                         <p dangerouslySetInnerHTML={{ __html: newsItem.news_content }} />
 

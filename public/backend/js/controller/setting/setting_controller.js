@@ -39,7 +39,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
                 meta:$scope.styleList.meta,
                 cssLink:$scope.styleList.css_link,
                 jsLink:$scope.styleList.js_link,
-                scriptText:$scope.styleList.script_text
+                scriptText:$scope.styleList.script_text || ''
             };
             _basic.post($host.api_url + "/sid/0/style", obj).then(function (data) {
                 if (data.success) {

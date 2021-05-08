@@ -20,7 +20,7 @@ const getMenuView = (req, res, next) => {
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         return NewsModel.find({}).populate('menu_id').where('roll_flag').equals('1').where('news_status').equals('1')

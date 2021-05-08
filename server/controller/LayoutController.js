@@ -9,7 +9,7 @@ const  createLayout = (req, res, next) => {
     let bodyParams = req.body;
     let hasOne = false;
 
-    LayoutModel.find({}).exec().then((rows)=>{
+    LayoutModel.find({}).exec().then(async (rows)=>{
         // 查询layout表
         if(rows && rows.length > 0){
             // 有数据，则下一步 进行更新
@@ -22,11 +22,12 @@ const  createLayout = (req, res, next) => {
                 content: []
             };
             let layoutModel = new LayoutModel(dataObj);
-            layoutModel.save(function(error, result){
+            await layoutModel.save(function(error, result){
                 if (error) {
                     logger.error(' createLayout ' + error.message);
                     resUtil.resInternalError(error,res);
                 } else {
+                    hasOne = true;
                     logger.info(' createLayout ' + 'success');
                 }
             })

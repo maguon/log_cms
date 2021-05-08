@@ -25,7 +25,7 @@ const getIndexView = (req, res, next) => {
         // layout 设置内容
         layoutSetting = rows[0] || {};
         // 取得 menuList
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         return NewsModel.find({}).populate('menu_id').where('menu_id').equals(layoutSetting.carousel).sort('news_num').exec();
