@@ -30,7 +30,12 @@ export default class IndexComponent  extends React.Component {
                             <div className="service-info" style={sectionStyle} id={newsItem.menu_id._id} key={index}>
                                 <div className="container content-sm">
                                     <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
-                                            <h2>{newsItem.news_title}</h2>
+                                            <h2>
+                                                <a key={index}
+                                                   href={"/view/menu/" + newsItem.menu_id._id + "/menuType/1/page/1/news"}>
+                                                    {newsItem.news_title}
+                                                </a>
+                                            </h2>
                                             <span className="bordered-icon">
                                                 <span className="glyphicon glyphicon-th-large"></span>
                                             </span>
@@ -56,11 +61,13 @@ export default class IndexComponent  extends React.Component {
                 }
                 listItem = (
                     this.props.contentList[i].list.map((listItem, index) =>{
-                        return  <a key={index} className="collection-item listItem" key={index}
-                                   href={"/view/menu/" + listItem.menu_id._id + "/menuType/" + listItem.menu_id.menu_type + "/page/" + (index + 1) + "/newsListDetails"}>
-                            <span className='fontWeight'>> </span>{listItem.news_title}
-                            <span className="rq">{listItem.created_at.toLocaleDateString()}</span>
-                        </a>
+                        return <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+                            <a key={index} className="collection-item listItem" key={index}
+                               href={"/view/menu/" + listItem.menu_id._id + "/menuType/" + listItem.menu_id.menu_type + "/page/" + (index + 1) + "/newsListDetails"}>
+                                <span className='fontWeight'>> </span>{listItem.news_title}
+                                <span className="rq">{listItem.created_at.toLocaleDateString()}</span>
+                            </a>
+                        </div>
                     }
                  )
                 );
@@ -69,7 +76,14 @@ export default class IndexComponent  extends React.Component {
                         <div className="service-info" style={sectionStyle}  id={this.props.contentList[i].list[0].menu_id._id}>
                             <div className="container content-sm">
                                 <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
-                                    <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
+                                    <h2>
+                                        <a key={i}
+                                           href={"/view/menu/" + this.props.contentList[i].list[0].menu_id._id + "/menuType/2/page/1/news"}>
+                                            {this.props.contentList[i].list[0].menu_id.menu_name}
+                                        </a>
+
+
+                                    </h2>
                                     <span className="bordered-icon"><span
                                         className="glyphicon glyphicon-th-large"></span></span>
                                 </div>
@@ -106,17 +120,25 @@ export default class IndexComponent  extends React.Component {
                 }
                 imgItem = (
                     this.props.contentList[i].list.map((imageItem, index) =>{
-                        return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index}>
-                            <img className="imgItems" src={imageItem.news_image} /></a>
+                        if(index<6){
+                            return  <a className="col-lg-2 col-md-4 col-sm-6 col-xs-12" key={index}>
+                                <img className="imgItems" src={imageItem.news_image} /></a>
+                        }
+                        else {
+                            return ;
+                        }
+
                     }
                     )
                 )
                 if(this.props.contentList[i].list.length!==0){
                     newsArray.push(
                         <div className="service-info" style={sectionStyle} id={this.props.contentList[i].list[0].menu_id._id}>
-                            <div className="container content-sm">
+                            <div className=" content-sm">
                                 <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
-                                    <h2>{this.props.contentList[i].list[0].menu_id.menu_name}</h2>
+                                    <h2>
+                                        <a key={i} className="black-text" href={"/view/menu/"+this.props.contentList[i].list[0].menu_id._id+"/menuType/3/page/1/news"}>{this.props.contentList[i].list[0].menu_id.menu_name}</a>
+                                    </h2>
                                     <span className="bordered-icon"><span
                                         className="glyphicon glyphicon-th-large"></span></span>
                                     <div className="profile-body imgList">

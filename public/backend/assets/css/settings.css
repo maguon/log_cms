@@ -2712,11 +2712,11 @@ zoom: 1;
 .textNews{
 	/*height: 100px;*/
 	display: block;
-	overflow:hidden;
+	/*overflow:hidden;
 	text-overflow:ellipsis;
 	display:-webkit-box;
-	-webkit-line-clamp:4;    /*定义的数字为显示的行数*/
-	-webkit-box-orient:vertical;
+	-webkit-line-clamp:4;    !*定义的数字为显示的行数*!
+	-webkit-box-orient:vertical;*/
 
 }
 .service-info {
