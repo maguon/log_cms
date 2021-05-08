@@ -29,8 +29,7 @@ const getNewsView = (req ,res ,next) => {
         return;
     }).then(()=>{
         //header menu list
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
-
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         return MenuModel.find({}).where('_id').equals(params.menuId).sort('menu_num').exec();
@@ -412,7 +411,7 @@ const getNewsViewDetails = (req ,res ,next) => {
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         let query = NewsModel.find({}).count();
@@ -636,7 +635,7 @@ const getPictureDetails = (req ,res ,next) => {
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         return MenuModel.find({}).where('_id').equals(params.menuId).sort('menu_num').exec();
@@ -779,7 +778,7 @@ const getNewsViewSearch = (req ,res ,next) => {
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
-        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_status').equals('1').sort('menu_num').exec();
+        return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         let query = NewsModel.find({}).populate('menu_id');
