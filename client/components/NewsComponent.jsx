@@ -12,7 +12,7 @@ export default class NewsComponent  extends React.Component {
     }
     render () {
         let twoMenuName;
-        if(this.props.newsList.length===0){
+        if(this.props.newsList.length==0){
             sectionStyle={
                 backgroundImage: `url(/uploads/banner.png)`
             };

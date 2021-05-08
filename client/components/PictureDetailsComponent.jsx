@@ -22,7 +22,7 @@ export default class PictureDetailsComponent  extends React.Component {
                 backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
             };
         }
-        if(this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
+        if(this.props.currentPage=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination" >
@@ -46,7 +46,7 @@ export default class PictureDetailsComponent  extends React.Component {
                 </div>
             )
         }
-        else if(this.props.currentPage=== ""+this.props.pageObj.totalCount&&this.props.currentPage!=='1'){
+        else if(this.props.currentPage== ""+this.props.pageObj.totalCount&&this.props.currentPage!=='1'){
             prePage =(
 
                 <div className="fenPian">
@@ -72,7 +72,7 @@ export default class PictureDetailsComponent  extends React.Component {
         }
 
         let twoMenuName;
-        if(this.props.newsList.length===0){
+        if(this.props.newsList.length==0){
             twoMenuName = "";
         }else if(this.props.newsList[0].menu_id.menu_pid!=='-1'){
             twoMenuName =(

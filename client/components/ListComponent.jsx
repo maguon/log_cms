@@ -27,7 +27,7 @@ export default class ListComponent  extends React.Component {
         let items = [];
         let pageList;
         for (var i = 1; i <= this.props.pageObj.totalPage; i++) {
-            if(this.props.pageObj.totalPage!==0&&this.props.currentPage==='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalPage){
+            if(this.props.pageObj.totalPage!==0&&this.props.currentPage=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalPage){
                 if(this.props.currentPage==i){
                     items.push( <li className="active"><a href="#">{i}</a></li>);
                 }
@@ -100,7 +100,7 @@ export default class ListComponent  extends React.Component {
                     </div>
                 )
             }
-            else if(this.props.pageObj.totalPage!==0&&this.props.currentPage=== ""+this.props.pageObj.totalPage&&this.props.currentPage!=='1'){
+            else if(this.props.pageObj.totalPage!==0&&this.props.currentPage== ""+this.props.pageObj.totalPage&&this.props.currentPage!=='1'){
                 if(this.props.currentPage==i){
                     items.push( <li className="active"><a href="#">{i}</a></li>);
                 }
@@ -180,7 +180,7 @@ export default class ListComponent  extends React.Component {
                 )
             }
         }
-        if(this.props.currentPage==='1'){
+        if(this.props.currentPage=='1'){
             pageList=(
                 this.props.newsList.map((newsItem,index) =>
                     <a key={index} className="collection-item listItem" key={index} href={"/view/menu/"+newsItem.menu_id._id+"/menuType/"+newsItem.menu_id.menu_type+"/page/"+(index+1)+"/newsListDetails"}>

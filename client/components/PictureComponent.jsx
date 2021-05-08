@@ -24,7 +24,7 @@ export default class PictureComponent  extends React.Component {
             };
         }
         let twoMenuName;
-        if(this.props.newsList.length===0){
+        if(this.props.newsList.length==0){
             twoMenuName = "";
         }else if(this.props.newsList[0].menu_id.menu_pid!=='-1'){
             twoMenuName =(

@@ -14,9 +14,9 @@ export default class IndexComponent  extends React.Component {
         let imgItem=[];
         for(let i=0;i<this.props.contentList.length;i++) {
             /*新闻类型*/
-            if (this.props.contentList[i].menuType === 1) {
+            if (this.props.contentList[i].menuType == 1) {
                 for(let j=0;j<this.props.contentList[i].list.length;j++) {
-                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==null){
                         sectionStyle={};
                     }else {
                         sectionStyle={
@@ -45,9 +45,9 @@ export default class IndexComponent  extends React.Component {
 
             }
             /*列表类型*/
-            else if (this.props.contentList[i].menuType === 2) {
+            else if (this.props.contentList[i].menuType == 2) {
                 for(let j=0;j<this.props.contentList[i].list.length;j++) {
-                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==null){
                         sectionStyle={};
                     }else {
                         sectionStyle={
@@ -95,9 +95,9 @@ export default class IndexComponent  extends React.Component {
                 }
             }
             /*图片类型*/
-            else if (this.props.contentList[i].menuType === 3) {
+            else if (this.props.contentList[i].menuType == 3) {
                 for(let j=0;j<this.props.contentList[i].list.length;j++) {
-                    if(this.props.contentList[i].list[j].menu_id.bg_image==undefined){
+                    if(this.props.contentList[i].list[j].menu_id.bg_image==null){
                         sectionStyle={};
                     }else {
                         sectionStyle={
@@ -150,7 +150,7 @@ export default class IndexComponent  extends React.Component {
                                         <img src={newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
                                              data-bgposition="center center" data-bgrepeat="no-repeat"/>
 
-                                        {newsItem.news_title===""?"":
+                                        {newsItem.news_title==""?"":
                                             <div className="tp-caption rs-caption-1 sft start"
                                                  data-x="center"
                                                  data-hoffset="0"
@@ -164,7 +164,7 @@ export default class IndexComponent  extends React.Component {
                                             </div>
                                         }
 
-                                        {newsItem.news_content===""?"":
+                                        {newsItem.news_content==""?"":
                                             <div className="tp-caption rs-caption-2 sft"
                                                  data-x="center"
                                                  data-hoffset="0"
@@ -187,9 +187,7 @@ export default class IndexComponent  extends React.Component {
                 </section>
 
                 {/*layOut*/}
-
-
-                {(newsArray===""||newsArray===null||newsArray===undefined)?"":
+                {(newsArray==[]||newsArray==null)?"":
                     <div className='layout'>
                         {newsArray}
                     </div>

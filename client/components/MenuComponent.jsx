@@ -22,7 +22,7 @@ export default class MenuComponent  extends React.Component {
                                         <img src={newsItem.news_image} alt={newsItem.news_title} data-bgfit="cover"
                                              data-bgposition="center center" data-bgrepeat="no-repeat"/>
 
-                                        {newsItem.news_title===""?"":
+                                        {newsItem.news_title==""?"":
                                             <div className="tp-caption rs-caption-1 sft start"
                                                  data-x="center"
                                                  data-hoffset="0"
@@ -36,7 +36,7 @@ export default class MenuComponent  extends React.Component {
                                             </div>
                                         }
 
-                                        {newsItem.news_content===""?"":
+                                        {newsItem.news_content==""?"":
                                         <div className="tp-caption rs-caption-2 sft"
                                              data-x="center"
                                              data-hoffset="0"
