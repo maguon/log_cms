@@ -13,7 +13,7 @@ export default class PictureDetailsComponent  extends React.Component {
     }
     render () {
         let prePage;
-        if(this.props.menu[0].banner_image==undefined){
+        if(this.props.menu[0].banner_image==null){
             sectionStyle={
                 backgroundImage: `url(/uploads/banner.png)`
             };
