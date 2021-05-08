@@ -2531,21 +2531,22 @@ zoom: 1;
 	/*border-bottom: 1px dashed #e3e3e3;*/
 }
 .jididong li a {
-	width: 100%;
+	width: 80%;
 	height: 35px;
 	text-indent: 10px;
 	line-height: 35px;
 	display: block;
 	color: #5a5a5a;!important;
-	margin-left: -40px;
+	margin-left: 10%;
 }
 .jididong li a:hover {
-	width: 100%;
+	width: 80%;
 	height: 35px;
 	text-indent: 10px;
 	line-height: 35px;
 	display: block;
 	color: #72c02c;
+	margin-left: 10%;
 }
 .rq {
 	float: right;

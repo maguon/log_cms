@@ -74,7 +74,7 @@ export default class IndexComponent  extends React.Component {
                 if(this.props.contentList[i].list.length!==0) {
                     newsArray.push(
                         <div className="service-info" style={sectionStyle}  id={this.props.contentList[i].list[0].menu_id._id}>
-                            <div className="container content-sm">
+                            <div className="content-sm">
                                 <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
                                     <h2>
                                         <a key={i}
