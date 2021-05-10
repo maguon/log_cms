@@ -70,7 +70,7 @@ export default class NewsComponent  extends React.Component {
                             <div className="col-md-9">
                                 <div className="kect">
                                     <div className="mores">
-                                        <a href={"/view"} className="black-text" >首页</a>
+                                        <a href={"/"} className="black-text" >首页</a>
                                         &nbsp;&gt;&nbsp;
                                         <a className="black-text" href={"/view/menu/"+this.props.menu[0]._id+"/menuType/"+this.props.menu[0].menu_type+"/page/1/news"}>{this.props.menu[0].menu_name}</a>
                                         {twoMenuName}

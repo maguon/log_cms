@@ -31,7 +31,7 @@ class Header extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href={"/view"}>
+                        <a className="navbar-brand" href={"/"}>
                             <img alt="logo" className='logo_img' src="/uploads/logo.png" />
                         </a>
                         <span className='logoTitle'>{this.props.logoTitle}</span>

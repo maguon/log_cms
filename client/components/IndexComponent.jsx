@@ -81,19 +81,17 @@ export default class IndexComponent  extends React.Component {
                                            href={"/view/menu/" + this.props.contentList[i].list[0].menu_id._id + "/menuType/2/page/1/news"}>
                                             {this.props.contentList[i].list[0].menu_id.menu_name}
                                         </a>
-
-
                                     </h2>
                                     <span className="bordered-icon"><span
                                         className="glyphicon glyphicon-th-large"></span></span>
                                 </div>
 
-                                <div className="row">
+                                <div className="indexRow">
                                     <div className="col-md-12">
                                         <div className="margin-bottom-30">
                                             <i className="service-info-icon rounded-x icon-wrench"></i>
                                             <div className="info-description">
-                                                <ul className="jididong">
+                                                <ul className="indexC">
                                                     <li>
                                                         {listItem}
                                                     </li>

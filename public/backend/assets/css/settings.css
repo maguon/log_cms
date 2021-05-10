@@ -2530,23 +2530,56 @@ zoom: 1;
 	line-height: 35px;
 	/*border-bottom: 1px dashed #e3e3e3;*/
 }
+.indexC {
+	min-height: 300px;
+	width: 100%;
+	float: left;
+	list-style: none;
+	color: #000;
+}
+.indexC li {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	/*border-bottom: 1px dashed #e3e3e3;*/
+}
 .jididong li a {
-	width: 80%;
+	width: 100%;
 	height: 35px;
 	text-indent: 10px;
 	line-height: 35px;
 	display: block;
 	color: #5a5a5a;!important;
-	margin-left: 10%;
+	margin-left: -40px;
 }
 .jididong li a:hover {
-	width: 80%;
+	width: 100%;
 	height: 35px;
 	text-indent: 10px;
 	line-height: 35px;
 	display: block;
 	color: #72c02c;
-	margin-left: 10%;
+}
+.indexC li a {
+	width: 90%;
+	height: 35px;
+	text-indent: 10px;
+	line-height: 35px;
+	display: block;
+	color: #5a5a5a;!important;
+	margin-left: 5%;
+}
+.indexC li a:hover {
+	width: 90%;
+	height: 35px;
+	text-indent: 10px;
+	line-height: 35px;
+	display: block;
+	color: #72c02c;
+	margin-left: 5%;
+}
+.indexRow{
+	min-height: 200px;
 }
 .rq {
 	float: right;
@@ -2564,6 +2597,13 @@ zoom: 1;
 	padding-top: 3px;
 }
 .collection .ab_neir .jididong a:hover{
+	background-color: white;
+}
+.collection .ab_neir .indexC .collection-item{
+	color: #000 !important;
+	padding-top: 3px;
+}
+.collection .ab_neir .indexC a:hover{
 	background-color: white;
 }
 /*上一页  下一页*/
