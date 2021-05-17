@@ -14,15 +14,35 @@ export default class ListComponent  extends React.Component {
 
 
     render () {
-        if(this.props.menu[0].banner_image==''||this.props.menu[0].banner_image==null){
+
+        let twoMenuName;
+        if(this.props.twoMenuNameList.length==0){twoMenuName=''}
+        else if (this.props.newsList[0].menu_id !== '-1') {
+            twoMenuName = (
+            <a className="black-text"
+               href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/" + this.props.newsList[0].menu_id.menu_type + "/page/1/news"}>&nbsp;&gt;&nbsp;{this.props.newsList[0].menu_id.menu_name}</a>
+            )}
+        else{twoMenuName=''}
+        if(this.props.newsList[0].menu_id.banner_image!==''&&this.props.newsList[0].menu_id.banner_image!==null){
             sectionStyle={
-                backgroundImage: `url(/uploads/banner.png)`
-            };
-        }else {
-            sectionStyle={
-                backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
+                backgroundImage: `url(`+(this.props.newsList[0].menu_id.banner_image)+`)`
             };
         }
+        else {
+            if(this.props.menu[0].banner_image!==''&&this.props.menu[0].banner_image!==null){
+                sectionStyle={
+                    backgroundImage: `url(`+(this.props.menu[0].banner_image)+`)`
+                };
+            }
+            else {
+                sectionStyle={
+                    backgroundImage: `url(/uploads/banner.png)`
+                };
+            }
+        }
+
+
+
         let prePage;
         let items = [];
         let pageList;
@@ -222,10 +242,14 @@ export default class ListComponent  extends React.Component {
                         </div>
                         <div className="col-md-9">
                             <div className="kect">
-                                <div className="mores"><a href="/" className="black-text" >首页</a>&nbsp;&gt;&nbsp;
-                                    <a className="black-text"  href={"/view/menu/"+this.props.menu[0]._id+"/menuType/"+this.props.menu[0].menu_type+"/page/1/news"} >{this.props.menu[0].menu_name}</a></div>
-                            </div>
+                                <div className="mores">
 
+                                    <a href={"/"} className="black-text" >首页</a>
+                                    &nbsp;&gt;&nbsp;
+                                    <a className="black-text" href={"/view/menu/"+this.props.menu[0]._id+"/menuType/"+this.props.menu[0].menu_type+"/page/1/news"}>{this.props.menu[0].menu_name}</a>
+                                    {twoMenuName}
+                            </div>
+                            </div>
                             <div className="profile-body">
                                 <div className="row">
                                     <div className="ab_neir">

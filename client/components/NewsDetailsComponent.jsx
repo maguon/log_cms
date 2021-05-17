@@ -11,19 +11,29 @@ export default class NewsDetailsComponent  extends React.Component {
         super(props);
     }
     render () {
-        for(let i=0;i<this.props.menuList.length;i++) {
-            if(this.props.menuName==this.props.menuList[i].menu_name){
-                if(this.props.menuList[i].banner_image==''||this.props.menuList[i].banner_image==null){
-                    sectionStyle={
-                        backgroundImage: `url(/uploads/banner.png)`
-                    };
-                }else {
-                    sectionStyle={
-                        backgroundImage: `url(`+(this.props.menuList[i].banner_image)+`)`
-                    };
+        if(this.props.newsList[0].menu_id.banner_image&&this.props.newsList[0].menu_id.banner_image!==''&&this.props.newsList[0].menu_id.banner_image!==null){
+            sectionStyle={
+                backgroundImage: `url(`+(this.props.newsList[0].menu_id.banner_image)+`)`
+            };
+        }
+        else {
+            for(let i=0;i<this.props.menuList.length;i++) {
+                if(this.props.menuName==this.props.menuList[i].menu_name){
+                    if(this.props.menuList[i].banner_image==''||this.props.menuList[i].banner_image==null){
+                        sectionStyle={
+                            backgroundImage: `url(/uploads/banner.png)`
+                        };
+                    }else {
+                        sectionStyle={
+                            backgroundImage: `url(`+(this.props.menuList[i].banner_image)+`)`
+                        };
+                    }
                 }
             }
         }
+
+
+
         let prePage;
         if(this.props.currentPage=='1'&&this.props.currentPage!==  ""+this.props.pageObj.totalCount){
             prePage =(
