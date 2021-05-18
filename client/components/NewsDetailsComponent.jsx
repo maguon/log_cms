@@ -35,7 +35,7 @@ export default class NewsDetailsComponent extends React.Component {
 
 
         let prePage;
-        if (this.props.currentPage == '1' && this.props.currentPage !== "" + this.props.pageObj.totalCount) {
+        if (this.props.currentPage == '1' && this.props.currentPage != "" + this.props.pageObj.totalCount) {
             prePage = (
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination">

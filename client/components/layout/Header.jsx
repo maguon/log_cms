@@ -9,7 +9,7 @@ class Header extends React.Component {
     render() {
         let Item=[];
         for(let i=0;i<this.props.menuList.length;i++){
-            if(this.props.menuList[i].menu_link!==""&&this.props.menuList[i].menu_link!==null){
+            if(this.props.menuList[i].menu_link!=""&&this.props.menuList[i].menu_link!=null){
                 Item.push(<li className="page-scroll" key={i} ><a  href={this.props.menuList[i].menu_link}>{this.props.menuList[i].menu_name}</a></li>
                 )
             }else {
