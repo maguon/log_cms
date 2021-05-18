@@ -3,6 +3,10 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     $scope.showTr1 =false;
     $scope.linkList = _config.linkStatus;
     let userId = _basic.getSession(_basic.USER_ID);
+    // 存储动态下拉菜单
+    let selectArray = [];
+    // 存储每个下拉选中的内容
+    let selectPid = [];
 
     //获取菜单
     function getMenu(){
@@ -59,11 +63,12 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     $scope.newOperator = function () {
         $scope.submitted = false;
         $scope.addColumn = "";
+        $scope.selectedMenu = "";
         $scope.addnum = "";
         $scope.addMenuName = "";
-        $scope.addHeaderShow = "";
-        $scope.addLink ="";
-        $scope.addMenuStatus ="";
+        $scope.addHeaderShow = 0;
+        $scope.addLink =1;
+        $scope.addMenuStatus =1;
         $scope.addMenuLink ="";
         // 初始化 banner 图片以及 背景图片
         $scope.bannerImg = "";
@@ -73,18 +78,25 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         // 清空文件选择路径
         document.getElementById('addBanner').value = '';
         document.getElementById('addBgImg').value = '';
+        // 打开【新增栏目】时，清空动态菜单
+        selectArray = [];
+        $scope.selectArray = selectArray;
+        // 清空 选中
+        selectPid = [];
         // 重新取得最新的 menu 列表
         getMenu();
     };
 
     // 提交新增
     $scope.submitForm = function () {
+        // 取得父菜单ID
+        let menuPid = selectPid[selectPid.length-1];
         $scope.submitted = true;
-        if($scope.addColumn==''||$scope.addMenuName==''||$scope.addnum==""||$scope.addHeaderShow==null||$scope.addMenuStatus==null||$scope.addLink==""){
+        if(menuPid==''||$scope.addMenuName==''||$scope.addnum==""||$scope.addHeaderShow==null||$scope.addMenuStatus==null||$scope.addLink==""){
             swal('请录入完整信息!',"","error")
         }else{
             var obj = {
-                menuPid: $scope.addColumn,
+                menuPid: menuPid,
                 menuName: $scope.addMenuName,
                 menuNum:$scope.addnum,
                 menuHeaderShow:$scope.addHeaderShow,
@@ -92,6 +104,7 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 menuType: $scope.addLink,
                 menuLink: $scope.addMenuLink
             };
+
             _basic.post($host.api_url + "/menu", obj).then(function (data) {
                 if (data.success) {
                     uploadImg(data.result.menuId);
@@ -288,6 +301,44 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 swal(data.msg, "", "error")
             }
         });
+    };
+
+    /**
+     * 当父菜单 联动select选中时，执行查询下一层事件，并显示下一层，迭代方法
+     *
+     * @param selectMenuId 当前选中的menuId
+     * @param index 当前select选项框的层数，默认初始为0层
+     */
+    $scope.changeSelect = function(selectMenuId, index) {
+        // 默认初始选择菜单, 2种情况，1：初始，2：选择多层后，再次选择初始菜单
+        if (index == 0) {
+            // 点击初始菜单，则先清空 动态下拉菜单
+            selectArray = [];
+            $scope.selectArray = selectArray;
+            // 清空 选中
+            selectPid = [];
+            // 将当前选中内容存入动态
+            selectPid.push(selectMenuId);
+        } else {
+            // 非初始菜单点击时，清空 当前层数 之后的所有动态
+            selectArray = selectArray.slice(0,index);
+            $scope.selectArray = selectArray;
+            selectPid = selectPid.slice(0,index);
+            // 并将当前选中的替换数组中对应层数选中菜单ID
+            selectPid.splice(index,1,selectMenuId);
+        }
+
+        // 当前选中 不是【请选择】，且不是【根目录】时，执行检索接口，查询，此菜单是否有子菜单
+        if (selectMenuId != '' && selectMenuId != -1) {
+            _basic.get($host.api_url + "/menu?menuPid=" + selectMenuId).then(function (data) {
+                // 当有子菜单时
+                if (data.success && data.result.length > 0) {
+                    // 添加动态select数组
+                    selectArray.push(data.result);
+                    $scope.selectArray = selectArray;
+                }
+            });
+        }
     };
 
     getMenu();
