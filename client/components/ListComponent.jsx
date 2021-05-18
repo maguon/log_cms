@@ -19,7 +19,7 @@ export default class ListComponent extends React.Component {
         let pageList;
         if (this.props.twoMenuNameList.length == 0) {
             twoMenuName = ''
-        } else if (this.props.newsList[0].menu_id != '-1') {
+        } else if (this.props.newsList[0] && this.props.newsList[0].menu_id != '-1') {
             twoMenuName = (
                 <a className="black-text"
                    href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/" + this.props.newsList[0].menu_id.menu_type + "/page/1/news"}>&nbsp;&gt;&nbsp;{this.props.newsList[0].menu_id.menu_name}</a>
