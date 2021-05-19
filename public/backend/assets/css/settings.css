@@ -2531,7 +2531,6 @@ zoom: 1;
 	/*border-bottom: 1px dashed #e3e3e3;*/
 }
 .indexC {
-	min-height: 300px;
 	width: 100%;
 	float: left;
 	list-style: none;
@@ -2578,9 +2577,9 @@ zoom: 1;
 	color: #72c02c;
 	margin-left: 5%;
 }
-.indexRow{
+/*.indexRow{
 	min-height: 200px;
-}
+}*/
 .rq {
 	float: right;
 }
@@ -6377,7 +6376,7 @@ img.image-md {
 
 .content-sm {
 	padding-top: 30px;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 }
 .content-sm_img{
 	padding-top: 30px;
