@@ -18,8 +18,8 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
 
     // 提交新增
     $scope.postStyle = function () {
-        if ($scope.styleList == undefined || $scope.styleList.title == ''||$scope.styleList.logo_title == ''||$scope.styleList.page_footer == ''
-            ||$scope.styleList.meta==undefined||$scope.styleList.css_link==undefined||$scope.styleList.script_text==''||$scope.styleList.js_link==undefined) {
+        if ($scope.styleList == undefined || $scope.styleList.title == ''||$scope.styleList.page_footer == ''
+            ||$scope.styleList.meta==undefined||$scope.styleList.css_link==undefined||$scope.styleList.js_link==undefined) {
             swal('请录入完整信息!', "", "error")
         } else {
             if(Array.isArray($scope.styleList.meta)==false){
@@ -34,7 +34,7 @@ app_admin_module.controller("setting_controller", ["$scope", "_basic", "_config"
 
             var obj = {
                 title: $scope.styleList.title,
-                logoTitle: $scope.styleList.logo_title,
+                logoTitle: $scope.styleList.logo_title || '',
                 pageFooter: $scope.styleList.page_footer,
                 meta:$scope.styleList.meta,
                 cssLink:$scope.styleList.css_link,
