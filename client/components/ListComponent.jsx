@@ -17,16 +17,15 @@ export default class ListComponent extends React.Component {
         let prePage;
         let items = [];
         let pageList;
-        if (this.props.twoMenuNameList.length == 0) {
-            twoMenuName = ''
-        } else if (this.props.newsList[0] && this.props.newsList[0].menu_id != '-1') {
+        if (this.props.newsList.length == 0 || this.props.newsList[0].menu_id.menu_pid == '-1') {
+            twoMenuName = "";
+        } else {
             twoMenuName = (
                 <a className="black-text"
                    href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/" + this.props.newsList[0].menu_id.menu_type + "/page/1/news"}>&nbsp;&gt;&nbsp;{this.props.newsList[0].menu_id.menu_name}</a>
             )
-        } else {
-            twoMenuName = ''
         }
+
         if (this.props.newsList[0] && this.props.newsList[0].menu_id && this.props.newsList[0].menu_id.banner_image && this.props.newsList[0].menu_id.banner_image != '') {
             sectionStyle = {
                 backgroundImage: `url(` + (this.props.newsList[0].menu_id.banner_image) + `)`
@@ -42,7 +41,6 @@ export default class ListComponent extends React.Component {
                 };
             }
         }
-
         for (var i = 1; i <= this.props.pageObj.totalPage; i++) {
             if (this.props.pageObj.totalPage != 0 && this.props.currentPage == '1' && this.props.currentPage != "" + this.props.pageObj.totalPage) {
                 if (this.props.currentPage == i) {
