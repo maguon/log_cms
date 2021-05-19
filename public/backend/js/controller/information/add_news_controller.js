@@ -106,6 +106,7 @@ app_admin_module.controller("add_news_controller", ["$scope", "_basic", "_config
             $scope.obj = {
                 "newsImage": imageId
             };
+            swal("图片上传成功", "", "success");
         });
     };
 
