@@ -41,7 +41,7 @@ const getIndexView = (req, res, next) => {
                     break;
                 case 2 :
                     // 2-列表
-                    val = await NewsModel.find({}).populate('menu_id').where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('5')).exec();
+                    val = await NewsModel.find({}).populate('menu_id').where('menu_id').equals(item.menuId).skip(parseInt('0')).limit(parseInt('8')).exec();
                     contentList.push({menuType : item.menuType, menuId : item.menuId, list : val});
                     break;
                 case 3 :
