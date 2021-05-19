@@ -31,7 +31,7 @@ export default class IndexComponent extends React.Component {
                     this.props.contentList[i].list.map((newsItem, index) =>
                         <div className="service-info" style={sectionStyle} id={newsItem.menu_id._id} key={index}>
                             <div className="container content-sm">
-                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-20">
                                     <h2>
                                         <a key={index}
                                            href={"/view/menu/" + newsItem.menu_id._id + "/menuType/1/page/1/news"}>
@@ -78,7 +78,7 @@ export default class IndexComponent extends React.Component {
                         <div className="service-info" style={sectionStyle}
                              id={this.props.contentList[i].list[0].menu_id._id}>
                             <div className="content-sm">
-                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-20">
                                     <h2>
                                         <a key={i}
                                            href={"/view/menu/" + this.props.contentList[i].list[0].menu_id._id + "/menuType/2/page/1/news"}>
@@ -135,8 +135,8 @@ export default class IndexComponent extends React.Component {
                     newsArray.push(
                         <div className="service-info" style={sectionStyle}
                              id={this.props.contentList[i].list[0].menu_id._id}>
-                            <div className=" content-sm">
-                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-60">
+                            <div className="content-sm_img">
+                                <div className="headline-center-v2 headline-center-v2-dark margin-bottom-20">
                                     <h2>
                                         <a key={i} className="black-text"
                                            href={"/view/menu/" + this.props.contentList[i].list[0].menu_id._id + "/menuType/3/page/1/news"}>{this.props.contentList[i].list[0].menu_id.menu_name}</a>
