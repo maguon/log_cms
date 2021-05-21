@@ -1,6 +1,4 @@
 app_admin_module.controller("column_list_management_controller", ["$scope", "_basic","baseService", "_config", "$host", function ($scope, _basic,baseService, _config, $host) {
-    $scope.showTr2 =false;
-    $scope.showTr1 =false;
     $scope.linkList = _config.linkStatus;
     let userId = _basic.getSession(_basic.USER_ID);
     // 存储动态下拉菜单
@@ -8,54 +6,6 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     // 存储每个下拉选中的内容
     let selectPid = [];
     $scope.editSelectedMenu = [];
-    //获取菜单
-    function getMenu(){
-        _basic.get($host.api_url + "/menu").then(function (data) {
-            if (data.success == true) {
-                $scope.columnList = data.result;
-            }
-        })
-    }
-
-    //获取根列表
-    function getRootList(){
-        _basic.get($host.api_url + "/menu?menuPid=-1").then(function (data) {
-            if (data.success == true) {
-                $scope.rootList = data.result;
-            }
-        })
-    }
-
-    // 获取子一级
-    $scope.showLastTr =function (id,index){
-        // 子一级 全部隐藏
-        $(".load_mission").hide();
-        // 子一级 点击显示
-        $(".load_mission" + index).show();
-        // 取得 子一级 数据
-        _basic.get($host.api_url + "/menu?menuPid="+id).then(function (data) {
-            if (data.success) {
-                // 子一级 数据
-                $scope.firstList = data.result;
-                // 子二级 数据
-                $scope.scondList = [];
-            }
-        })
-    };
-
-    // 获取子二级
-    $scope.showLastTr2 =function (id,index){
-        // 子二级 全部隐藏
-        $(".load1_mission").hide();
-        // 子二级 点击显示
-        $(".load1_mission" + index).show();
-        // 取得 子二级 数据
-        _basic.get($host.api_url + "/menu?menuPid="+id).then(function (data) {
-            if (data.success) {
-                $scope.scondList = data.result;
-            }
-        })
-    };
 
     /**
      * 点击【新增】按钮，打开【新增栏目】页面
@@ -83,11 +33,11 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         $scope.selectArray = selectArray;
         // 清空 选中
         selectPid = [];
-        // 重新取得最新的 menu 列表
-        getMenu();
+        // 刷新菜单列表
+        getRootList();
     };
 
-    // 提交新增
+    // 【新增栏目】页面，提交处理
     $scope.submitForm = function () {
         // 取得父菜单ID
         let menuPid = selectPid[selectPid.length-1];
@@ -119,7 +69,6 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
 
     };
 
-
     /**
      * 点击编辑按钮，打开【编辑栏目】页面
      * @param id 栏目ID
@@ -148,8 +97,7 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         })
     };
 
-
-    // 修改
+    // 【编辑栏目】页面，修改处理
     $scope.changeOperatorForm = function (id) {
         $scope.submitted = true;
         if($scope.look_operation.menu_name==''||$scope.look_operation.menu_num==null
@@ -197,7 +145,6 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
             })
         }
     };
-
 
     //删除当前信息
     $scope.delete = function (id){
@@ -427,6 +374,87 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         }
     }
 
-    getMenu();
-    getRootList();
+    /**
+     * 初始化 菜单树
+     */
+    function initMenuTree(){
+        // 取得菜单树 根节点
+        let $tree = $('#menuTree');
+
+        // 生成菜单树
+        $tree.tree({
+            autoOpen: true,
+            // 自定义 行样式
+            onCreateLi: function(node, $li) {
+                // Append a link to the jqtree-element div.
+                let lowerFlag = node.lower_flag == 1 ? '<p style="margin-top: 10px"><i class="mdi mdi-check" style="cursor: pointer"> </i></p>' : ' ';
+                $li.find('.jqtree-element').append(
+                    ' <div class="col s1">\n' +
+                    lowerFlag +
+                    ' </div>\n' +
+                    ' <div class="col s3 left-align"><p style="margin-top: 10px">' + node.menu_name  + '</p></div>\n' +
+                    ' <div class="col s2"><p style="margin-top: 10px">' + node.menu_num+ '</p></div>\n' +
+                    ' <div class="col s2"><p style="margin-top: 10px">' + $scope.linkList[node.menu_type-1].status_text+ '</p></div>\n' +
+                    ' <div class="col s2"><p style="margin-top: 10px">' + (node.menu_status == 1 ? "显示" : "隐藏") + '</p></div>\n' +
+                    ' <div class="col s2" style="font-size: 25px;margin-top: 4px">\n' +
+                    '     <i class="mdi mdi-eye cyan-text edit" style="padding-left: 20px" data-node-id="' + node._id + '"> </i>\n' +
+                    '     <i class="mdi mdi-delete-forever red-text delete" data-node-id="' + node._id + '"> </i>\n' +
+                    ' </div>'
+                );
+            }
+        });
+
+        // 监听事件，点击 编辑触发
+        $tree.on( 'click', '.edit', function(e) {
+            $scope.lookOperation($(e.target).data('node-id'));
+        });
+
+        // 监听事件，点击 删除触发
+        $tree.on( 'click', '.delete', function(e) {
+            $scope.delete($(e.target).data('node-id'));
+        });
+
+        // 监听事件，点击 节点 触发
+        $tree.on( 'tree.click', async function(e) {
+            // Disable single selection
+            // e.preventDefault();
+            // 取得 选中节点
+            let selected_node = e.node;
+
+            await _basic.get($host.api_url + "/menu?menuPid="+selected_node._id).then(function (data) {
+                if (data.success) {
+                    // 更新当前节点数据
+                    $tree.tree(
+                        'updateNode',
+                        selected_node,
+                        {
+                            children: data.result
+                        }
+                    );
+                    // 显示 新加载数据
+                    $tree.tree('openNode', selected_node);
+                }
+            });
+        });
+    }
+
+    //获取根列表
+    function getRootList(){
+        return _basic.get($host.api_url + "/menu?menuPid=-1").then(function (data) {
+            if (data.success) {
+                $scope.rootList = data.result;
+                $('#menuTree').tree('loadData', data.result);
+            }
+        });
+    }
+
+    // 初始化数据
+    function initData(){
+        // 初始化 菜单树
+        initMenuTree();
+        // 初始化 菜单数据
+        getRootList();
+    }
+
+    initData();
 }]);

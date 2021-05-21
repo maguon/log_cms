@@ -244,142 +244,15 @@
         </div>
 
         <div class="row" style="padding-bottom:20px;">
-            <ul class="collapsible popout" data-collapsible="accordion" style="overflow: hidden;margin: 0;box-shadow: none">
-                <!--列表头-->
-                <li style="font-weight: bold;">
-                    <div class="collapsible-header"  style="height: 40px;line-height: 40px;padding: 0;margin: 0;background-color: #f6f5fa;" >
-                        <div class="col s1"> </div>
-                        <div class="col s3 left-align" style="border-right: 1px solid #ccc;">栏目名称</div>
-                        <div class="col s2" style="border-right: 1px solid #ccc">序号</div>
-                        <div class="col s2" style="border-right: 1px solid #ccc">关联</div>
-                        <div class="col s2" style="border-right: 1px solid #ccc">是否显示</div>
-                        <div class="col s2">操作</div>
-                    </div>
-                </li>
-
-                <li ng-repeat="el in rootList">
-                    <div class="collapsible-header" style="height: 40px;line-height: 40px;padding: 0;margin: 0;" ng-click="showLastTr(el._id,$index)">
-                        <div class="col s1 right-align">
-                            <p style="margin: 0">
-                                <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
-                            </p>
-                        </div>
-                        <div class="col s3 left-align">
-                            <p style="margin: 0">{{el.menu_name}} </p>
-                        </div>
-                        <div class="col s2">
-                            <p style="margin: 0">{{el.menu_num}}</p>
-                        </div>
-                        <div class="col s2">
-                            <p style="margin: 0">{{linkList[el.menu_type-1].status_text}}</p>
-                        </div>
-                        <div class="col s2">
-                            <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
-                            <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
-                        </div>
-                        <div class="col s2" style="font-size: 25px">
-                            <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)" style="padding-left: 20px"> </i>
-                            <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
-                        </div>
-                    </div>
-
-                    <div class="collapsible-body load_mission load_mission{{$index}}" style="height: 40px;line-height: 40px;padding: 0; !important;margin: 0;" >
-                        <!--列表1-->
-                        <div ng-repeat="el in firstList" style="border: 1px solid #ccc;background: #fafafa;padding: 0;margin: 0;">
-                            <div ng-click="showLastTr2(el._id,$index)" style="padding: 0;margin: 0;">
-                                <div style="height: 40px;line-height: 40px;">
-                                    <div class="col s1 right-align">
-                                        <p style="margin: 0">
-                                            <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
-                                        </p>
-                                    </div>
-                                    <div class="col s3 left-align">
-                                        <p style="margin: 0">{{el.menu_name}} </p>
-                                    </div>
-                                    <div class="col s2">
-                                        <p style="margin: 0">{{el.menu_num}}</p>
-                                    </div>
-                                    <div class="col s2">
-                                        <p style="margin: 0">{{linkList[el.menu_type-1].status_text}}</p>
-                                    </div>
-                                    <div class="col s2">
-                                        <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
-                                        <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
-                                    </div>
-                                    <div class="col s2" style="font-size: 25px">
-                                        <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i>
-                                        <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
-                                    </div>
-                                </div>
-
-                                <!-- 子 -->
-                                <div class="load1_mission load1_mission{{$index}}">
-                                    <!--列表2-->
-                                    <div ng-repeat="el in scondList" style="height: 40px;line-height: 40px;border: 1px solid #ccc;background: #eee;padding: 0;margin: 0;">
-                                        <div ng-click="showLastTr3(el._id,$index)" style="padding: 0;margin: 0;">
-                                            <div class="col s1 right-align">
-                                                <p style="margin: 0">
-                                                    <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>
-                                                </p>
-                                            </div>
-                                            <div class="col s3 left-align">
-                                                <p style="margin: 0">{{el.menu_name}} </p>
-                                            </div>
-                                            <div class="col s2">
-                                                <p style="margin: 0">{{el.menu_num}}</p>
-                                            </div>
-                                            <div class="col s2">
-                                                <p style="margin: 0">{{linkList[el.menu_type-1].status_text}}</p>
-                                            </div>
-                                            <div class="col s2">
-                                                <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>
-                                                <p style="margin: 0" ng-if="el.menu_status==1">显示</p>
-                                            </div>
-                                            <div class="col s2" style="font-size: 25px">
-                                                <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i>
-                                                <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--拉开的当前列表栏,显示内容-->
-<!--                    <div class="collapsible-body load1_mission load1_mission{{$index}}" ng-show="showTr2" style="height: 40px;line-height: 40px;padding: 0; !important;;margin: 0;" >-->
-<!--                        &lt;!&ndash;列表2&ndash;&gt;-->
-<!--                        <div ng-repeat="el in scondList" style="border: 1px solid #ccc;background: #eee;padding: 0;margin: 0;height: 40px;line-height: 40px;">-->
-<!--                            <div ng-click="showLastTr3(el._id,$index)" style="padding: 0;margin: 0;">-->
-<!--                                <div class="col s1 right-align">-->
-<!--                                    <p style="margin: 0">-->
-<!--                                        <i class="mdi mdi-check" ng-show="el.lower_flag==1" style="cursor: pointer"> </i>-->
-<!--                                    </p>-->
-<!--                                </div>-->
-<!--                                <div class="col s3 left-align">-->
-<!--                                    <p style="margin: 0">{{el.menu_name}} </p>-->
-<!--                                </div>-->
-<!--                                <div class="col s2">-->
-<!--                                    <p style="margin: 0">{{el.menu_num}}</p>-->
-<!--                                </div>-->
-<!--                                <div class="col s2">-->
-<!--                                    <p style="margin: 0">{{linkList[el.menu_type-1].status_text}}</p>-->
-<!--                                </div>-->
-<!--                                <div class="col s2">-->
-<!--                                    <p style="margin: 0" ng-if="el.menu_status==0">隐藏</p>-->
-<!--                                    <p style="margin: 0" ng-if="el.menu_status==1">显示</p>-->
-<!--                                </div>-->
-<!--                                <div class="col s2" style="font-size: 25px">-->
-<!--                                    <i class="mdi mdi-eye cyan-text" ng-click="lookOperation(el._id)"> </i>-->
-<!--                                    <i class="mdi mdi-delete-forever red-text" ng-click="delete(el._id)"> </i>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-                </li>
-            </ul>
+            <div class="col s12" style="height: 40px;line-height: 40px;padding: 0;margin: 0;background-color: #f6f5fa;" >
+                <div class="col s1"> </div>
+                <div class="col s3 left-align" style="border-right: 1px solid #ccc;">栏目名称</div>
+                <div class="col s2" style="border-right: 1px solid #ccc">序号</div>
+                <div class="col s2" style="border-right: 1px solid #ccc">关联</div>
+                <div class="col s2" style="border-right: 1px solid #ccc">是否显示</div>
+                <div class="col s2">操作</div>
+            </div>
+            <div class="col s12" id="menuTree"></div>
         </div>
-
     </div>
 </div>
