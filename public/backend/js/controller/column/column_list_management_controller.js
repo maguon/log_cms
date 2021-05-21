@@ -7,7 +7,7 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     let selectArray = [];
     // 存储每个下拉选中的内容
     let selectPid = [];
-
+    $scope.editSelectedMenu = [];
     //获取菜单
     function getMenu(){
         _basic.get($host.api_url + "/menu").then(function (data) {
@@ -63,7 +63,7 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     $scope.newOperator = function () {
         $scope.submitted = false;
         $scope.addColumn = "";
-        $scope.selectedMenu = "";
+        $scope.selectedMenu = [];
         $scope.addnum = "";
         $scope.addMenuName = "";
         $scope.addHeaderShow = 0;
@@ -130,13 +130,18 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
         // 清空文件选择路径
         document.getElementById('editBanner').value = '';
         document.getElementById('editBgImg').value = '';
-
+        // 清空 动态select数组
+        $scope.editSelectArray = [];
+        $scope.editSelectedMenu = [];
+        // 默认父菜单
+        $scope.baseMenu = "-1";
         // 取得编辑数据
         _basic.get($host.api_url + "/menu?menuId=" + id).then(function (data) {
             if (data.success == true) {
                 $scope.look_operation = data.result[0];
                 $scope.bannerImg = $scope.look_operation.banner_image || '';
                 $scope.bgImg = $scope.look_operation.bg_image || '';
+                getSelectArray($scope.look_operation);
             } else {
                 swal(data.msg, "", "error");
             }
@@ -147,12 +152,33 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
     // 修改
     $scope.changeOperatorForm = function (id) {
         $scope.submitted = true;
-        if($scope.look_operation.menu_pid==''||$scope.look_operation.menu_name==''||$scope.look_operation.menu_num==null
+        if($scope.look_operation.menu_name==''||$scope.look_operation.menu_num==null
             ||$scope.look_operation.menu_header_show==null||$scope.look_operation.menu_status==null){
             swal('请录入完整信息!',"","error")
         }else {
+            // 父菜单ID 调用接口用
+            let menuPid = '';
+            // 当动态select存在时，则父菜单ID 在 动态select中
+            if ($scope.editSelectedMenu.length > 0) {
+                // 动态最后一项是否选中
+                if ($scope.editSelectedMenu[$scope.editSelectedMenu.length-1] == '') {
+                    // 如果动态只有1项，且为空，则父菜单ID 为默认select选中值
+                    if ($scope.editSelectedMenu.length == 1) {
+                        menuPid = $scope.baseMenu;
+                    } else {
+                        // 最后一项 未选中，则是前一项的值
+                        menuPid = $scope.editSelectedMenu[$scope.editSelectedMenu.length-2];
+                    }
+                } else {
+                    // 最后一项 未选中，则是最后项的值
+                    menuPid = $scope.editSelectedMenu[$scope.editSelectedMenu.length-1];
+                }
+            } else {
+                // 当动态select不存在时，则父菜单ID 为默认select选中值
+                menuPid = $scope.baseMenu;
+            }
             var obj = {
-                menuPid: $scope.look_operation.menu_pid,
+                menuPid: menuPid,
                 menuName: $scope.look_operation.menu_name,
                 menuNum: $scope.look_operation.menu_num,
                 menuHeaderShow: $scope.look_operation.menu_header_show,
@@ -165,7 +191,6 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                     getRootList();
                     swal("修改成功", "", "success");
                     $('#look_Operator').modal('close');
-
                 } else {
                     swal(data.msg, "", "error");
                 }
@@ -340,6 +365,67 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
             });
         }
     };
+
+    /**
+     * 当父菜单 联动select选中时，执行查询下一层事件，并显示下一层，迭代方法
+     *
+     * @param selectMenuId 当前选中的menuId
+     * @param index 当前select选项框的层数，默认初始为0层
+     */
+    $scope.changeEditSelect = function(selectMenuId, index) {
+        // 点击菜单时，清空 当前层数 之后的所有动态
+        $scope.editSelectArray = $scope.editSelectArray.slice(0,index);
+        $scope.editSelectedMenu = $scope.editSelectedMenu.slice(0,index);
+
+        // 当前选中 不是【请选择】，且不是【根目录】时，执行检索接口，查询，此菜单是否有子菜单
+        if (selectMenuId != '' && selectMenuId != -1) {
+            _basic.get($host.api_url + "/menu?menuPid=" + selectMenuId).then(function (data) {
+                // 当有子菜单时
+                if (data.success && data.result.length > 0) {
+                    // 添加动态select数组
+                    $scope.editSelectArray.push(data.result);
+                }
+            });
+        }
+    };
+
+    async function getSelectArray(menu) {
+        // 当前选中菜单 的父菜单ID 和 本身ID
+        let currentPid = menu.menu_pid;
+        let currentId = menu._id;
+        // 循环索引
+        let idx = 0;
+        // 默认 选中 当前菜单的父菜单
+        $scope.baseMenu = currentPid;
+        // 当 当前选中菜单 有父菜单时，循环
+        while (currentPid != -1) {
+            // 多次循环的时候 最后必须 赋值
+            $scope.baseMenu = currentPid;
+            // 将当前父菜单 的 子列表作为select保存
+            await _basic.get($host.api_url + "/menu?menuPid=" + currentPid).then(function (data) {
+                // 当有子菜单时
+                if (data.success && data.result.length > 0) {
+                    // 添加动态select数组
+                    $scope.editSelectArray.splice(0,0, data.result);
+                    // 第一层 父菜单默认不选中
+                    if (idx > 0) {
+                        $scope.editSelectedMenu.splice(0,0, currentId);
+                    } else {
+                        $scope.editSelectedMenu.splice(0,0, '');
+                    }
+                }
+            });
+
+            // 取得 当前父菜单 的父菜单ID，替换要查询的父菜单，判断是否有下一次循环用
+            await _basic.get($host.api_url + "/menu?menuId=" + currentPid).then(function (data) {
+                if (data.success && data.result.length > 0) {
+                    currentPid = data.result[0].menu_pid;
+                    currentId = data.result[0]._id;
+                }
+            });
+            idx++;
+        }
+    }
 
     getMenu();
     getRootList();
