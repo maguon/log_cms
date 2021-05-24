@@ -61,6 +61,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                     swal("新增成功", "", "success");
                     $('#newOperator').modal('close');
                     getRootList();
+                    // 更新MenuTree
+                    updateMenuTree();
                 } else {
                     swal(data.msg, "", "error");
                 }
@@ -137,6 +139,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 if (data.success == true) {
                     uploadImg(id);
                     getRootList();
+                    // 更新MenuTree
+                    updateMenuTree();
                     swal("修改成功", "", "success");
                     $('#look_Operator').modal('close');
                 } else {
@@ -164,6 +168,8 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 _basic.delete($host.api_url + "/menu/" +id).then(function (data) {
                     if (data.success == true) {
                         getRootList();
+                        // 更新MenuTree
+                        updateMenuTree();
                         swal("删除成功", "", "success");
                     }
                     else {
@@ -436,6 +442,65 @@ app_admin_module.controller("column_list_management_controller", ["$scope", "_ba
                 }
             });
         });
+    }
+
+    /**
+     * 更新menuTree对象
+     */
+    async function updateMenuTree(){
+        let menuObj = [];
+        // 组装当前的menuTree
+        await getChildren(menuObj, -1);
+        // 调用更新接口
+        _basic.post($host.api_url + "/menuTree", {menuTree: menuObj}).then(function (data) {});
+    }
+
+    /**
+     * 调用接口，取得当前ID的子节点list
+     *
+     * @param menuPid 菜单父ID
+     */
+    async function getMenuList(menuPid){
+        let menuList;
+        await _basic.get($host.api_url + "/menu?menuPid=" + menuPid).then(function (data) {
+            if (data.success) {
+                menuList = data.result;
+            }
+        });
+        return menuList;
+    }
+
+    /**
+     * 取得当前节点的 children
+     *
+     * @param children 需要加载数据的children节点
+     * @param menuPid 需要加载数据的 menuPid
+     */
+    async function getChildren(children, menuPid){
+        // 调用接口 取得当前id的子节点list
+        let childrenList = await getMenuList(menuPid);
+        // 遍历 节点 list，并迭代取得数据
+        for (let i = 0; i < childrenList.length; i++) {
+            // 如果是第一层菜单，则
+            if (menuPid == -1) {
+                // 判断:页头隐藏 或者 状态隐藏时，则跳转下一次
+                if (childrenList[i].menu_header_show == 0 || childrenList[i].menu_status == 0) {
+                    continue;
+                }
+            } else {
+                // 状态隐藏时，则跳转下一次
+                if (childrenList[i].menu_status == 0) {
+                    continue;
+                }
+            }
+            // 组装jqTree需要的数据结构
+            // childrenList[i].name = childrenList[i].menu_name;
+            childrenList[i].children = [];
+            // 将数据添加到children节点
+            children.push(childrenList[i]);
+            // 迭代取得children节点
+            await getChildren(childrenList[i].children, childrenList[i]._id);
+        }
     }
 
     //获取根列表

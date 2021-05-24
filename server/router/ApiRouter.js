@@ -2,7 +2,7 @@ const express = require('express')
 const apiRouter = express.Router({mergeParams:true});
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart({ uploadDir: './public/uploads' });
-import {ContentController,AdminController,UserController,MenuController,NewsController,SysLogController,ImageController,StyleController,LayoutController} from '../controller'
+import {ContentController,AdminController,UserController,MenuController, MenuTreeController, NewsController,SysLogController,ImageController,StyleController,LayoutController} from '../controller'
 
 
 
@@ -52,5 +52,8 @@ apiRouter.post('/sid/:sid/style', StyleController.createStyle);
 
 apiRouter.get('/layout', LayoutController.getLayout);
 apiRouter.post('/layout', LayoutController.createLayout);
+
+apiRouter.get('/menuTree', MenuTreeController.getMenuTree);
+apiRouter.post('/menuTree', MenuTreeController.createMenuTree);
 
 module.exports = apiRouter

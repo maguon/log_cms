@@ -7,3 +7,4 @@ exports.SysLogController = require('./SysLogController');
 exports.ImageController = require('./ImageController');
 exports.StyleController = require('./StyleController');
 exports.LayoutController = require('./LayoutController');
+exports.MenuTreeController = require('./MenuTreeController');
