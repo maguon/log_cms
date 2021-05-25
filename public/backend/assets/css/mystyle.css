@@ -536,3 +536,6 @@
 .imgList{
     min-height: 120px;
 }
+.anchorBL{
+    display:none;
+}
