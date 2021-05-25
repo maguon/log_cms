@@ -6,6 +6,7 @@ const resUtil = require('../../util/ResUtil');
 const {StyleModel} = require('../../modules/schemas');
 const {MenuModel} = require('../../modules/schemas');
 const {NewsModel} = require('../../modules/schemas');
+const {LayoutModel} = require('../../modules/schemas');
 const {MenuTreeModel} = require('../../modules/schemas');
 import MenuComponent from '../../../client/components/MenuComponent';
 import HongliComponent from '../../../client/components/HongliComponent';
@@ -16,11 +17,16 @@ import PictureComponent from "../../../client/components/PictureComponent";
 const getMenuView = (req, res, next) => {
     let newsObj = {};
     let webSetting ={};
+    let layoutSetting ={};
     let menuList ={};
 
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
+        // 取得 layout 设置内容
+        return LayoutModel.find({}).exec();
+    }).then(rows=>{
+        layoutSetting = rows[0] || {};
         // 取得 menuList
         return MenuTreeModel.find({}).exec();
         // return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
@@ -30,7 +36,7 @@ const getMenuView = (req, res, next) => {
             .skip(parseInt('0')).limit(parseInt('4')).sort('news_num').exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <MenuComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",menuList:menuList,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
+            <MenuComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",menuList:menuList, multiMenu:layoutSetting.multi_menu,newsList:rows,newsImageList:newsObj.newsImageList,partnersList:newsObj.partnersList,contactList:newsObj.contactList,profileList:newsObj.profileList,recruitList:newsObj.recruitList}}/>);
         resUtil.resetMainPage(res,webSetting,componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);

@@ -6,6 +6,7 @@ const resUtil = require('../../util/ResUtil');
 const {StyleModel} = require('../../modules/schemas');
 const {NewsModel} = require('../../modules/schemas');
 const {MenuModel} = require('../../modules/schemas');
+const {LayoutModel} = require('../../modules/schemas');
 const {MenuTreeModel} = require('../../modules/schemas');
 import NewsComponent from '../../../client/components/NewsComponent';
 import NewsDetailsComponent from '../../../client/components/NewsDetailsComponent';
@@ -22,10 +23,15 @@ const getNewsView = (req ,res ,next) => {
     let menuFlag = true;
     let menuList =[];
     let webSetting = {};
+    let layoutSetting ={};
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {}
         return;
     }).then(()=>{
+        // 取得 layout 设置内容
+        return LayoutModel.find({}).exec();
+    }).then(rows=>{
+        layoutSetting = rows[0] || {};
         // 取得 menuList
         return MenuTreeModel.find({}).exec();
         // return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
@@ -78,15 +84,15 @@ const getNewsView = (req ,res ,next) => {
     }).then(rows=>{
         if(params.menuType==1){
             const componentString = ReactDOMServer.renderToString(
-                <NewsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <NewsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList, multiMenu:layoutSetting.multi_menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting, componentString)
         }else if(params.menuType==2){
             const componentString = ReactDOMServer.renderToString(
-                <ListComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
+                <ListComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList, multiMenu:layoutSetting.multi_menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }else{
             const componentString = ReactDOMServer.renderToString(
-                <PictureComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
+                <PictureComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList, multiMenu:layoutSetting.multi_menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,currentPage:params.page}}/>);
             resUtil.resetMainPage(res,webSetting,componentString)
         }
     }).catch(error=>{
@@ -97,13 +103,17 @@ const getNewsView = (req ,res ,next) => {
 const getNewsViewDetails = (req ,res ,next) => {
     let params = req.params;
     let pageObj = {};
-    let newsObj = {};
     let webSetting ={};
+    let layoutSetting ={};
     let menuList ={};
 
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
+        // 取得 layout 设置内容
+        return LayoutModel.find({}).exec();
+    }).then(rows=>{
+        layoutSetting = rows[0] || {};
         // 取得 menuList
         return MenuTreeModel.find({}).exec();
         // return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
@@ -132,6 +142,7 @@ const getNewsViewDetails = (req ,res ,next) => {
                 pageFooter:webSetting.page_footer||"",
                 newsList: rows,
                 menuList: menuList,
+                multiMenu:layoutSetting.multi_menu,
                 menuName: rows[0].menu_id.menu_name,
                 pageObj: pageObj,
                 currentPage: params.page
@@ -148,15 +159,18 @@ const getPictureDetails = (req ,res ,next) => {
     let webSetting ={};
     let menuList ={};
     let pageObj = {};
-    let newsObj = {};
+    let layoutSetting ={};
     let menuObj = {};
 
     StyleModel.find({}).exec().then((rows)=>{
         webSetting = rows[0] || {};
     }).then(()=>{
+        // 取得 layout 设置内容
+        return LayoutModel.find({}).exec();
+    }).then((rows)=>{
+        layoutSetting = rows[0] || {};
         // 取得 menuList
         return MenuTreeModel.find({}).exec();
-        // return MenuModel.find({}).where('menu_pid').equals('-1').where('menu_header_show').equals('1').where('menu_status').equals('1').sort('menu_num').exec();
     }).then(rows=>{
         menuList = rows;
         return MenuModel.find({}).where('_id').equals(params.menuId).sort('menu_num').exec();
@@ -199,7 +213,7 @@ const getPictureDetails = (req ,res ,next) => {
         return query.skip(params.page-1).limit(1).exec();
     }).then(rows=>{
         const componentString = ReactDOMServer.renderToString(
-            <PictureDetailsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
+            <PictureDetailsComponent {... {logoTitle:webSetting.logo_title||"",pageFooter:webSetting.page_footer||"",newsList:rows,menuList:menuList, multiMenu:layoutSetting.multi_menu,menu:menuObj.menu,twoMenuNameList:menuObj.twoMenuNameList,pageObj:pageObj,currentPage:params.page}}/>);
         resUtil.resetMainPage(res, webSetting, componentString);
     }).catch(error=>{
         resUtil.resetErrorPage(res,error);
