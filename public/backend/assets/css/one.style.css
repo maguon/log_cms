@@ -347,7 +347,7 @@ a:hover {
   .one-page-header .dropdown-menu,
   .one-page-header.top-nav-collapse .dropdown-menu {
     padding-top: 12px;
-    min-width: 200px;
+    min-width: 120px;
     border-radius: 0;
     z-index: 9999 !important;
     top: 100%;

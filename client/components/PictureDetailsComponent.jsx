@@ -80,7 +80,7 @@ export default class PictureDetailsComponent extends React.Component {
         }
         return (
             <div>
-                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle} multiMenu={this.props.multiMenu}/>
                 <div className="job-img margin-bottom-30" style={sectionStyle}></div>
                 <div className="container content profile wrap1003">
                     <div className="row marginTop50">
