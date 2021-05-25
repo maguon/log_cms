@@ -13,7 +13,7 @@ export default class MenuComponent extends React.Component {
     render() {
         return (
             <div>
-                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle} multiMenu={this.props.multiMenu}/>
                 <section id="intro" className="intro-section">
                     <div className="fullscreenbanner-container">
                         <div className="fullscreenbanner">

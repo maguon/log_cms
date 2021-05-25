@@ -160,7 +160,7 @@ export default class IndexComponent extends React.Component {
         return (
             <div style={{height: '100%'}}>
                 {/*项目 Header*/}
-                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle}/>
+                <Header menuList={this.props.menuList} logoTitle={this.props.logoTitle} multiMenu={this.props.multiMenu}/>
 
                 {/*轮播图片*/}
                 <section id="intro" className="intro-section">
