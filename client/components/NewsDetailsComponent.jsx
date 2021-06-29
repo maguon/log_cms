@@ -51,7 +51,7 @@ export default class NewsDetailsComponent extends React.Component {
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination">
                         <li>{<a role="menuitem" className='greenColor' style={{marginLeft: 10 + 'px'}}
-                                href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) - 1) + "/newsListDetails"}>$lt</a>}</li>
+                                href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) - 1) + "/newsListDetails"}>'&lt;'</a>}</li>
                         <li>{<a role="menuitem" className='greenColor' style={{marginLeft: 10 + 'px'}}
                                 href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) + 1) + "/newsListDetails"}>$gt</a>}</li>
                     </ul>
@@ -63,7 +63,7 @@ export default class NewsDetailsComponent extends React.Component {
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination">
                         <li>{<a role="menuitem" className='greenColor' style={{marginLeft: 10 + 'px'}}
-                                href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) - 1) + "/newsListDetails"}>$lt</a>}</li>
+                                href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) - 1) + "/newsListDetails"}>'&lt;'</a>}</li>
                         <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>$gt</a>}</li>
                     </ul>
                 </div>
@@ -73,7 +73,7 @@ export default class NewsDetailsComponent extends React.Component {
 
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination">
-                        <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>$lt</a>}</li>
+                        <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>'&lt;'</a>}</li>
                         <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>$gt</a>}</li>
                     </ul>
                 </div>
