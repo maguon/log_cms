@@ -39,7 +39,7 @@ export default class NewsDetailsComponent extends React.Component {
             prePage = (
                 <div className="fenPian">
                     <ul role="menu" aria-label="Pagination">
-                        <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>$lt</a>}</li>
+                        <li>{<a role="menuitem" className='darkColor' style={{marginLeft: 10 + 'px'}}>'&lt;'</a>}</li>
                         <li>{<a role="menuitem" className='greenColor' style={{marginLeft: 10 + 'px'}}
                                 href={"/view/menu/" + this.props.newsList[0].menu_id._id + "/menuType/2/page/" + (parseInt(this.props.currentPage) + 1) + "/newsListDetails"}>$gt</a>}</li>
                     </ul>
